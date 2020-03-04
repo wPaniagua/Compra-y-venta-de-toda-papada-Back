@@ -12,7 +12,7 @@
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="login.styles.css">
+    <link rel="stylesheet" href="css/inicio.styles.css">
 
 
 </head>
@@ -287,6 +287,6 @@
     </div>
 </body>
 
-<script src="js/login.js"></script>
+<script src="js/inicio.js"></script>
 
 </html>

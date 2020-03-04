@@ -65,7 +65,7 @@ async function login(correo, contrasena) {
 
 
     $.ajax({
-        url: "ajax/login.php",
+        url: "backend/login.php",
         data: "correo=" + correo.toLowerCase() + "&contrasena=" + contrasena, //data, //"correo=" + $("#txt-correo").val().toLowerCase() + "&password=" + $("#txt-contrasena").val(),
         method: "POST",
         dataType: "json",
