@@ -28,11 +28,11 @@ $mysqli = new mysqli( 'localhost:3308', 'root', '', 'mydb' );
 
     $stmt -> fetch();
     
-    echo json_encode(
+    echo (json_encode(
         array(
             "nombre"=> $primerNombre." ".$segundoNombre." ".$primerApellido,
             "correo"=>$correo
         )
-    );
+    ));
 
 ?>

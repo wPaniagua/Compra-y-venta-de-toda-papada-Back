@@ -23,3 +23,24 @@ $(document).ready(function () {
 
 
 });
+
+$("#cerrarSesion").on("click", () => {
+
+    $.ajax({
+
+        url: "backend/cerrarSesion.php",
+        // data: "correo=" + correo.toLowerCase() + "&contrasena=" + contrasena, //data, //"correo=" + $("#txt-correo").val().toLowerCase() + "&password=" + $("#txt-contrasena").val(),
+        method: "GET",
+        dataType: "json",
+        success: function (respuesta) {
+            if (respuesta.ok) {
+                location.reload();
+            }
+
+        },
+        error: function (error) {
+            console.log(error)
+        }
+
+    });
+})

@@ -53,6 +53,9 @@ include("backend/seguridad.php");
         </div>
     </div>
 
+
+    <button type="button" id="cerrarSesion">Cerrar Sesion </button>
+
 </body>
 
 <script src="js/perfil.js"></script>
