@@ -57,9 +57,9 @@
 		             	<div class="py-3">
 							<br><br><h3>Datos Categoria</h3>
 							<form class="py-4">
-								<div class="form-row " style="">
+								<div class="form-row " style="display: none">
 									<div class="col-5 ">
-										<label id="txtCod" disabled>Codigo</label>
+										<label id="txtCod">Codigo</label>
 									</div>
 									<div class="col-7 ">
 										<input type="text" id="cod" name="cod" class="disabled form-control ">
