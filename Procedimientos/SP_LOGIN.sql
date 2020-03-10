@@ -1,4 +1,4 @@
-CREATE PROCEDURE SP_LOGIN(
+CREATE OR REPLACE PROCEDURE SP_LOGIN(
                   IN pcorreo VARCHAR(50),
                   IN pcontrasenia VARCHAR(50),
                   OUT pid INT,
