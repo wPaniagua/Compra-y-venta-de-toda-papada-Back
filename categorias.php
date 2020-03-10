@@ -50,7 +50,7 @@
 				<div id="editarCat" name="editarCat" style="display: none">
 					<br>
 					<div class="list-group">
-		              <button class="list-group-item active color-principal" id="Agregar">
+		              <button class="list-group-item active color-principal bg-success" id="Agregar">
 		                Editar Categoria
 		              </button>
 		             <div class="list-group">
