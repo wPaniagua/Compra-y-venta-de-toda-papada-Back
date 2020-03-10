@@ -266,8 +266,10 @@
                         <div style="margin-left: auto;margin-right: auto;" class="text-center">
                             <button type="button" class="btn btn-primary" id="login-button"
                                 style=" width: 15em !important;">Ingresar</button>
-
                         </div> <br>
+
+                        <div class="alert alert-danger" role="alert" id="avisoDadoDeBaja" style="display:none; text-align:center;">
+                            Estás dado de baja actualmente. </div>
 
                         <br>
                         <div class="text-center">
