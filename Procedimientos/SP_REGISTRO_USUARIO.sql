@@ -1,4 +1,4 @@
-CREATE PROCEDURE SP_REGISTRO_USUARIO(
+CREATE OR REPLACE PROCEDURE  SP_REGISTRO_USUARIO(
                   IN ppNombre VARCHAR(50),
                   IN psNombre VARCHAR(50),
                   IN ppApellido VARCHAR(50),
@@ -6,7 +6,7 @@ CREATE PROCEDURE SP_REGISTRO_USUARIO(
                   IN pid INT,
                   IN pcorreo VARCHAR(50),
                   IN pcontrasenia VARCHAR(50),
-                  IN pfechaNac DATETIME,
+                  IN pfechaNac VARCAHAR(45 ),
                   IN pfoto VARCHAR(100),
                   IN ptipoUsuario INT,
                   IN ptelefono VARCHAR(50),
