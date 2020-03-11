@@ -79,7 +79,7 @@
 						</div>
 		             </div>
 		            </div><br><br><br>
-		        </div><!--Fin Columna agregar-->
+		        </div><!--Fin Columna editar-->
 
         </div> <!--Fin Columna agregar o editar-->
 		<div class="col-1"></div>
@@ -106,12 +106,6 @@
         </div>
       </div>
     </section>
-
-    <div class="panel panel-default">
-		            <div class="panel-heading main-color-bg" >
-		              
-		            </div>
-	
 	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/controladorCategoria.js"></script>

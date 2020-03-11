@@ -1,7 +1,7 @@
 $(document).ready(function () {
-
     console.log("DOM cargado");
     obtenerCategorias();
+	$("#categorias").addClass("active");
 
 });
 function obtenerCategorias(){
@@ -12,7 +12,7 @@ function obtenerCategorias(){
 		success:function(respuesta){
 			//console.log(respuesta);
 			var contenido = "";
-
+			console.log(respuesta);
 			contenido='<div id="div_ini"><table class="table table-striped table-hover"><tr>'+
                         '<th>Nombre Categoria</th>'+
                         //'<th>Tipo Categoria</th>'+
@@ -87,8 +87,7 @@ function eliminarCategorias(idCategoria){
 
 			if (respuesta.mensaje=='Eliminado exitosamente') {
 				
-				
-				window.location.replace("categorias.php");
+				window.location.replace("denuncias.php");
 			//
 			}
 			obtenerCategorias();
@@ -126,11 +125,12 @@ function editCategorias(){
 			dataType:"json",
 			success:function(respuesta){
 				console.log(respuesta);
+				alert(respuesta[0].mensaje);
 			}
 		});
 		$("#agregarCat").fadeIn();
 		$("#editarCat").fadeOut();
-		//obtenerCategorias();
+		obtenerCategorias();
 		window.location.replace("categorias.php");
 	}
 	
@@ -218,6 +218,7 @@ function buscar(){
 				for (var i = 0; i<1; i++){
 
 					contenido += '<tr><!--td>'+respuesta[i].idCategorias+ '</td-->'+
+
 				                    '<td>'+respuesta[i].descripcion+'</td>'+
 				                    //'<td>'+respuesta[i].estado+'</td>'+
 				                    '<td>'+
@@ -244,3 +245,4 @@ $("#buscarT").click(function(){
 	$("#buscarT").fadeOut();
 	$("#buscarCat").val("");
 });
+
