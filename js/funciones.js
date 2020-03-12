@@ -35,7 +35,7 @@ async function obtenerJSON()
             {
                 console.log(respuesta);
                 document.getElementById("municipio").innerHTML += `<option selected="selected" value="null">
-            Selecciona un municipio</option>`;
+                Selecciona un municipio</option>`;
                 //var dato = JSON.parse(respuesta);
                 for(var i=0; i<respuesta.length; i++)
                 {
