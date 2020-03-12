@@ -62,11 +62,14 @@ async function enviarDatos()
     var Depto = $('#depto').val();
     var Ciudad = $('#municipio').val();
     var Password = $('#contrasenia').val();
+    var pass = $('#confContrasenia');
     var Tipo = $('input:radio[name=tipo]:checked').val();
     var ConfPassword = $('#confContrasenia').val();
     var expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    console.log(Password);
+    console.log(ConfPassword);
     
-    if(validarVacio(Nombre))
+    if(validarVacio(Nombre) || validarVacio(sNombre))
     {
         alert("Debe ingresar su nombre");
     }
@@ -86,7 +89,7 @@ async function enviarDatos()
             {
                 if (!expr.test(Correo))
                 {
-                    alert("Error: La dirección de correo " + correo + " es incorrecta.");
+                    alert("Error: La dirección de correo " + Correo + " es incorrecta.");
                 }
                 else
                 {
@@ -131,7 +134,7 @@ async function enviarDatos()
                                             }
                                             else
                                             {
-                                                if (ConfPassword == !Password)
+                                                if (confirmarClave(Password, ConfPassword))
                                                 {
                                                     alert("Las contraseñas no son iguales");
                                                 }
@@ -194,5 +197,19 @@ function validarVacio(valor)
     else
     {
         return false;
+    }
+}
+
+function confirmarClave(pass, conf)
+{
+    console.log(pass);
+    console.log(conf);
+    if(pass == conf)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
     }
 }
