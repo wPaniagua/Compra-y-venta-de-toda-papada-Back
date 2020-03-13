@@ -1,6 +1,6 @@
 <?php 
 
-//include("backend/seguridad.php");
+  include("backend/seguridad.php");
 
 
 ?>
