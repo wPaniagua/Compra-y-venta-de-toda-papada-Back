@@ -66,7 +66,7 @@
                     session_start(); 
                     if (isset($_SESSION["id_usuario"])){
                         echo ('<li class="nav-item">
-                        <a class="nav-link" href="perfil.php">Mi Cuenta</a></li>');
+                        <a class="nav-link" href="perfilAdmin.php">Mi Cuenta</a></li>');
                     }
                     else{
                         echo ('<li class="nav-item"><button type="button" class="btn" id="iniciarSesionBoton" data-toggle="modal" data-target="#modalFormularioLogin"> Ingresa</button></li>');
