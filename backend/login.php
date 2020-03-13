@@ -18,20 +18,19 @@ $mysqli = new mysqli(
 $correo = $_POST["correo"];
 $contrasena = $_POST["contrasena"];
 
-$call = $mysqli->prepare('CALL SP_LOGIN(?, ?, @pid, @mensaje, @existe, @contrasenaCorrecta, @estadoRegistro)');
+$call = $mysqli->prepare('CALL SP_LOGIN(?, ?, @pid, @mensaje, @existe, @contrasenaCorrecta)');
 $call->bind_param('ss', $correo, $contrasena);
 $call->execute();
 
-$select = $mysqli->query('SELECT @pid, @mensaje, @existe, @contrasenaCorrecta, @estadoRegistro');
+$select = $mysqli->query('SELECT @pid, @mensaje, @existe, @contrasenaCorrecta');
 
 $result = $select->fetch_assoc();
 $pid     = $result['@pid'];
 $mensaje = $result['@mensaje'];
 $existe = $result['@existe'];
 $contrasenaCorrecta = $result['@contrasenaCorrecta'];
-$estadoRegistro = $result['@estadoRegistro'];
 
-if($existe==1 && $contrasenaCorrecta==1 && $estadoRegistro==1){
+if($existe==1 && $contrasenaCorrecta==1){
 
     session_start(); 
 
@@ -42,8 +41,7 @@ if($existe==1 && $contrasenaCorrecta==1 && $estadoRegistro==1){
             'pid'=>$pid,
             'mensaje'=>$mensaje,
             'existe'=> $existe,
-            'contrasenaCorrecta'=>$contrasenaCorrecta,
-            'estadoRegistro'=>$estadoRegistro
+            'contrasenaCorrecta'=>$contrasenaCorrecta
         ));
 }
 
@@ -57,8 +55,7 @@ else{
             'pid'=>$pid,
             'mensaje'=>$mensaje,
             'existe'=> $existe,
-            'contrasenaCorrecta'=>$contrasenaCorrecta,
-            'estadoRegistro' => $estadoRegistro
+            'contrasenaCorrecta'=>$contrasenaCorrecta
         ));
 }
 

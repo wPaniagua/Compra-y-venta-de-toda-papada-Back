@@ -88,13 +88,14 @@
                     </select>
                   </div>
                   <button class="btn btn-danger" onclick="editPerfil(1)">Guardar</button>
+                  <button class="btn btn-success" type="button" id="cerrarSesion">Cerrar Sesion </button>
                 </form><!--end formulario administrador  -->
             </div><!--end campos administrador  -->
         </div>
     </div>
 
 
-    <button type="button" id="cerrarSesion">Cerrar Sesion </button>
+    
 
 </body>
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>

@@ -72,9 +72,12 @@ async function login(correo, contrasena) {
         success: async function (respuesta) {
             respuestaGlobal = respuesta;
 
-            // alert(respuesta.mensaje)
+            // alert(respuesta.mensaje);
 
-            if (respuesta.existe == 1 && respuesta.contrasenaCorrecta == 1 && respuesta.estadoRegistro == 1) {
+            console.log(respuesta);
+
+
+            if (respuesta.existe == 1 && respuesta.contrasenaCorrecta == 1) {
 
                 console.log("Logueado Exitosamente");
 
@@ -93,12 +96,8 @@ async function login(correo, contrasena) {
 
                 console.log("contrasena incorrecta");
 
-                $("#avisoDadoDeBaja").fadeOut();
-
-
                 document.getElementById("contrasena").classList.remove("is-valid");
                 document.getElementById("contrasena").classList.add("is-invalid");
-
                 $("#avisoContrasena").fadeIn();
                 $("#aviso").fadeOut();
 
@@ -106,27 +105,15 @@ async function login(correo, contrasena) {
                 0) {
                 console.log(" No existe el usuario");
 
-                $("#avisoDadoDeBaja").fadeOut();
-
-
 
                 document.getElementById("correo").classList.remove("is-valid");
                 document.getElementById("correo").classList.add("is-invalid");
 
                 document.getElementById("contrasena").classList.remove("is-valid");
                 document.getElementById("contrasena").classList.add("is-invalid");
+
+
                 $("#aviso").fadeIn();
-
-
-            } else if (respuesta.existe == 1 && respuesta.contrasenaCorrecta == 1 && respuesta.estadoRegistro == 0) {
-
-                console.log(respuesta);
-
-
-                $("#avisoDadoDeBaja").fadeIn();
-
-                $("#avisoContrasena").fadeOut();
-                $("#aviso").fadeOut();
             }
         },
         error: function (error) {
