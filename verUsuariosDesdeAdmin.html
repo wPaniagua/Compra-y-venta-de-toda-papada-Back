@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="css/inicio.styles.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/FontAwesome.min.css">
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/FontAwesome.min.js"></script>
+
+    
+
+</head>
+
+<body>
+
+
+    <!-- style="background-color: #2b3f81 !important; color: white !important;" -->
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"><img src="ico/image-alt.svg" style="width:45px"></a>
+        <!--LOGO DE LA EMPRESA-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto" style="padding-left:45em;">
+                <li class="nav-item active ">
+                    <a class="nav-link" href="#">Publicaciones<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Usuarios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Servicios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Denuncias</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Reportes</a>
+                </li>
+            </ul>
+            <a class="navbar-brand" href="ico/person-fill.svg"><img src="ico/person-fill.svg" style="width:45px"></a>
+
+
+        </div>
+    </nav>
+
+    <br>
+    <div style="padding-left:65em; padding-right:0px">
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" id="inputBusqueda" placeholder="Buscar"
+                aria-label="Search">
+            <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>-->
+            <button type="submit" style="border-color:white; background-color:white;"><img src="ico/search.svg"
+                    style="width:25px "></button>
+        </form>
+    </div>
+
+    <br>
+    <br>
+    <div class="row " style="margin-left:53%;">
+        <div style="padding-top:2.5%;">Filtrar por: </div>
+
+        <div style="margin-left:5%;">
+            <label for="slc-tipoUsuario">Tipo de Usuario: </label><br>
+            <select name="slc-tipoUsuario" id="slc-tipoUsuario">
+                <option value="null">Seleccionar</option>
+            </select>
+        </div>
+
+        <div style="margin-left:5%;">
+            <label for="slc-departamento">Departamento: </label><br>
+            <select name="slc-departamento" id="slc-departamento">
+                <option value="null">Seleccionar</option>
+
+            </select>
+        </div>
+
+        <div style="margin-left:5%;">
+            <label for="slc-municipio">Municipio: </label><br>
+            <select name="slc-municipio" id="slc-municipio">
+                <option value="null">Seleccionar</option>
+
+            </select>
+        </div>
+
+        <div style="margin-left:5%;">
+            <label>Estado: </label><br>
+            <select name="slc-estados" id="slc-estados" checked="funtion">
+                <option value="-">Seleccionar</option>
+                <option value="A">Activo</option>
+                <option value="I">Inactivo</option>
+            </select>
+        </div>
+
+    </div>
+
+
+
+
+    <br>
+    <br>
+    <center>
+        <h2>Lista de Usuarios</h2>
+    </center>
+    <br>
+
+    <table border="1" cellspacing="0" cellpadding="10" class="table-striped table-hover" id="tablaUsuarios" 
+        style="width: 85%; margin-left:auto; margin-right:auto">
+        <thead>
+            <tr>
+                <td><strong>Nombre </strong></td>
+                <td><strong>Apellido </strong></td>
+                <td><strong>Tipo Usuario </strong></td>
+                <td><strong>Fecha Nacimiento </strong></td>
+                <td><strong>Telefono </strong></td>
+                <td><strong>Correo Electronico </strong></td>
+                <td><strong>Departamento </strong></td>
+                <td><strong>Ciudad o Municipio </strong></td>
+                <td><strong>Estado </strong></td>
+                <td><strong>Dar de Baja </strong></td>
+                <!--<td><strong>Modificar </strong></td>  -->
+            </tr>
+        </thead>
+        <tr>
+            <td>Cama </td>
+            <td>Producto </td>
+            <td>camas</td>
+            <td>Queen Size</td>
+            <td>Pedro Perez</td>
+            <td>5,500.00</td>
+            <td>12/02/2020</td>
+            <td>25/02/2020 </td>
+            <td>disponible</td>
+            <td>
+                <center><a href="#"><img src="ico/x-circle-fill.svg" style="width:25px "></a></center>
+            </td>
+            <!--<td><center><a href="index.html"><img src="ico/pencil.svg" style="width:25px "></a></center></td>   -->
+        </tr>
+    </table>
+
+
+    <script src="js/verUsuariosDesdeAdmin.js"></script>
+</body>
+
+</html>
