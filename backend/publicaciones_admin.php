@@ -1,8 +1,8 @@
 <?php 
 
-$mysqli = new mysqli( 'localhost:3306', 'root', '', 'mydb' );
+$mysqli = new mysqli( 'localhost:3308', 'root', '', 'mydb' );
 
-switch ($_POST["accion"]) {
+switch ($_GET["accion"]) {
 
     case "getPublicaciones":
 
@@ -76,7 +76,7 @@ switch ($_POST["accion"]) {
         case "darDeBaja":
 
 
-            $idAnuncio = $_POST["idAnuncio"];
+            $idAnuncio = $_GET["idAnuncio"];
 
             $stmt = $mysqli -> prepare('UPDATE anuncios  SET estado = "I"  WHERE idAnuncios = ?');
             $stmt->bind_param('i', $idAnuncio);
@@ -87,24 +87,24 @@ switch ($_POST["accion"]) {
             // $stmt -> fetch();
 
 
-            echo (json_encode(array("idAnuncio"=>$_POST["idAnuncio"])));
+            echo (json_encode(array("idAnuncio"=>$_GET["idAnuncio"])));
 
         break;
 
         case "seleccionarCategorias":
 
-            $idCategoria;
-            $categoria;
+            $idCategorias;
+            $descripcion;
 
             $stmt = $mysqli -> prepare(
-                'SELECT * FROM categorias'
+                'SELECT idCategorias, descripcion FROM categorias'
                 );
             
             $stmt -> execute();
             $stmt -> store_result();
             $stmt -> bind_result( 
-                $idCategoria,
-                $categoria);
+                $idCategorias,
+                $descripcion);
             
             
             $respuesta = array();
@@ -114,8 +114,8 @@ switch ($_POST["accion"]) {
             while($stmt -> fetch()){
             
                 $respuesta[$index] =  array(
-                    "idCategoria"=>$idCategoria,
-                    "categoria"=>$categoria,
+                    "idCategorias"=>$idCategorias,
+                    "nombreCategoria"=>$descripcion
                 );
             
                 $index++;
@@ -158,11 +158,251 @@ switch ($_POST["accion"]) {
             }
 
             echo json_encode($respuesta);
-        break;    
+        break;  
+        
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        case "busquedaNombreAnuncio":
+
+        $palabraClave = $_GET["palabraClave"];
+        $palabra="%$palabraClave%";
+        $stmt = $mysqli -> prepare(
+            'SELECT  pro.nombre,pro.tipoProducto,ca.descripcion categoria,an.descripcion,per.primerNombre,per.primerApellido ,an.precio,mo.descripcion ,an.fechaPublicacion,
+            an.fechaVencimiento,an.estado, an.idAnuncios from anuncios an
+            inner join producto pro on an.idProducto=pro.idProducto
+            inner join categorias ca on pro.idCategorias=ca.idCategorias
+            inner join persona per on an.idPersona=per.idPersona
+            inner join moneda mo on an.idMoneda=mo.idMoneda  WHERE an.descripcion LIKE ?');
+        $stmt->bind_param('s', $palabra);  
+        $stmt -> execute();
+        $stmt -> store_result();
+        $stmt -> bind_result( 
+            $nombreProducto,
+            $tipoProducto,
+            $categoria,
+            $descripcion,
+            $primerNombre,
+            $primerApellido,
+            $precio,
+            $moneda,
+            $fechaPublicacion,
+            $fechaVencimiento,
+            $estado,
+            $idAnuncio
+            );
+        
+        
+        $respuesta = array();
+        
+        $index = 0;
+        
+        while($stmt -> fetch()){
+        
+            $respuesta[$index] =  array(
+                "nombreProducto"=>$nombreProducto,
+                "tipoProducto"=>$tipoProducto,
+                "categoria"=>$categoria,
+                "descripcion"=>$descripcion,
+                "primerNombre"=>$primerNombre,
+                "primerApellido"=>$primerApellido,
+                "precio"=>$precio,
+                "moneda"=>$moneda,
+                "fechaPublicacion"=>$fechaPublicacion,
+                "fechaVencimiento"=>$fechaVencimiento,
+                "estado"=>$estado,
+                "idAnuncio"=>$idAnuncio
+            );
+        
+            $index++;
+        }
+        
+        echo json_encode($respuesta);
+
+        break;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////                
+
+
+        
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        case "filtrarCategoria":
+
+        $idCategoria = $_GET["idCategoria"];
+        $stmt = $mysqli -> prepare(
+            'SELECT  pro.nombre,pro.tipoProducto,ca.descripcion categoria,an.descripcion,per.primerNombre,per.primerApellido ,an.precio,mo.descripcion ,an.fechaPublicacion,
+            an.fechaVencimiento,an.estado, an.idAnuncios from anuncios an
+            inner join producto pro on an.idProducto=pro.idProducto
+            inner join categorias ca on pro.idCategorias=ca.idCategorias
+            inner join persona per on an.idPersona=per.idPersona
+            inner join moneda mo on an.idMoneda=mo.idMoneda WHERE ca.idCategorias = ?');
+        $stmt->bind_param('i', $idCategoria);  
+        $stmt -> execute();
+        $stmt -> store_result();
+        $stmt -> bind_result( 
+            $nombreProducto,
+            $tipoProducto,
+            $categoria,
+            $descripcion,
+            $primerNombre,
+            $primerApellido,
+            $precio,
+            $moneda,
+            $fechaPublicacion,
+            $fechaVencimiento,
+            $estado,
+            $idAnuncio
+            );
+        
+        
+        $respuesta = array();
+        
+        $index = 0;
+        
+        while($stmt -> fetch()){
+        
+            $respuesta[$index] =  array(
+                "nombreProducto"=>$nombreProducto,
+                "tipoProducto"=>$tipoProducto,
+                "categoria"=>$categoria,
+                "descripcion"=>$descripcion,
+                "primerNombre"=>$primerNombre,
+                "primerApellido"=>$primerApellido,
+                "precio"=>$precio,
+                "moneda"=>$moneda,
+                "fechaPublicacion"=>$fechaPublicacion,
+                "fechaVencimiento"=>$fechaVencimiento,
+                "estado"=>$estado,
+                "idAnuncio"=>$idAnuncio
+            );
+        
+            $index++;
+        }
+        
+        echo json_encode($respuesta);
+
+        break;
+
+        case "filtrarUsuario":
+
+        $idUsuario = $_GET["idUsuario"];
+        $stmt = $mysqli -> prepare(
+            'SELECT  pro.nombre,pro.tipoProducto,ca.descripcion categoria,an.descripcion,per.primerNombre,per.primerApellido ,an.precio,mo.descripcion ,an.fechaPublicacion,
+            an.fechaVencimiento,an.estado, an.idAnuncios from anuncios an
+            inner join producto pro on an.idProducto=pro.idProducto
+            inner join categorias ca on pro.idCategorias=ca.idCategorias
+            inner join persona per on an.idPersona=per.idPersona
+            inner join moneda mo on an.idMoneda=mo.idMoneda WHERE per.idPersona = ?');
+        $stmt->bind_param('i', $idUsuario);  
+        $stmt -> execute();
+        $stmt -> store_result();
+        $stmt -> bind_result( 
+            $nombreProducto,
+            $tipoProducto,
+            $categoria,
+            $descripcion,
+            $primerNombre,
+            $primerApellido,
+            $precio,
+            $moneda,
+            $fechaPublicacion,
+            $fechaVencimiento,
+            $estado,
+            $idAnuncio
+            );
+        
+        
+        $respuesta = array();
+        
+        $index = 0;
+        
+        while($stmt -> fetch()){
+        
+            $respuesta[$index] =  array(
+                "nombreProducto"=>$nombreProducto,
+                "tipoProducto"=>$tipoProducto,
+                "categoria"=>$categoria,
+                "descripcion"=>$descripcion,
+                "primerNombre"=>$primerNombre,
+                "primerApellido"=>$primerApellido,
+                "precio"=>$precio,
+                "moneda"=>$moneda,
+                "fechaPublicacion"=>$fechaPublicacion,
+                "fechaVencimiento"=>$fechaVencimiento,
+                "estado"=>$estado,
+                "idAnuncio"=>$idAnuncio
+            );
+        
+            $index++;
+        }
+        
+        echo json_encode($respuesta);
+
+        break;
+
+        case "filtrarEstado":
+
+        $estado = $_GET["estado"];
+        $stmt = $mysqli -> prepare(
+            'SELECT  pro.nombre,pro.tipoProducto,ca.descripcion categoria,an.descripcion,per.primerNombre,per.primerApellido ,an.precio,mo.descripcion ,an.fechaPublicacion,
+            an.fechaVencimiento,an.estado, an.idAnuncios from anuncios an
+            inner join producto pro on an.idProducto=pro.idProducto
+            inner join categorias ca on pro.idCategorias=ca.idCategorias
+            inner join persona per on an.idPersona=per.idPersona
+            inner join moneda mo on an.idMoneda=mo.idMoneda WHERE an.estado = ?');
+        $stmt->bind_param('s', $estado);  
+        $stmt -> execute();
+        $stmt -> store_result();
+        $stmt -> bind_result( 
+            $nombreProducto,
+            $tipoProducto,
+            $categoria,
+            $descripcion,
+            $primerNombre,
+            $primerApellido,
+            $precio,
+            $moneda,
+            $fechaPublicacion,
+            $fechaVencimiento,
+            $estado,
+            $idAnuncio
+            );
+        
+        
+        $respuesta = array();
+        
+        $index = 0;
+        
+        while($stmt -> fetch()){
+        
+            $respuesta[$index] =  array(
+                "nombreProducto"=>$nombreProducto,
+                "tipoProducto"=>$tipoProducto,
+                "categoria"=>$categoria,
+                "descripcion"=>$descripcion,
+                "primerNombre"=>$primerNombre,
+                "primerApellido"=>$primerApellido,
+                "precio"=>$precio,
+                "moneda"=>$moneda,
+                "fechaPublicacion"=>$fechaPublicacion,
+                "fechaVencimiento"=>$fechaVencimiento,
+                "estado"=>$estado,
+                "idAnuncio"=>$idAnuncio
+            );
+        
+            $index++;
+        }
+        
+        echo json_encode($respuesta);
+
+        break;
 
 }
 
 $mysqli->close();
 
 //works
+
+/**
+ * 
+ * 
+ */
 ?>
