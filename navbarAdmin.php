@@ -9,7 +9,7 @@
 	<!--barra de navegacion para el adminiistrador-->
 	<div class="fixed-top">
 		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-		  <a class="navbar-brand" href="#">PUBLITODO</a>
+		  <a class="navbar-brand font-weight-bold" href="#">PUBLITODO</a>
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
 		  </button>
@@ -26,7 +26,10 @@
 		        <a class="nav-link  font-weight-bold" href="categorias.php" tabindex="-1" aria-disabled="true">Categorias</a>
 		      </li>
 		   	  <li class="nav-item" id="productos">
-		        <a class="nav-link  font-weight-bold" href="#" tabindex="-1" aria-disabled="true">Productos o servicios</a>
+		        <a class="nav-link  font-weight-bold" href="productos.php" tabindex="-1" aria-disabled="true">Productos</a>
+		      </li>
+		      <li class="nav-item" id="servicios">
+		        <a class="nav-link  font-weight-bold" href="servicios.php" tabindex="-1" aria-disabled="true">Servicios</a>
 		      </li>
 		      <li class="nav-item" id="denuncias">
 		        <a class="nav-link  font-weight-bold" href="denuncias.php" tabindex="-1" aria-disabled="true">Denuncias</a>
@@ -46,6 +49,7 @@
 	<script type="text/javascript" src="jquery-3.4.1.min.js"></script>
 	<script type="text/javascript" src="bootstrap.min.css"></script>
 	<script type="text/javascript" src="js/all.js"></script>
+	<script type="text/javascript"></script>
 
 </body>
 </html>

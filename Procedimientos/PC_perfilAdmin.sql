@@ -5,6 +5,7 @@ CREATE OR REPLACE PROCEDURE SP_PERFIL_ADMIN(
                   IN psApellido VARCHAR(50),
                   IN pcorreo VARCHAR(50),
                   IN pfechaNac VARCHAR(10),
+                  IN telefono VARCHAR(10),
                   IN pmunicipio INT,
                   IN idUsuario INT,
                   IN urlImg VARCHAR(50),
@@ -77,7 +78,7 @@ SP:BEGIN
     END IF;
   END IF;
 
-  IF accion="obtenerFotos" THEN
+  IF accion="obtenerFotos" or accion="obtenerTelefono" THEN
     IF idUsuario='' or idUsuario=0 THEN
       SET tempMensaje='id usuario ,';
     END IF; 
@@ -114,6 +115,11 @@ SP:BEGIN
 
   IF accion="obtenerFotos" THEN
       SELECT * FROM fotosusuario WHERE idPersona=idUsuario;
+      SET mensaje='Exitoso';
+  END IF;
+
+  IF accion="obtenerTelefono" THEN
+      SELECT * FROM telefono WHERE idPersona=idUsuario;
       SET mensaje='Exitoso';
   END IF;
 

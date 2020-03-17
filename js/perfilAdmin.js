@@ -18,6 +18,7 @@ $(document).ready(function () {
             $("#fecha").html( respuesta.fechaNa);
             obtenerMunicipios(respuesta.idmunicipio);
             obtenerFotos(respuesta.idUsuario);
+            obtenerTelefono(respuesta.idUsuario);
 
         },
         error: function (error) {
@@ -58,9 +59,9 @@ function obtenerMunicipios(idmunicipio){
         method:"GET",
         dataType:"json",
         success:function(respuesta){
-            //console.log(respuesta);
-            var contenido = "";
             console.log(respuesta);
+            var contenido = "";
+            //console.log(respuesta);
 
                 /*  */
             for (var i = 0; i<respuesta.length; i++){
@@ -109,7 +110,7 @@ function obtenerDeptos(idDeptos){
     });
 }
 
-
+//funcion para obtener la foto del user logiado
 function obtenerFotos(idUsuario){
    // console.log("DOM cargado");
    // 
@@ -130,3 +131,23 @@ function obtenerFotos(idUsuario){
         }
     });
 }
+
+//funcion para obtener el telefono del user logiado
+function obtenerTelefono(idUsuario){
+   // console.log("DOM cargado");
+   // 
+   var parametros= "codigo="+idUsuario;
+                    //alert(parametros);
+
+    $.ajax({
+        url:"backend/editarPerfilAdmin.php?accion=obtenerTelefono",
+        method:"GET",
+        dataType:"json",
+        success:function(respuesta){
+            console.log(respuesta);
+            $("#txtTelefono").val(respuesta[0].telefono);
+        }
+    });
+}
+
+ 

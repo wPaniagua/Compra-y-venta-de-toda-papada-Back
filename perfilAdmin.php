@@ -1,4 +1,4 @@
-<?php 
+   <?php 
 
   include("backend/seguridad.php");
 
@@ -25,26 +25,12 @@
 
     //llamado a nabvar
     include 'navbarAdmin.php';
-    // $mysqli = new mysqli( 'localhost:3308', 'root', '', 'mydb' );
 
-    // $correo;
-
-    // $stmt = $mysqli -> prepare('SELECT  correo FROM persona WHERE idPersona = ?');
-
-    // $userId = $_SESSION["id_usuario"]; // or $_GET['userId'];
-    
-    // $stmt -> bind_param('i', $userId);
-    // $stmt -> execute();
-    // $stmt -> store_result();
-    // $stmt -> bind_result($correo, );
-    // $stmt -> fetch();
-    
-    // echo $correo; // Teodor
     ?>
     <br><br><br><br>
     <div class="container py-5">
         <div class="row">
-            <div class="col-4">
+            <div class="col-12 col-sm-4">
                 <h4 id="hNombre">Usuario Logueado</h4>
                 <div id="imgUsuario"></div>
                 <img src="imgUsers/pic.png" class="rounded-circle" alt="..." style="width: 250px;height: 250px;">
@@ -55,7 +41,7 @@
                     <br>
                 </form>
             </div>
-            <div class="col-4 py-5"><!--campos administrador  -->
+            <div class="col-12 col-sm-4 py-5"><!--campos administrador  -->
                 <!--formulario administrador  -->
                 <form>
                   <div class="form-group alert alert-warning">
@@ -72,8 +58,11 @@
                   <div class="form-group">
                     <label for="Fecha nacimiento">Fecha de nacimiento:</label>
                     <div class="alert alert-secondary" role="alert" id="fecha">
-            
-                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="telefono">Telefono:</label>
+                    <input type="text" class="form-control alert alert-secondary" id="txtTelefono" placeholder="telefono administrador">
+                  </div>
                   </div>
                   <div class="form-group">
                     <label for="Departamento">Departamento Residencia:</label>
