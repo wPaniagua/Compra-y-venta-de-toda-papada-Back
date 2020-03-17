@@ -68,9 +68,9 @@ $idUsuario = $result['@idUsuario'];
 
 if((int)$codigo==1){
 
-        session_start(); 
+    session_start(); 
 
-        $_SESSION["id_usuario"] =   $idUsuario; 
+    $_SESSION["id_usuario"] =   null; 
         
         echo json_encode(
             array(

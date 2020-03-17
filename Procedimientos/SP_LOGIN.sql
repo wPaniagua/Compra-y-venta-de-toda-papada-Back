@@ -53,7 +53,7 @@ SP:BEGIN
 
     SELECT estado INTO estadoPersona FROM `persona` WHERE  correo=pcorreo;
 
-    IF estadoPersona LIKE "%i" THEN
+    IF estadoPersona LIKE "%I" THEN
         SET mensaje='Estás dado de baja actualmente';
         SET existe=1;
         SET contrasenaCorrecta = 1;
