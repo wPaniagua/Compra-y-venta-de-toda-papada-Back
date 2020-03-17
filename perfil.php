@@ -1,6 +1,6 @@
 <?php 
 
-include("backend/seguridad.php");
+  include("backend/seguridad.php");
 
 
 ?>
@@ -22,6 +22,8 @@ include("backend/seguridad.php");
 <body>
 
     <?php 
+    /*incluir navbar*/
+    include 'navbarAdmin.php';
     // $mysqli = new mysqli( 'localhost:3308', 'root', '', 'mydb' );
 
     // $correo;
@@ -38,10 +40,24 @@ include("backend/seguridad.php");
     
     // echo $correo; // Teodor
     ?>
-
-    <div class="container">
+    <br><br>
+    <div class="container py-5">
         <div class="row">
+            <div class="col-8">
+                <h1 class="text-center" id="hNombre"></h1>
+            </div>
             <div class="col">
+
+                <form>
+                  <div class="form-group">
+                    <label for="Nombre" id="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="txtNombre" placeholder="Nombre usuario Administrador">
+                  </div>
+                  <div class="form-group">
+                    <label for="Correo">Correo</label>
+                    <input type="email" class="form-control" id="txtCorreo" placeholder="Correo administrador">
+                  </div>
+                </form>
 
                 <h1>Usuario Logueado</h1>
 

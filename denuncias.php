@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -6,6 +6,9 @@
 	<title>PUBLITODO</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/all.css">
+
+	<!-- tablas-->
+	<link rel="stylesheet" type="text/css" href="css/dataTables.bootstrap4.min.css">
 </head>
 <body>
 	<!--Encabezado -->
@@ -17,18 +20,13 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-12 py-5">
-				<br><br>
+				<!--Mostrar mensaje-->
+				<br><br><br>
 				<h3 class="text-center">Lista de denuncias</h3>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-7 py-5">
-			</div>
-			<div class="col-5">
-				<form class="form-inline my-2 my-lg-0 " id="formBusqueda">
-                  <input class="form-control mr-sm-2" type="search" id="inputBusqueda" placeholder="Buscar Denuncia" aria-label="Search">
-                  <button class="btn btn-outline-success my-2 my-lg-0" type="button">Buscar</button>
-                </form>
+				<br>
+				<div class="text-center">
+					<span class="alert " id="msjE"  style=" display: none; color:red"></span>
+				</div>
 			</div>
 		</div>
 		<div class="row py-2">
@@ -43,7 +41,10 @@
 
 	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <script src="js/jquery.dataTables.js" type="text/javascript"></script>
+	<script src="js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
     <!--script type="text/javascript" src="js/controladorCategoria.js"></script-->
-    <script type="text/javascript" src="js/controladorDenuncias.php"></script>
+    <script type="text/javascript" src="js/controladorDenuncias.js"></script>
 </body>
 </html>

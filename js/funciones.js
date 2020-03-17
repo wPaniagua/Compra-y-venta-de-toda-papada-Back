@@ -4,41 +4,57 @@ $('#btnGuardar').click(enviarDatos);
 async function obtenerJSON()
 {
     $.ajax({
-        url:"class-gestion-deptos.php?accion=obtener_Deptos",
-        method: "GET",
+        url:"backend/Select_Deptos_Municipios.php",
+        data: 'data=' + 'departamentos',
+        method: "POST",
         dataType:"json",
         success: async function (respuesta)
         {
             //console.log(respuesta);
+            document.getElementById("depto").innerHTML += `<option selected="selected" value="null">
+            Selecciona un departamento</option>`;
             //var dato = JSON.parse(respuesta);
             for(var i=0; i<respuesta.length; i++)
             {
-                $("#depto").append('<option value="'+respuesta[i].idDeptos+'">'+respuesta[i].nombre+'</option>');
+                document.getElementById("depto").innerHTML+=` <option value="${respuesta[i].idDepartamento}">${respuesta[i].nombre}</option>`;
                 //console.log(respuesta[i].idDeptos);
             }
         } 
     });
-    $.ajax({
-        url:"class-gestion-municipios.php?accion=obtener_Municipios",
-        method: "GET",
-        dataType:"json",
-        success: async function (respuesta)
-        {
-            //console.log(respuesta);
-            //var dato = JSON.parse(respuesta);
-            for(var i=0; i<respuesta.length; i++)
+    $("#depto").on('change', function (e)
+    {
+        var optionSelected = $("option:selected", this);
+        var valueSelected = this.value;
+        console.log(valueSelected);
+        $.ajax({
+            url:"backend/Select_Deptos_Municipios.php",
+            data: 'data=' + 'municipios&idDepartamento=' + valueSelected.trim(),
+            method: "POST",
+            dataType:"json",
+            success: async function (respuesta)
             {
-                $("#municipio").append('<option value="'+respuesta[i].idDeptos+'">'+respuesta[i].nombre+'</option>');
-                //console.log(respuesta[i].idDeptos);
-            }
-        } 
-    });
+                console.log(respuesta);
+                document.getElementById("municipio").innerHTML += `<option selected="selected" value="null">
+                Selecciona un municipio</option>`;
+                //var dato = JSON.parse(respuesta);
+                for(var i=0; i<respuesta.length; i++)
+                {
+                    document.getElementById("municipio").innerHTML+=` <option value="${respuesta[i].idMunicipio}">${respuesta[i].nombre}</option>`;
+                    //console.log(respuesta[i].idDeptos);
+                }
+            } 
+        });
+    }
+    );
+    
 }
 
 async function enviarDatos()
 {
-    var Nombre = $('#nombre').val();
-    var Apellido = $('#apellido').val();
+    var Nombre = $('#pnombre').val();
+    var sNombre = $('#snombre').val();
+    var Apellido = $('#papellido').val();
+    var sApellido = $('#sapellido').val();
     var Correo = $('#correo').val();
     var ID = $('#ID').val();
     var Telefono = $('#telefono').val();
@@ -46,11 +62,14 @@ async function enviarDatos()
     var Depto = $('#depto').val();
     var Ciudad = $('#municipio').val();
     var Password = $('#contrasenia').val();
+    var pass = $('#confContrasenia');
     var Tipo = $('input:radio[name=tipo]:checked').val();
     var ConfPassword = $('#confContrasenia').val();
     var expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    console.log(Password);
+    console.log(ConfPassword);
     
-    if(validarVacio(Nombre))
+    if(validarVacio(Nombre) || validarVacio(sNombre))
     {
         alert("Debe ingresar su nombre");
     }
@@ -70,7 +89,7 @@ async function enviarDatos()
             {
                 if (!expr.test(Correo))
                 {
-                    alert("Error: La dirección de correo " + correo + " es incorrecta.");
+                    alert("Error: La dirección de correo " + Correo + " es incorrecta.");
                 }
                 else
                 {
@@ -115,7 +134,7 @@ async function enviarDatos()
                                             }
                                             else
                                             {
-                                                if (ConfPassword == !Password)
+                                                if (confirmarClave(Password, ConfPassword))
                                                 {
                                                     alert("Las contraseñas no son iguales");
                                                 }
@@ -127,33 +146,27 @@ async function enviarDatos()
                                                     }
                                                     else 
                                                     {
-                                                        var datos = {
-                                                            'ppNombre':Nombre,
-                                                            'ppApellido':Apellido,
-                                                            'pcorreo':Correo,
-                                                            'pid':ID,
-                                                            'ptelefono':Telefono,
-                                                            'pfechaNac':Fecha,
-                                                            'pdepto':Depto,
-                                                            'pmunicipio':Ciudad,
-                                                            'pcontrasenia':Password,
-                                                            'pestado':Tipo
-                                                        };
-                                                        var cadena1 = "ppNombre="+Nombre+"&ppApellido="+Apellido+"&pcorreo="+Correo+"&pid="+ID+"&ptelefono="+Telefono+"&pfechaNac="+Fecha+"&pdepto="+Depto
-                                                        +"&pmunicipio="+Ciudad+"&pcontrasenia="+Password+"&ptipoUsuario="+Tipo+"&pestado="+"A";
-                                                        var cadena = JSON.stringify(datos);
+                                                        var cadena1 = `ppNombre=${Nombre}&psNombre=${sNombre}&ppApellido=${Apellido}&psApellido=${sApellido}&pcorreo=${Correo}&pfechaNac=${Fecha}&pmunicipio=${Ciudad}&pcontrasenia=${Password}&ptipoUsuario=${Tipo}`;
+                                                        
                                                         console.log(cadena1);
                                                         $.ajax(
                                                             {
                                                                 type: 'POST',
-                                                                url: 'registro.php',
+                                                                url: 'backend/registro_usuario.php',
                                                                 dataType: 'json',
                                                                 data: cadena1,
-                                                                succes:async function(resp)
+                                                                success:function(resp)
                                                                 {
-                                                                    if(resp==1)
+                                                                    console.log(resp);
+                                                                    if(resp.codigo==1)
                                                                     {
                                                                         alert("Agregado con exito");
+                                                                        var url = "http://localhost:80/proyecto/registro.php";
+                                                                        window.location = url;
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        alert("No se agrego");
                                                                     }
                                                                 }
                                                             }    
@@ -184,5 +197,19 @@ function validarVacio(valor)
     else
     {
         return false;
+    }
+}
+
+function confirmarClave(pass, conf)
+{
+    console.log(pass);
+    console.log(conf);
+    if(pass == conf)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
     }
 }

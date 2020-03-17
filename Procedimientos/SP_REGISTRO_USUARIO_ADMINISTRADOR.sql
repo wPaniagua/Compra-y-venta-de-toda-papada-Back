@@ -53,7 +53,7 @@ SP:BEGIN
     
         SET pid=id+1; 
         insert into `persona` (`idPersona`, `primerNombre`, `segundoNombre`, `primerApellido`, `segundoApellido`, `correo`, `fechaNac`, `contrasenia`, `idTipoUsuario`, `idMunicipio`, `estado`) 
-        values(pid, ppNombre, psNombre, ppApellido, psApellido, pcorreo, pfechaNac, pcontrasenia, 3, pMunicipio, "i");
+        values(pid, ppNombre, psNombre, ppApellido, psApellido, pcorreo, pfechaNac, pcontrasenia, 3, pMunicipio, "a");
 
         SET mensaje='Registro exitoso';
         SET codigo=1;

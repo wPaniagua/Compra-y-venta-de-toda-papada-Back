@@ -5,6 +5,9 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<!--link href="css/font-awesome.css" rel="stylesheet"-->
 	<link rel="stylesheet" type="text/css" href="css/all.css">
+
+	<!-- tablas-->
+	<link rel="stylesheet" type="text/css" href="css/dataTables.bootstrap4.min.css">
 </head>
 <body>
 	<?php
@@ -22,7 +25,7 @@
 				 <br><br>
 				<div class="py-5" id="agregarCat" name="agregarCat">
 					<div class="list-group">
-		              <button class="list-group-item active color-principal bg-success" id="Agregar">
+		              <button class="list-group-item active  bg-success text-light bg-dark" id="Agregar">
 		                Agregar Categoria&nbsp;&nbsp;&nbsp;&nbsp; <i class="fas fa-plus-circle fa-lg"></i>
 		              </button>
 		             <div class="list-group">
@@ -34,11 +37,12 @@
 										<label id="txtCat">Nombre Categoria</label>
 									</div>
 									<div class="col-6 ">
-										<input type="text" id="nombreCat" name="nombreCat" class="form-control">
-										<span id="avisoCat"  style=" display: none">Debe llenar la categoria</span>
+										<input type="text" id="nombreCat" name="nombreCat" class="form-control"><br>
+										<span id="avisoCat"  style=" display: none; color:red">Debe llenar la categoria</span>
+										<span class="alert " id="msjG"  style=" display: none; color:red"></span>
 									</div>
 								</div><br>
-								<button type="button" id="btnGuardarC" name="btnGuardarC" class="btn btn-success btn-block" onclick="guardarCategorias()">Guardar&nbsp;&nbsp;&nbsp;&nbsp; <i class="fas fa-save fa-lg"></i></button>
+								<button type="button" id="btnGuardarC" name="btnGuardarC" class="btn  btn-block p-3 mb-2 bg-success text-white font-weight-bold" onclick="guardarCategorias()">Guardar&nbsp;&nbsp;&nbsp;&nbsp; <i class="fas fa-save fa-lg"></i></button>
 							</form>
 						</div>
 		             </div>
@@ -50,12 +54,12 @@
 				<div id="editarCat" name="editarCat" style="display: none">
 					<br>
 					<div class="list-group">
-		              <button class="list-group-item active color-principal bg-success" id="Agregar">
+		              <button class="list-group-item active  bg-success text-light bg-dark" id="Agregar">
 		                Editar Categoria
 		              </button>
 		             <div class="list-group">
 		             	<div class="py-3">
-							<br><br><h3>Datos Categoria</h3>
+							<br><br><h3 class="font-weight-bold">Datos Categoria</h3>
 							<form class="py-4">
 								<div class="form-row " style="display: none">
 									<div class="col-5 ">
@@ -71,10 +75,11 @@
 									</div>
 									<div class="col-7 ">
 										<input type="text" id="nombreCatEdit" name="nombreCatEdit" class="form-control">
-										<span id="avisoCatE" style="display: none">Debe llenar la categoria</span>
+										<span id="avisoCatE" style="display: none;color:red">Debe llenar la categoria</span>
+										<span class="alert " id="msjE"  style=" display: none; color:red"></span>
 									</div>
 								</div><br>
-								<button type="button" id="btnEditarC" name="btnEditarC" class="btn btn-success btn-block" onclick="editCategorias()">Editar</button>
+								<button type="button" id="btnEditarC" name="btnEditarC" class="btn  btn-block p-3 mb-2 bg-success text-white font-weight-bold" onclick="editCategorias()">Editar</button>
 							</form>
 						</div>
 		             </div>
@@ -90,16 +95,8 @@
                 <div class="panel-heading main-color-bg">
                   <h3 class="panel-title"><h3 class="panel-title">Lista Categorias</h3>
                 </div>
-				<!-- Busqueda usuarios -->
-                <div><br>
-                  	<form class="form-inline my-2 my-lg-0">
-				      <input id="buscarCat" name="buscarCat" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-				      <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="buscar()">Buscar</button>&nbsp;&nbsp;&nbsp;&nbsp;
-				      <button id="buscarT" class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="obtenerCategorias();" style="display: none">Todos</button>
-				    </form><br>
-				    <span id="avisoCatB" style="color: red; display: none">Debe llenar la busqueda</span>
-                  </div>
-              </div>
+                <br><br>    
+                <div><span class="alert alert-danger" id="msjDelete"  style=" display: none; color:red"></span><br><br></div>   
                 <div id="div_ini"></div>
                 <div id="div_table"></div>
           </div>
@@ -108,6 +105,10 @@
     </section>
 	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <script src="js/jquery.dataTables.js" type="text/javascript"></script>
+	<script src="js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
+
     <script type="text/javascript" src="js/controladorCategoria.js"></script>
 </body>
 </html>

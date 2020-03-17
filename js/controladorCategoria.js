@@ -13,11 +13,11 @@ function obtenerCategorias(){
 			//console.log(respuesta);
 			var contenido = "";
 			console.log(respuesta);
-			contenido='<div id="div_ini"><table class="table table-striped table-hover"><tr>'+
+			contenido='<div class="table-responsive" id="div_ini"><table class="table table-striped table-hover table-bordered" id="tablaCategoria"><thead class="thead-dark"><tr>'+
                         '<th>Nombre Categoria</th>'+
                         //'<th>Tipo Categoria</th>'+
                         '<th>Dar de baja</th>'+
-                        '<th>Editar</th></tr>';
+                        '<th>Editar</th></tr></thead>';
 
 				/*  */
 
@@ -40,7 +40,7 @@ function obtenerCategorias(){
 			//$("#con2").remove();
 			//$("#c1").prop("disabled",false);
 			$("#div_table").append(contenido);
-
+			cargarTabla();
 		}
 	});
 
@@ -50,7 +50,7 @@ function guardarCategorias(){
 	validarRegistro();
 	if (validarRegistro()) {
 		var parametros= "nombreCate="+$("#nombreCat").val();
-					alert(parametros);
+					//alert(parametros);
 	
 		$.ajax({
 			url:"backend/gestionCategorias.php?accion=nuevo",
@@ -59,14 +59,22 @@ function guardarCategorias(){
 			dataType:"json",
 			success:function(respuesta){
 				console.log(respuesta);
-				alert(respuesta);
+				//alert(respuesta[0].mensaje);
 				
+				$("#msjG").addClass("alert-danger");
+				$("#msjG").html(respuesta[0].mensaje);
+				$("#msjG").fadeIn();
+				$("#msjG").fadeOut(2000);	
+
+				$("#nombreCat").val('');
+				obtenerCategorias();
 			}
 		});
-		window.location.replace("categorias.php");
-		//obtenerCategorias();
+		
+		//window.location.replace("categorias.php");
+		
 	}else {
-		alert("Campos requeridos");
+		//alert("Campos requeridos");
 	}
 	
 }
@@ -76,7 +84,7 @@ function eliminarCategorias(idCategoria){
 
 	var parametros = "idCategoria="+idCategoria;
 	
-	alert(parametros);
+	//alert(parametros);
 	$.ajax({
 		url:"backend/gestionCategorias.php?accion=eliminar",
 		method:"GET",
@@ -85,12 +93,17 @@ function eliminarCategorias(idCategoria){
 		success:function(respuesta){
 			console.log(respuesta);
 
-			if (respuesta.mensaje=='Eliminado exitosamente') {
+			if (respuesta[0].mensaje='Eliminado exitosamente') {
+
+				$("#msjDelete").html(respuesta[0].mensaje);
+				$("#msjDelete").fadeIn();
+				$("#msjDelete").fadeOut(2000);
 				
-				window.location.replace("denuncias.php");
+				obtenerCategorias();
+				//window.location.replace("denuncias.php");
 			//
 			}
-			obtenerCategorias();
+			
 		}
 	});
 
@@ -106,7 +119,7 @@ function editarCategorias(idCategoria,nombreCat){
 	$("#cod").val(idCategoria);
 	$("#nombreCatEdit").val(nombreCat);
 	
-	alert(idCategoria,nombreCat);
+	//alert(idCategoria,nombreCat);
 	//$("#nombreCatEdit").value('Hola', nombreCat); 
 
 }
@@ -117,7 +130,7 @@ function editCategorias(){
 	if (validarEditar()) {
 		var parametros= "codigo="+$("#cod").val()+"&"+
 						"nombreCate="+$("#nombreCatEdit").val();
-					alert(parametros);
+					//alert(parametros);
 		$.ajax({
 			url:"backend/gestionCategorias.php?accion=editar",
 			method:"GET",
@@ -125,13 +138,25 @@ function editCategorias(){
 			dataType:"json",
 			success:function(respuesta){
 				console.log(respuesta);
-				alert(respuesta[0].mensaje);
+				//alert(respuesta[0].mensaje);
+				if (respuesta[0].mensaje='Edicion exitosa') {
+					//alert(respuesta[0].mensaje);
+
+					$("#msjDelete").html(respuesta[0].mensaje);
+					$("#msjDelete").fadeIn();
+					$("#msjDelete").fadeOut(2000);
+
+					$("#editarCat").fadeOut();
+					$("#agregarCat").fadeIn();
+					
+					obtenerCategorias();
+				}
+				
 			}
 		});
-		$("#agregarCat").fadeIn();
-		$("#editarCat").fadeOut();
-		obtenerCategorias();
-		window.location.replace("categorias.php");
+		
+		
+		//window.location.replace("categorias.php");
 	}
 	
 	
@@ -155,12 +180,12 @@ function validarRegistro(){
 	
 	var nombre=validarCampoVacio("nombreCat");
 	if (nombre) {
-		$("#avisoCatE").fadeOut();
+		$("#avisoCat").fadeOut();
 		console.log("Categoria correcta");
 		return true;
 	}else{
 		console.log("Categoria incorrecta");
-		$("#avisoCatE").fadeIn();
+		$("#avisoCat").fadeIn();
 		return false;
 	}
 }
@@ -207,11 +232,11 @@ function buscar(){
 				//console.log(respuesta);
 				var contenido = "";
 
-				contenido='<div id="div_ini"><table class="table table-striped table-hover"><tr>'+
+				contenido='<div class="table-responsive" id="div_ini"><table class="table table-striped table-hover"><thead class="thead-dark"><tr>'+
 	                        '<th>Nombre Categoria</th>'+
 	                        //'<th>Tipo Categoria</th>'+
 	                        '<th>Dar de baja</th>'+
-	                        '<th>Editar</th></tr>';
+	                        '<th>Editar</th></tr></thead>';
 
 					/*  */
 
@@ -246,3 +271,47 @@ $("#buscarT").click(function(){
 	$("#buscarCat").val("");
 });
 
+
+function cargarTabla(){
+
+	$('#tablaCategoria').DataTable({
+		language: {
+			"lengthMenu":"Mostrar _MENU_ registros",
+			"zeroRecords":"No se encontraron Resultados",
+			"info":"Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+			"infoEmpty":"Mostrando registros del 0 al 0 de un total de 0 registros",
+			"infoFiltered":"(Filtrado de un total de _MAX_ registros)",
+			"sSearch":"Buscar",
+			"oPaginate":{
+				"sFirst":"Primero",
+				"sLast":"Ultimo",
+				"sNext":"Siguiente",
+				"sPrevious":"Anterior"
+			},
+			"sProcessing":"Procesando...",
+		}
+		/*,
+		initComplete: function(){
+                    this.api().columns().every(function(){
+                        var column=this;
+                        var select=
+                        $('<select class="form-control btn-dark" style=""><option value=""></option></select>')
+                            .appendTo($(column.header()).empty())
+                            .on('change',function(){
+                                var val=$.fn.dataTable.util.escapeRegex(
+                                $(this).val()
+                            );
+
+                            column.search(val ? '^'+val+'$': '',true,false)
+                                  .draw();
+
+                        });
+
+                        column.data().unique().sort().each(function (d,j){
+                            select.append('<option value"'+d+'">'+d+'</option>')
+                        });
+                    });
+                }*/
+		
+	});
+}
