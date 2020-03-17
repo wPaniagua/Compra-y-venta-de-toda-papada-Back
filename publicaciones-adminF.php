@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
+
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
@@ -21,51 +21,20 @@
 
 <body>
 
-
+	<?php
+      include 'navbarAdmin.php';
+    ?>
     <!-- style="background-color: #2b3f81 !important; color: white !important;" -->
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#"><img src="ico/image-alt.svg" style="width:45px"></a>
-        <!--LOGO DE LA EMPRESA-->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto" style="padding-left:45em;">
-                <li class="nav-item active ">
-                    <a class="nav-link" href="#">Publicaciones<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Usuarios</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Servicios</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Productos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Denuncias</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Reportes</a>
-                </li>
-            </ul>
-            <a class="navbar-brand" href="ico/person-fill.svg"><img src="ico/person-fill.svg" style="width:45px"></a>
-
-
-        </div>
-    </nav>
 
     <br>
-    <div style="padding-left:65em; padding-right:0px">
+    <div style="padding-left:65em; padding-right:0px; margin-top:70px">
         <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" id="inputBusqueda" placeholder="Buscar"
+            <input class="form-control mr-sm-2" type="search" id="inputBusqueda" name="inputBusqueda" placeholder="¿Que deseas buscar?"
                 aria-label="Search">
             <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>-->
-            <button type="submit" style="border-color:white; background-color:white;"><img src="ico/search.svg"
+            <button type="button" id="inputBusquedaBtn" name="inputBusquedaBtn" style="border-color:white; background-color:white;"><img src="ico/search.svg"
                     style="width:25px "></button>
         </form>
     </div>
@@ -91,7 +60,7 @@
 
         <div style="margin-left:5%;">
             <label>Estado: </label><br>
-            <select name="slc-estados" id="slc-estados" checked="funtion">
+            <select name="slc-estados" id="slc-estados" >
                 <option value="-">Seleccionar</option>
                 <option value="A">Activo</option>
                 <option value="I">Inactivo</option>
@@ -129,19 +98,7 @@
             </tr>
         </thead>
         <tr>
-            <td>Cama </td>
-            <td>Producto </td>
-            <td>camas</td>
-            <td>Queen Size</td>
-            <td>Pedro Perez</td>
-            <td>5,500.00</td>
-            <td>12/02/2020</td>
-            <td>25/02/2020 </td>
-            <td>disponible</td>
-            <td>
-                <center><a href="#"><img src="ico/x-circle-fill.svg" style="width:25px "></a></center>
-            </td>
-            <!--<td><center><a href="index.html"><img src="ico/pencil.svg" style="width:25px "></a></center></td>   -->
+           
         </tr>
     </table>
 

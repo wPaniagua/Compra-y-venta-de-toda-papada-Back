@@ -17,10 +17,10 @@
 		  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
 		    <ul class="navbar-nav mr-auto">
 		      <li class="nav-item " id="publicaciones">
-		        <a class="nav-link  font-weight-bold" href="#">Publicaciones <span class="sr-only">(current)</span></a>
+		        <a class="nav-link  font-weight-bold" href="publicaciones-adminF.php">Publicaciones <span class="sr-only">(current)</span></a>
 		      </li>
 		      <li class="nav-item">
-		        <a class="nav-link font-weight-bold" href="#" id="usuarios">Usuarios</a>
+		        <a class="nav-link font-weight-bold" href="verUsuariosDesdeAdminF.php" id="usuarios">Usuarios</a>
 		      </li>
 		      <li class="nav-item " id="categorias">
 		        <a class="nav-link  font-weight-bold" href="categorias.php" tabindex="-1" aria-disabled="true">Categorias</a>
