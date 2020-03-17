@@ -68,9 +68,10 @@
                     <div class="form-row">
                         <div class="form-group col-lg-12">
                             <label for="caducidadUsuarioNormal">Tiempo de caducidad Usuario Normal:</label>
+                            <Span id="tiempoNormal"> dias</Span>
                             <input type="text" class="form-control" id="caducidadUsuarioNormal"
                                 placeholder="Ingresa una cantidad en días" style="width:50%;">
-                            <button type="button" class="btn btn-primary" style="margin-top: .5em;">Actualizar</button>
+                            <button type="button" class="btn btn-primary" style="margin-top: .5em;" id="btn-tiempoNormal">Actualizar</button>
 
                         </div>
                     </div>
@@ -78,10 +79,12 @@
                         <div class="form-group col-lg-12">
                             <label for="caducidadUsuarioAdministrador">Tiempo de caducidad Usuario
                                 Administrador:</label>
-                            <input type="password" class="form-control" id="caducidadUsuarioAdministrador"
+                                <Span id="tiempoAdministrador"> dias</Span>
+
+                            <input type="text" class="form-control" id="caducidadUsuarioAdministrador"
                                 placeholder="Ingresa una cantidad en días" style="width:50%;">
 
-                            <button type="button" class="btn btn-primary" style="margin-top: .5em;">Actualizar</button>
+                            <button type="button" class="btn btn-primary" style="margin-top: .5em;" id="btn-tiempoAdministrador">Actualizar</button>
 
                         </div>
 

@@ -4,6 +4,9 @@ $(window).on("load", function () {
     cargarTabla();
     cargarCategorias();
     cargarUsuarios();
+    selectTiempoUsuarioNormal();
+    selectTiempoUsuarioAministrador();
+
 
 })
 
@@ -415,4 +418,104 @@ function generarTabla(response) {
         );
 
     }
+}
+
+
+$("#btn-tiempoNormal").on("click", () => {
+    let tiempoNormal = parseInt($("#caducidadUsuarioNormal").val());
+
+    console.log(tiempoNormal);
+
+    $.ajax({
+        url: "backend/publicaciones_admin.php",
+        method: "POST",
+        data: `accion=cambiarTiempoUsuarioNormal&tiempoUsuarioNormal=${tiempoNormal}`,
+        success: function (respuesta) {
+
+            let response = JSON.parse(respuesta);
+
+
+            if (response.codigo == 1) {
+                $("#tiempoNormal").html(response.tiempoUsuarioNormal + " dias");
+            }
+
+            //selectTiempoUsuarioNormal();
+        },
+
+        error: function (error) {
+            console.log(error);
+        }
+
+    });
+});
+
+function selectTiempoUsuarioNormal() {
+    $.ajax({
+        url: "backend/publicaciones_admin.php",
+        method: "POST",
+        data: `accion=selectTiempoUsuarioNormal`,
+        success: function (respuesta) {
+
+            let response = JSON.parse(respuesta);
+
+            console.log(response)
+
+            $("#tiempoNormal").html(response.tiempoNormal + " dias");
+        },
+
+        error: function (error) {
+            console.log(error);
+        }
+
+    });
+}
+
+$("#btn-tiempoAdministrador").on("click", () => {
+    let tiempoAdministrador = parseInt($("#caducidadUsuarioAdministrador").val());
+
+
+    $.ajax({
+        url: "backend/publicaciones_admin.php",
+        method: "POST",
+        data: `accion=cambiarTiempoUsuarioAdministrador&tiempoUsuarioAdministrador=${tiempoAdministrador}`,
+        success: function (respuesta) {
+
+            let response = JSON.parse(respuesta);
+
+
+
+            $("#tiempoAdministrador").html(response.tiempoUsuarioAdministrador + " dias");
+
+
+        },
+
+        error: function (error) {
+            console.log(error);
+        }
+
+    });
+});
+
+function selectTiempoUsuarioAministrador() {
+    $.ajax({
+        url: "backend/publicaciones_admin.php",
+        method: "POST",
+        data: `accion=selectTiempoUsuarioAdministrador`,
+        success: function (respuesta) {
+
+            let response = JSON.parse(respuesta);
+
+            console.log(response)
+
+            if (response.codigo == 1) {
+                $("#tiempoAdministrador").html(response.tiempoAdministrador + " dias");
+
+            }
+        },
+
+        error: function (error) {
+            console.log(error);
+        }
+
+    });
 }

@@ -301,6 +301,119 @@ switch ($_POST["accion"]) {
             getAnuncios($stmt);
         break;
 
+        case "cambiarTiempoUsuarioAdministrador":
+
+            $tiempoUsuarioAdministrador = $_POST["tiempoUsuarioAdministrador"];
+            $mensaje;
+            $codigo;
+
+            
+            $call = $mysqli->prepare('CALL SP_CAMBIAR_TIEMPO_USUARIO_ADMINISTRADOR(?, @mensaje, @codigo, @cantidadDiasOut)');
+            
+            $call->bind_param('i', 
+                $tiempoUsuarioAdministrador,
+            );
+            
+            
+            $call->execute();
+            
+            $select = $mysqli->query('SELECT  @mensaje, @codigo, @cantidadDiasOut');
+            
+            $result = $select->fetch_assoc();
+
+            $mensaje = $result['@mensaje'];
+            $codigo = $result['@codigo'];
+            $tiempoUsuarioAdministrador = $result['@cantidadDiasOut'];
+
+
+            
+            echo json_encode(array(
+                "mensaje"=>$mensaje,
+                "codigo"=>$codigo,
+                "tiempoUsuarioAdministrador"=>$tiempoUsuarioAdministrador
+            ));
+
+
+        break;
+
+        case "selectTiempoUsuarioNormal":
+
+            
+            $tiempoNormal;
+
+            $stmt = $mysqli->prepare(
+                'select tiempoPublicacion from tipoUsuario 
+                where idTipoUsuario = 1'
+            );
+
+            $stmt -> execute();
+            $stmt -> store_result();
+
+            $stmt -> bind_result( 
+                $tiempoNormal
+                );
+
+            $stmt -> fetch();
+            
+            echo json_encode(array("tiempoNormal"=> $tiempoNormal));
+
+        break;
+
+        case "cambiarTiempoUsuarioNormal":
+
+            $tiempoUsuarioNormal = $_POST["tiempoUsuarioNormal"];
+            $mensaje;
+            $codigo;
+
+            
+            $call = $mysqli->prepare('CALL SP_CAMBIAR_TIEMPO_USUARIO_NORMAL(?, @mensaje, @codigo, @cantidadDiasOut)');
+            
+            $call->bind_param('i', 
+                $tiempoUsuarioNormal,
+            );
+            
+            
+            $call->execute();
+            
+            $select = $mysqli->query('SELECT  @mensaje, @codigo, @cantidadDiasOut');
+            
+            $result = $select->fetch_assoc();
+
+            $mensaje = $result['@mensaje'];
+            $codigo = $result['@codigo'];
+            $tiempoUsuarioNormal = $result['@cantidadDiasOut'];
+
+
+            
+            echo json_encode(array(
+                "mensaje"=>$mensaje,
+                "codigo"=>$codigo,
+                "tiempoUsuarioNormal"=>$tiempoUsuarioNormal
+            ));
+        break;
+
+        case "selectTiempoUsuarioAdministrador":
+            $tiempoAdministrador;
+
+            $stmt = $mysqli->prepare(
+                'select tiempoPublicacion from tipoUsuario 
+                where idTipoUsuario = 3'
+            );
+
+            $stmt -> execute();
+            $stmt -> store_result();
+
+            $stmt -> bind_result( 
+                $tiempoAdministrador
+                );
+
+            $stmt -> fetch();
+            
+            echo json_encode(array("tiempoAdministrador"=> $tiempoAdministrador));
+
+        break;
+
+
 
 }
 
