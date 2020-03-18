@@ -1,3 +1,9 @@
+<?php 
+
+include 'backend/seguridad_admin.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

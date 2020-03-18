@@ -77,7 +77,7 @@ async function login(correo, contrasena) {
             console.log(respuesta);
 
 
-            if (respuesta.existe == 1 && respuesta.contrasenaCorrecta == 1) {
+            if (respuesta.existe == 1 && respuesta.contrasenaCorrecta == 1 && respuesta.estadoRegistro == 1) {
 
                 console.log("Logueado Exitosamente");
 
@@ -114,6 +114,10 @@ async function login(correo, contrasena) {
 
 
                 $("#aviso").fadeIn();
+            } else if (respuesta.existe == 1 && respuesta.contrasenaCorrecta == 1 && respuesta.estadoRegistro == 0) {
+                console.log(respuesta.mensaje)
+
+                $("#mensajeDadodeBaja").fadeIn();
             }
         },
         error: function (error) {

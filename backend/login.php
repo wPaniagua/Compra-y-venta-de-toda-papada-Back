@@ -4,7 +4,7 @@ $host = "localhost";
 $usuario = "root";
 $password = "";
 $baseDatos = "mydb";
-$puerto = 3306;
+$puerto = 3308;
 $link;
 
 $mysqli = new mysqli(	
@@ -18,11 +18,11 @@ $mysqli = new mysqli(
 $correo = $_POST["correo"];
 $contrasena = $_POST["contrasena"];
 
-$call = $mysqli->prepare('CALL SP_LOGIN(?, ?, @pid, @mensaje, @existe, @contrasenaCorrecta, @estadoRegistro)');
+$call = $mysqli->prepare('CALL SP_LOGIN(?, ?, @pid, @mensaje, @existe, @contrasenaCorrecta, @estadoRegistro, @esUsuarioAdmin)');
 $call->bind_param('ss', $correo, $contrasena);
 $call->execute();
 
-$select = $mysqli->query('SELECT @pid, @mensaje, @existe, @contrasenaCorrecta, @estadoRegistro');
+$select = $mysqli->query('SELECT @pid, @mensaje, @existe, @contrasenaCorrecta, @estadoRegistro, @esUsuarioAdmin');
 
 $result = $select->fetch_assoc();
 $pid     = $result['@pid'];
@@ -30,12 +30,14 @@ $mensaje = $result['@mensaje'];
 $existe = $result['@existe'];
 $contrasenaCorrecta = $result['@contrasenaCorrecta'];
 $estadoRegistro = $result['@estadoRegistro'];
+$esUsuarioAdmin = $result['@esUsuarioAdmin'];
 
-if($existe==1 && $contrasenaCorrecta==1 && $estadoRegistro==1){
 
+if($existe==1 && $contrasenaCorrecta==1 && $estadoRegistro==1 && $esUsuarioAdmin==1 ){
     session_start(); 
 
     $_SESSION["id_usuario"] =   $pid;
+    $_SESSION["es_administrador"] =  1;
 
     echo json_encode(
         array(
@@ -46,11 +48,27 @@ if($existe==1 && $contrasenaCorrecta==1 && $estadoRegistro==1){
             'estadoRegistro'=>$estadoRegistro
         ));
 }
+else if($existe==1 && $contrasenaCorrecta==1 && $estadoRegistro==1 && $esUsuarioAdmin == 0 ){
 
+    session_start(); 
+
+    $_SESSION["id_usuario"] =   $pid;
+    $_SESSION["es_administrador"] =  null;
+
+    echo json_encode(
+        array(
+            'pid'=>$pid,
+            'mensaje'=>$mensaje,
+            'existe'=> $existe,
+            'contrasenaCorrecta'=>$contrasenaCorrecta,
+            'estadoRegistro'=>$estadoRegistro
+        ));
+}
 else{
     session_start(); 
 
     $_SESSION["id_usuario"] =   null;
+    $_SESSION["es_administrador"] =  null;
 
     echo json_encode(
         array(

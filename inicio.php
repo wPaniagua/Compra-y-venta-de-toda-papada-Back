@@ -269,6 +269,9 @@
 
                         </div> <br>
 
+                        <div class="alert alert-danger" id="mensajeDadodeBaja" style="display:none;text-align:center;">
+                            Estás dado de baja actualmente </div>
+
                         <br>
                         <div class="text-center">
                             <small>¿No tienes una cuenta? </small><a href="#" class="btn btn-outline-success">

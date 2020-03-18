@@ -1,15 +1,17 @@
-CREATE OR REPLACE PROCEDURE SP_LOGIN(
+CREATE  PROCEDURE SP_LOGIN(
                   IN pcorreo VARCHAR(50),
                   IN pcontrasenia VARCHAR(50),
                   OUT pid INT,
                   OUT mensaje VARCHAR(100),
                   OUT existe INT,
                   OUT contrasenaCorrecta INT,
-                  OUT estadoRegistro INT
+                  OUT estadoRegistro INT,
+                  OUT esUsuarioAdmin INT
                   ) 
 SP:BEGIN
   DECLARE conteo INT;
   DECLARE contra INT;
+  DECLARE conteoAdmin INT;
   DECLARE id INT;
   DECLARE estadoPersona  VARCHAR(2);
   DECLARE tempMensaje VARCHAR(100);
@@ -46,6 +48,7 @@ SP:BEGIN
     SET mensaje='Contrasena invalida';
     SET existe=1;
     SET contrasenaCorrecta = 0;
+    SET esUsuarioAdmin = 0;
     LEAVE SP;
   END IF;  
 
@@ -58,17 +61,33 @@ SP:BEGIN
         SET existe=1;
         SET contrasenaCorrecta = 1;
         SET estadoRegistro = 0;
+        SET esUsuarioAdmin = 0;
         LEAVE SP;
     ELSE     
         SELECT idPersona INTO id FROM `persona` WHERE correo=pcorreo;
-  
-        SET mensaje='Usuario registrado';
-        SET existe=1;
-        SET pid=id;
-        SET contrasenaCorrecta = 1; 
-        SET estadoRegistro = 1;
-        COMMIT;
 
+        SELECT COUNT(*) INTO conteoAdmin  FROM persona pe
+        INNER JOIN tipousuario tu ON tu.idTipoUsuario = pe.idTipoUsuario 
+        WHERE idPersona = id AND tu.descripcion LIKE "%Administrador%";
+
+
+        IF conteoAdmin = 1 THEN
+            SET mensaje='Usuario registrado';
+            SET existe=1;
+            SET pid=id;
+            SET contrasenaCorrecta = 1; 
+            SET estadoRegistro = 1;
+            SET esUsuarioAdmin = 1;
+            COMMIT;
+        ELSE
+            SET mensaje='Usuario registrado';
+            SET existe=1;
+            SET pid=id;
+            SET contrasenaCorrecta = 1; 
+            SET estadoRegistro = 1;
+            SET esUsuarioAdmin = 0;
+            COMMIT;
+        END IF;
     END IF;    
   END IF;
 END$$
