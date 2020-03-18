@@ -1,237 +1,81 @@
 <!DOCTYPE html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reportes</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/inicio.styles.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link href="css/bootstrap.min.css">
+  <!--link href="css/font-awesome.css" rel="stylesheet"-->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/all.css">
+  <title>Reportes</title>
+  <link  rel="stylesheet" type="text/css" href="css/clasescss.css">
+ 
+
+  <!--link rel="stylesheet" href="css/vertical-menu.css"-->
+  <!-- Custom styles for this template -->
 
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Logo</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+  <?php
+  include 'navbarAdmin.php';
+  ?>
 
-    </nav>
-    &nbsp
-    &nbsp
+  <!-- Envoltura Barra Izquierda & Contenido de la Pagina -->
+  <div  id="wrapper">
 
-        <!-- Navegación parte superior -->
-        <ul class="nav justify-content-end">
-          <li class="nav-item">
-             <a class="nav-link active" href="#">Publicaciones</a>
-          </li>
-          <li class="nav-item">
-             <a class="nav-link" href="#">Usuarios</a>
-          </li>
-          <li class="nav-item">
-             <a class="nav-link" href="#">Categorias</a>
-          </li>
-          <li class="nav-item">
-             <a class="nav-link" href="#">Productos o Servicios</a>
-          </li>
-          <li class="nav-item">
-             <a class="nav-link" href="#">Denuncias</a>
-          </li>
-          <li class="nav-item">
-             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Reportes</a>
-          </li>
-        </ul>
-        &nbsp
-        &nbsp
-        &nbsp
-        &nbsp
-        &nbsp
+    <!-- Barra Izquierda & Contenido de la Pagina -->
+    <div class="container-fluid container-fluid-fix">
 
-    
-    <!--</ul>
-        <form class="form-inline my-2 my-lg-0" id="formBusqueda">
-            <input class="form-control mr-sm-2" type="search" id="inputBusqueda"
-                    placeholder="Escribe una opcion de busqueda" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-        </form>
+      <div class="row row-margin-fix">
 
-    <ul class="">-->
-    <h2>Lista de Denuncias</h2>
-    <br>
-    </br>
-    <br>
+        <!-- Barra de Menu Izquierdo-->
+        <div id="sidebar-wrapper" class="col-sm-5 col-md-2 col-lg-2 sidebar hidden-xs envoltura-barra-principal">
+          <ul class="nav nav-sidebar borde-dos">
+            <li class="active"><a class="lista" href="" onclick="obtenerDenuncias()">Reportes Denuncias</a></li>
+            <li class="active"><a class="lista" href="reportesUsuarios.php" onclick="obtenerUsuarios()">Reportes Usuarios</a></li>  
+            <li class="active"><a class="lista" href="Estadisticas.php" onclick="obtenerEstadisticas()">Estadisticas</a></li>
+          </ul>
 
-    </br>
-
-    <h3>Filtrar por</h3>
-    <!-- Example split danger button -->
-   
-    <div class="btn-group">
-      <button type="button" class="btn btn-danger">Depto</button>
-      <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Depto</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Separated link</a>
-      </div>
-    </div>
-
-    <div class="btn-group">
-      <button type="button" class="btn btn-danger">Municipio</button>
-      <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Municipio</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Separated link</a>
-      </div>
-    </div>
-
-    <div class="btn-group">
-      <button type="button" class="btn btn-danger">Categoria</button>
-      <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Categoria</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Separated link</a>
-      </div>
-    </div>
-
-    <div class="btn-group">
-      <button type="button" class="btn btn-danger">Cantidad Denuncias</button>
-      <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Cantidad Denuncias</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Separated link</a>
-      </div>
-    </div>
-
-
-
-    <br>
-    </br>
-    <br>
-    </br>
-
-    <div class="btn-group-vertical">
-      <button type="button" class="btn btn-secondary btn-lg btn-block">Reportes Denuncias </button>
-      <button type="button" class="btn btn-secondary btn-lg btn-block">Reportes Usuarios</button>
-      <button type="button" class="btn btn-secondary btn-lg btn-block">Estadísticas</button>
-    </div>
-
-    <br>
-    </br>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">idPublicación</th>
-          <th scope="col">Fecha</th>
-          <th scope="col">Producto/Servicio</th>
-          <th scope="col">Denunciado</th>
-          <th scope="col">Cantidad Denuncias</th>
-          <th scope="col">Departamento</th>
-          <th scope="col">Municipio</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-
-           
-        </tr>
-        <tr>
-           <th scope="row">2</th>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-
-           
-        </tr>
+        </div>
         
-      </tbody>
-    </table>
-    <br>
-    </br>
-    <input type="button" name="imprimir" value="Imprimir" onclick="window.print();">
+        <div class="col-lg">
+          <br><br>
+          <br><br>
+          <div id="divDenuncias" >
+            <h4>Lista de Denuncias</h4>
 
-   
-        <!--<div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Denuncias <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Favoritos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Ayuda</a>
-                </li>
-                <li class="nav-item dropdown" id="categorias">
-                    <a class="nav-link dropdown-toggle border border-primary rounded" href="#" id="navbarDropdown"
-                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Busca por Categorias
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Carros</a>
-                        <a class="dropdown-item" href="#">Hogar</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"></a>
-                    </div>
-                </li>
+            <br></br> 
 
-            </ul>
-            <form class="form-inline my-2 my-lg-0" id="formBusqueda">
-                <input class="form-control mr-sm-2" type="search" id="inputBusqueda"
-                    placeholder="Buscar por palabra clave" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-            </form>
+          </div> 
+          <br></br>
+          <br></br><br></br><br></br>
+          <input type="button"  class="btn active color-principal bg-success" name="imprimir" value="Imprimir" onclick="window.print();">
+        </div>
 
-            <ul class="navbar-nav mr-auto">
+      </div>
+
+      <div id="divUsuarios"></div>
+      <div id="divEstadisticas" ></div>
+
+    </div>
+
+  </div>
+
+</div> 
 
 
-                <?php
-                    session_start(); 
-                    if (isset($_SESSION["id_usuario"])){
-                        echo ('<li class="nav-item">
-                        <a class="nav-link" href="perfil.php">Mi Cuenta</a></li>');
-                    }
-                    else{
-                        echo ('<li class="nav-item"><button type="button" class="btn" id="iniciarSesionBoton" data-toggle="modal" data-target="#modalFormularioLogin"> Ingresa</button></li>');
-                    }
-                ?>
-            </ul>
-        </div>-->
-    
-  
-    
+</div>  
+
+<!--<input type="button" class="btn active color-principal bg-success" name="imprimir" value="Imprimir" onclick="window.print();">-->
+
+
+
 </body>
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 
-<script src="js/inicio.js"></script>
+<script src="js/controladorReportes.js"></script>
+
 
 </html>
