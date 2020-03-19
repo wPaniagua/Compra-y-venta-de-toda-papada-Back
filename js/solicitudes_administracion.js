@@ -6,7 +6,7 @@ $(document).ready(function () {
 
 function cargarSolicitudes() {
     $.ajax({
-        url: "backend/solicitudes_administracion.php",
+        url: "../backend/solicitudes_administracion.php",
         data: "accion=cargarSolicitudes",
         method: "POST",
         success: function (respuesta) {
@@ -46,7 +46,7 @@ function darDeBaja(idPersona) {
     console.log(idPersona)
 
     $.ajax({
-        url: "backend/solicitudes_administracion.php",
+        url: "../backend/solicitudes_administracion.php",
         data: `accion=darDeBaja&idPersona=${idPersona}`,
         method: "POST",
         success: function (respuesta) {
@@ -66,7 +66,7 @@ function aceptarSolicitud(idPersona) {
     console.log(idPersona)
 
     $.ajax({
-        url: "backend/solicitudes_administracion.php",
+        url: "../backend/solicitudes_administracion.php",
         data: `accion=aceptarSolicitud&idPersona=${idPersona}`,
         method: "POST",
         success: function (respuesta) {

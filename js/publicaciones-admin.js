@@ -14,7 +14,7 @@ $(window).on("load", function () {
 function darDeBaja(idAnuncio) {
 
     $.ajax({
-        url: "backend/publicaciones_admin.php",
+        url: "../backend/publicaciones_admin.php",
         data: `idAnuncio=${idAnuncio}&accion=darDeBaja`,
         method: "POST",
         success: function (respuesta) {
@@ -34,7 +34,7 @@ function darDeBaja(idAnuncio) {
 
 function cargarTabla() {
     $.ajax({
-        url: "backend/publicaciones_admin.php",
+        url: "../backend/publicaciones_admin.php",
         data: `accion=getPublicaciones`,
         method: "POST",
         success: function (respuesta) {
@@ -76,18 +76,9 @@ function cargarTabla() {
     });
 }
 
-// $("#slc-categorias").on("change", function () {
-//     var optionSelected = $("option:selected", this);
-//     var valueSelected = this.value;
-
-//     console.log(valueSelected);
-
-// });
-
-
 function cargarCategorias() {
     $.ajax({
-        url: "backend/publicaciones_admin.php",
+        url: "../backend/publicaciones_admin.php",
         method: "POST",
         data: `accion=seleccionarCategorias`,
         success: function (respuesta) {
@@ -110,7 +101,7 @@ function cargarCategorias() {
 
 function cargarUsuarios() {
     $.ajax({
-        url: "backend/publicaciones_admin.php",
+        url: "../backend/publicaciones_admin.php",
         method: "POST",
         data: `accion=seleccionarUsuarios`,
         success: function (respuesta) {
@@ -134,7 +125,7 @@ function cargarUsuarios() {
 function Busqueda(terminoBusqueda) {
 
     $.ajax({
-        url: "backend/publicaciones_admin.php",
+        url: "../backend/publicaciones_admin.php",
         data: `accion=getPublicaciones`,
         method: "POST",
         success: function (respuesta) {
@@ -195,27 +186,6 @@ $("#botonBuscar").on("click", () => {
 console.log("cama de barro".includes("Cama"))
 
 
-// $('#slc-categorias').on('change', function (e) {
-//     var optionSelected = $("option:selected", this);
-//     var valueSelected = this.value;
-
-//     console.log(valueSelected)
-
-// });
-// $('#slc-usuarios').on('change', function (e) {
-//     var optionSelected = $("option:selected", this);
-//     var valueSelected = this.value;
-
-//     console.log(valueSelected)
-
-// });
-// $('#slc-estados').on('change', function (e) {
-//     var optionSelected = $("option:selected", this);
-//     var valueSelected = this.value;
-
-//     console.log(valueSelected)
-
-// });
 
 function busquedaSegunSelect() {
 
@@ -243,7 +213,7 @@ function busquedaSegunSelect() {
         console.log("Ninguna Null")
 
         $.ajax({
-            url: "backend/publicaciones_admin.php",
+            url: "../backend/publicaciones_admin.php",
             data: `accion=getPublicacionesNingunaNull&categoria=${categoria}&usuario=${usuario}&estado=%${estado}`,
             method: "POST",
             success: function (respuesta) {
@@ -265,7 +235,7 @@ function busquedaSegunSelect() {
         console.log("Estado null Null")
 
         $.ajax({
-            url: "backend/publicaciones_admin.php",
+            url: "../backend/publicaciones_admin.php",
             data: `accion=getPublicacionesEstadoNull&categoria=${categoria}&usuario=${usuario}`,
             method: "POST",
             success: function (respuesta) {
@@ -286,7 +256,7 @@ function busquedaSegunSelect() {
         console.log("Usuario null Null")
 
         $.ajax({
-            url: "backend/publicaciones_admin.php",
+            url: "../backend/publicaciones_admin.php",
             data: `accion=getPublicacionesUsuarioNull&categoria=${categoria}&estado=%${estado}`,
             method: "POST",
             success: function (respuesta) {
@@ -309,7 +279,7 @@ function busquedaSegunSelect() {
         console.log("categoria null Null")
 
         $.ajax({
-            url: "backend/publicaciones_admin.php",
+            url: "../backend/publicaciones_admin.php",
             data: `accion=getCategoriasNull&usuario=${usuario}&estado=%${estado}`,
             method: "POST",
             success: function (respuesta) {
@@ -333,7 +303,7 @@ function busquedaSegunSelect() {
         console.log("Solo estado");
 
         $.ajax({
-            url: "backend/publicaciones_admin.php",
+            url: "../backend/publicaciones_admin.php",
             data: `accion=getPublicacionesSoloEstado&estado=%${estado}`,
             method: "POST",
             success: function (respuesta) {
@@ -354,7 +324,7 @@ function busquedaSegunSelect() {
         console.log("Solo usuario");
 
         $.ajax({
-            url: "backend/publicaciones_admin.php",
+            url: "../backend/publicaciones_admin.php",
             data: `accion=getPublicacionesSoloUsuario&usuario=${usuario}`,
             method: "POST",
             success: function (respuesta) {
@@ -375,7 +345,7 @@ function busquedaSegunSelect() {
         console.log("Solo Categoria");
 
         $.ajax({
-            url: "backend/publicaciones_admin.php",
+            url: "../backend/publicaciones_admin.php",
             data: `accion=getPublicacionesSoloCategoria&categoria=${categoria}`,
             method: "POST",
             success: function (respuesta) {
@@ -427,7 +397,7 @@ $("#btn-tiempoNormal").on("click", () => {
     console.log(tiempoNormal);
 
     $.ajax({
-        url: "backend/publicaciones_admin.php",
+        url: "../backend/publicaciones_admin.php",
         method: "POST",
         data: `accion=cambiarTiempoUsuarioNormal&tiempoUsuarioNormal=${tiempoNormal}`,
         success: function (respuesta) {
@@ -451,7 +421,7 @@ $("#btn-tiempoNormal").on("click", () => {
 
 function selectTiempoUsuarioNormal() {
     $.ajax({
-        url: "backend/publicaciones_admin.php",
+        url: "../backend/publicaciones_admin.php",
         method: "POST",
         data: `accion=selectTiempoUsuarioNormal`,
         success: function (respuesta) {
@@ -475,7 +445,7 @@ $("#btn-tiempoAdministrador").on("click", () => {
 
 
     $.ajax({
-        url: "backend/publicaciones_admin.php",
+        url: "../backend/publicaciones_admin.php",
         method: "POST",
         data: `accion=cambiarTiempoUsuarioAdministrador&tiempoUsuarioAdministrador=${tiempoAdministrador}`,
         success: function (respuesta) {
@@ -483,8 +453,10 @@ $("#btn-tiempoAdministrador").on("click", () => {
             let response = JSON.parse(respuesta);
 
 
+            if (response.codigo == 1) {
+                $("#tiempoAdministrador").html(response.tiempoUsuarioAdministrador + " dias");
 
-            $("#tiempoAdministrador").html(response.tiempoUsuarioAdministrador + " dias");
+            }
 
 
         },
@@ -498,7 +470,7 @@ $("#btn-tiempoAdministrador").on("click", () => {
 
 function selectTiempoUsuarioAministrador() {
     $.ajax({
-        url: "backend/publicaciones_admin.php",
+        url: "../backend/publicaciones_admin.php",
         method: "POST",
         data: `accion=selectTiempoUsuarioAdministrador`,
         success: function (respuesta) {
@@ -507,10 +479,9 @@ function selectTiempoUsuarioAministrador() {
 
             console.log(response)
 
-            if (response.codigo == 1) {
-                $("#tiempoAdministrador").html(response.tiempoAdministrador + " dias");
+            $("#tiempoAdministrador").html(response.tiempoAdministrador + " dias");
 
-            }
+
         },
 
         error: function (error) {

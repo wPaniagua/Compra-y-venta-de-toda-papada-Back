@@ -1,6 +1,6 @@
 <?php 
 
-include 'backend/seguridad_admin.php';
+include '../backend/seguridad_admin.php';
 
 ?>
 
@@ -12,16 +12,16 @@ include 'backend/seguridad_admin.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
 
 
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="css/FontAwesome.min.css">
-    <script src="js/FontAwesome.min.js"></script>
+    <link rel="stylesheet" href="../css/FontAwesome.min.css">
+    <script src="../js/FontAwesome.min.js"></script>
 
-    <link rel="stylesheet" href="css/inicio.styles.css">
+    <link rel="stylesheet" href="../css/inicio.styles.css">
 
 </head>
 
@@ -77,7 +77,8 @@ include 'backend/seguridad_admin.php';
                             <Span id="tiempoNormal"> dias</Span>
                             <input type="text" class="form-control" id="caducidadUsuarioNormal"
                                 placeholder="Ingresa una cantidad en días" style="width:50%;">
-                            <button type="button" class="btn btn-primary" style="margin-top: .5em;" id="btn-tiempoNormal">Actualizar</button>
+                            <button type="button" class="btn btn-primary" style="margin-top: .5em;"
+                                id="btn-tiempoNormal">Actualizar</button>
 
                         </div>
                     </div>
@@ -85,12 +86,13 @@ include 'backend/seguridad_admin.php';
                         <div class="form-group col-lg-12">
                             <label for="caducidadUsuarioAdministrador">Tiempo de caducidad Usuario
                                 Administrador:</label>
-                                <Span id="tiempoAdministrador"> dias</Span>
+                            <Span id="tiempoAdministrador"> dias</Span>
 
                             <input type="text" class="form-control" id="caducidadUsuarioAdministrador"
                                 placeholder="Ingresa una cantidad en días" style="width:50%;">
 
-                            <button type="button" class="btn btn-primary" style="margin-top: .5em;" id="btn-tiempoAdministrador">Actualizar</button>
+                            <button type="button" class="btn btn-primary" style="margin-top: .5em;"
+                                id="btn-tiempoAdministrador">Actualizar</button>
 
                         </div>
 
@@ -219,7 +221,7 @@ include 'backend/seguridad_admin.php';
 
 
 
-    <script src="js/publicaciones-admin.js"></script>
+    <script src="../js/publicaciones-admin.js"></script>
 </body>
 
 </html>
