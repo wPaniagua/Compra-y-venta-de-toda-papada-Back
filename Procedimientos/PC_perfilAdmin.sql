@@ -114,8 +114,15 @@ SP:BEGIN
   END IF;
 
   IF accion="obtenerFotos" THEN
-      SELECT * FROM fotosusuario WHERE idPersona=idUsuario;
-      SET mensaje='Exitoso';
+      SELECT count(*) INTO conteo FROM fotosusuario WHERE idPersona=idUsuario;
+      IF conteo=0 THEN
+        SET mensaje='No tiene Foto';
+        LEAVE SP;
+      END IF;
+      IF conteo=1 THEN
+        SELECT * FROM fotosusuario WHERE idPersona=idUsuario;
+        SET mensaje='Exitoso';
+      END IF;
   END IF;
 
   IF accion="obtenerTelefono" THEN

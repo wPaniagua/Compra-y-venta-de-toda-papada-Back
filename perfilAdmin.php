@@ -30,8 +30,9 @@
     <br><br><br><br>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12 col-sm-4">
-              <span class="text-uppercase text-center"><h4 id="hNombre">Usuario Logueado</h4></span><br>
+            <div class="col-12 col-sm-4 ">
+              <br><br>
+              <span class="text-uppercase text-center"><br><br><h4 id="hNombre">Usuario Logueado</h4></span><br>
               <div class="text-center px-5"  id="imgUsuario"></div>
               <br>
             
@@ -61,7 +62,7 @@
                   
                   <div class="container">
                     <div class="row">
-                      <div class="col-sm-12">
+                      <div class=" col-sm-12">
                         <label>Foto a subir:</label>
                       </div>
                       <div class="col-sm-12">
@@ -97,9 +98,10 @@
                     <br>
                 </form-->
             </div>
-            <div class="col-12 col-sm-4 py-5"><!--campos administrador  -->
+            <div class="col-12 col-sm-4 py-5 p-xl-5 col-sm-offset-3"><!--campos administrador  -->
                 <!--formulario administrador  -->
                 <form>
+                  <br><br>
                   <div class="form-group alert alert-warning">
                     <h4>Datos personales</h4>
                   </div>

@@ -37,6 +37,7 @@
 		    </ul>
 		    <form class="form-inline my-2 my-lg-0">
 		    	<a href="perfilAdmin.php">
+		    		<i class="fas fa-user fa-lg" id="iconU" style="display:none "></i>&nbsp;&nbsp;
 		    		<div id="imgNP"></div>
 		    	</a>
 		    </form>

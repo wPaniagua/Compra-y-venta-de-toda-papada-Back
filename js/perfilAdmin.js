@@ -129,18 +129,31 @@ function obtenerFotos(idUsuario){
         dataType:"json",
         success:function(respuesta){
             var contenido = "";
-            var foto=""
-            //alert(respuesta[0].urlFoto)
-            //console.log(respuesta);
-            contenido='<img src="'+respuesta[0].urlFoto+'" class="rounded-left rounded-circle" alt="..." style="width: 230px;height: 300px;">';
-                /*  */
+            var foto="";
+             console.log(respuesta);
+            if (respuesta[0].mensaje=='No tiene Foto') {
+                $("#iconU").fadeIn();
+                console.log('no hay img de perfil');
+                contenidoU='<img src="archivos/user.png" class="rounded-left rounded-circle" alt="..." style="width: 230px;height: 300px;">';
+                // statement
+                $("#imgUsuario").append(contenidoU);
+            } else {
+                // statement
+                console.log(respuesta);
+                contenido='<img src="'+respuesta[0].urlFoto+'" class="rounded-left rounded-circle" alt="..." style="width: 230px;height: 300px;">';
+                    /*  */
 
-            foto='<img src="'+respuesta[0].urlFoto+'" alt="..." class="rounded-circle" alt="..." style="width: 50px;height: 60px;">';
+                foto='<img src="'+respuesta[0].urlFoto+'" alt="..." class="rounded-circle" alt="..." style="width: 50px;height: 60px;">';
+                
+                document.getElementById("imgUsuario").innerHTML = " ";
+                document.getElementById("imgNP").innerHTML = " ";
+                $("#imgNP").append(foto);
+                $("#imgUsuario").append(contenido);
+                $("#iconU").fadeOut();
+                
+            }
+            //alert(respuesta[0].urlFoto)
             
-            document.getElementById("imgUsuario").innerHTML = " ";
-            document.getElementById("imgNP").innerHTML = " ";
-            $("#imgNP").append(foto);
-            $("#imgUsuario").append(contenido);
         }
     });
 }
