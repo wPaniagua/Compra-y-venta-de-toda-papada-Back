@@ -178,14 +178,14 @@ var validarCampoVacio = function(id){
 
 function validarRegistro(){
 	
-	var nombre=validarCampoVacio("nombreCat");
+	var nombre=validarCampoVacio("nombrePro");
 	if (nombre) {
-		$("#avisoCat").fadeOut();
-		console.log("Categoria correcta");
+		$("#avisoPro").fadeOut();
+		console.log("Nombre correcto");
 		return true;
 	}else{
-		console.log("Categoria incorrecta");
-		$("#avisoCat").fadeIn();
+		console.log("Nombre incorrecto");
+		$("#avisoPro").fadeIn();
 		return false;
 	}
 }

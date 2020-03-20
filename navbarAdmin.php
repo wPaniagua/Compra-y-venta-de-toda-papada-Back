@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="css/all.css">
 </head>
 <body>
-	<!--barra de navegacion para el adminiistrador-->
+	<!--barra de navegacion para el administrador-->
 	<div class="fixed-top">
 		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 		  <a class="navbar-brand font-weight-bold" href="#">PUBLITODO</a>
@@ -19,17 +19,14 @@
 		      <li class="nav-item " id="publicaciones">
 		        <a class="nav-link  font-weight-bold" href="publicaciones-adminF.php">Publicaciones <span class="sr-only">(current)</span></a>
 		      </li>
-		      <li class="nav-item">
-		        <a class="nav-link font-weight-bold" href="verUsuariosDesdeAdminF.php" id="usuarios">Usuarios</a>
+		      <li class="nav-item " id="usuarios">
+		        <a class="nav-link  font-weight-bold" href="verUsuariosDesdeAdminF.php" tabindex="-1" aria-disabled="true">Usuarios</a>
 		      </li>
 		      <li class="nav-item " id="categorias">
 		        <a class="nav-link  font-weight-bold" href="categorias.php" tabindex="-1" aria-disabled="true">Categorias</a>
 		      </li>
 		   	  <li class="nav-item" id="productos">
 		        <a class="nav-link  font-weight-bold" href="productos.php" tabindex="-1" aria-disabled="true">Productos</a>
-		      </li>
-		      <li class="nav-item" id="servicios">
-		        <a class="nav-link  font-weight-bold" href="servicios.php" tabindex="-1" aria-disabled="true">Servicios</a>
 		      </li>
 		      <li class="nav-item" id="denuncias">
 		        <a class="nav-link  font-weight-bold" href="denuncias.php" tabindex="-1" aria-disabled="true">Denuncias</a>
@@ -40,7 +37,7 @@
 		    </ul>
 		    <form class="form-inline my-2 my-lg-0">
 		    	<a href="perfilAdmin.php">
-		    	<img src="imgUsers/pic.png" alt="..." class="rounded-circle" alt="..." style="width: 50px;height: 50px;">
+		    		<div id="imgNP"></div>
 		    	</a>
 		    </form>
 		  </div>

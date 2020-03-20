@@ -104,6 +104,8 @@
 
 
     <script src="js/publicaciones-admin.js"></script>
+
+    <script type="text/javascript" src="js/fotoAdmin.js"></script>
 </body>
 
 </html>

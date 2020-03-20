@@ -110,5 +110,7 @@
 	<script src="js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
 
     <script type="text/javascript" src="js/controladorCategoria.js"></script>
+
+    <script type="text/javascript" src="js/fotoAdmin.js"></script>
 </body>
 </html>

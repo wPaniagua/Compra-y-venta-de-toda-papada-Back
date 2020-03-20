@@ -149,10 +149,10 @@
 		case 'obtenerFoto':
 			
 			$id=$_GET["codigo"];
-
+			//$id=1;
 			$resultadoConsulta = array();
 
-			$mysqli->multi_query("SET @p0=''; SET @p1=''; SET @p2=''; SET @p3=''; SET @p4=''; SET @p5=''; SET @p6=''; SET @p7='1'; SET @p8=''; SET @p9='".$id."'; CALL SP_PERFIL_ADMIN(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10); SELECT @p10 AS mensaje;");
+			$mysqli->multi_query("SET @p0=''; SET @p1=''; SET @p2=''; SET @p3=''; SET @p4=''; SET @p5=''; SET @p6=''; SET @p7=''; SET @p8='".$id."'; SET @p9=''; SET @p10='obtenerFotos'; CALL `SP_PERFIL_ADMIN`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);");
 
 			$resultadoConsulta = array();
 			do {

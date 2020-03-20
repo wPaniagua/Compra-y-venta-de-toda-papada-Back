@@ -107,6 +107,7 @@
 
 
     <script src="js/verUsuariosDesdeAdmin.js"></script>
+    <script type="text/javascript" src="js/fotoAdmin.js"></script>
 </body>
 
 </html>

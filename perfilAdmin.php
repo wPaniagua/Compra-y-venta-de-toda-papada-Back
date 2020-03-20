@@ -28,18 +28,74 @@
 
     ?>
     <br><br><br><br>
-    <div class="container py-5">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-12 col-sm-4">
-                <h4 id="hNombre">Usuario Logueado</h4>
-                <div id="imgUsuario"></div>
-                <img src="imgUsers/pic.png" class="rounded-circle" alt="..." style="width: 250px;height: 250px;">
+              <span class="text-uppercase text-center"><h4 id="hNombre">Usuario Logueado</h4></span><br>
+              <div class="text-center px-5"  id="imgUsuario"></div>
+              <br>
+            
+          <!-- Modal imagen perfil--->
+          <!-- Button trigger modal -->
+          <center>
+             <button type="button" class="btn btn btn-light" data-toggle="modal" data-target="#exampleModal">
+              Cambiar imagen perfil
+            </button>
+
+          </center>
+     
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text-uppercase" id="exampleModalLabel">Foto de perfil</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="principal">
+                <form action="" id="form_subir">
+                  
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <label>Foto a subir:</label>
+                      </div>
+                      <div class="col-sm-12">
+                        <input class="alert alert-secondary" type="file" name="archivo" required>
+                      </div>
+
+                      <div id="msj" class="alert alert-danger" role="alert" style="display: none">
+                        Imagen editada correctamente
+                      </div>
+                    </div>
+                    
+                  </div>
+                  <br>
+                  <div class="acciones">
+                    <input class="btn btn-danger" type="submit" name="" value="Subir Foto perfil">
+                  </div>
+                </form>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button onclick="cargarFoto();" type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+              </div>
+            </div>
+          </div>
+        </div><!-- Fin modal--->
+
+                <!--img src="imgUsers/pic.png" class="rounded-circle" alt="..." style="width: 250px;height: 250px;">
                     <div class="form-group">
                     <label>Cambiar imagen:</label>
                     <input class="form-control alert-secondary btn" type="file" id="imagen" name="imagen" required>
                     </div>
                     <br>
-                </form>
+                </form-->
             </div>
             <div class="col-12 col-sm-4 py-5"><!--campos administrador  -->
                 <!--formulario administrador  -->
@@ -87,7 +143,7 @@
     
 
 </body>
-<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+<!--script type="text/javascript" src="js/jquery-3.4.1.min.js"></script-->
 <script src="js/perfilAdmin.js"></script>
 <!--script type="text/javascript" src="js/controladorAdministrador.js"></script-->
 

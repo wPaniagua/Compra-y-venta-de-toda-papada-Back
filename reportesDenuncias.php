@@ -233,5 +233,6 @@
 </body>
 
 <script src="js/inicio.js"></script>
+<script type="text/javascript" src="js/fotoAdmin.js"></script>
 
 </html>
