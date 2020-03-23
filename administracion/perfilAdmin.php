@@ -1,9 +1,9 @@
-   <?php 
+<?php 
 
-  include("backend/seguridad.php");
-
-
+  include '../backend/seguridad_admin.php';
+  //include '../backend/seguridad.php';
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,10 +13,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PUBLITODO</title>
 
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <script src="js/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.4.1.min.js"></script>
 
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -32,7 +32,8 @@
         <div class="row">
             <div class="col-12 col-sm-4 ">
               <br><br>
-              <span class="text-uppercase text-center"><br><br><h4 id="hNombre">Usuario Logueado</h4></span><br>
+              <span class="text-uppercase text-center"><h4 id="hNombre">Usuario Logueado</h4></span><br>
+              <hr style="border:1px; color: red">
               <div class="text-center px-5"  id="imgUsuario"></div>
               <br>
             
@@ -90,13 +91,7 @@
           </div>
         </div><!-- Fin modal--->
 
-                <!--img src="imgUsers/pic.png" class="rounded-circle" alt="..." style="width: 250px;height: 250px;">
-                    <div class="form-group">
-                    <label>Cambiar imagen:</label>
-                    <input class="form-control alert-secondary btn" type="file" id="imagen" name="imagen" required>
-                    </div>
-                    <br>
-                </form-->
+           
             </div>
             <div class="col-12 col-sm-4 py-5 p-xl-5 col-sm-offset-3"><!--campos administrador  -->
                 <!--formulario administrador  -->
@@ -105,13 +100,23 @@
                   <div class="form-group alert alert-warning">
                     <h4>Datos personales</h4>
                   </div>
-                  <div class="form-group">
-                    <label for="Nombre" >Nombre</label>
+                  <div class="form-row">
+
+                    <label for="Nombre" >Nombre:</label>
+                    <input type="text" class="form-control alert alert-secondary" id="codigo" placeholder="cod" style="display:none ">
                     <input type="text" class="form-control alert alert-secondary" id="txtNombre" placeholder="Nombre usuario Administrador">
+                    <span id="msjNombre" style="color:red;display: none">Nombres requeridos</span>
+                  </div>
+                  <div class="form-group">
+                    <label for="Apellido" >Apellidos :</label>
+                    <input type="text" class="form-control alert alert-secondary" id="txtApellidos" placeholder="Apellidos usuario Administrador" >
+                    <span id="msjApellidos" style="color:red;display: none">Apellidos requeridos</span>
                   </div>
                   <div class="form-group">
                     <label for="correo">Correo electrónico:</label>
                     <input type="email" class="form-control alert alert-secondary" id="txtCorreo" placeholder="Correo administrador">
+                    <span id="msjCorreo" style="color:red;display: none">Correo invalido<br>
+                    Ejemplo:nombre@gmail.com</span>
                   </div>
                   <div class="form-group">
                     <label for="Fecha nacimiento">Fecha de nacimiento:</label>
@@ -120,24 +125,31 @@
                   <div class="form-group">
                     <label for="telefono">Telefono:</label>
                     <input type="text" class="form-control alert alert-secondary" id="txtTelefono" placeholder="telefono administrador">
+                    <span id="msjTelefono" style="color:red;display: none">Telefono invalido.<br> Ejemplo:96016817</span>
                   </div>
                   </div>
                   <div class="form-group">
                     <label for="Departamento">Departamento Residencia:</label>
-                    <select id="departamentos" class="form-control  alert-secondary">
+                    <select id="departamentos" class="form-control  alert-secondary" >
                         <option selected="selected" value="null">No hay nada que cargar</option>
                     </select>
+                    <span id="msjDepto" style="color:red;display: none">Departamento requerido</span>
                   </div>
                   <div class="form-group">
                     <label for="Correo">Municipio:</label>
-                    <select id="municipios" class="form-control  alert-secondary">
+                    <select id="municipios" class="form-control  alert-secondary" disabled="">
                         <option selected="selected" value="null">Seleccione un departamento</option>
                     </select>
+                    <span id="msjMunicipio" style="color:red;display: none">Municipio requerido</span>
                   </div>
-                  <button class="btn btn-danger" onclick="editPerfil(1)">Guardar</button>
-                  <button class="btn btn-success" type="button" id="cerrarSesion">Cerrar Sesion </button>
-                </form><!--end formulario administrador  -->
+                  <button type="button" class="btn btn-danger" onclick="editarPerfil();">Guardar</button>
+                  <button class="btn btn-success" type="button" id="cerrarSesione">Cerrar Sesion </button><br>
+                  <div class="form-row"><span class="alert alert-danger" style="display: none" id="msjEditar"></span></div>
+                  
+                </form><!--end formulario 
+                administrador  -->
             </div><!--end campos administrador  -->
+            
         </div>
     </div>
 
@@ -146,7 +158,7 @@
 
 </body>
 <!--script type="text/javascript" src="js/jquery-3.4.1.min.js"></script-->
-<script src="js/perfilAdmin.js"></script>
+<script src="../js/perfilAdmin.js"></script>
 <!--script type="text/javascript" src="js/controladorAdministrador.js"></script-->
 
 </html>

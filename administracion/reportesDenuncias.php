@@ -1,3 +1,10 @@
+<?php 
+
+include '../backend/seguridad_admin.php';
+
+?>
+
+<!--
 <!DOCTYPE html>
 
 <head>
@@ -19,10 +26,10 @@
 
     </nav>
     &nbsp
-    &nbsp
+    &nbsp-->
 
         <!-- Navegación parte superior -->
-        <ul class="nav justify-content-end">
+     <!--   <ul class="nav justify-content-end">
           <li class="nav-item">
              <a class="nav-link active" href="#">Publicaciones</a>
           </li>
@@ -46,7 +53,7 @@
         &nbsp
         &nbsp
         &nbsp
-        &nbsp
+        &nbsp-->
 
     
     <!--</ul>
@@ -57,17 +64,17 @@
         </form>
 
     <ul class="">-->
-    <h2>Lista de Denuncias</h2>
+    <!--h2>Lista de Denuncias</h2>
     <br>
     </br>
     <br>
 
     </br>
 
-    <h3>Filtrar por</h3>
+    <h3>Filtrar por</h3-->
     <!-- Example split danger button -->
    
-    <div class="btn-group">
+    <!--div class="btn-group">
       <button type="button" class="btn btn-danger">Depto</button>
       <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <span class="sr-only">Toggle Dropdown</span>
@@ -178,7 +185,7 @@
     </table>
     <br>
     </br>
-    <input type="button" name="imprimir" value="Imprimir" onclick="window.print();">
+    <input type="button" name="imprimir" value="Imprimir" onclick="window.print();"-->
 
    
         <!--<div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -216,23 +223,102 @@
 
 
                 <?php
-                    session_start(); 
+                   /* session_start(); 
                     if (isset($_SESSION["id_usuario"])){
                         echo ('<li class="nav-item">
                         <a class="nav-link" href="perfil.php">Mi Cuenta</a></li>');
                     }
                     else{
                         echo ('<li class="nav-item"><button type="button" class="btn" id="iniciarSesionBoton" data-toggle="modal" data-target="#modalFormularioLogin"> Ingresa</button></li>');
-                    }
+                    }*/
                 ?>
             </ul>
         </div>-->
     
   
     
-</body>
+<!--/body>
 
 <script src="js/inicio.js"></script>
 <script type="text/javascript" src="js/fotoAdmin.js"></script>
+-->
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link href="css/bootstrap.min.css">
+  <!--link href="css/font-awesome.css" rel="stylesheet"-->
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/all.css">
+  <title>Reportes</title>
+  <link  rel="stylesheet" type="text/css" href="../css/clasescss.css">
+ 
+
+  <!--link rel="stylesheet" href="css/vertical-menu.css"-->
+  <!-- Custom styles for this template -->
+
+</head>
+
+<body>
+  <?php
+  include 'navbarAdmin.php';
+  ?>
+
+  <!-- Envoltura Barra Izquierda & Contenido de la Pagina -->
+  <div  id="wrapper">
+
+    <!-- Barra Izquierda & Contenido de la Pagina -->
+    <div class="container-fluid container-fluid-fix">
+
+      <div class="row row-margin-fix">
+
+        <!-- Barra de Menu Izquierdo-->
+        <div id="sidebar-wrapper" class="col-sm-5 col-md-2 col-lg-2 sidebar hidden-xs envoltura-barra-principal">
+          <ul class="nav nav-sidebar borde-dos">
+            <li class="active"><a class="lista" href="" onclick="obtenerDenuncias()">Reportes Denuncias</a></li>
+            <li class="active"><a class="lista" href="reportesUsuarios.php" onclick="obtenerUsuarios()">Reportes Usuarios</a></li>  
+            <li class="active"><a class="lista" href="Estadisticas.php" onclick="obtenerEstadisticas()">Estadisticas</a></li>
+          </ul>
+
+        </div>
+        
+        <div class="col-lg">
+          <br><br>
+          <br><br>
+          <div id="divDenuncias" >
+            <h4>Lista de Denuncias</h4>
+
+            <br></br> 
+
+          </div> 
+          <br></br>
+          <br></br><br></br><br></br>
+          <input type="button"  class="btn active color-principal bg-success" name="imprimir" value="Imprimir" onclick="window.print();">
+        </div>
+
+      </div>
+
+      <div id="divUsuarios"></div>
+      <div id="divEstadisticas" ></div>
+
+    </div>
+
+  </div>
+
+</div> 
+
+
+</div>  
+
+<!--<input type="button" class="btn active color-principal bg-success" name="imprimir" value="Imprimir" onclick="window.print();">-->
+
+
+
+</body>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<script src="../js/controladorReportes.js"></script>
 
 </html>

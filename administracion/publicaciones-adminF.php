@@ -1,3 +1,9 @@
+<?php 
+
+include '../backend/seguridad_admin.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,16 +12,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
 
 
-    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="../js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="css/FontAwesome.min.css">
-    <script src="js/FontAwesome.min.js"></script>
+    <link rel="stylesheet" href="../css/FontAwesome.min.css">
+    <script src="../js/FontAwesome.min.js"></script>
 
-    <link rel="stylesheet" href="css/inicio.styles.css">
+    <link rel="stylesheet" href="../css/inicio.styles.css">
 
 </head>
 
@@ -34,7 +40,7 @@
             <input class="form-control mr-sm-2" type="search" id="inputBusqueda" name="inputBusqueda" placeholder="¿Que deseas buscar?"
                 aria-label="Search">
             <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>-->
-            <button type="button" id="inputBusquedaBtn" name="inputBusquedaBtn" style="border-color:white; background-color:white;"><img src="ico/search.svg"
+            <button type="button" id="inputBusquedaBtn" name="inputBusquedaBtn" style="border-color:white; background-color:white;"><img src="../ico/search.svg"
                     style="width:25px "></button>
         </form>
     </div>
@@ -103,9 +109,9 @@
     </table>
 
 
-    <script src="js/publicaciones-admin.js"></script>
+    <script src="../js/publicaciones-admin.js"></script>
 
-    <script type="text/javascript" src="js/fotoAdmin.js"></script>
+    <script type="text/javascript" src="../js/fotoAdmin.js"></script>
 </body>
 
 </html>

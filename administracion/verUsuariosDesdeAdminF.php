@@ -1,3 +1,9 @@
+<?php 
+
+include '../backend/seguridad_admin.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,14 +11,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PUBLITODO</title>
-    <link rel="stylesheet" href="css/inicio.styles.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/FontAwesome.min.css">
+    <link rel="stylesheet" href="../css/inicio.styles.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/FontAwesome.min.css">
 
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/FontAwesome.min.js"></script>
-    <script type="text/javascript" src="js/all.js"></script>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/FontAwesome.min.js"></script>
+    <script type="text/javascript" src="../js/all.js"></script>
     
 
 </head>
@@ -29,7 +35,7 @@
             <input class="form-control mr-sm-2" type="search" id="inputBusqueda" name="inputBusqueda" placeholder="Buscar por nombre de Usuario"
                 aria-label="Search" ><!--onkeypress="myFunction(event)"-->
             <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>-->
-            <button type="button" id="inputBusquedaBtn" name="inputBusquedaBtn" style="border-color:white; background-color:white;"><img src="ico/search.svg"
+            <button type="button" id="inputBusquedaBtn" name="inputBusquedaBtn" style="border-color:white; background-color:white;"><img src="../ico/search.svg"
                     style="width:25px "></button>
         </form>
     </div>
@@ -85,7 +91,7 @@
 
     <table border="1" cellspacing="0" cellpadding="10" class="table-striped table-hover" id="tablaUsuarios" 
         style="width: 85%; margin-left:auto; margin-right:auto">
-        <thead>
+        <thead class="thead-dark">
             <tr>
                 <td><strong>Nombre </strong></td>
                 <td><strong>Apellido </strong></td>
@@ -106,8 +112,8 @@
     </table>
 
 
-    <script src="js/verUsuariosDesdeAdmin.js"></script>
-    <script type="text/javascript" src="js/fotoAdmin.js"></script>
+    <script src="../js/verUsuariosDesdeAdmin.js"></script>
+    <script type="text/javascript" src="../js/fotoAdmin.js"></script>
 </body>
 
 </html>

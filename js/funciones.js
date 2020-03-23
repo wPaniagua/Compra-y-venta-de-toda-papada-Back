@@ -4,7 +4,7 @@ $('#btnGuardar').click(enviarDatos);
 async function obtenerJSON()
 {
     $.ajax({
-        url:"backend/Select_Deptos_Municipios.php",
+        url:"../backend/Select_Deptos_Municipios.php",
         data: 'data=' + 'departamentos',
         method: "POST",
         dataType:"json",
@@ -27,7 +27,7 @@ async function obtenerJSON()
         var valueSelected = this.value;
         console.log(valueSelected);
         $.ajax({
-            url:"backend/Select_Deptos_Municipios.php",
+            url:"../backend/Select_Deptos_Municipios.php",
             data: 'data=' + 'municipios&idDepartamento=' + valueSelected.trim(),
             method: "POST",
             dataType:"json",
@@ -146,31 +146,41 @@ async function enviarDatos()
                                                     }
                                                     else 
                                                     {
-                                                        var cadena1 = `ppNombre=${Nombre}&psNombre=${sNombre}&ppApellido=${Apellido}&psApellido=${sApellido}&pcorreo=${Correo}&pfechaNac=${Fecha}&pmunicipio=${Ciudad}&pcontrasenia=${Password}&ptipoUsuario=${Tipo}`;
+                                                        if(validarTelefono(Telefono))
+                                                        {
+                                                            var cadena1 = `ppNombre=${Nombre}&psNombre=${sNombre}&ppApellido=${Apellido}&psApellido=${sApellido}&pcorreo=${Correo}&pfechaNac=${Fecha}&pmunicipio=${Ciudad}&pcontrasenia=${Password}&ptipoUsuario=${Tipo}`;
                                                         
-                                                        console.log(cadena1);
-                                                        $.ajax(
-                                                            {
-                                                                type: 'POST',
-                                                                url: 'backend/registro_usuario.php',
-                                                                dataType: 'json',
-                                                                data: cadena1,
-                                                                success:function(resp)
+                                                            console.log(cadena1);
+                                                            $.ajax(
                                                                 {
-                                                                    console.log(resp);
-                                                                    if(resp.codigo==1)
-                                                                    {
-                                                                        alert("Agregado con exito");
-                                                                        var url = "http://localhost:80/proyecto/registro.php";
-                                                                        window.location = url;
+                                                                    type: 'POST',
+                                                                    url: 'backend/registro_usuario.php',
+                                                                    dataType: 'json',
+                                                                    data: cadena1,
+                                                                    success:function(resp)
+                                                                    {   
+                                                                        console.log(resp);
+                                                                        if(resp.codigo==1)
+                                                                        {
+                                                                            
+                                                                            var res = registrarTelefono(Telefono, resp.idUsuario);
+                                                                            alert("Agregado con exito");
+                                                                            var url = "http://localhost/Compra-y-venta-de-toda-papada-Back-master/registro.php";
+                                                                            window.location = url;
+                                                                        
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            alert("No se agrego el usuario");
+                                                                        }
                                                                     }
-                                                                    else
-                                                                    {
-                                                                        alert("No se agrego");
-                                                                    }
-                                                                }
-                                                            }    
-                                                        );
+                                                                }    
+                                                            );
+                                                        }
+                                                        else
+                                                        {
+                                                            alert("Telefono no valido");
+                                                        }
                                                     }
                                                 }
                                             }
@@ -202,8 +212,8 @@ function validarVacio(valor)
 
 function confirmarClave(pass, conf)
 {
-    console.log(pass);
-    console.log(conf);
+    //console.log(pass);
+    //console.log(conf);
     if(pass == conf)
     {
         return false;
@@ -212,4 +222,55 @@ function confirmarClave(pass, conf)
     {
         return true;
     }
+}
+
+function validarTelefono(tel)
+{
+    var expr = /^[3]*[1-4]*[0-9]{8}$/;
+    if(expr.test(tel))
+    {
+        return true;
+    }
+    else
+    {
+        expr = /^[8]*[7-9]*[0-9]{8}$/;
+        if(expr.test(tel))
+        {
+            return true;
+        }
+        else
+        {
+            expr = /^[9]*[4-9]*[0-9]{8}$/;
+            if(expr.test(tel))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+}
+
+function registrarTelefono(tel, idUser)
+{
+    var cadena = `ptelefono=${tel}&pidUsuario=${idUser}`;
+    console.log(cadena);
+    $.ajax(
+        {
+            type: 'POST',
+            url: '../backend/registro_telefono.php',
+            dataType: 'json',
+            data:cadena,
+            success:function(resp)
+            {
+                console.log(resp);
+                if(resp.cod==1)
+                {
+                    console.log("Se agreco el telefono");
+                }
+            }
+        }
+    );
 }

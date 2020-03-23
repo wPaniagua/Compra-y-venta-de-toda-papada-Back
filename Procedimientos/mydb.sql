@@ -23,6 +23,7 @@ USE `mydb` ;
 CREATE TABLE IF NOT EXISTS `mydb`.`TipoUsuario` (
   `idTipoUsuario` INT NOT NULL COMMENT '',
   `descripcion` VARCHAR(45) NULL COMMENT '',
+  `tiempoPublicacion` INT NULL COMMENT '',
   PRIMARY KEY (`idTipoUsuario`)  COMMENT '')
 ENGINE = InnoDB;
 

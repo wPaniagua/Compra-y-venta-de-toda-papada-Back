@@ -6,7 +6,7 @@ $(document).ready(function () {
 });
 function obtenerCategorias(){
 	$.ajax({
-		url:"backend/gestionCategorias.php?accion=obtenerTodos",
+		url:"../backend/gestionCategorias.php?accion=obtenerTodos",
 		method:"GET",
 		dataType:"json",
 		success:function(respuesta){
@@ -53,7 +53,7 @@ function guardarCategorias(){
 					//alert(parametros);
 	
 		$.ajax({
-			url:"backend/gestionCategorias.php?accion=nuevo",
+			url:"../backend/gestionCategorias.php?accion=nuevo",
 			method:"GET",
 			data:parametros,
 			dataType:"json",
@@ -86,7 +86,7 @@ function eliminarCategorias(idCategoria){
 	
 	//alert(parametros);
 	$.ajax({
-		url:"backend/gestionCategorias.php?accion=eliminar",
+		url:"../backend/gestionCategorias.php?accion=eliminar",
 		method:"GET",
 		data:parametros,
 		dataType:"json",
@@ -132,7 +132,7 @@ function editCategorias(){
 						"nombreCate="+$("#nombreCatEdit").val();
 					//alert(parametros);
 		$.ajax({
-			url:"backend/gestionCategorias.php?accion=editar",
+			url:"../backend/gestionCategorias.php?accion=editar",
 			method:"GET",
 			data:parametros,
 			dataType:"json",
@@ -224,7 +224,7 @@ function buscar(){
 		var parametros= "nombreCat="+$("#buscarCat").val();
 		//alert(parametros);
 		$.ajax({
-			url:"backend/gestionCategorias.php?accion=buscarNombre",
+			url:"../backend/gestionCategorias.php?accion=buscarNombre",
 			data:parametros,
 			method:"GET",
 			dataType:"json",

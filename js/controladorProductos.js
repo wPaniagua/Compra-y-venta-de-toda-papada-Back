@@ -9,7 +9,7 @@ function obtenerProductos(idTipo){
 
 	var parametros = "tipo="+idTipo;
 	$.ajax({
-		url:"backend/gestionProductos.php?accion=obtenerTodos",
+		url:"../backend/gestionProductos.php?accion=obtenerTodos",
 		method:"GET",
 		data:parametros,
 		dataType:"json",
@@ -64,7 +64,7 @@ function obtenerCategoria(tipo){
     var parametros = "tipo="+tipo;
     //alert(tipo);
     $.ajax({
-        url:"backend/gestionProductos.php?accion=obtenerCategoria",
+        url:"../backend/gestionProductos.php?accion=obtenerCategoria",
         method:"GET",
         data:parametros,
         dataType:"json",
@@ -92,7 +92,7 @@ function obtenerCategoriaE(tipo,idCategoria){
     var parametros = "tipo="+tipo;
     //alert(tipo);
     $.ajax({
-        url:"backend/gestionProductos.php?accion=obtenerCategoria",
+        url:"../backend/gestionProductos.php?accion=obtenerCategoria",
         method:"GET",
         data:parametros,
         dataType:"json",
@@ -130,7 +130,7 @@ function guardarProductos(){
 					alert(parametros);
 	
 	$.ajax({
-		url:"backend/gestionProductos.php?accion=nuevo",
+		url:"../backend/gestionProductos.php?accion=nuevo",
 		method:"GET",
 		data:parametros,
 		dataType:"json",
@@ -199,7 +199,7 @@ function eliminarProducto(idProducto){
 	
 	//alert(parametros);
 	$.ajax({
-		url:"backend/gestionProductos.php?accion=eliminar",
+		url:"../backend/gestionProductos.php?accion=eliminar",
 		method:"GET",
 		data:parametros,
 		dataType:"json",
@@ -437,7 +437,7 @@ function editProductos(){
 						"descripcionP="+$("#descripcionProE").val();
 					//alert(parametros);
 		$.ajax({
-			url:"backend/gestionProductos.php?accion=editar",
+			url:"../backend/gestionProductos.php?accion=editar",
 			method:"GET",
 			data:parametros,
 			dataType:"json",

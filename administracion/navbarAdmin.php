@@ -1,15 +1,20 @@
+<?php 
+
+include '../backend/seguridad_admin.php';
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>PUBLITODO</title>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/all.css">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/all.css">
 </head>
 <body>
 	<!--barra de navegacion para el administrador-->
 	<div class="fixed-top">
 		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-		  <a class="navbar-brand font-weight-bold" href="#">PUBLITODO</a>
+		  <a class="navbar-brand font-weight-bold" href="index.php" id="index">PUBLITODO</a>
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
 		  </button>
@@ -37,17 +42,20 @@
 		    </ul>
 		    <form class="form-inline my-2 my-lg-0">
 		    	<a href="perfilAdmin.php">
-		    		<i class="fas fa-user fa-lg" id="iconU" style="display:none"></i>
+		    		<i class="fas fa-user fa-lg" id="iconU" style="display:"></i>
 		    		<div id="imgNP"></div>
-		    	</a>
+		    	</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    	<button class="btn btn-success" id="cerrarSesion">Cerrar secion
+		    		<i class="fas fa-window-close fa-lg" id="Salir" style=""></i>
+		    	</button>
 		    </form>
 		  </div>
 		</nav>
 	</div>
-	<script type="text/javascript" src="jquery-3.4.1.min.js"></script>
-	<script type="text/javascript" src="bootstrap.min.css"></script>
-	<script type="text/javascript" src="js/all.js"></script>
-	<script type="text/javascript"></script>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="../js/all.js"></script>
+	<script src="../js/dropdown.js"></script>
+	<script src="../js/util.js"></script>
 
 </body>
 </html>

@@ -1,13 +1,19 @@
+<?php 
+
+include '../backend/seguridad_admin.php';
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
 	<title>PUBLITODO</title>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 	<!--link href="css/font-awesome.css" rel="stylesheet"-->
-	<link rel="stylesheet" type="text/css" href="css/all.css">
+	<link rel="stylesheet" type="text/css" href="../css/all.css">
 
 	<!-- tablas-->
-	<link rel="stylesheet" type="text/css" href="css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/dataTables.bootstrap4.min.css">
 </head>
 <body>
 	<?php
@@ -172,14 +178,14 @@
         </div>
       </div>
     </section>
-	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 
-    <script src="js/jquery.dataTables.js" type="text/javascript"></script>
-	<script src="js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
+    <script src="../js/jquery.dataTables.js" type="text/javascript"></script>
+	<script src="../js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="js/controladorProductos.js"></script>
+    <script type="text/javascript" src="../js/controladorProductos.js"></script>
 
-    <script type="text/javascript" src="js/fotoAdmin.js"></script>
+    <script type="text/javascript" src="../js/fotoAdmin.js"></script>
 </body>
 </html>

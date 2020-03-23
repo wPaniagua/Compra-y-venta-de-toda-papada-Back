@@ -1,14 +1,20 @@
+<?php 
+
+include '../backend/seguridad_admin.php';
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>PUBLITODO</title>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/all.css">
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/all.css">
 
 	<!-- tablas-->
-	<link rel="stylesheet" type="text/css" href="css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/dataTables.bootstrap4.min.css">
 </head>
 <body>
 	<!--Encabezado -->
@@ -39,14 +45,14 @@
 		</div>
 	</div>
 
-	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 
-    <script src="js/jquery.dataTables.js" type="text/javascript"></script>
-	<script src="js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
+    <script src="../js/jquery.dataTables.js" type="text/javascript"></script>
+	<script src="../js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
     <!--script type="text/javascript" src="js/controladorCategoria.js"></script-->
-    <script type="text/javascript" src="js/controladorDenuncias.js"></script>
+    <script type="text/javascript" src="../js/controladorDenuncias.js"></script>
 
-    <script type="text/javascript" src="js/fotoAdmin.js"></script>
+    <script type="text/javascript" src="../js/fotoAdmin.js"></script>
 </body>
 </html>

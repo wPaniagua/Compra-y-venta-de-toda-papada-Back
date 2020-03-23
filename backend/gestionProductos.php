@@ -34,7 +34,7 @@
 			$id=$_GET["codigo"];
 
 			$resultadoConsulta = array();
-			$mysqli->multi_query("SET @p0=''; SET @p1=''; SET @p2=''; SET @p3=''; SET @p4='1'; SET @p5='eliminar'; SET @p6=''; CALL SP_PRODUCTOS_Y_SERVICIOS(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7); SELECT @p7 AS mensaje;");
+			$mysqli->multi_query("SET @p0=''; SET @p1=''; SET @p2=''; SET @p3=''; SET @p4='".$id."'; SET @p5='eliminar'; SET @p6=''; CALL SP_PRODUCTOS_Y_SERVICIOS(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7); SELECT @p7 AS mensaje;");
 
 			$resultadoConsulta = array();
 			do {
