@@ -1,3 +1,8 @@
+$(document).ready(function () {
+
+    traerElectronicos();
+});
+
 $("#login-button").on("click", () => {
     let correo = $("#correo").val();
     let contrasena = $("#contrasena").val();
@@ -173,3 +178,111 @@ async function login(correo, contrasena) {
 function sleep(time) {
     return new Promise((resolve) => setTimeout(resolve, time));
 }
+
+
+function traerElectronicos() {
+    $.ajax({
+        url: "backend/inicio.php",
+        method: "POST",
+        data: "accion=traerElectronicos",
+        success: function (respuesta) {
+
+            var response = JSON.parse(respuesta);
+
+            let cantidadSlides = Math.ceil(response.length / 4);
+            console.log("cantidadSlides: " + cantidadSlides);
+
+            let cantidadFor = cantidadSlides == 1 ? 2 : cantidadSlides;
+            console.log("cantidad for: " + cantidadFor)
+
+
+            var indexResponse = 0;
+
+            $("#electronicosSlides").html("");
+
+
+            for (let i = 0; i < cantidadSlides; i++) {
+
+                if (i == 0) {
+                    $("#electronicosSlides").append(`<div class="carousel-item active"><div class="row" id="electronicosParte${i}">`);
+                } else {
+                    $("#electronicosSlides").append(`<div class="carousel-item"><div class="row" id="electronicosParte${i}">`);
+                }
+
+                for (let j = 0; j < 4; j++) {
+                    if (j == 0) {
+
+                        $(`#electronicosParte${i}`).append(`
+                        <div class="col-md-3">
+                            <div class="card mb-2">
+                                <img class="card-img-top"
+                                    src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg"
+                                    alt="Card image cap">
+                                <div class="card-body" style="max-height:10em; min-height:10em;">
+                                    <h5 class="card-title">${response[indexResponse].titulo.slice(0, 22)}...</h5>
+                                    <p class="card-text">${response[indexResponse].descripcion}.</p>
+                                    <a class="btn btn-outline-info">Ver anuncio</a>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    `);
+                    } else {
+
+                        $(`#electronicosParte${i}`).append(`
+                    <div class="col-md-3 clearfix d-none d-md-block">
+                        <div class="card mb-2">
+                            <img class="card-img-top"
+                                src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg"
+                                alt="Card image cap">
+                            <div class="card-body" style="max-height:10em; min-height:10em;">
+                                <h5 class="card-title">${response[indexResponse].titulo.slice(0, 22)}...</h5>
+                                <p class="card-text">${response[indexResponse].descripcion}.</p>
+                                <a class="btn btn-outline-info">Ver anuncio</a>
+                            </div>
+                        </div>
+                    </div>
+                
+                `);
+                    }
+
+
+                    indexResponse++;
+                }
+
+                $("#electronicosSlides").append(`</div></div>`);
+
+
+            }
+
+            $("#electronicos").html("");
+
+            for (let i = 0; i < cantidadFor; i++) {
+                console.log("entra a for de indicators");
+
+                if (i == 0) {
+                    $("#electronicos").append(`
+                    <li data-target="#multi-item-example" data-slide-to="${i}" style="background-color:black;" class="active">
+                    `);
+                } else {
+                    $("#electronicos").append(`
+                    <li data-target="#multi-item-example" data-slide-to="${i}" style="background-color:black;">
+                    `);
+                }
+
+            }
+
+            console.log(response);
+        },
+        error: function (error) {
+            console.error(error);
+        }
+    });
+}
+
+// console.log("Locacion")
+// console.log(window.location.hostname)
+// console.log(window.location.href)
+
+
+// console.log(parseInt(2 / 3))

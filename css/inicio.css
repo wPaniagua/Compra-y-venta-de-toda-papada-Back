@@ -28,3 +28,75 @@
 .card-body p {
     font-family: Bellota;
 }
+
+.icono {
+    font-size: 5em;
+    width: 2em;
+    height: 2em;
+    background: rgb(201, 192, 192);
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 100px;
+    text-align: center;
+    vertical-align: middle;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: auto;
+    padding-bottom: auto;
+}
+
+.svg-inline--fa {
+    vertical-align: middle !important;
+    text-align: center;
+}
+
+.icono:hover {
+    background: rgb(133, 127, 127);
+}
+
+.texto-elemento-top {
+    text-align: center;
+    margin-top: 1em;
+}
+
+.elemento-top {
+
+    text-align: center;
+}
+
+.controls-top {
+    margin-bottom: -2.3em;
+    margin-top: -1em;
+
+}
+
+.controls-top a {
+    color: black;
+    font-size: 1em;
+}
+
+dl,
+ol,
+ul {
+
+    margin-top: 0;
+    margin-bottom: -1.5rem;
+
+}
+
+.stretched-link:hover {
+    background-color: gray;
+}
+
+.columna a {
+    color: black;
+}
+
+.columna a:hover {
+    text-decoration: none;
+}
+
+/* maximo ancho de columnas */
+.container {
+    max-width: 1400px;
+}

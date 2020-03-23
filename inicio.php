@@ -9,10 +9,17 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
 
+
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 
+    <link rel="stylesheet" href="css/fontsawesome.min.css">
+    <script src="js/fontsawesome.min.js"></script>
+
     <link rel="stylesheet" href="css/inicio.styles.css">
+
+
+    <link rel="stylesheet" href="css/inicio.css">
 
 
 </head>
@@ -77,154 +84,6 @@
     </nav>
 
 
-    <div class="container">
-        <!-- <div class="row">
-            <div class="col col-lg-5 col-sm-10 center-block" style="margin-left: auto;
-            margin-right: auto;">
-                <form id="login-form">
-                    <div style="text-align: center; margin-top: 1em; margin-bottom: 2em;">
-                        <h4>Ingresa para poder comprar y vender.</h4>
-                    </div>
-                    <div class="form-group">
-                        <!-- <label>Email</label> 
-                        <input type="email" class="form-control" id="correo" name="correo"
-                            placeholder="Ingrese su correo electrónico">
-                        <small style="display: none;" id="aviso" class="form-text text-muted">Debes haberte registrado
-                            para
-                            poder
-                            ingresar.</small>
-                    </div>
-                    <div class="form-group">
-                        <!-- <label for="exampleInputPassword1">Contraseña</label> 
-                        <input type="password" class="form-control" id="contrasena" name="contrasena"
-                            placeholder="Contraseña">
-                        <small style="display: none;" id="avisoContrasena" class="form-text text-muted">Contraseña
-                            Incorrecta</small>
-
-                        <small><a href="#">
-                                ¿Olvidaste tu contraseña?
-                            </a></small>
-
-                    </div>
-
-                    <div style="margin-left: auto;margin-right: auto;" class="text-center">
-                        <button type="button" class="btn btn-primary" id="login-button"
-                            style=" width: 15em !important;">Ingresar</button>
-
-                    </div> <br>
-
-                    <br>
-                    <div class="text-center">
-                        <small>¿No tienes una cuenta? </small><a href="#" class="btn btn-outline-success">
-                            Crea una cuenta
-                        </a>
-                    </div>
-
-                </form>
-            </div>
-        </div> -->
-
-        <div class="row">
-            <div class="col col-lg-12">
-                <span style="font-size: 2em;">Teléfonos</span>
-                <span style="width: 3em;"></span>
-                <span style="border-left:1px solid #000;height:2em; margin-left: 1em; margin-right: 1em;"></span>
-                <span style="font-size: 1.5em;"> Ver todos</span>
-                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel"
-                    style="border: black solid thin !important;">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active" style="padding-left: 2.5em; padding-right: 0.5em;">
-                            <!-- <img class="d-block w-100" src="..." alt="First slide">5 -->
-                            <div class="d-inline w-9  elementoSlide" style="display:inline-block !important;">
-                                <img src="img/phone.webp" style="width: 10em;" alt="Samsung Phone">
-                                <p>Nombre</p>
-                                <p>Precio</p>
-                            </div>
-                            <div class="d-inline w-9  elementoSlide" style="display:inline-block !important;">
-                                <img src="img/phone.webp" style="width: 10em;" alt="Samsung Phone">
-                                <p>Nombre</p>
-                                <p>Precio</p>
-                            </div>
-
-                            <div class="d-inline w-9  elementoSlide" style="display:inline-block !important; ">
-
-                                <img src="img/phone.webp" style="width: 10em;" alt="Samsung Phone">
-                                <p>Nombre</p>
-                                <p>Precio</p>
-                            </div>
-                            <div class="d-inline w-9  elementoSlide " style="display:inline-block !important;">
-
-                                <img src="img/phone.webp" style="width: 10em;" alt="Samsung Phone">
-                                <p>Nombre</p>
-                                <p>Precio</p>
-                            </div>
-                            <div class="d-inline w-9  elementoSlide " style="display:inline-block !important;">
-
-                                <img src="img/phone.webp" style="width: 10em;" alt="Samsung Phone">
-                                <p>Nombre</p>
-                                <p>Precio</p>
-                            </div>
-
-                        </div>
-                        <div class="carousel-item " style="padding-left: 2.5em; padding-right: 0.5em;">
-                            <!-- <img class="d-block w-100" src="..." alt="First slide">5 -->
-                            <div class="d-inline w-9  elementoSlide" style="display:inline-block !important;">
-                                <img src="img/phone.webp" style="width: 10em;" alt="Samsung Phone">
-                                <p>Nombre</p>
-                                <p>Precio</p>
-                            </div>
-                            <div class="d-inline w-9  elementoSlide" style="display:inline-block !important;">
-                                <img src="img/phone.webp" style="width: 10em;" alt="Samsung Phone">
-                                <p>Nombre</p>
-                                <p>Precio</p>
-                            </div>
-
-                            <div class="d-inline w-9  elementoSlide" style="display:inline-block !important; ">
-
-                                <img src="img/phone.webp" style="width: 10em;" alt="Samsung Phone">
-                                <p>Nombre</p>
-                                <p>Precio</p>
-                            </div>
-                            <div class="d-inline w-9  elementoSlide " style="display:inline-block !important;">
-
-                                <img src="img/phone.webp" style="width: 10em;" alt="Samsung Phone">
-                                <p>Nombre</p>
-                                <p>Precio</p>
-                            </div>
-                            <div class="d-inline w-9  elementoSlide " style="display:inline-block !important;">
-
-                                <img src="img/phone.webp" style="width: 10em;" alt="Samsung Phone">
-                                <p>Nombre</p>
-                                <p>Precio</p>
-                            </div>
-
-                        </div>
-                        <!-- <div class="carousel-item " style="padding-left: 5em; padding-right: 0em;">
-                        -->
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev"
-                        style="color: black;">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next"
-                        style="color: black;">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-    <!-- Button trigger modal -->
-    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalFormularioLogin">
-        Launch demo modal
-    </button> -->
-
     <!-- Modal -->
     <div class="modal fade" id="modalFormularioLogin" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -287,6 +146,338 @@
                 </div> -->
             </div>
         </div>
+    </div>
+
+
+    <br>
+    <br>
+
+    <!-- Carrousel multiple-->
+
+    <!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
+    <div class="container my-4">
+
+        <h3>Electrónicos</h3><a href="Google.com">Ver todos</a><i style="margin-left:1em;"
+            class="fas fa-arrow-right"></i>
+
+        <!--Carousel Wrapper-->
+        <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+
+            <!--Controls-->
+            <div class="controls-top" style="text-align:center;">
+                <a class="btn-floating" href="#multi-item-example" data-slide="prev">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
+                        class="fas fa-arrow-right"></i></a>
+            </div>
+            <!--/.Controls-->
+
+            <br>
+            <br>
+
+            <!--Indicators-->
+            <ol class="carousel-indicators" id="electronicos">
+                <!-- <li data-target="#multi-item-example" data-slide-to="0" style="background-color:black;" class="active">
+                </li>
+                <li data-target="#multi-item-example" data-slide-to="1" style="background-color:black;"></li>
+                <li data-target="#multi-item-example" data-slide-to="2" style="background-color:black;"></li> -->
+            </ol>
+            <!--/.Indicators-->
+
+            <!--Slides-->
+            <div class="carousel-inner" role="listbox" style="margin-bottom:1em;" id="electronicosSlides">
+
+                <!--First slide-->
+                <div class="carousel-item active">
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card mb-2">
+                                <img class="card-img-top"
+                                    src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h4 class="card-title">Card title</h4>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the bulk of the
+                                        card's content.</p>
+                                    <a class="btn btn-primary">Button</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 clearfix d-none d-md-block">
+                            <div class="card mb-2">
+                                <img class="card-img-top"
+                                    src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h4 class="card-title">Card title</h4>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the bulk of the
+                                        card's content.</p>
+                                    <a class="btn btn-primary">Button</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 clearfix d-none d-md-block">
+                            <div class="card mb-2">
+                                <img class="card-img-top"
+                                    src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h4 class="card-title">Card title</h4>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the bulk of the
+                                        card's content.</p>
+                                    <a class="btn btn-primary">Button</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!--/.First slide-->
+
+                <!--Second slide-->
+                <div class="carousel-item">
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card mb-2">
+                                <img class="card-img-top"
+                                    src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h4 class="card-title">Card title</h4>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the bulk of the
+                                        card's content.</p>
+                                    <a class="btn btn-primary">Button</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 clearfix d-none d-md-block">
+                            <div class="card mb-2">
+                                <img class="card-img-top"
+                                    src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h4 class="card-title">Card title</h4>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the bulk of the
+                                        card's content.</p>
+                                    <a class="btn btn-primary">Button</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 clearfix d-none d-md-block">
+                            <div class="card mb-2">
+                                <img class="card-img-top"
+                                    src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h4 class="card-title">Card title</h4>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the bulk of the
+                                        card's content.</p>
+                                    <a class="btn btn-primary">Button</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--/.Second slide-->
+
+                <!--Third slide-->
+                <div class="carousel-item">
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="card mb-2">
+                                <img class="card-img-top"
+                                    src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h4 class="card-title">Card title</h4>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the bulk of the
+                                        card's content.</p>
+                                    <a class="btn btn-primary">Button</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 clearfix d-none d-md-block">
+                            <div class="card mb-2">
+                                <img class="card-img-top"
+                                    src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h4 class="card-title">Card title</h4>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the bulk of the
+                                        card's content.</p>
+                                    <a class="btn btn-primary">Button</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 clearfix d-none d-md-block">
+                            <div class="card mb-2">
+                                <img class="card-img-top"
+                                    src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h4 class="card-title">Card title</h4>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the bulk of the
+                                        card's content.</p>
+                                    <a class="btn btn-primary">Button</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 clearfix d-none d-md-block">
+                            <div class="card mb-2">
+                                <img class="card-img-top"
+                                    src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h4 class="card-title">Card title</h4>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the bulk of the
+                                        card's content.</p>
+                                    <a class="btn btn-primary">Button</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--/.Third slide-->
+
+            </div>
+            <!--/.Slides-->
+
+        </div>
+        <!--/.Carousel Wrapper-->
+
+
+    </div>
+
+
+    <br>
+    <div class="container my-4">
+
+        <h3>Categorias mas visitadas</h3>
+
+        <!--Carousel Wrapper-->
+        <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+            <br>
+            <br>
+            <!--Slides-->
+            <div class="carousel-inner" role="listbox" style="margin-bottom:1em;" id="top-categorias-slides">
+
+                <!--First slide-->
+                <div class="carousel-item active">
+
+                    <div class="row">
+                        <div class="col-md-2 columna" style="text-align: center;">
+                            <a href="">
+                                <div class="elemento-top">
+                                    <div class="icono">
+                                        <i class="fas fa-car"></i>
+                                    </div>
+                                    <div class="texto-elemento-top">
+                                        <strong>
+                                            Carros</strong>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-md-2 clearfix d-none d-md-block columna">
+                            <a href="http://google.com">
+                                <div class="elemento-top">
+                                    <div class="icono">
+                                        <i class="fas fa-home"></i>
+                                    </div>
+                                    <div class="texto-elemento-top">
+                                        <strong>
+                                            Electrodomesticos</strong>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-md-2 clearfix d-none d-md-block columna">
+                            <a href="">
+                                <div class="elemento-top">
+                                    <div class="icono">
+                                        <i class="fas fa-plug"></i> </div>
+                                    <div class="texto-elemento-top">
+                                        <strong>
+                                            Electronicos</strong>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-2 clearfix d-none d-md-block columna">
+                            <a href="">
+                                <div class="elemento-top">
+                                    <div class="icono">
+                                        <i class="fas fa-search-dollar"></i>
+                                    </div>
+                                    <div class="texto-elemento-top">
+                                        <strong>
+                                            Por menos de L. 100</strong>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-2 clearfix d-none d-md-block columna">
+                            <a href="">
+                                <div class="elemento-top">
+                                    <div class="icono">
+                                        <i class="fas fa-tools"></i>
+                                    </div>
+                                    <div class="texto-elemento-top">
+                                        <strong>
+                                            Herramientas</strong>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-2 clearfix d-none d-md-block columna">
+                            <a href="">
+                                <div class="elemento-top">
+                                    <div class="icono">
+                                        <i class="fas fa-gamepad"></i>
+                                    </div>
+                                    <div class="texto-elemento-top">
+                                        <strong>
+                                            Juguetes</strong>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+            <!--/.Slides-->
+
+        </div>
+        <!--/.Carousel Wrapper-->
+
+
     </div>
 </body>
 
