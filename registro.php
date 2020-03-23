@@ -41,12 +41,12 @@
                             <img class="svg" src="ico/calendario.svg" alt="insertar SVG con la etiqueta image">
                             <input type="date" name="fechaNacmiento" id="fechaNacimineto"step="1" min="1940-01-01" max="2020-04-03" required><br><br>
                             <img class="svg" src="ico/pin1.svg" alt="insertar SVG con la etiqueta image">
-                            <select name="depto" id="depto" required>
-                            <option selected="selected" value="null">No hay nada que cargar</option>
+                            <select id="departamentos" class="form-control">
+                                <option selected="selected" value="null">No hay nada que cargar</option>
                             </select><br>
                             <img class="svg" src="ico/pin.svg" alt="insertar SVG con la etiqueta image">
-                            <select name="municipio" id="municipio" required>
-                            <option selected="selected" value="null">Seleccione un departamento</option>
+                            <select id="municipios" class="form-control">
+                                <option selected="selected" value="null">Seleccione un departamento arriba</option>
                             </select><br><br>
                             <img class="svg" src="ico/clave.svg" alt="insertar SVG con la etiqueta image">
                             <input type="password" name="contresenia" id="contrasenia" placeholder="escriba su contraseña" required

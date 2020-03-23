@@ -14,6 +14,7 @@ SP:BEGIN
     DECLARE conteo INT;
     DECLARE id INT;
     DECLARE pid INT;
+    DECLARE idTipoUsuario INT;
 
     DECLARE tempMensaje VARCHAR(100);
     SET autocommit=0;  
@@ -49,11 +50,14 @@ SP:BEGIN
     WHERE correo=pcorreo;
     
     IF conteo=0 THEN
-        SELECT COUNT(idPersona) into id FROM `persona`;
-    
+        SELECT MAX(idPersona) into id FROM `persona`;
+
+        SELECT t.idTipoUsuario INTO idTipoUsuario FROM tipousuario t WHERE t.descripcion LIKE "%admin%";
+
+
         SET pid=id+1; 
         insert into `persona` (`idPersona`, `primerNombre`, `segundoNombre`, `primerApellido`, `segundoApellido`, `correo`, `fechaNac`, `contrasenia`, `idTipoUsuario`, `idMunicipio`, `estado`) 
-        values(pid, ppNombre, psNombre, ppApellido, psApellido, pcorreo, pfechaNac, pcontrasenia, 3, pMunicipio, "a");
+        values(pid, ppNombre, psNombre, ppApellido, psApellido, pcorreo, pfechaNac, pcontrasenia, idTipoUsuario, pMunicipio, "i");
 
         SET mensaje='Registro exitoso';
         SET codigo=1;
