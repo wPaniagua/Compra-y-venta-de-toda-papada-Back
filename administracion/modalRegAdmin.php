@@ -1,22 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrate como administrador</title>
-
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-
-</head>
-
-<body>
-    <div class="container">
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title font-weight-bold" id="exampleModalLabel">Registro Administrador</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <div class="container">
         <div class="row">
-            <div class="col col-lg-5" style="margin-left: auto !important;margin-right: auto !important;">
+            <div class="col col-lg-12" style="margin-left: auto !important;margin-right: auto !important;">
 
                 <form id="registro-form">
                     <!--TODO: anadir clases de is valid-->
@@ -92,9 +88,9 @@
                         <button type="button" class="btn btn-primary" id="registro-button"
                             style=" width: 15em !important;">Registrase</button>
 
-                    </div> <br>
-                    <hr>
-                    <!-- <br>
+                    </div> 
+                    <span style="display: none" id="regAdmin">Registro Exitoso</span>
+                                       <!-- <br>
                     <div class="text-center">
                         <small>¿No tienes una cuenta? </small><a href="#" class="btn btn-outline-success">
                             Crea una cuenta
@@ -106,7 +102,11 @@
         </div>
     </div>
 
-    <script src="js/registro_administrador.js"></script>
-</body>
-
-</html>
+    <script src="../js/registro_administrador.js"></script>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -12,8 +12,9 @@ $(document).ready(function () {
             console.log(respuesta);
 
 
-            $("#nombre").html("Nombre:  " + respuesta.nombre);
-            $("#correo").html("Correo:  " + respuesta.correo);
+            $("#nombre").val(respuesta.nombre);
+            $("#correo").val(respuesta.correo);
+            $("#hNombre").html(respuesta.nombre);
 
         },
         error: function (error) {
@@ -34,7 +35,7 @@ $("#cerrarSesion").on("click", () => {
         dataType: "json",
         success: function (respuesta) {
             if (respuesta.ok) {
-                location.reload();
+                window.location.replace("inicio.php");
             }
 
         },

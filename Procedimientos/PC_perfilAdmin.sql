@@ -8,6 +8,7 @@ CREATE OR REPLACE PROCEDURE SP_PERFIL_ADMIN(
                   IN telefono VARCHAR(10),
                   IN pmunicipio INT,
                   IN idUsuario INT,
+                  IN pDeptos INT,
                   IN urlImg VARCHAR(50),
                   IN  accion VARCHAR(50),
                   OUT mensaje VARCHAR(100)) 
@@ -31,11 +32,17 @@ SP:BEGIN
   
 
   IF accion="editar" THEN
-    IF ppNombre='' or psNombre='' THEN
-    SET tempMensaje='Nombre ,';
+    IF ppNombre=''  THEN
+    SET tempMensaje='Primer Nombre ,';
     END IF;
-    IF ppApellido='' or psApellido THEN
-        SET tempMensaje='Apellidos ,';
+    IF psNombre='' THEN
+    SET tempMensaje='Segundo Nombre ,';
+    END IF;
+    IF ppApellido='' THEN
+        SET tempMensaje='Primer Apellido ,';
+    END IF;
+    IF psApellido='' THEN
+        SET tempMensaje='Segundo Apellido ,';
     END IF;
     IF pcorreo='' THEN
         SET tempMensaje='Correo ,';
@@ -108,14 +115,27 @@ SP:BEGIN
       SET mensaje='Exitoso';
   END IF;
 
+  IF accion="obtenerPorDepto" THEN
+      SELECT idMunicipio, nombre, idDeptos FROM municipio 
+      where idDeptos=pDeptos;
+      SET mensaje='Exitoso';
+  END IF;
+
   IF accion="obtenerDeptos" THEN
       SELECT idDeptos, nombre FROM deptos;
       SET mensaje='Exitoso';
   END IF;
 
   IF accion="obtenerFotos" THEN
-      SELECT * FROM fotosusuario WHERE idPersona=idUsuario;
-      SET mensaje='Exitoso';
+      SELECT count(*) INTO conteo FROM fotosusuario WHERE idPersona=idUsuario;
+      IF conteo=0 THEN
+        SET mensaje='No tiene Foto';
+        LEAVE SP;
+      END IF;
+      IF conteo=1 THEN
+        SELECT * FROM fotosusuario WHERE idPersona=idUsuario;
+        SET mensaje='Exitoso';
+      END IF;
   END IF;
 
   IF accion="obtenerTelefono" THEN

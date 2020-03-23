@@ -1,3 +1,10 @@
+
+<?php 
+
+include '../backend/seguridad_admin.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,9 +28,9 @@
 
     <div class="container">
         <div class="row">
-            <div class="col col-lg-10">
+            <div class="col col-lg-10 table-responsive">
                 <table class="table table-bordered table-hover" id="solicitudes">
-                    <thead>
+                    <thead class="thead-dark">
                         <tr>
                             <th scope="col">
                                 Id

@@ -11,7 +11,7 @@ var busqueda;
 function darDeBaja(idPersona) {
 
     $.ajax({
-        url: `backend/verUsuariosDesdeAdmin.php?idPersona=${idPersona}&action=darDeBaja`,
+        url: `../backend/verUsuariosDesdeAdmin.php?idPersona=${idPersona}&action=darDeBaja`,
         method: "GET",
         dataType: "json",
         success: function (respuesta) {
@@ -29,7 +29,7 @@ function darDeBaja(idPersona) {
 
 function cargarTabla() {
     $.ajax({
-        url: "backend/verUsuariosDesdeAdmin.php?action=getUsuarios",
+        url: "../backend/verUsuariosDesdeAdmin.php?action=getUsuarios",
         method: "GET",
         dataType: "json",
         success: function (respuesta) {
@@ -70,7 +70,7 @@ function cargarTabla() {
 function darDeBajaTbl(idPersona) {
 
     $.ajax({
-        url: `backend/verUsuariosDesdeAdmin.php?idPersona=${idPersona}&action=darDeBaja`,
+        url: `../backend/verUsuariosDesdeAdmin.php?idPersona=${idPersona}&action=darDeBaja`,
         method: "GET",
         dataType: "json",
         success: function (respuesta) {
@@ -136,7 +136,7 @@ $("#inputBusquedaBtn").click(function () {
 
 function hacerBusqueda(){
     $.ajax({
-        url: `backend/verUsuariosDesdeAdmin.php?palabraClave=${busqueda}&action=busquedaNombreUsuario`,
+        url: `../backend/verUsuariosDesdeAdmin.php?palabraClave=${busqueda}&action=busquedaNombreUsuario`,
         method: "GET",
         dataType: "json",
         success: function (respuesta) {
@@ -177,7 +177,7 @@ $("#slc-tipoUsuario").on("change", function () {
     console.log(valueSelected);
 
     $.ajax({
-        url: `backend/verUsuariosDesdeAdmin.php?idUsuario=${valueSelected}&action=filtrarUsuario`,
+        url: `../backend/verUsuariosDesdeAdmin.php?idUsuario=${valueSelected}&action=filtrarUsuario`,
         method: "GET",
         dataType: "json",
         success: function (respuesta) {
@@ -193,7 +193,7 @@ $("#slc-tipoUsuario").on("change", function () {
 
 function cargarTipoUsuarios() {
     $.ajax({
-        url: "backend/verUsuariosDesdeAdmin.php?action=seleccionarTipoUsuarios",
+        url: "../backend/verUsuariosDesdeAdmin.php?action=seleccionarTipoUsuarios",
         method: "GET",
         dataType: "json",
         success: function (response) {
@@ -220,7 +220,7 @@ $("#slc-departamento").on("change", function () {
     console.log(valueSelected);
 
     $.ajax({
-        url: `backend/verUsuariosDesdeAdmin.php?idDepto=${valueSelected}&action=filtrarDepto`,
+        url: `../backend/verUsuariosDesdeAdmin.php?idDepto=${valueSelected}&action=filtrarDepto`,
         method: "GET",
         dataType: "json",
         success: function (respuesta) {
@@ -237,7 +237,7 @@ $("#slc-departamento").on("change", function () {
 
 function cargarDepartamento() {
     $.ajax({
-        url: "backend/verUsuariosDesdeAdmin.php?action=seleccionarDepartamento",
+        url: "../backend/verUsuariosDesdeAdmin.php?action=seleccionarDepartamento",
         method: "GET",
         dataType: "json",
         success: function (respuesta) {
@@ -265,7 +265,7 @@ $("#slc-municipio").on("change", function () {
     console.log(valueSelected);
 
     $.ajax({
-        url: `backend/verUsuariosDesdeAdmin.php?idMunicipio=${valueSelected}&action=filtrarMunicipio`,
+        url: `../backend/verUsuariosDesdeAdmin.php?idMunicipio=${valueSelected}&action=filtrarMunicipio`,
         method: "GET",
         dataType: "json",
         success: function (respuesta) {
@@ -282,7 +282,7 @@ $("#slc-municipio").on("change", function () {
 
 function cargarMunicipio() {
     $.ajax({
-        url: "backend/verUsuariosDesdeAdmin.php?action=seleccionarMunicipio",
+        url: "../backend/verUsuariosDesdeAdmin.php?action=seleccionarMunicipio",
         method: "GET",
         dataType: "json",
         success: function (respuesta) {
@@ -308,7 +308,7 @@ $("#slc-estados").on("change", function () {
     console.log(valueSelected);
 
     $.ajax({
-        url: `backend/verUsuariosDesdeAdmin.php?estado=${valueSelected}&action=filtrarEstado`,
+        url: `../backend/verUsuariosDesdeAdmin.php?estado=${valueSelected}&action=filtrarEstado`,
         method: "GET",
         dataType: "json",
         success: function (respuesta) {

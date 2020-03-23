@@ -8,7 +8,7 @@ function editPerfil(codigoUA){
 					   "imgUrl="+$("#imagen").val();
 					alert(parametros);
 		$.ajax({
-			url:"backend/gestionAdmin.php?accion=editar",
+			url:"../backend/gestionAdmin.php?accion=editar",
 			method:"GET",
 			data:parametros,
 			dataType:"json",

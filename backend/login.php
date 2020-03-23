@@ -4,7 +4,7 @@ $host = "localhost";
 $usuario = "root";
 $password = "";
 $baseDatos = "mydb";
-$puerto = 3308;
+$puerto = 3306;
 $link;
 
 $mysqli = new mysqli(	
@@ -17,7 +17,6 @@ $mysqli = new mysqli(
 
 $correo = $_POST["correo"];
 $contrasena = $_POST["contrasena"];
-
 $call = $mysqli->prepare('CALL SP_LOGIN(?, ?, @pid, @mensaje, @existe, @contrasenaCorrecta, @estadoRegistro, @esUsuarioAdmin)');
 $call->bind_param('ss', $correo, $contrasena);
 $call->execute();

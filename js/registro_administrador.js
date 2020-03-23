@@ -33,7 +33,7 @@ $("#registro-button").on("click", () => {
         console.log(data)
 
         $.ajax({
-            url: "backend/registro_usuario_administrador.php",
+            url: "../backend/registro_usuario_administrador.php",
             data: data,
             method: "POST",
             dataType: "json",
@@ -41,7 +41,9 @@ $("#registro-button").on("click", () => {
                 console.log(respuesta);
 
                 if (respuesta.codigo == 1) {
-                    var url = "http://localhost/Compra-y-venta-de-toda-papada-Back/inicio";
+                    //$("#regAdmin").fadeIn();
+                   // $("#regAdmin").fadeOut(3000);
+                    var url = "http://localhost/Compra-y-venta-de-toda-papada-Back/administracion/index.php";
                     window.location = url;
                 }
             },
@@ -156,7 +158,7 @@ $(document).ready(() => {
     $.ajax({
 
 
-        url: "backend/Select_Deptos_Municipios.php",
+        url: "../backend/Select_Deptos_Municipios.php",
         data: 'data=' + 'departamentos', //+ "&contrasena=" + contrasena, //data, //"correo=" + $("#txt-correo").val().toLowerCase() + "&password=" + $("#txt-contrasena").val(),
         method: "POST",
         dataType: "json",
@@ -196,7 +198,7 @@ $('#departamentos').on('change', function (e) {
 
 
     $.ajax({
-        url: "backend/Select_Deptos_Municipios.php",
+        url: "../backend/Select_Deptos_Municipios.php",
         data: 'data=' + 'municipios&idDepartamento=' + valueSelected.trim(), //+ "&contrasena=" + contrasena, //data, //"correo=" + $("#txt-correo").val().toLowerCase() + "&password=" + $("#txt-contrasena").val(),
         method: "POST",
         dataType: "json",

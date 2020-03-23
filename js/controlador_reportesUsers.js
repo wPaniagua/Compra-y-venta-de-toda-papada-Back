@@ -6,7 +6,7 @@ $(document).ready(function () {
 
 function obtenerUsuarios(){
 	$.ajax({
-		url:"backend/gestionReportes.php?accion=obtenerUsuarios",
+		url:"../backend/gestionReportes.php?accion=obtenerUsuarios",
 		method:"GET",
 		dataType:"json",
 		success:function(respuesta){
@@ -59,7 +59,7 @@ $('#departamentos').on('change', function (e) {
 
 
     $.ajax({
-        url: "backend/Select_Deptos_Municipios.php",
+        url: "../backend/Select_Deptos_Municipios.php",
         data: 'data=' + 'municipios&idDepartamento=' + valueSelected.trim(), //+ "&contrasena=" + contrasena, //data, //"correo=" + $("#txt-correo").val().toLowerCase() + "&password=" + $("#txt-contrasena").val(),
         method: "POST",
         dataType: "json",

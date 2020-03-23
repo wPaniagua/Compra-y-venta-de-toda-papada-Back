@@ -1,6 +1,6 @@
 <?php 
 
-$mysqli = new mysqli( 'localhost:3308', 'root', '', 'mydb' );
+$mysqli = new mysqli( 'localhost:3306', 'root', '', 'mydb' );
 
 $consulta='SELECT per.primerNombre, per.primerApellido, tip.descripcion tipoUsuario, per.fechaNac fechaNacimiento, tel.telefono, per.correo, dep.nombre departamento, mun.nombre municipio, per.estado, per.idPersona FROM persona per 
 inner join tipousuario tip on per.idTipoUsuario=tip.idTipoUsuario 

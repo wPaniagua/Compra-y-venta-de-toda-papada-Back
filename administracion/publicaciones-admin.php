@@ -19,6 +19,7 @@ include '../backend/seguridad_admin.php';
     <script src="../js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="../css/FontAwesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/all.css">
     <script src="../js/FontAwesome.min.js"></script>
 
     <link rel="stylesheet" href="../css/inicio.styles.css">
@@ -26,14 +27,20 @@ include '../backend/seguridad_admin.php';
 </head>
 
 <body>
+    <?php 
 
+    //llamado a nabvar
+    include 'navbarAdmin.php';
+
+    ?>
+    <br><br><br><br><br>
 
     <!-- style="background-color: #2b3f81 !important; color: white !important;" -->
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#"><img src="ico/image-alt.svg" style="width:45px"></a>
+    <!--nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"><img src="../ico/image-alt.svg" style="width:45px"></a-->
         <!--LOGO DE LA EMPRESA-->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        <!--button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -63,7 +70,7 @@ include '../backend/seguridad_admin.php';
 
 
         </div>
-    </nav>
+    </nav-->
 
 
     <div class="container" style="margin-right: 2em;">
@@ -204,7 +211,7 @@ include '../backend/seguridad_admin.php';
                             <td>25/02/2020 </td>
                             <td>disponible</td>
                             <td>
-                                <center><a href="#"><img src="ico/x-circle-fill.svg" style="width:25px "></a></center>
+                                <center><a href="#"><img src="../ico/x-circle-fill.svg" style="width:25px "></a></center>
                             </td>
                             <!--<td><center><a href="index.html"><img src="ico/pencil.svg" style="width:25px "></a></center></td>   -->
                         </tr>
@@ -222,6 +229,7 @@ include '../backend/seguridad_admin.php';
 
 
     <script src="../js/publicaciones-admin.js"></script>
+    <script type="text/javascript" src="../js/all.js"></script>
 </body>
 
 </html>

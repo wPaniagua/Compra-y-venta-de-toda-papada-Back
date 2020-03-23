@@ -1,4 +1,4 @@
-CREATE PROCEDURE SP_REGISTRO_USUARIO_ADMINISTRADOR(
+CREATE or replace PROCEDURE SP_REGISTRO_USUARIO_ADMINISTRADOR(
                     IN ppNombre VARCHAR(50),
                     IN psNombre VARCHAR(50),
                     IN ppApellido VARCHAR(50),

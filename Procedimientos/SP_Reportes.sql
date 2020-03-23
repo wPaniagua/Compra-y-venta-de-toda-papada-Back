@@ -9,6 +9,10 @@ ALTER TABLE `producto` CHANGE `tipoProducto` `tipo` VARCHAR(100) NULL DEFAULT NU
 ALTER TABLE `denuncias`add denunciante INTEGER;
 ALTER TABLE `denuncias` ADD FOREIGN KEY (denunciante) REFERENCES `persona` (`idPersona`) ;
 
+
+//Cambiar el nombre de un atributo
+ALTER TABLE `deptos` CHANGE `nombre` `nombreDepto` VARCHAR(100) DEFAULT NULL;
+
 //Agregar campo en la tabla anuncios
 ALTER TABLE `anuncios`add fecha DATETIME;
 
@@ -43,7 +47,7 @@ SP:BEGIN
   END IF;  
 
   IF accion="obtenerUsuarios" THEN
-      SELECT  p.idPersona,CONCAT(p.primerNombre,' ', p.primerApellido) as concatenacion,dep.nombre 'nombreDepto', mun.nombre, (SELECT COUNT(idAnuncios) FROM anuncios  WHERE a.idPersona=p.idPersona) as conteo, d.cantidad, p.estado  FROM persona p
+      SELECT  p.idPersona,CONCAT(p.primerNombre,' ', p.primerApellido) as concatenacion,dep.nombreDepto, mun.nombre, (SELECT COUNT(idAnuncios) FROM anuncios  WHERE a.idPersona=p.idPersona) as conteo, d.cantidad, p.estado  FROM persona p
 	  INNER JOIN municipio mun on mun.idMunicipio=p.idMunicipio
 	  INNER JOIN deptos dep on dep.idDeptos = mun.idDeptos
 	  INNER JOIN anuncios a on a.idPersona = p.idPersona

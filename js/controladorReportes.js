@@ -6,7 +6,7 @@ $(document).ready(function () {
 });
 function obtenerDenuncias(){
 	$.ajax({
-		url:"backend/gestionReportes.php?accion=obtenerDenuncias",
+		url:"../backend/gestionReportes.php?accion=obtenerDenuncias",
 		method:"GET",
 		dataType:"json",
 		success:function(respuesta){
@@ -56,7 +56,7 @@ $(document).ready(() => {
     $.ajax({
 
 
-        url: "backend/Select_Deptos_Municipios.php",
+        url: "../backend/Select_Deptos_Municipios.php",
         data: 'data=' + 'departamentos', //+ "&contrasena=" + contrasena, //data, //"correo=" + $("#txt-correo").val().toLowerCase() + "&password=" + $("#txt-contrasena").val(),
         method: "POST",
         dataType: "json",
@@ -92,7 +92,7 @@ $('#departamentos').on('change', function (e) {
 
 
     $.ajax({
-        url: "backend/Select_Deptos_Municipios.php",
+        url: "../backend/Select_Deptos_Municipios.php",
         data: 'data=' + 'municipios&idDepartamento=' + valueSelected.trim(), //+ "&contrasena=" + contrasena, //data, //"correo=" + $("#txt-correo").val().toLowerCase() + "&password=" + $("#txt-contrasena").val(),
         method: "POST",
         dataType: "json",

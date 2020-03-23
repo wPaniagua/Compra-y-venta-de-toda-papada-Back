@@ -7,7 +7,7 @@ $(document).ready(function () {
 
 function obtenerDenuncias(){
 	$.ajax({
-		url:"backend/gestionDenuncias.php?accion=obtenerTodos",
+		url:"../backend/gestionDenuncias.php?accion=obtenerTodos",
 		method:"GET",
 		dataType:"json",
 		success:function(respuesta){
@@ -56,7 +56,7 @@ function eliminarDenuncias(idDenuncia){
 	
 	//alert(parametros);
 	$.ajax({
-		url:"backend/gestionDenuncias.php?accion=eliminar",
+		url:"../backend/gestionDenuncias.php?accion=eliminar",
 		method:"GET",
 		data:parametros,
 		dataType:"json",
