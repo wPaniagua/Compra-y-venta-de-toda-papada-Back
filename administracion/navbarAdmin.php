@@ -45,8 +45,8 @@ include '../backend/seguridad_admin.php';
 		    		<i class="fas fa-user fa-lg" id="iconU" style="display:"></i>
 		    		<div id="imgNP"></div>
 		    	</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		    	<button class="btn btn-success" id="cerrarSesion">Cerrar secion
-		    		<i class="fas fa-window-close fa-lg" id="Salir" style=""></i>
+		    	<button class="btn btn-success" id="cerrarSesion">Cerrar Sesion
+		    		<i class="fas fa-times-circle fa-lg" id="Salir" style=""></i>
 		    	</button>
 		    </form>
 		  </div>
