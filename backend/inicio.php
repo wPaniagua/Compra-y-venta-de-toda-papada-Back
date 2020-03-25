@@ -50,5 +50,43 @@ switch ($_POST["accion"]){
         
         echo json_encode($respuesta);
     break;
+
+    case "Traercategorias":
+
+        $idCategorias;    
+        $descripcion;
+    
+        //TODO: hacer subconsulta para traer id tipo usuario
+        $stmt = $mysqli -> prepare('
+        select idCategorias , descripcion from categorias c
+        where estado like "%a"
+                ');
+        
+        // $stmt -> bind_param('i', $userId);
+        $stmt -> execute();
+        $stmt -> store_result();
+        $stmt -> bind_result( 
+            $idCategorias,    
+            $descripcion,
+        );
+    
+    
+        $respuesta = array();
+    
+        $index = 0;
+        
+        while($stmt -> fetch()){
+    
+            $respuesta[$index] =  array(
+                "idCategorias"=>$idCategorias,
+                "descripcion"=>$descripcion
+            );
+    
+            $index++;
+        }
+        
+        echo json_encode($respuesta);
+    break;
+
 }
 ?>

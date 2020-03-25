@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busqueda</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/FontAwesome.min.css">
+    <link rel="stylesheet" href="css/busqueda.css">
+</head>
+
+<body>
+    <div class="container" style="margin-top: 2em;">
+        <div class="row">
+            <div class="col col-md-8">
+                <div class="container">
+                    <div class="row" id="anuncios">
+                        <!-- <div class="col col-lg-5">
+                            <div class="card" style="width: inherit;">
+                                <img class="card-img-top"
+                                    src="https://geeky.com.ar/wp-content/uploads/2016/07/robert-baratheon.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col col-lg-12">
+                                                <strong>Carro deportivo</strong>
+                                                <hr>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col col-lg-12">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col col-lg-3 iconoPequeno ">
+                                                            <i style="display: block;"
+                                                                class="fas fa-american-sign-language-interpreting iconoTarjeta"></i>
+                                                            Vendo
+                                                        </div>
+                                                        <div class="col col-lg-3 iconoPequeno ">
+                                                            <i style="display: block;"
+                                                                class="fas fa-dollar-sign iconoTarjeta"></i>
+                                                            L. 1,200
+                                                        </div>
+                                                        <div class="col col-lg-3 iconoPequeno ">
+                                                            <i style="display: block;"
+                                                                class="fas fa-location-arrow iconoTarjeta"></i>
+                                                            Tegucigalpa
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col col-lg-12 descripcionAnuncio">
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt dolorem
+                                                    provident quos rem non architecto, in tempora neque temporibus est,
+                                                    recusandae perferendis saepe labore, excepturi alias velit nihil
+                                                    ipsa reprehenderit.</p>
+                                                <button type="button" class="btn btn-outline-info">Ver articulo</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col col-md-3">
+                <div class="container filtros">
+                    <div class="row rowFiltros">
+                        <div class="col col-lg-12">
+                            <h3>Detalla tu búsqueda</h3>
+                        </div>
+                    </div>
+                    <div class="row rowFiltros">
+                        <div class="col col-lg-12">
+                            <Strong>Filtra por departamento:</Strong>
+                            <select class="form-control selects_locacion" style="width: 70%;" id="departamentos"
+                                onchange="traerMunicipios()">
+                                <option value="null" class="form-control">Selecciona un departamento</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row rowFiltros">
+                        <div class="col col-lg-12">
+                            <Strong>Filtra por ciudad:</Strong>
+                            <select name="" id="municipios" class="form-control selects_locacion" style="width: 70%;">
+                                <option value="null" class="form-control">Selecciona una ciudad</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row rowFiltros">
+                        <div class="col col-lg-12">
+                            <Strong>Detalla un rango de precios:</Strong>
+                            <br>
+                            <label class="" for="desde">Desde</label>
+                            <input type="text" class="form-control" id="desde">
+
+                            <label class="" for="hasta">Hasta</label>
+                            <input type="text" class="form-control" id="hasta">
+                        </div>
+                    </div>
+                    <div class="row rowFiltros" style="padding-left: 2em;padding-right: auto;">
+                        <div class="col col-lg-12" style="text-align: center; padding-left: auto;padding-right: auto;">
+                            <p>
+                                <strong>Servicios:</strong>
+                            </p>
+
+                            <div class="form-check" style="display: inline;">
+                                <input class="form-check-input" type="radio" name="servicios" id="exampleRadios1"
+                                    value="1" checked>
+                                <label class="form-check-label" for="exampleRadios1">
+                                    Comprar
+                                </label>
+                            </div>
+                            <div class="form-check" style="display: inline;">
+                                <input class="form-check-input" type="radio" name="servicios" id="exampleRadios2"
+                                    value="2">
+                                <label class="form-check-label" for="exampleRadios2">
+                                    Rentar
+                                </label>
+                            </div>
+                            <br>
+                            <button id="btn-buscar" type="button" class="btn btn-outline-success"
+                                style="margin-left: auto;margin-right: auto;padding-inline: 4em; margin-top: 1em;">Buscar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="segundaFila" style="margin-top: 2em;">
+            <div class="col col-lg-12" id="segundaFila"></div>
+        </div>
+    </div>
+
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/fontsawesome.min.js"></script>
+    <script src="js/busqueda.js"></script>
+</body>
+
+</html>

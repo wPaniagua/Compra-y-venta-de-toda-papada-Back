@@ -46,28 +46,25 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Ayuda</a>
                 </li>
-                <li class="nav-item dropdown" id="categorias">
-                    <a class="nav-link dropdown-toggle border border-primary rounded" href="#" id="navbarDropdown"
-                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Busca por Categorias
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Carros</a>
-                        <a class="dropdown-item" href="#">Hogar</a>
-                        <!-- <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"></a> -->
-                    </div>
+                <li class="nav-item " id="categorias">
+
+                    <select class="custom-select" id="categoriasElementos">
+                    <option value="null" selected>Todas</option>
+                    </select>
+
+
+                    </select>
                 </li>
 
             </ul>
             <form class="form-inline my-2 my-lg-0" id="formBusqueda">
                 <input class="form-control mr-sm-2" type="search" id="inputBusqueda"
                     placeholder="Buscar por palabra clave" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="button" id="btn-busqueda">Buscar</button>
             </form>
 
             <ul class="navbar-nav mr-auto">
-            
+
                 <?php
                     session_start(); 
                     if (isset($_SESSION["id_usuario"])){
@@ -192,7 +189,7 @@
                 <div class="carousel-item active">
 
                     <div class="row">
-                        <div class="col-md-4">
+                        <!-- <div class="col-md-4">
                             <div class="card mb-2">
                                 <img class="card-img-top"
                                     src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg"
@@ -235,7 +232,7 @@
                                     <a class="btn btn-primary">Button</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                     </div>
                 </div>
@@ -388,7 +385,7 @@
 
                     <div class="row">
                         <div class="col-md-2 columna" style="text-align: center;">
-                            <a href="">
+                            <a href="busqueda?categoria=5&busqueda=">
                                 <div class="elemento-top">
                                     <div class="icono">
                                         <i class="fas fa-car"></i>
@@ -402,7 +399,7 @@
                         </div>
 
                         <div class="col-md-2 clearfix d-none d-md-block columna">
-                            <a href="http://google.com">
+                            <a href="busqueda?categoria=4&busqueda=">
                                 <div class="elemento-top">
                                     <div class="icono">
                                         <i class="fas fa-home"></i>
@@ -416,7 +413,7 @@
                         </div>
 
                         <div class="col-md-2 clearfix d-none d-md-block columna">
-                            <a href="">
+                            <a href="busqueda?categoria=2&busqueda=">
                                 <div class="elemento-top">
                                     <div class="icono">
                                         <i class="fas fa-plug"></i> </div>

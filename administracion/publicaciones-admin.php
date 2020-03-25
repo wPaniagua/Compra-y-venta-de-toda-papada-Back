@@ -30,7 +30,7 @@ include '../backend/seguridad_admin.php';
     <?php 
 
     //llamado a nabvar
-    include 'navbarAdmin.php';
+    include ('navbarAdmin.php');
 
     ?>
     <br><br><br><br><br>

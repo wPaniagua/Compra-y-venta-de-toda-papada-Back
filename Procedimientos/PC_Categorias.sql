@@ -9,6 +9,7 @@ CREATE OR REPLACE PROCEDURE SP_CATEGORIAS(
                   OUT mensaje VARCHAR(100)) 
 SP:BEGIN
   DECLARE conteo INT;
+  DECLARE conteo2 INT;
   DECLARE id INT;
   DECLARE tempMensaje VARCHAR(100);
   SET autocommit=0;  
@@ -67,16 +68,18 @@ SP:BEGIN
   IF accion="guardar" THEN
     SELECT count(*) INTO conteo FROM categorias
     WHERE descripcion=nombreCategoria;
+    
     IF conteo=1 THEN
       SET mensaje='Ya existe la categoria';
       LEAVE SP;
     END IF;
+
     IF conteo=0 THEN
-      SELECT count(*) INTO conteo FROM categorias;
-      IF conteo=0 THEN
+      SELECT MAX(idCategorias) INTO conteo2 FROM categorias;
+      IF conteo2=0 THEN
         SET id=1;
       ELSE
-        SET id=conteo+1;
+        SET id=conteo2+1;
       END IF;
 
       INSERT INTO categorias(idCategorias, descripcion,estado) VALUES (id,nombreCategoria,"A");

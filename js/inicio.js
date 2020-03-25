@@ -1,6 +1,10 @@
 $(document).ready(function () {
 
     traerElectronicos();
+    traerCategorias();
+
+
+
 });
 
 $("#login-button").on("click", () => {
@@ -189,10 +193,10 @@ function traerElectronicos() {
 
             var response = JSON.parse(respuesta);
 
-            let cantidadSlides = Math.ceil(response.length / 4);
+            var cantidadSlides = Math.ceil(response.length / 4);
             console.log("cantidadSlides: " + cantidadSlides);
 
-            let cantidadFor = cantidadSlides == 1 ? 2 : cantidadSlides;
+            var cantidadFor = cantidadSlides == 1 ? 2 : cantidadSlides;
             console.log("cantidad for: " + cantidadFor)
 
 
@@ -216,7 +220,7 @@ function traerElectronicos() {
                         <div class="col-md-3">
                             <div class="card mb-2">
                                 <img class="card-img-top"
-                                    src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg"
+                                    src="https://eldiariony.files.wordpress.com/2018/04/sony-xperia-xz-premium-cnet.jpg?quality=80&strip=all&w=940"
                                     alt="Card image cap">
                                 <div class="card-body" style="max-height:10em; min-height:10em;">
                                     <h5 class="card-title">${response[indexResponse].titulo.slice(0, 22)}...</h5>
@@ -233,7 +237,7 @@ function traerElectronicos() {
                     <div class="col-md-3 clearfix d-none d-md-block">
                         <div class="card mb-2">
                             <img class="card-img-top"
-                                src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg"
+                                src="https://eldiariony.files.wordpress.com/2018/04/sony-xperia-xz-premium-cnet.jpg?quality=80&strip=all&w=940"
                                 alt="Card image cap">
                             <div class="card-body" style="max-height:10em; min-height:10em;">
                                 <h5 class="card-title">${response[indexResponse].titulo.slice(0, 22)}...</h5>
@@ -257,7 +261,7 @@ function traerElectronicos() {
 
             $("#electronicos").html("");
 
-            for (let i = 0; i < cantidadFor; i++) {
+            for (var i = 0; i < cantidadFor; i++) {
                 console.log("entra a for de indicators");
 
                 if (i == 0) {
@@ -280,6 +284,53 @@ function traerElectronicos() {
     });
 }
 
+
+function traerCategorias() {
+
+    $.ajax({
+        url: "backend/inicio.php",
+        method: "POST",
+        data: "accion=Traercategorias",
+        success: function (respuesta) {
+            let response = JSON.parse(respuesta);
+
+            console.log(response);
+
+            // $("#categoriasElementos").html("");
+            // $("#categoriasElementos").append(`<option value="null" selected>Todas</option>`);
+
+            for (let i = 0; i < response.length; i++) {
+                $("#categoriasElementos").append(`
+                <option value="${response[i].idCategorias}">${response[i].descripcion}</option>`);
+
+            }
+        },
+        error: function (error) {
+            console.error(error)
+        }
+
+    });
+}
+
+$("#btn-busqueda").on("click", () => {
+    console.log("click");
+
+    let categoriaSeleccionada = $("#categoriasElementos :selected").val();
+    console.log(categoriaSeleccionada);
+
+    let busqueda = $("#inputBusqueda").val();
+    console.log(busqueda)
+
+    if (categoriaSeleccionada != "null" && busqueda != "") {
+        window.location.href = `busqueda?categoria=${categoriaSeleccionada}&busqueda=${busqueda}`;
+    } else if (categoriaSeleccionada == "null" && busqueda != "") {
+        window.location.href = `busqueda?categoria=todas&busqueda=${busqueda}`;
+    } else if (categoriaSeleccionada != "null" && busqueda == "") {
+        console.error("Introduzca una busqueda")
+    } else if (categoriaSeleccionada == "null" && busqueda == "") {
+        console.error("Introduzca una busqueda")
+    }
+})
 // console.log("Locacion")
 // console.log(window.location.hostname)
 // console.log(window.location.href)
