@@ -1,6 +1,6 @@
 <?php 
 
-$mysqli = new mysqli( 'localhost:3306', 'root', '', 'mydb' );
+$mysqli = new mysqli( 'localhost:3308', 'root', '', 'mydb' );
 
 switch ($_POST["accion"]) {
 
@@ -21,12 +21,15 @@ switch ($_POST["accion"]) {
     
     
         $stmt = $mysqli -> prepare(
-            'select  pro.nombre,pro.tipoProducto,ca.descripcion categoria,an.descripcion,per.primerNombre,per.primerApellido ,an.precio,mo.descripcion ,an.fechaPublicacion,
-            an.fechaVencimiento,an.estado, an.idAnuncios from anuncios an
+            'select  pro.nombre,pro.tipo ,ca.descripcion categoria,an.descripcion,per.primerNombre,
+            per.primerApellido ,an.precio,mo.descripcion ,an.fecha fechaPublicacion,
+            DATE_ADD(an.fecha , INTERVAL tu.tiempoPublicacion DAY) fechaVencimiento, an.estado, an.idAnuncios 
+            from anuncios an
             inner join producto pro on an.idProducto=pro.idProducto
             inner join categorias ca on pro.idCategorias=ca.idCategorias
             inner join persona per on an.idPersona=per.idPersona
-            inner join moneda mo on an.idMoneda=mo.idMoneda');
+            inner join moneda mo on an.idMoneda=mo.idMoneda
+            inner join tipousuario tu on tu.idTipoUsuario = per.idTipoUsuario');
 
         getAnuncios($stmt);
         
@@ -139,12 +142,15 @@ switch ($_POST["accion"]) {
         
         
             $stmt = $mysqli -> prepare(
-                'select  pro.nombre,pro.tipoProducto,ca.descripcion categoria,an.descripcion,per.primerNombre,per.primerApellido ,an.precio,mo.descripcion ,an.fechaPublicacion,
-                an.fechaVencimiento,an.estado, an.idAnuncios from anuncios an
+                'select  pro.nombre,pro.tipo ,ca.descripcion categoria,an.descripcion,per.primerNombre,
+                per.primerApellido ,an.precio,mo.descripcion ,an.fecha fechaPublicacion,
+                DATE_ADD(an.fecha , INTERVAL tu.tiempoPublicacion DAY) fechaVencimiento, an.estado, an.idAnuncios 
+                from anuncios an
                 inner join producto pro on an.idProducto=pro.idProducto
                 inner join categorias ca on pro.idCategorias=ca.idCategorias
                 inner join persona per on an.idPersona=per.idPersona
                 inner join moneda mo on an.idMoneda=mo.idMoneda
+                inner join tipousuario tu on tu.idTipoUsuario = per.idTipoUsuario
                 WHERE per.idPersona = ? AND an.estado LIKE  ?  AND ca.idCategorias = ?');
 
             $stmt->bind_param('isi', $idPersona, $estado, $categoria);
@@ -169,12 +175,15 @@ switch ($_POST["accion"]) {
         
         
             $stmt = $mysqli -> prepare(
-                'select  pro.nombre,pro.tipoProducto,ca.descripcion categoria,an.descripcion,per.primerNombre,per.primerApellido ,an.precio,mo.descripcion ,an.fechaPublicacion,
-                an.fechaVencimiento,an.estado, an.idAnuncios from anuncios an
+                'select  pro.nombre,pro.tipo ,ca.descripcion categoria,an.descripcion,per.primerNombre,
+                per.primerApellido ,an.precio,mo.descripcion ,an.fecha fechaPublicacion,
+                DATE_ADD(an.fecha , INTERVAL tu.tiempoPublicacion DAY) fechaVencimiento, an.estado, an.idAnuncios 
+                from anuncios an
                 inner join producto pro on an.idProducto=pro.idProducto
                 inner join categorias ca on pro.idCategorias=ca.idCategorias
                 inner join persona per on an.idPersona=per.idPersona
                 inner join moneda mo on an.idMoneda=mo.idMoneda
+                inner join tipousuario tu on tu.idTipoUsuario = per.idTipoUsuario
                 WHERE per.idPersona = ? AND ca.idCategorias = ?');
 
             $stmt->bind_param('ii', $idPersona, $categoria);
@@ -200,12 +209,15 @@ switch ($_POST["accion"]) {
         
         
             $stmt = $mysqli -> prepare(
-                'select  pro.nombre,pro.tipoProducto,ca.descripcion categoria,an.descripcion,per.primerNombre,per.primerApellido ,an.precio,mo.descripcion ,an.fechaPublicacion,
-                an.fechaVencimiento,an.estado, an.idAnuncios from anuncios an
+                'select  pro.nombre,pro.tipo ,ca.descripcion categoria,an.descripcion,per.primerNombre,
+                per.primerApellido ,an.precio,mo.descripcion ,an.fecha fechaPublicacion,
+                DATE_ADD(an.fecha , INTERVAL tu.tiempoPublicacion DAY) fechaVencimiento, an.estado, an.idAnuncios 
+                from anuncios an
                 inner join producto pro on an.idProducto=pro.idProducto
                 inner join categorias ca on pro.idCategorias=ca.idCategorias
                 inner join persona per on an.idPersona=per.idPersona
                 inner join moneda mo on an.idMoneda=mo.idMoneda
+                inner join tipousuario tu on tu.idTipoUsuario = per.idTipoUsuario
                 WHERE an.estado LIKE ? AND ca.idCategorias = ?');
 
             $stmt->bind_param('si', $estado, $categoria);
@@ -231,12 +243,15 @@ switch ($_POST["accion"]) {
         
         
             $stmt = $mysqli -> prepare(
-                'select  pro.nombre,pro.tipoProducto,ca.descripcion categoria,an.descripcion,per.primerNombre,per.primerApellido ,an.precio,mo.descripcion ,an.fechaPublicacion,
-                an.fechaVencimiento,an.estado, an.idAnuncios from anuncios an
+                'select  pro.nombre,pro.tipo ,ca.descripcion categoria,an.descripcion,per.primerNombre,
+                per.primerApellido ,an.precio,mo.descripcion ,an.fecha fechaPublicacion,
+                DATE_ADD(an.fecha , INTERVAL tu.tiempoPublicacion DAY) fechaVencimiento, an.estado, an.idAnuncios 
+                from anuncios an
                 inner join producto pro on an.idProducto=pro.idProducto
                 inner join categorias ca on pro.idCategorias=ca.idCategorias
                 inner join persona per on an.idPersona=per.idPersona
                 inner join moneda mo on an.idMoneda=mo.idMoneda
+                inner join tipousuario tu on tu.idTipoUsuario = per.idTipoUsuario
                 WHERE an.estado LIKE ? AND per.idPersona = ?');
 
             $stmt->bind_param('si', $estado, $idPersona);
@@ -250,12 +265,15 @@ switch ($_POST["accion"]) {
         
         
             $stmt = $mysqli -> prepare(
-                'select  pro.nombre,pro.tipoProducto,ca.descripcion categoria,an.descripcion,per.primerNombre,per.primerApellido ,an.precio,mo.descripcion ,an.fechaPublicacion,
-                an.fechaVencimiento,an.estado, an.idAnuncios from anuncios an
+                'select  pro.nombre,pro.tipo ,ca.descripcion categoria,an.descripcion,per.primerNombre,
+                per.primerApellido ,an.precio,mo.descripcion ,an.fecha fechaPublicacion,
+                DATE_ADD(an.fecha , INTERVAL tu.tiempoPublicacion DAY) fechaVencimiento, an.estado, an.idAnuncios 
+                from anuncios an
                 inner join producto pro on an.idProducto=pro.idProducto
                 inner join categorias ca on pro.idCategorias=ca.idCategorias
                 inner join persona per on an.idPersona=per.idPersona
                 inner join moneda mo on an.idMoneda=mo.idMoneda
+                inner join tipousuario tu on tu.idTipoUsuario = per.idTipoUsuario
                 WHERE an.estado LIKE ?');
 
             $stmt->bind_param('s', $estado);
@@ -270,12 +288,15 @@ switch ($_POST["accion"]) {
         
         
             $stmt = $mysqli -> prepare(
-                'select  pro.nombre,pro.tipoProducto,ca.descripcion categoria,an.descripcion,per.primerNombre,per.primerApellido ,an.precio,mo.descripcion ,an.fechaPublicacion,
-                an.fechaVencimiento,an.estado, an.idAnuncios from anuncios an
+                'select  pro.nombre,pro.tipo ,ca.descripcion categoria,an.descripcion,per.primerNombre,
+                per.primerApellido ,an.precio,mo.descripcion ,an.fecha fechaPublicacion,
+                DATE_ADD(an.fecha , INTERVAL tu.tiempoPublicacion DAY) fechaVencimiento, an.estado, an.idAnuncios 
+                from anuncios an
                 inner join producto pro on an.idProducto=pro.idProducto
                 inner join categorias ca on pro.idCategorias=ca.idCategorias
                 inner join persona per on an.idPersona=per.idPersona
                 inner join moneda mo on an.idMoneda=mo.idMoneda
+                inner join tipousuario tu on tu.idTipoUsuario = per.idTipoUsuario
                 WHERE per.idPersona = ?');
 
             $stmt->bind_param('i', $idPersona);
@@ -288,12 +309,15 @@ switch ($_POST["accion"]) {
         
         
             $stmt = $mysqli -> prepare(
-                'select  pro.nombre,pro.tipoProducto,ca.descripcion categoria,an.descripcion,per.primerNombre,per.primerApellido ,an.precio,mo.descripcion ,an.fechaPublicacion,
-                an.fechaVencimiento,an.estado, an.idAnuncios from anuncios an
+                'select  pro.nombre,pro.tipo ,ca.descripcion categoria,an.descripcion,per.primerNombre,
+                per.primerApellido ,an.precio,mo.descripcion ,an.fecha fechaPublicacion,
+                DATE_ADD(an.fecha , INTERVAL tu.tiempoPublicacion DAY) fechaVencimiento, an.estado, an.idAnuncios 
+                from anuncios an
                 inner join producto pro on an.idProducto=pro.idProducto
                 inner join categorias ca on pro.idCategorias=ca.idCategorias
                 inner join persona per on an.idPersona=per.idPersona
                 inner join moneda mo on an.idMoneda=mo.idMoneda
+                inner join tipousuario tu on tu.idTipoUsuario = per.idTipoUsuario
                 WHERE pro.idCategorias = ?');
 
             $stmt->bind_param('i', $categoria);

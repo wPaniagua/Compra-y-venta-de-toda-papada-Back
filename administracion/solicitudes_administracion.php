@@ -23,9 +23,18 @@ include '../backend/seguridad_admin.php';
 
 <body>
 
+<?php 
+include 'navBarAdmin.php';
+
+?>
+
+<br>
+<br>
+<br>
 
     <h1>Solicitudes de Usuario Administrador</h1>
 
+<br><br>
     <div class="container">
         <div class="row">
             <div class="col col-lg-10 table-responsive">

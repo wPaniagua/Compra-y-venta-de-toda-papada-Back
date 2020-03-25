@@ -1,6 +1,6 @@
 <?php 
 
-include '../backend/seguridad_admin.php';
+include_once('../backend/seguridad_admin.php');
 
 ?>
 <!DOCTYPE html>
@@ -15,7 +15,7 @@ include '../backend/seguridad_admin.php';
 	<?php 
 
     //llamado a nabvar
-    include 'navbarAdmin.php';
+    include_once('navbarAdmin.php');
 
     ?>
 	<br>
@@ -32,6 +32,8 @@ include '../backend/seguridad_admin.php';
    			<div class="btn-group-vertical">
 				<a href="publicaciones-admin.php" class="btn btn-dark btn-lg btn-block">Publicaciones</a>
 				<a href="verUsuariosDesdeAdminF.php" class="btn btn-dark btn-lg btn-block">Usuarios</a>
+				<a href="solicitudes_administracion.php" class="btn btn-dark btn-lg btn-block">Solicitudes</a>
+
 				<a href="categorias.php" class="btn btn-dark btn-lg btn-block">Categorias</a>
 				<a href="productos.php" class="btn btn-dark btn-lg btn-block">Productos</a>
 				<a href="denuncias.php" class="btn btn-dark btn-lg btn-block">Denuncias</a>

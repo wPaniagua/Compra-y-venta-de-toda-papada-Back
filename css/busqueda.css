@@ -1,0 +1,88 @@
+.container {
+    max-width: 1500px;
+
+}
+
+.card {
+    margin: .5em;
+    width: inherit;
+}
+
+
+.col {
+    box-sizing: content-box;
+}
+
+.col-lg-5 {
+    padding: .250em;
+
+}
+
+.card-body {
+    padding: .75em;
+    margin-right: .75em;
+}
+
+.iconoTarjeta {
+    font-size: 1.5em;
+}
+
+.iconoPequeno svg {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.iconoPequeno {
+    text-align: center;
+}
+
+.descripcionAnuncio {
+    text-align: center;
+}
+
+#desde,
+#hasta {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.descripcionAnuncio p {
+    margin: 1em;
+}
+
+hr {
+    margin-left: -1.5em;
+    margin-right: .5em;
+}
+
+.filtros {
+    padding: 1.5em;
+    border: solid rgb(179, 172, 172) thin;
+    box-shadow: .5em;
+    border-radius: 15px;
+    -webkit-box-shadow: 9px 10px 12px -8px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 9px 10px 12px -8px rgba(0, 0, 0, 0.75);
+    box-shadow: 9px 10px 12px -8px rgba(0, 0, 0, 0.75);
+    padding-left: 0em;
+}
+
+.rowFiltros {
+    margin-top: 1em;
+    text-align: center;
+}
+
+.selects_locacion {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-check {
+    margin-left: 1em;
+}
+
+.col-lg-3 {
+    flex: 0 0 23%;
+    max-width: 25%;
+    padding: .250em;
+}
