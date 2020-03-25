@@ -3,51 +3,76 @@ $('#btnGuardar').click(enviarDatos);
 
 async function obtenerJSON()
 {
+    console.log("DOM cargado");
+
+    document.getElementById("departamentos").innerHTML = " ";
+
+    console.log('data="' + 'departamentos"');
+
     $.ajax({
-        url:"../backend/Select_Deptos_Municipios.php",
-        data: 'data=' + 'departamentos',
+
+
+        url: "backend/Select_Deptos_Municipios.php",
+        data: 'data=' + 'departamentos', //+ "&contrasena=" + contrasena, //data, //"correo=" + $("#txt-correo").val().toLowerCase() + "&password=" + $("#txt-contrasena").val(),
         method: "POST",
-        dataType:"json",
-        success: async function (respuesta)
-        {
-            //console.log(respuesta);
-            document.getElementById("depto").innerHTML += `<option selected="selected" value="null">
+        dataType: "json",
+        success: function (respuesta) {
+            console.log(respuesta);
+
+            document.getElementById("departamentos").innerHTML += `<option selected="selected" value="null">
             Selecciona un departamento</option>`;
-            //var dato = JSON.parse(respuesta);
-            for(var i=0; i<respuesta.length; i++)
-            {
-                document.getElementById("depto").innerHTML+=` <option value="${respuesta[i].idDepartamento}">${respuesta[i].nombre}</option>`;
-                //console.log(respuesta[i].idDeptos);
+
+
+            for (let i = 0; i < respuesta.length; i++) {
+
+                document.getElementById("departamentos").innerHTML +=
+                    ` <option value="${respuesta[i].idDepartamento}">${respuesta[i].nombre}</option>`
             }
-        } 
+        },
+
+        error: function (error) {
+            console.log(error);
+        }
+
     });
-    $("#depto").on('change', function (e)
-    {
-        var optionSelected = $("option:selected", this);
-        var valueSelected = this.value;
-        console.log(valueSelected);
-        $.ajax({
-            url:"../backend/Select_Deptos_Municipios.php",
-            data: 'data=' + 'municipios&idDepartamento=' + valueSelected.trim(),
-            method: "POST",
-            dataType:"json",
-            success: async function (respuesta)
-            {
-                console.log(respuesta);
-                document.getElementById("municipio").innerHTML += `<option selected="selected" value="null">
-                Selecciona un municipio</option>`;
-                //var dato = JSON.parse(respuesta);
-                for(var i=0; i<respuesta.length; i++)
-                {
-                    document.getElementById("municipio").innerHTML+=` <option value="${respuesta[i].idMunicipio}">${respuesta[i].nombre}</option>`;
-                    //console.log(respuesta[i].idDeptos);
-                }
-            } 
-        });
-    }
-    );
     
 }
+
+$('#departamentos').on('change', function (e) {
+    var optionSelected = $("option:selected", this);
+    var valueSelected = this.value;
+
+    console.log(valueSelected);
+
+    console.log('data=' + 'municipios&idMunicipio=' + valueSelected.trim());
+
+
+    $.ajax({
+        url: "backend/Select_Deptos_Municipios.php",
+        data: 'data=' + 'municipios&idDepartamento=' + valueSelected.trim(), //+ "&contrasena=" + contrasena, //data, //"correo=" + $("#txt-correo").val().toLowerCase() + "&password=" + $("#txt-contrasena").val(),
+        method: "POST",
+        dataType: "json",
+        success: function (respuesta) {
+            console.log(respuesta);
+
+            document.getElementById("municipios").innerHTML = "";
+
+            document.getElementById("municipios").innerHTML += `<option selected="selected" value="null">
+            Selecciona un municipio</option>`;
+
+
+            for (let i = 0; i < respuesta.length; i++) {
+
+                document.getElementById("municipios").innerHTML +=
+                    ` <option value="${respuesta[i].idMunicipio}">${respuesta[i].nombre}</option>`
+            }
+        },
+
+        error: function (error) {
+            console.log(error);
+        }
+    });
+});
 
 async function enviarDatos()
 {
@@ -59,8 +84,8 @@ async function enviarDatos()
     var ID = $('#ID').val();
     var Telefono = $('#telefono').val();
     var Fecha = $('#fechaNacimineto').val();
-    var Depto = $('#depto').val();
-    var Ciudad = $('#municipio').val();
+    var Depto = $('#departamentos').val();
+    var Ciudad = $('#municipios').val();
     var Password = $('#contrasenia').val();
     var pass = $('#confContrasenia');
     var Tipo = $('input:radio[name=tipo]:checked').val();
@@ -75,7 +100,7 @@ async function enviarDatos()
     }
     else
     {
-        if (validarVacio(Apellido)) 
+        if (validarVacio(Apellido) || validarVacio(sNombre)) 
         {
             alert("Debe ingresar su apellido");
         } 
@@ -260,7 +285,7 @@ function registrarTelefono(tel, idUser)
     $.ajax(
         {
             type: 'POST',
-            url: '../backend/registro_telefono.php',
+            url: 'backend/registro_telefono.php',
             dataType: 'json',
             data:cadena,
             success:function(resp)
