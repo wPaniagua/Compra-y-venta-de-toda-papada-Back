@@ -42,7 +42,7 @@
 		    <form class="form-inline my-2 my-lg-0">
 		    	<a href="perfilAdmin.php">
 		    		<i class="fas fa-user fa-lg" id="iconU" style="display:"></i>
-		    		<div id="imgNP"></div>
+		    		<div id="imgNP" ></div>
 		    	</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		    	<button class="btn btn-success" id="cerrarSesion">Cerrar sesión
 		    		<i class="fas fa-times-circle fa-lg" id="Salir" style=""></i>

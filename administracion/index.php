@@ -18,7 +18,7 @@ include_once('../backend/seguridad_admin.php');
     include_once('navbarAdmin.php');
 
     ?>
-	<br>
+	<br><br><br>
    <div class="container-fluid"  style="background-color: green">
    	<br>
    	<h3 class="text-warning"><i class="fas fa-cog fa-lg" id="iconU"></i> Panel de administracion</h3>
