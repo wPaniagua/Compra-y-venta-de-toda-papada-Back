@@ -1,6 +1,6 @@
 <?php 
 
-$mysqli = new mysqli( 'localhost:3308', 'root', '', 'mydb' );
+$mysqli = new mysqli( 'localhost:3306', 'root', '', 'mydb' );
 
 switch ($_POST["accion"]) {
 
@@ -335,8 +335,7 @@ switch ($_POST["accion"]) {
             $call = $mysqli->prepare('CALL SP_CAMBIAR_TIEMPO_USUARIO_ADMINISTRADOR(?, @mensaje, @codigo, @cantidadDiasOut)');
             
             $call->bind_param('i', 
-                $tiempoUsuarioAdministrador,
-            );
+                $tiempoUsuarioAdministrador);
             
             
             $call->execute();
@@ -393,7 +392,7 @@ switch ($_POST["accion"]) {
             $call = $mysqli->prepare('CALL SP_CAMBIAR_TIEMPO_USUARIO_NORMAL(?, @mensaje, @codigo, @cantidadDiasOut)');
             
             $call->bind_param('i', 
-                $tiempoUsuarioNormal,
+                $tiempoUsuarioNormal
             );
             
             

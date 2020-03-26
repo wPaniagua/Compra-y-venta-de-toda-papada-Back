@@ -44,7 +44,7 @@ function obtenerDenuncias(){
 }
 
 
-
+/*
 $(document).ready(() => {
 
     console.log("DOM cargado");
@@ -79,7 +79,7 @@ $(document).ready(() => {
     		}
 	});
 
-});
+});*/
 
 
 $('#departamentos').on('change', function (e) {

@@ -321,4 +321,6 @@ include '../backend/seguridad_admin.php';
 
 <script src="../js/controladorReportes.js"></script>
 
+<script type="text/javascript" src="../js/fotoAdmin.js"></script>
+
 </html>

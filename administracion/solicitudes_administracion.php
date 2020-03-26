@@ -32,7 +32,7 @@ include 'navBarAdmin.php';
 <br>
 <br>
 
-    <h1>Solicitudes de Usuario Administrador</h1>
+    <h1 class="text-center">Solicitudes de Usuario Administrador</h1>
 
 <br><br>
     <div class="container">

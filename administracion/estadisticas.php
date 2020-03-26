@@ -98,17 +98,19 @@ include '../backend/seguridad.php';
 <script src="../Graficas/Librerias/jquery-3.4.1.min.js"></script>
 <script src="../Graficas/Librerias/plotly-latest.min.js"></script>
 <!--script src="js/controlador_estadisticas.js"></script-->
+<script type="text/javascript" src="../js/fotoAdmin.js"></script>
 
 </html>
 
 <script type="text/javascript">
   $(document).ready(function () {
 
-    $('#cargaBarra').load('Graficas/graficoBarra.php');
-    $('#cargaPastel').load('Graficas/graficoPastel.php');
-    $('#cargaLineal').load('Graficas/graficoLineal.php');
+    $('#cargaBarra').load('../Graficas/graficoBarra.php');
+    $('#cargaPastel').load('../Graficas/graficoPastel.php');
+    $('#cargaLineal').load('../Graficas/graficoLineal.php');
     console.log("DOM cargado");
 
   });
 </script>
+
 
