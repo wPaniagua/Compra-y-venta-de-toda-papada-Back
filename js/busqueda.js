@@ -268,6 +268,25 @@ function busquedaDetallada() {
     console.log(hasta);
     console.log(servicio);
 
+    let data = `accion=filtros${departamento!="null"?`&idDepartamento=${departamento}`:``}${municipio!="null"?`&idMunicipio=${municipio}`:``}${desde!=""?`&desde=${desde}`:``}${hasta!=""?`&hasta=${hasta}`:``}${servicio!=""?`&servicio=${servicio}`:``}`;
+    console.log(data.trim());
+
+    $.ajax({
+        url: "backend/busqueda.php",
+        method: "POST",
+        datatype: "json",
+        data: data.trim(),
+        success: (respuesta) => {
+            let response = JSON.parse(respuesta);
+            console.log(response);
+
+            generarAnuncios(response);
+        },
+        error: (error) => {
+            console.log(error);
+        }
+    });
+
 
 }
 

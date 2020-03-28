@@ -56,7 +56,8 @@ SP:BEGIN
       SELECT p.idProducto,p.nombre,p.caracteristicas,p.tipo,c.descripcion 
       'categoria',p.idCategorias FROM producto p 
       inner JOIN categorias c on c.idCategorias=p.idCategorias 
-      where p.estado="A" and p.tipo=ptipo;
+      where p.estado="A";
+      -- where p.estado="A" and p.tipoProducto=ptipo;
       SET mensaje='Exitoso';
   END IF;
 
@@ -66,10 +67,11 @@ SP:BEGIN
   END IF;
 
   IF accion="obtenerCategorias" THEN
-      SELECT c.idCategorias, c.descripcion 'categoria', tipo
+      SELECT c.idCategorias, c.descripcion 'categoria', p.tipoProducto
       FROM producto p 
       INNER join categorias c on c.idCategorias=p.idcategorias 
-      WHERE c.estado="A" and p.tipo=ptipo;
+      WHERE c.estado="A";
+      -- and p.tipo=ptipo
       SET mensaje='Exitoso';
   END IF;
 

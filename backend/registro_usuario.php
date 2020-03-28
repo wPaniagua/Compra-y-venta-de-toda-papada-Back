@@ -4,7 +4,7 @@ $host = "localhost";
 $usuario = "root";
 $password = "";
 $baseDatos = "mydb";
-$puerto = 3306;
+$puerto = 3308;
 $link;
 //$conexion = new Conexion();
 

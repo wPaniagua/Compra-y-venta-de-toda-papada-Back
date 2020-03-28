@@ -1,6 +1,6 @@
 <?php
 	
-	$mysqli = new mysqli("localhost", "root", "", "mydb");
+	$mysqli = new mysqli("localhost:3308", "root", "", "mydb");
 
     
     switch($_GET["accion"]){

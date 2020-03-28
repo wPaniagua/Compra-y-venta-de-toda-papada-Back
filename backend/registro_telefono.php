@@ -4,7 +4,7 @@
     $password = "";
     $usuario = "root";
     $baseDatos = "mydb";
-    $puerto = 3306;
+    $puerto = 3308;
     $link = mysqli_connect($host, $usuario, $password, $baseDatos, $puerto);
     $conexion = new Conexion();
     $telefono = (int)$_POST["ptelefono"];
