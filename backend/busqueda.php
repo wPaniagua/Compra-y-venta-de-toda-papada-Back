@@ -1,6 +1,18 @@
 <?php 
 
-$mysqli = new mysqli( 'localhost:3308', 'root', '', 'mydb' );
+// $mysqli = new mysqli( 'localhost:3308', 'root', '', 'mydb' );
+$dsn = "mysql:host=localhost:3308;dbname=mydb;charset=utf8mb4";
+        $options = [
+          PDO::ATTR_EMULATE_PREPARES   => false, // turn off emulation mode for "real" prepared statements
+          PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION, //turn on errors in the form of exceptions
+          PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, //make the default fetch be an associative array
+        ];
+        try {
+            $pdo = new PDO($dsn, "root", "", $options);
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            exit('Something weird happened'); //something a user can understand
+        }
 
 switch ($_POST["accion"]) {
 
@@ -26,18 +38,7 @@ switch ($_POST["accion"]) {
             array_push($parametros, (int)$_POST["categoria"] );
         }
 
-        $dsn = "mysql:host=localhost:3308;dbname=mydb;charset=utf8mb4";
-        $options = [
-          PDO::ATTR_EMULATE_PREPARES   => false, // turn off emulation mode for "real" prepared statements
-          PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION, //turn on errors in the form of exceptions
-          PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, //make the default fetch be an associative array
-        ];
-        try {
-            $pdo = new PDO($dsn, "root", "", $options);
-        } catch (Exception $e) {
-            error_log($e->getMessage());
-            exit('Something weird happened'); //something a user can understand
-        }
+        
 
         $stmt = $pdo->prepare($queryBase);
         $stmt->execute($parametros);
@@ -49,84 +50,6 @@ switch ($_POST["accion"]) {
         
     break;
 
-    case "traerNoNull":
-        $categoria = $_POST["idcategoria"];
-        $busqueda = $_POST["busqueda"];
-
-
-        $stmt = $mysqli -> prepare('
-        SELECT a.idAnuncios, a.titulo , a.descripcion , a.precio,mu.nombre  municipio from anuncios a 
-        inner join  persona  per on per.idPersona = a.idPersona 
-        inner join municipio mu  on per.idMunicipio = mu.idMunicipio 
-        inner join  tipousuario tu on tu.idTipoUsuario = per.idTipoUsuario 
-        inner join producto pro on pro.idProducto = a.idProducto 
-        inner join categorias  ca on ca.idCategorias = pro.idCategorias 
-        where a.estado like "%a" and  DATEDIFF(now(), a.fecha)<= tu.tiempoPublicacion 
-        and ca.idCategorias = ? and a.titulo like ?
-        ');
-
-        $stmt->bind_param('is', $categoria, $busqueda);
-
-        generarRespuesta($stmt);
-
-    break;
-
-    case "traerCategoriaNull":
-        $busqueda = $_POST["busqueda"];
-
-
-        $stmt = $mysqli -> prepare('
-        SELECT a.idAnuncios, a.titulo , a.descripcion , a.precio,mu.nombre  municipio from anuncios a 
-        inner join  persona  per on per.idPersona = a.idPersona 
-        inner join municipio mu  on per.idMunicipio = mu.idMunicipio 
-        inner join  tipousuario tu on tu.idTipoUsuario = per.idTipoUsuario 
-        inner join producto pro on pro.idProducto = a.idProducto 
-        inner join categorias  ca on ca.idCategorias = pro.idCategorias 
-        where a.estado like "%a" and  DATEDIFF(now(), a.fecha )<= tu.tiempoPublicacion 
-        and a.titulo like ?
-        ');
-
-        $stmt->bind_param('s', $busqueda);
-
-        generarRespuesta($stmt);
-
-    break;
-
-    case "traerTodos":
-        
-        $stmt = $mysqli -> prepare('
-        SELECT a.idAnuncios, a.titulo , a.descripcion , a.precio,mu.nombre  municipio from anuncios a 
-        inner join  persona  per on per.idPersona = a.idPersona 
-        inner join municipio mu  on per.idMunicipio = mu.idMunicipio 
-        inner join  tipousuario tu on tu.idTipoUsuario = per.idTipoUsuario 
-        inner join producto pro on pro.idProducto = a.idProducto 
-        inner join categorias  ca on ca.idCategorias = pro.idCategorias 
-        where a.estado like "%a" and  DATEDIFF(now(), a.fecha )<= tu.tiempoPublicacion
-        ');
-
-        generarRespuesta($stmt);
-        
-    break;
-
-    case "traerBusquedaNull":
-
-        $idcategoria = $_POST["idcategoria"];
-
-        $stmt = $mysqli -> prepare('
-        SELECT a.idAnuncios, a.titulo , a.descripcion , a.precio,mu.nombre  municipio from anuncios a 
-        inner join  persona  per on per.idPersona = a.idPersona 
-        inner join municipio mu  on per.idMunicipio = mu.idMunicipio 
-        inner join  tipousuario tu on tu.idTipoUsuario = per.idTipoUsuario 
-        inner join producto pro on pro.idProducto = a.idProducto 
-        inner join categorias  ca on ca.idCategorias = pro.idCategorias 
-        where a.estado like "%a" and  DATEDIFF(now(), a.fecha )<= tu.tiempoPublicacion 
-        and ca.idCategorias = ?
-        ');
-
-        $stmt->bind_param('i', $idcategoria);
-
-        generarRespuesta($stmt);
-    break;
 
     case "filtros":
         $departamento= isset($_POST["idDepartamento"]);
@@ -176,19 +99,6 @@ switch ($_POST["accion"]) {
         }
 
         //echo json_encode($parametros);
-
-        $dsn = "mysql:host=localhost:3308;dbname=mydb;charset=utf8mb4";
-        $options = [
-          PDO::ATTR_EMULATE_PREPARES   => false, // turn off emulation mode for "real" prepared statements
-          PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION, //turn on errors in the form of exceptions
-          PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, //make the default fetch be an associative array
-        ];
-        try {
-            $pdo = new PDO($dsn, "root", "", $options);
-        } catch (Exception $e) {
-            error_log($e->getMessage());
-            exit('Something weird happened'); //something a user can understand
-        }
 
         $stmt = $pdo->prepare($queryBase);
         $stmt->execute($parametros);
