@@ -23,67 +23,87 @@ $(document).ready(function () {
 
 function hacerBusqueda(busqueda, categoria) {
 
-    if (categoria != "null" && busqueda != "") {
-        $.ajax({
-            url: "backend/busqueda.php",
-            method: "POST",
-            data: `accion=traerNoNull&busqueda=%${busqueda}%&idcategoria=${categoria}`,
-            success: function (respuesta) {
-                let response = JSON.parse(respuesta)
-                // console.log(response);
+    dataQuerys = `accion=BusquedaPrincipal${busqueda!=""?`&busqueda=%${busqueda}%`:``}${validarCategoriaNumerica(categoria)?`&categoria=${categoria}`:``}`;
 
-                generarAnuncios(response);
-            },
-            error: function (error) {
-                console.error(error)
-            }
-        });
-    } else if (categoria == "null" && busqueda != "") {
-        console.log("Categoria null")
-        $.ajax({
-            url: "backend/busqueda.php",
-            method: "POST",
-            data: `accion=traerCategoriaNull&busqueda=%${busqueda}%`,
-            success: function (respuesta) {
-                let response = JSON.parse(respuesta);
 
-                generarAnuncios(response);
-            },
-            error: function (error) {
-                console.error(error)
-            }
-        });
-    } else if (categoria != "null" && busqueda == "") {
-        $.ajax({
-            url: "backend/busqueda.php",
-            method: "POST",
-            data: `accion=traerBusquedaNull&idcategoria=${categoria}`,
-            success: function (respuesta) {
-                let response = JSON.parse(respuesta)
-                // console.log(response);
+    console.log("Busqueda general");
+    console.log(dataQuerys.trim())
 
-                generarAnuncios(response);
-            },
-            error: function (error) {
-                console.error(error)
-            }
-        });
-    } else if (categoria == "null" && busqueda == "") {
-        $.ajax({
-            url: "backend/busqueda.php",
-            method: "POST",
-            data: `accion=traerTodos`,
-            success: function (respuesta) {
-                let response = JSON.parse(respuesta);
-                //console.log(response);
+    $.ajax({
+        url: "backend/busqueda.php",
+        method: "POST",
+        data: dataQuerys,
+        success: function (respuesta) {
+            let response = JSON.parse(respuesta)
+            console.log(Response);
+            generarAnuncios(response);
+        },
+        error: function (error) {
+            console.error(error)
+        }
+    });
 
-                generarAnuncios(response);
-            },
-            error: function (error) {
-                console.error(error)
-            }
-        });
-    }
+    // if (categoria != "null" && busqueda != "") {
+    //     $.ajax({
+    //         url: "backend/busqueda.php",
+    //         method: "POST",
+    //         data: `accion=traerNoNull&busqueda=%${busqueda}%&idcategoria=${categoria}`,
+    //         success: function (respuesta) {
+    //             let response = JSON.parse(respuesta)
+    //             // console.log(response);
+
+    //             generarAnuncios(response);
+    //         },
+    //         error: function (error) {
+    //             console.error(error)
+    //         }
+    //     });
+    // } else if (categoria == "null" && busqueda != "") {
+    //     console.log("Categoria null")
+    //     $.ajax({
+    //         url: "backend/busqueda.php",
+    //         method: "POST",
+    //         data: `accion=traerCategoriaNull&busqueda=%${busqueda}%`,
+    //         success: function (respuesta) {
+    //             let response = JSON.parse(respuesta);
+
+    //             generarAnuncios(response);
+    //         },
+    //         error: function (error) {
+    //             console.error(error)
+    //         }
+    //     });
+    // } else if (categoria != "null" && busqueda == "") {
+    //     $.ajax({
+    //         url: "backend/busqueda.php",
+    //         method: "POST",
+    //         data: `accion=traerBusquedaNull&idcategoria=${categoria}`,
+    //         success: function (respuesta) {
+    //             let response = JSON.parse(respuesta)
+    //             // console.log(response);
+
+    //             generarAnuncios(response);
+    //         },
+    //         error: function (error) {
+    //             console.error(error)
+    //         }
+    //     });
+    // } else if (categoria == "null" && busqueda == "") {
+    //     $.ajax({
+    //         url: "backend/busqueda.php",
+    //         method: "POST",
+    //         data: `accion=traerTodos`,
+    //         success: function (respuesta) {
+    //             let response = JSON.parse(respuesta);
+    //             //console.log(response);
+
+    //             generarAnuncios(response);
+    //         },
+    //         error: function (error) {
+    //             console.error(error)
+    //         }
+    //     });
+    // }
 }
 
 function generarAnuncios(response) {
@@ -252,6 +272,15 @@ function traerMunicipios() {
 }
 
 function busquedaDetallada() {
+
+    const queryString = window.location.search;
+
+    const urlParams = new URLSearchParams(queryString);
+
+    const busqueda = urlParams.get('busqueda');
+    const categoria = urlParams.get("categoria");
+
+
     let departamento = $("#departamentos option:selected").val();
     let municipio = $("#municipios option:selected").val();
 
@@ -268,7 +297,7 @@ function busquedaDetallada() {
     console.log(hasta);
     console.log(servicio);
 
-    let data = `accion=filtros${departamento!="null"?`&idDepartamento=${departamento}`:``}${municipio!="null"?`&idMunicipio=${municipio}`:``}${desde!=""?`&desde=${desde}`:``}${hasta!=""?`&hasta=${hasta}`:``}${servicio!=""?`&servicio=${servicio}`:``}`;
+    let data = `accion=filtros${departamento!="null"?`&idDepartamento=${departamento}`:``}${municipio!="null"?`&idMunicipio=${municipio}`:``}${validarValorNumerico(desde, "#mensajeDesde")?`&desde=${desde}`:``}${validarValorNumerico(hasta, "#mensajeHasta")?`&hasta=${hasta}`:``}${servicio!=""?`&servicio=${servicio}`:``}${validarCategoriaNumerica(categoria)?`&categoria=${categoria}`:``}${busqueda!=""?`&busqueda=%${busqueda}%`:``}`;
     console.log(data.trim());
 
     $.ajax({
@@ -290,7 +319,41 @@ function busquedaDetallada() {
 
 }
 
-
 $("#btn-buscar").on("click", () => {
     busquedaDetallada();
 });
+
+function validarValorNumerico(numero, idMensaje) {
+
+    let esNumero = isNaN(numero) ? false : true;
+    let estaVacio = numero == "" ? true : false;
+
+    if (estaVacio) {
+        $(idMensaje).fadeOut();
+        return false;
+    } else {
+        if (!esNumero) {
+            $(idMensaje).fadeIn();
+            return false;
+        } else {
+            $(idMensaje).fadeOut();
+            return true;
+        }
+    }
+}
+
+function validarCategoriaNumerica(numero) {
+
+    let esNumero = isNaN(numero) ? false : true;
+    let estaVacio = numero == "" ? true : false;
+
+    if (estaVacio) {
+        return false;
+    } else {
+        if (!esNumero) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+}
