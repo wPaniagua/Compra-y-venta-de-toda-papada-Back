@@ -1,14 +1,13 @@
 <?php
-//include("class-conexion.php");
+
 $host = "localhost";
 $usuario = "root";
 $password = "";
 $baseDatos = "mydb";
 $puerto = 3308;
 $link;
-//$conexion = new Conexion();
 
-$mysqil = new mysqli(	
+$mysqli = new mysqli(   
         $host,
         $usuario,
         $password,
@@ -16,44 +15,46 @@ $mysqil = new mysqli(
         $puerto
 );
 
-$primerNombre = $_POST["ppNombre"];
-$segNombre =$_POST["psNombre"];
-$primerApll =$_POST["ppApellido"];
-$segApll =$_POST["psApellido"];  
-//$id = $_POST['pid'];
-$correo =$_POST["pcorreo"]; 
-$contrasenia =$_POST["pcontrasenia"]; 
-$fechaNac =$_POST["pfechaNac"]; 
-//$urlFoto = $_POST["pfoto"]; 
-//$tipoUser = (int)$_POST["pestado"];
-//$telefono = $_POST["ptelefono"]; 
-$municipio = (int)$_POST["pmunicipio"];
-//$depto = $_POST["pdepto"];
-$tipoUser = (int)$_POST["ptipoUsuario"]; 
-      /*$sql = "INSERT INTO `persona` (`idPersona`, `primerNombre`, `segundoNombre`, `primerApellido`, 
-      `segundoApellido`, `correo`, `fechaNac`, `contrasenia`, `idTipoUsuario`, `idMunicipio`, `estado`) 
-      VALUES ('$id', '$primerNombre', '$segNombre', '$primerApll', '$segApll', '$correo', 
-      '$fechaNac', '$contrasenia', '$tipoUser', '$municipio', '$estado')";
-      $resultado = $conexion->ejecutarConsulta($sql);*/
+$primerNombre = $_POST["primerNombre"];
+$segundoNombre = $_POST["segundoNombre"];
+$primerApellido = $_POST["primerApellido"];
+$segundoApellido = $_POST["segundoApellido"];
+$correo = $_POST["correo"];
+$telefono = $_POST["telefono"];
+$fechaNac = $_POST["fechaNac"];
+$contrasenia = $_POST["contrasenia"];
+$idMunicipio  = (int)$_POST["idMunicipio"];
+/*
+$primerNombre = "Orlando";
+$segundoNombre = "Alfonso";
+$primerApellido = "Valladares";
+$segundoApellido = "Ponce";
+$correo = "orlando@gmail.com";
+$telefono = "34567890";
+$fechaNac = "12-12-1890";
+$contrasenia = "12345678";
+$idMunicipio  = "1";*/
 
-      $call = $mysqil->prepare('CALL SP_REGISTRO_USUARIO(?, ? , ? , ? ,? , ?, ? , ? , ? , @mensaje, @codigo, @idUsuario)');
 
-$call->bind_param('sssssssii', 
+
+$call = $mysqli->prepare('CALL SP_REGISTRO_USUARIO(?, ? , ? , ? ,? , ?, ? , ?, ? , @mensaje, @codigo, @idUsuario)');
+
+$call->bind_param('ssssssssi', 
     $primerNombre,
-    $segNombre,
-    $primerApll,
-    $segApll,
+    $segundoNombre,
+    $primerApellido,
+    $segundoApellido,
     $correo,
+    $telefono,
     $contrasenia,
     $fechaNac,
-    $tipoUser,
-    $municipio
+    $idMunicipio
 );
 
 
 $call->execute();
 
-$select = $mysqil->query('SELECT  @mensaje, @codigo, @idUsuario');
+$select = $mysqli->query('SELECT  @mensaje, @codigo, @idUsuario');
 
 $result = $select->fetch_assoc();
 $mensaje = $result['@mensaje'];
@@ -62,9 +63,9 @@ $idUsuario = $result['@idUsuario'];
 
 if((int)$codigo==1){
 
-        session_start(); 
+    session_start(); 
 
-        $_SESSION["id_usuario"] =   $idUsuario; 
+    $_SESSION["id_usuario"] =   null; 
         
         echo json_encode(
             array(

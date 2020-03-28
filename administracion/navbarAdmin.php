@@ -36,16 +36,17 @@
 		        <a class="nav-link  font-weight-bold" href="denuncias.php" tabindex="-1" aria-disabled="true">Denuncias</a>
 		      </li>
 		      <li class="nav-item" id="reportes">
-		        <a class="nav-link  font-weight-bold" href="#" tabindex="-1" aria-disabled="true">Reportes</a>
+		        <a class="nav-link  font-weight-bold" href="reportesDenuncias.php" tabindex="-1" aria-disabled="true">Reportes</a>
 		      </li>
 		    </ul>
 		    <form class="form-inline my-2 my-lg-0">
 		    	<a href="perfilAdmin.php">
 		    		<i class="fas fa-user fa-lg" id="iconU" style="display:"></i>
-		    		<div id="imgNP"></div>
+		    		<div id="imgNP" ></div>
 		    	</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		    	<button class="btn btn-success" id="cerrarSesion">Cerrar sesión
-		    		<i class="fas fa-window-close fa-lg" id="Salir" style=""></i>
+		    		<i class="fas fa-times-circle fa-lg" id="Salir" style=""></i>
+
 		    	</button>
 		    </form>
 		  </div>

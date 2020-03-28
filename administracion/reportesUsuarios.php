@@ -67,4 +67,6 @@ include '../backend/seguridad_admin.php';
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 <script src="../js/controlador_reportesUsers.js"></script>
 
+<script type="text/javascript" src="../js/fotoAdmin.js"></script>
+
 </html>

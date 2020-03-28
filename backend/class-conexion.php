@@ -15,7 +15,7 @@
 				$this->baseDatos,
 				$this->puerto
             );
-            echo "Se conecto correctamente";
+            //echo "Se conecto correctamente";
 		}
 
 		public function ejecutarConsulta($sql){
