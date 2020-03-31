@@ -1,8 +1,8 @@
 <?php 
 
 
-$mysqli = new mysqli( 'localhost:3308', 'root', '', 'mydb' );
-$dsn = "mysql:host=localhost:3308;dbname=mydb;charset=utf8mb4";
+$mysqli = new mysqli( 'localhost:3306', 'root', '', 'mydb' );
+$dsn = "mysql:host=localhost:3306;dbname=mydb;charset=utf8mb4";
 
 $options = [
   PDO::ATTR_EMULATE_PREPARES   => false, // turn off emulation mode for "real" prepared statements
