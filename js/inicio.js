@@ -1,9 +1,8 @@
 $(document).ready(function () {
 
-    traerElectronicos();
+    //  traerElectronicos();
     traerCategorias();
-
-
+    traerSlides()
 
 });
 
@@ -204,6 +203,8 @@ function traerElectronicos() {
 
             $("#electronicosSlides").html("");
 
+            var elementosSobrantes = response.length;
+
 
             for (let i = 0; i < cantidadSlides; i++) {
 
@@ -213,7 +214,10 @@ function traerElectronicos() {
                     $("#electronicosSlides").append(`<div class="carousel-item"><div class="row" id="electronicosParte${i}">`);
                 }
 
-                for (let j = 0; j < 4; j++) {
+
+                var sobranSuficientes = elementosSobrantes < 4 ? elementosSobrantes : 4;
+
+                for (let j = 0; j < sobranSuficientes; j++) {
                     if (j == 0) {
 
                         $(`#electronicosParte${i}`).append(`
@@ -254,6 +258,8 @@ function traerElectronicos() {
                     indexResponse++;
                 }
 
+                elementosSobrantes -= 4;
+
                 $("#electronicosSlides").append(`</div></div>`);
 
 
@@ -284,6 +290,171 @@ function traerElectronicos() {
     });
 }
 
+function llenarSlides(response, categoriaNombre, categoriaSlide, categoriaControl, indexGeneral) {
+
+    console.log("Valores recibidos:")
+    console.log(response);
+    console.log(categoriaNombre);
+    console.log(categoriaSlide);
+    console.log(categoriaControl);
+
+    //cambiar titulo a categoria
+    $(`#tituloCategoria${indexGeneral}`).html(categoriaNombre);
+    $(`#linkCategoria${indexGeneral}`).html(`
+    <a href="busqueda?categoria=${response[0].idCategorias}&busqueda=">Ver todos</a>
+    <i style="margin-left:1em;" class="fas fa-arrow-right"></i>
+    `);
+
+
+
+    var cantidadSlides = Math.ceil(response.length / 4);
+    console.log("cantidadSlides: " + cantidadSlides);
+
+    var cantidadFor = cantidadSlides == 1 ? 2 : cantidadSlides;
+    console.log("cantidad for: " + cantidadFor)
+
+
+    var indexResponse = 0;
+
+    // $("#tituloCategoria0")
+
+    $(categoriaSlide).html("");
+
+    var elementosSobrantes = response.length;
+
+
+    var cantNetSlides = cantidadSlides <= 2 ? cantidadSlides : 2;
+    for (let i = 0; i < cantidadSlides; i++) {
+
+        if (i == 0) {
+            $(categoriaSlide).append(`<div class="carousel-item active"><div class="row" id="${categoriaNombre}Parte${i}">`);
+        } else {
+            $(categoriaSlide).append(`<div class="carousel-item"><div class="row" id="${categoriaNombre}Parte${i}">`);
+        }
+
+        var sobranSuficientes = elementosSobrantes < 4 ? elementosSobrantes : 4;
+
+        for (let j = 0; j < sobranSuficientes; j++) {
+
+            console.log("Sobran sufiicientes");
+            console.log(`#${categoriaNombre}Parte${i}`);
+            if (j == 0) {
+
+                $(`#${categoriaNombre}Parte${i}`).append(`
+                        <div class="col-md-3">
+                            <div class="card mb-2">
+                                <img class="card-img-top"
+                                    src="https://eldiariony.files.wordpress.com/2018/04/sony-xperia-xz-premium-cnet.jpg?quality=80&strip=all&w=940"
+                                    alt="Card image cap">
+                                <div class="card-body" style="max-height:10em; min-height:10em;">
+                                    <h5 class="card-title">${response[indexResponse].titulo.slice(0, 22)}...</h5>
+                                    <p class="card-text">${response[indexResponse].descripcion}.</p>
+                                    <a class="btn btn-outline-info">Ver anuncio</a>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    `);
+            } else {
+
+                $(`#${categoriaNombre}Parte${i}`).append(`
+                    <div class="col-md-3 clearfix d-none d-md-block">
+                        <div class="card mb-2">
+                            <img class="card-img-top"
+                                src="https://eldiariony.files.wordpress.com/2018/04/sony-xperia-xz-premium-cnet.jpg?quality=80&strip=all&w=940"
+                                alt="Card image cap">
+                            <div class="card-body" style="max-height:10em; min-height:10em;">
+                                <h5 class="card-title">${response[indexResponse].titulo.slice(0, 22)}...</h5>
+                                <p class="card-text">${response[indexResponse].descripcion}.</p>
+                                <a class="btn btn-outline-info">Ver anuncio</a>
+                            </div>
+                        </div>
+                    </div>
+                
+                `);
+            }
+
+
+            indexResponse++;
+        }
+
+        elementosSobrantes -= 4;
+
+        $(categoriaSlide).append(`</div></div>`);
+
+
+    }
+
+    $(categoriaControl).html("");
+
+    for (var i = 0; i < cantidadFor; i++) {
+        console.log("entra a for de indicators");
+
+        if (i == 0) {
+            $(categoriaControl).append(`
+                    <li data-target="#slide${indexGeneral}" data-slide-to="${i}" style="background-color:black;" class="active">
+                    `);
+        } else {
+            $(categoriaControl).append(`
+                    <li data-target="#slide${indexGeneral}" data-slide-to="${i}" style="background-color:black;">
+                    `);
+        }
+
+    }
+
+    console.log(response);
+
+}
+
+function traerSlides() {
+
+    $.ajax({
+        url: "backend/inicio.php",
+        method: "POST",
+        data: `accion=probandoFetchGroup`,
+        success: function (respuesta) {
+            let response = JSON.parse(respuesta)
+
+            //console.log("FetchGroup");
+            //console.log(response);
+
+            var categorias = Array();
+            for (let i = 0; i < response.length; i++) {
+                if (!categorias.includes(response[i].categoria)) {
+                    categorias.push(response[i].categoria)
+                }
+            }
+
+            console.log("Categorias");
+            console.log(categorias);
+
+            var arregloGeneral = Array();
+
+            for (let i = 0; i < categorias.length; i++) {
+
+                let temp = response.filter((elemento) => {
+                    return elemento.categoria == categorias[i];
+                });
+
+                arregloGeneral.push(temp);
+            }
+
+            console.log("arregloGeneral");
+            console.log(arregloGeneral);
+            shuffleArray(arregloGeneral)
+
+            for (let i = 0; i < arregloGeneral.length; i++) {
+                llenarSlides(arregloGeneral[i], arregloGeneral[i][0].categoria, `#categoriaSlide${i}`, `#categoriaControl${i}`, i);
+            }
+
+
+        },
+        error: function (error) {
+            console.error(error)
+        }
+    });
+}
+
 
 function traerCategorias() {
 
@@ -294,7 +465,7 @@ function traerCategorias() {
         success: function (respuesta) {
             let response = JSON.parse(respuesta);
 
-            console.log(response);
+            //console.log(response);
 
             // $("#categoriasElementos").html("");
             // $("#categoriasElementos").append(`<option value="null" selected>Todas</option>`);
@@ -324,9 +495,9 @@ $("#btn-busqueda").on("click", () => {
     if (categoriaSeleccionada != "null" && busqueda != "") {
         window.location.href = `busqueda?categoria=${categoriaSeleccionada}&busqueda=${busqueda}`;
     } else if (categoriaSeleccionada == "null" && busqueda != "") {
-        window.location.href = `busqueda?categoria=todas&busqueda=${busqueda}`;
+        window.location.href = `busqueda?categoria=null&busqueda=${busqueda}`;
     } else if (categoriaSeleccionada != "null" && busqueda == "") {
-        console.error("Introduzca una busqueda")
+        window.location.href = `busqueda?categoria=${categoriaSeleccionada}&busqueda=`;
     } else if (categoriaSeleccionada == "null" && busqueda == "") {
         console.error("Introduzca una busqueda")
     }
@@ -337,3 +508,18 @@ $("#btn-busqueda").on("click", () => {
 
 
 // console.log(parseInt(2 / 3))
+
+
+
+/**
+ * Randomize array element order in-place.
+ * Using Durstenfeld shuffle algorithm.
+ */
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+}

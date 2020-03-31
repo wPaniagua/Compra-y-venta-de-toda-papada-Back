@@ -1,7 +1,7 @@
 <?php 
 
 // $mysqli = new mysqli( 'localhost:3308', 'root', '', 'mydb' );
-$dsn = "mysql:host=localhost:3308;dbname=mydb;charset=utf8mb4";
+$dsn = "mysql:host=localhost:3308;dbname=mydb;charset=utf8";
         $options = [
           PDO::ATTR_EMULATE_PREPARES   => false, // turn off emulation mode for "real" prepared statements
           PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION, //turn on errors in the form of exceptions
@@ -17,6 +17,7 @@ $dsn = "mysql:host=localhost:3308;dbname=mydb;charset=utf8mb4";
 switch ($_POST["accion"]) {
 
     case "BusquedaPrincipal":
+
         $queryBase='SELECT a.idAnuncios, a.titulo , a.descripcion , a.precio,mu.nombre  municipio from anuncios a 
         inner join  persona  per on per.idPersona = a.idPersona 
         inner join municipio mu  on per.idMunicipio = mu.idMunicipio
@@ -30,12 +31,17 @@ switch ($_POST["accion"]) {
 
 
         if( isset($_POST["busqueda"])){
-            $queryBase.=' and a.titulo like ?';
+            $queryBase.= ' and a.titulo like ?';
             array_push($parametros, $_POST["busqueda"] );
         }
         if( isset($_POST["categoria"])){
-            $queryBase.=' and ca.idCategorias = ?';
+            $queryBase.= ' and ca.idCategorias = ?';
             array_push($parametros, (int)$_POST["categoria"] );
+        }
+
+        if( isset($_POST["hasta"])){
+            $queryBase.= ' and a.precio <= ?';
+            array_push($parametros, $_POST["hasta"] );
         }
 
         
@@ -44,7 +50,7 @@ switch ($_POST["accion"]) {
         $stmt->execute($parametros);
         $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
-        if(!$arr) exit('No rows');
+        if(!$arr) echo json_encode(array("null"));
         
         echo json_encode($arr);
         
@@ -104,12 +110,14 @@ switch ($_POST["accion"]) {
         $stmt->execute($parametros);
         $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
-        if(!$arr) exit('No rows');
+        if(!$arr) echo json_encode(array("null"));
         
         echo json_encode($arr);
         
 
     break;
+
+    
 }
 
 function generarRespuesta($stmt){
@@ -150,4 +158,6 @@ function generarRespuesta($stmt){
         echo json_encode($respuesta);
 
 }
+
+$pdo=null;
 ?>

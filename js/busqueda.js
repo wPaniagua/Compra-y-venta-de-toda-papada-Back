@@ -5,25 +5,30 @@ $(document).ready(function () {
 
     const busqueda = urlParams.get('busqueda');
     const categoria = urlParams.get("categoria");
+    const hasta = urlParams.get("hasta");
 
 
     console.log("Busqueda get")
     console.log(busqueda);
     console.log("categoria get")
     console.log(categoria);
+    console.log("hasta get")
+    console.log(hasta);
 
     if (busqueda == null && categoria == null) {
         window.location.href = "busqueda?categoria=null&busqueda=";
     }
 
-    hacerBusqueda(busqueda, categoria);
+    hacerBusqueda(busqueda, categoria, hasta);
 
     traerDepartamentos();
+
+
 });
 
-function hacerBusqueda(busqueda, categoria) {
+function hacerBusqueda(busqueda, categoria, hasta) {
 
-    dataQuerys = `accion=BusquedaPrincipal${busqueda!=""?`&busqueda=%${busqueda}%`:``}${validarCategoriaNumerica(categoria)?`&categoria=${categoria}`:``}`;
+    dataQuerys = `accion=BusquedaPrincipal${busqueda!=""?`&busqueda=%${busqueda}%`:``}${validarCategoriaNumerica(categoria)?`&categoria=${categoria}`:``}${hasta!=null?`&hasta=${hasta}`:``}`;
 
 
     console.log("Busqueda general");
@@ -34,9 +39,25 @@ function hacerBusqueda(busqueda, categoria) {
         method: "POST",
         data: dataQuerys,
         success: function (respuesta) {
-            let response = JSON.parse(respuesta)
-            console.log(Response);
-            generarAnuncios(response);
+            console.log(respuesta)
+
+            var response = Array();
+            if (respuesta == `["null"][]`) {
+                response = [];
+            } else {
+                response = JSON.parse(respuesta)
+            }
+            console.log(response);
+            if (response.length > 0) {
+                $("#noHayDatos").fadeOut();
+
+                generarAnuncios(response);
+            } else {
+                //alert("No hay datos")
+                //TODO:no hay datos mensaje
+                $("#anuncios").html("");
+                $("#noHayDatos").fadeIn();
+            }
         },
         error: function (error) {
             console.error(error)
@@ -306,8 +327,26 @@ function busquedaDetallada() {
         datatype: "json",
         data: data.trim(),
         success: (respuesta) => {
-            let response = JSON.parse(respuesta);
+
+            var response = Array();
+
+            if (respuesta == `["null"][]`) {
+                response = [];
+            } else {
+                response = JSON.parse(respuesta)
+            }
             console.log(response);
+            if (response.length > 0) {
+                $("#noHayDatos").fadeOut();
+                generarAnuncios(response);
+            } else {
+                //alert("No hay datos")
+                $("#anuncios").html("");
+                $("#noHayDatos").fadeIn();
+            }
+
+            // let response = JSON.parse(respuesta);
+            // console.log(response);
 
             generarAnuncios(response);
         },
