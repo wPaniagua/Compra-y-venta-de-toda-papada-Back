@@ -12,7 +12,12 @@
 </head>
 
 <body>
-    <div class="container" style="margin-top: 2em;">
+
+    <div class="alert alert-danger" role="alert" style="display: none; width: 30%;margin-left: auto;margin-right: auto;"
+        id="noHayDatos">
+        No hay resultados para la busqueda especificada
+    </div>
+    <div class="container" style="margin-top: 2em;" id=main>
         <div class="row">
             <div class="col col-md-8">
                 <div class="container">
@@ -94,14 +99,23 @@
                         </div>
                     </div>
                     <div class="row rowFiltros">
-                        <div class="col col-lg-12">
+                        <div class="col col-lg-12" style="text-align: center;">
                             <Strong>Detalla un rango de precios:</Strong>
                             <br>
                             <label class="" for="desde">Desde</label>
                             <input type="text" class="form-control" id="desde">
+                            <div style="display: none; margin-left: auto;margin-right: auto; width: 40%;padding: .1em;"
+                                class="alert alert-danger" role="alert" id="mensajeDesde">
+                                No es un número.
+                            </div>
 
+                            <br>
                             <label class="" for="hasta">Hasta</label>
                             <input type="text" class="form-control" id="hasta">
+                            <div style="display: none; margin-left: auto;margin-right: auto; width: 40%;padding: .1em;"
+                                class="alert alert-danger" role="alert" id="mensajeHasta">
+                                No es un número.
+                            </div>
                         </div>
                     </div>
                     <div class="row rowFiltros" style="padding-left: 2em;padding-right: auto;">
@@ -126,7 +140,7 @@
                             </div>
                             <br>
                             <button id="btn-buscar" type="button" class="btn btn-outline-success"
-                                style="margin-left: auto;margin-right: auto;padding-inline: 4em; margin-top: 1em;">Buscar</button>
+                                style="margin-left: auto;margin-right: auto;padding-inline: 4em; margin-top: 1em;">Filtrar</button>
                         </div>
                     </div>
                 </div>
