@@ -10,7 +10,7 @@ $("#btnGuardar").on("click", () => {
     let contraCon= $("#confContrasenia").val().trim();
     var tipoUsuario = $('input:radio[name=tipo]:checked').val();
     let municipioSeleccionado = $("#municipios option:selected").val().trim();
-    let depto=$("#departamentos option:selected").val().trim();
+    let depto=$("#departamentos option:selected").val();
      console.log(tipoUsuario);
 
 
@@ -66,13 +66,14 @@ $("#btnGuardar").on("click", () => {
         });
     }
 })
-
+/*
 $("#crearCuenta").on("click", () => {
     $(funtion(){
-      $('#modalFormularioLogin').modal(toggle)  
-  });
+      $('#modalFormularioLogin').modal('toggle');
+      return false;
+  })
     
-})
+})*/
 
 function validarNombres(nombres, idAviso) {
 
