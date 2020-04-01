@@ -301,7 +301,7 @@ function llenarSlides(response, categoriaNombre, categoriaSlide, categoriaContro
     //cambiar titulo a categoria
     $(`#tituloCategoria${indexGeneral}`).html(categoriaNombre);
     $(`#linkCategoria${indexGeneral}`).html(`
-    <a href="busqueda?categoria=${response[0].idCategorias}&busqueda=">Ver todos</a>
+    <a href="busqueda.html?categoria=${response[0].idCategorias}&busqueda=">Ver todos</a>
     <i style="margin-left:1em;" class="fas fa-arrow-right"></i>
     `);
 
@@ -493,11 +493,11 @@ $("#btn-busqueda").on("click", () => {
     console.log(busqueda)
 
     if (categoriaSeleccionada != "null" && busqueda != "") {
-        window.location.href = `busqueda?categoria=${categoriaSeleccionada}&busqueda=${busqueda}`;
+        window.location.href = `busqueda.html?categoria=${categoriaSeleccionada}&busqueda=${busqueda}`;
     } else if (categoriaSeleccionada == "null" && busqueda != "") {
-        window.location.href = `busqueda?categoria=null&busqueda=${busqueda}`;
+        window.location.href = `busqueda.html?categoria=null&busqueda=${busqueda}`;
     } else if (categoriaSeleccionada != "null" && busqueda == "") {
-        window.location.href = `busqueda?categoria=${categoriaSeleccionada}&busqueda=`;
+        window.location.href = `busqueda.html?categoria=${categoriaSeleccionada}&busqueda=`;
     } else if (categoriaSeleccionada == "null" && busqueda == "") {
         console.error("Introduzca una busqueda")
     }
