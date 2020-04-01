@@ -24,6 +24,7 @@ $telefono = $_POST["telefono"];
 $fechaNac = $_POST["fechaNac"];
 $contrasenia = $_POST["contrasenia"];
 $idMunicipio  = (int)$_POST["idMunicipio"];
+$tipoUsuario=(int)$_POST["tipoUs"];
 /*
 $primerNombre = "Orlando";
 $segundoNombre = "Alfonso";
@@ -37,9 +38,9 @@ $idMunicipio  = "1";*/
 
 
 
-$call = $mysqli->prepare('CALL SP_REGISTRO_USUARIO(?, ? , ? , ? ,? , ?, ? , ?, ? , @mensaje, @codigo, @idUsuario)');
+$call = $mysqli->prepare('CALL SP_REGISTRO_USUARIO(?, ? , ? , ? ,? , ?, ? , ?, ? , ?, @mensaje, @codigo, @idUsuario)');
 
-$call->bind_param('ssssssssi', 
+$call->bind_param('ssssssssii', 
     $primerNombre,
     $segundoNombre,
     $primerApellido,
@@ -48,7 +49,8 @@ $call->bind_param('ssssssssi',
     $telefono,
     $contrasenia,
     $fechaNac,
-    $idMunicipio
+    $idMunicipio,
+    $tipoUsuario
 );
 
 
