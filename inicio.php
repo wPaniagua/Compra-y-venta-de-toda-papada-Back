@@ -70,7 +70,7 @@
                     if (isset($_SESSION["id_usuario"])){
                         echo ('<li class="nav-item">
                         <a class="nav-link" href="administracion/index.php">Admin</a></li><li class="nav-item">
-                        <a class="nav-link" href="perfil.php">Usuario Normal</a></li>');
+                        <a class="nav-link" href="usuarioCV/perfil.php">Usuario Normal</a></li>');
                     }
                     else{
                         echo ('<li class="nav-item"><button type="button" class="btn" id="iniciarSesionBoton" data-toggle="modal" data-target="#modalFormularioLogin"> Ingresa</button></li>');
@@ -130,11 +130,14 @@
 
                         <br>
                         <div class="text-center">
-                            <small>¿No tienes una cuenta? </small><a href="#" class="btn btn-outline-success">
+                            <small>¿No tienes una cuenta? </small>
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalRegistro" id="crearCuenta">
                                 Crea una cuenta
-                            </a>
+                            </button>
                         </div>
-
+                        <?php 
+                            include "reg.php";
+                         ?>
                     </form>
                 </div>
                 <!-- <div class="modal-footer">

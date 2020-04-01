@@ -93,7 +93,7 @@ function eliminarCategorias(idCategoria){
 		success:function(respuesta){
 			console.log(respuesta);
 
-			if (respuesta[0].mensaje='Eliminado exitosamente') {
+			if (respuesta[0].mensaje=='Eliminado exitosamente') {
 
 				$("#msjDelete").html(respuesta[0].mensaje);
 				$("#msjDelete").fadeIn();
@@ -139,7 +139,7 @@ function editCategorias(){
 			success:function(respuesta){
 				console.log(respuesta);
 				//alert(respuesta[0].mensaje);
-				if (respuesta[0].mensaje='Edicion exitosa') {
+				if (respuesta[0].mensaje=='Edicion exitosa') {
 					//alert(respuesta[0].mensaje);
 
 					$("#msjDelete").html(respuesta[0].mensaje);
