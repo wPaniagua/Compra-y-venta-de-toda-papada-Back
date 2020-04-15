@@ -7,7 +7,7 @@
 	//
 	$codigo=$_GET['cod'];
     //$codigo=4;
-	$mysqli = new mysqli("localhost:3308", "root", "", "mydb");
+	$mysqli = new mysqli("localhost:3306", "root", "", "mydb");
 
 	$mysqli->multi_query("SET @p0=''; SET @p1=''; SET @p2=''; SET @p3=''; SET @p4=''; SET @p5=''; SET @p6=''; SET @p7=''; SET @p8='".$codigo."'; SET @p9=''; SET @p10='archivos/".$nombre."';SET @p11='editarFoto'; CALL `SP_PERFIL_ADMIN`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11,@p12); SELECT @p12 AS `mensaje`;");
            

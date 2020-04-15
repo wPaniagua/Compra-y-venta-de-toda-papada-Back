@@ -2,6 +2,10 @@ $('#btnPublicar').click(registrarDatos);
 $(window).on("load", function () {
     cargarCategorias();
 
+    $("#publicaciones").addClass("active");
+
+
+    
 });
 function registrarDatos(){
     var nombre = $('#titulo').val();
@@ -9,14 +13,14 @@ function registrarDatos(){
     var idCategorias = $('#slc-categorias').val();
     var tipo = $('input:radio[name=tipo]:checked').val();
     var precio = $('#precio').val();
-    var idPersona = 1;//$('#idPersona').val();
+    var idPersona = $('#id_usuario').val();
     var idMoneda = $('input:radio[name=moneda]:checked').val();
     //var url = $('#url');
     console.log(nombre);
 
     
     $.ajax({
-            url: "backend/gestionAgregarPub.php",
+            url: "../backend/gestionAgregarPub.php",
             data: `accion=obtener`+"&nombre="+nombre+"&descripcion="+descripcion+"&idCategoria="+idCategorias+"&tipo="+tipo+"&precio="+ precio+
             "&idPersona="+idPersona+"&idMoneda="+idMoneda,
             method: "POST",
@@ -35,7 +39,7 @@ function registrarDatos(){
 
 function cargarCategorias() {
     $.ajax({
-        url: "backend/gestionAgregarPub.php",
+        url: "../backend/gestionAgregarPub.php",
         method: "POST",
         data: `accion=seleccionarCategorias`,
         success: function (respuesta) {
@@ -56,6 +60,7 @@ function cargarCategorias() {
 }
 
 
+
 $(document).ready(() => {
 
     console.log("DOM cargado");
@@ -67,7 +72,7 @@ $(document).ready(() => {
     $.ajax({
 
 
-        url: "backend/Select_Deptos_Municipios.php",
+        url: "../backend/Select_Deptos_Municipios.php",
         data: 'data=' + 'departamentos', //+ "&contrasena=" + contrasena, //data, //"correo=" + $("#txt-correo").val().toLowerCase() + "&password=" + $("#txt-contrasena").val(),
         method: "POST",
         dataType: "json",
@@ -107,7 +112,7 @@ $('#departamentos').on('change', function (e) {
 
 
     $.ajax({
-        url: "backend/Select_Deptos_Municipios.php",
+        url: "../backend/Select_Deptos_Municipios.php",
         data: 'data=' + 'municipios&idDepartamento=' + valueSelected.trim(), //+ "&contrasena=" + contrasena, //data, //"correo=" + $("#txt-correo").val().toLowerCase() + "&password=" + $("#txt-contrasena").val(),
         method: "POST",
         dataType: "json",

@@ -1,6 +1,6 @@
 <?php 
 
-// $mysqli = new mysqli( 'localhost:3308', 'root', '', 'mydb' );
+$mysqli = new mysqli( 'localhost:3306', 'root', '', 'mydb' );
 $dsn = "mysql:host=localhost:3306;dbname=mydb;charset=utf8";
         $options = [
           PDO::ATTR_EMULATE_PREPARES   => false, // turn off emulation mode for "real" prepared statements
@@ -271,7 +271,7 @@ function generarRespuesta($stmt){
                 $titulo,
                 $descripcion,
                 $precio,
-                $municipio,
+                $municipio
             );
 
         $respuesta = array();
@@ -285,7 +285,7 @@ function generarRespuesta($stmt){
                 "titulo"=>$titulo,
                 "descripcion"=>$descripcion,
                 "precio"=>$precio,
-                "municipio"=>$municipio,
+                "municipio"=>$municipio
             );
         
             $index++;

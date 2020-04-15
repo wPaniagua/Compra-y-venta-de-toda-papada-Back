@@ -12,9 +12,6 @@ include '../backend/seguridad_admin.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
 
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-
-
     <script src="../js/jquery-3.4.1.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
 
@@ -23,6 +20,8 @@ include '../backend/seguridad_admin.php';
     <script src="../js/FontAwesome.min.js"></script>
 
     <link rel="stylesheet" href="../css/inicio.styles.css">
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
 
 </head>
 
@@ -176,15 +175,15 @@ include '../backend/seguridad_admin.php';
     <div class="container">
         <div class="row">
             <div class="col col-lg-12">
-                <div>
+                <div class="table-responsive">
                     <center>
                         <h2>Lista de publicaciones</h2>
                     </center>
                     <br>
 
-                    <table border="1" cellspacing="0" cellpadding="10" class="table-striped table-hover"
-                        id="tablaPublicaciones" style="width: 85%; margin-left:auto; margin-right:auto">
-                        <thead>
+                    <table  class="table table-striped table-hover table-bordered"
+                        id="tablaPublicaciones" style="width: 100%; margin-left:auto; margin-right:auto">
+                        <thead class="thead-dark">
                             <tr>
                                 <td><strong> Nombre </strong></td>
                                 <td><strong>Tipo (Produto o Servicio) </strong></td>
@@ -230,6 +229,7 @@ include '../backend/seguridad_admin.php';
 
     <script src="../js/publicaciones-admin.js"></script>
     <script type="text/javascript" src="../js/all.js"></script>
+    <script type="text/javascript" src="../js/fotoAdmin.js"></script>
 </body>
 
 </html>

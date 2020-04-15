@@ -1,5 +1,5 @@
 <?php 
-//session_start(); 
+session_start(); 
 
 $mysqli = new mysqli( 'localhost:3306', 'root', '', 'mydb' );
 
@@ -41,15 +41,23 @@ switch ($_POST["accion"]) {
     break;
 
     case 'obtener':
+    
+    $codigo=$_POST['nombreImagen'];
+    $nombre_temporal=$_FILES['archivo']['tmp_name'];
+    $nombre=$_FILES['archivo']['codigo'];
+    move_uploaded_file($nombre_temporal, 'ImagenesAnuncios/'.$nombre);
+
+    $idUser = $_SESSION["id_usuario"];
     $nombreProducto = $_POST["nombre"];
     $caracteristicas = $_POST["descripcion"];
     $idCategoria = $_POST["idCategoria"];
     $tipo = $_POST["tipo"];
     $precio = $_POST["precio"];
-    $idPersona = $_POST["idPersona"];
+    $idPersona = $idUser;//$_SESSION["id_usuario"];
     $idMoneda = $_POST["idMoneda"];
+    //$url = $_POST["url"];
 
-    $mysqli->multi_query("SET @p0='".$nombreProducto."'; SET @p1='".$caracteristicas."'; SET @p2='".$idCategoria."'; SET @p3='".$tipo."'; SET @p4='".$precio."'; SET @p5='".$idPersona."'; SET @p6='".$idMoneda."'; CALL `SP_AGREGAR_PUB`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7); SELECT @p7 AS `mensaje`;");
+    $mysqli->multi_query("SET @p0='".$nombreProducto."'; SET @p1='".$caracteristicas."'; SET @p2='".$idCategoria."'; SET @p3='".$tipo."'; SET @p4='".$precio."'; SET @p5='".$idPersona."'; SET @p6='".$idMoneda."';SET @p7='ImagenesAnuncios/".$nombre."';SET @p8=''; CALL `SP_AGREGAR_PUB`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8); SELECT @p8 AS `mensaje`;");
     $resultadoConsulta = array();
     do {
         if ($resultado = $mysqli->store_result()) {

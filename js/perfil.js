@@ -268,7 +268,7 @@ function obtenerFotos(idUsuario){
                 contenido='<img src="../'+respuesta[0].urlFoto+'" class="rounded-left rounded-circle" alt="..." style="width: 230px;height: 300px;">';
                     /*  */
 
-                foto='<img src="../'+respuesta[0].urlFoto+'" alt="..." class="rounded-circle" alt="..." style="width: 50px;height: 60px;">';
+                foto='<img src="../'+respuesta[0].urlFoto+'" alt="..." class="rounded-circle" alt="..." style="width: 50px;height: 50px;">';
                 
                 document.getElementById("imgUsuario").innerHTML = " ";
                 document.getElementById("imgNP").innerHTML = " ";

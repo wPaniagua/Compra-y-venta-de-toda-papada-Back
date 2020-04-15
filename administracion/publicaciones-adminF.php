@@ -16,7 +16,7 @@ include '../backend/seguridad_admin.php';
 
 
     <script src="../js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="../css/FontAwesome.min.css">
     <script src="../js/FontAwesome.min.js"></script>
@@ -84,10 +84,10 @@ include '../backend/seguridad_admin.php';
         <h2>Lista de publicaciones</h2>
     </center>
     <br>
-
-    <table border="1" cellspacing="0" cellpadding="10" class="table-striped table-hover" id="tablaPublicaciones"
-        style="width: 85%; margin-left:auto; margin-right:auto">
-        <thead>
+    <div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered" id="tablaPublicaciones"
+        style="width: 100%; margin-left:auto; margin-right:auto">
+        <thead class="thead-dark">
             <tr>
                 <td><strong> Nombre </strong></td>
                 <td><strong>Tipo (Produto o Servicio) </strong></td>
@@ -107,7 +107,7 @@ include '../backend/seguridad_admin.php';
            
         </tr>
     </table>
-
+    </div>
 
     <script src="../js/publicaciones-admin.js"></script>
 

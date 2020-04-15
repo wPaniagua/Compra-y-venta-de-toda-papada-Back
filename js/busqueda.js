@@ -16,7 +16,11 @@ $(document).ready(function () {
     //console.log(hasta);
 
     if (busqueda == null && categoria == null) {
+<<<<<<< HEAD
         window.location.href = "busqueda.php?categoria=null&busqueda=";
+=======
+        window.location.href = "busqueda.html?categoria=null&busqueda=";
+>>>>>>> 5455dac45e58af289672352a4993af17da2115c1
     }
 
     if (busqueda != null) {

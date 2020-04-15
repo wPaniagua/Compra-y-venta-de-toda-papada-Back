@@ -4,7 +4,7 @@
 		private $usuario = "root";
 		private $password = "";
 		private $baseDatos = "mydb";
-		private $puerto = 3308;
+		private $puerto = 3306;
 		private $link;
 
 		public function __construct(){

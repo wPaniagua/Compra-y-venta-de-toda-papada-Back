@@ -1,0 +1,22 @@
+.navBarN{
+	font-size: 12px;
+	font-weight: 600;
+	color: #ffffff;
+	padding-top: 7px;
+    font-size: 37px;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    margin-left: 5px;
+    margin-right: 0px;
+
+}
+
+.navbar-nav .nav-link {
+    color: rgb(251, 246, 246);
+    font-size:16px;
+    text-transform: uppercase;
+}   
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,.5);
+} 

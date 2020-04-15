@@ -56,7 +56,7 @@ $("#btnGuardar").on("click", () => {
                 if (respuesta.codigo == 1) {
                     //$("#regAdmin").fadeIn();
                    // $("#regAdmin").fadeOut(3000);
-                    var url = "http://localhost/Compra-y-venta-de-toda-papada-Back/perfil.php";
+                    var url = "http://localhost/Compra-y-venta-de-toda-papada-Back/usuarioCV/perfil.php";
                     window.location = url;
                 }
             },
@@ -240,7 +240,6 @@ function validarTelefono(tel)
     }
 }
 
-
 $(document).ready(() => {
 
     console.log("DOM cargado");
@@ -273,12 +272,7 @@ $(document).ready(() => {
         error: function (error) {
             console.log(error);
         }
-
     });
-
-
-
-
 });
 
 

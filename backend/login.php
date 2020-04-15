@@ -4,7 +4,7 @@ $host = "localhost";
 $usuario = "root";
 $password = "";
 $baseDatos = "mydb";
-$puerto = 3308;
+$puerto = 3306;
 $link;
 
 $mysqli = new mysqli(	
@@ -44,7 +44,8 @@ if($existe==1 && $contrasenaCorrecta==1 && $estadoRegistro==1 && $esUsuarioAdmin
             'mensaje'=>$mensaje,
             'existe'=> $existe,
             'contrasenaCorrecta'=>$contrasenaCorrecta,
-            'estadoRegistro'=>$estadoRegistro
+            'estadoRegistro'=>$estadoRegistro,
+            'usuario'=>$esUsuarioAdmin
         ));
 }
 else if($existe==1 && $contrasenaCorrecta==1 && $estadoRegistro==1 && $esUsuarioAdmin == 0 ){
@@ -60,7 +61,8 @@ else if($existe==1 && $contrasenaCorrecta==1 && $estadoRegistro==1 && $esUsuario
             'mensaje'=>$mensaje,
             'existe'=> $existe,
             'contrasenaCorrecta'=>$contrasenaCorrecta,
-            'estadoRegistro'=>$estadoRegistro
+            'estadoRegistro'=>$estadoRegistro,
+            'usuario'=>$esUsuarioAdmin
         ));
 }
 else{

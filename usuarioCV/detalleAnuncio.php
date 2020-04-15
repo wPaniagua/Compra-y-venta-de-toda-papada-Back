@@ -1,0 +1,235 @@
+<?php 
+
+	include '../backend/seguridad.php';
+
+?>
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>PUBLITODO</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link href="../css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../css/all.css">
+<link rel="stylesheet" href="../css/etalage.css">
+
+<link rel="stylesheet" type="text/css" href="../css/customDetalles.css">
+<!--initiate accordion-->
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+	<a href="../inicio.php" class="btn btn-danger px-5"><i class="fas fa-long-arrow-alt-left fa-2x" id="iconU"></i> </a>
+	<br>
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+			<div class="single_top">
+	 		<div class="container"> 
+	  	<div class="single_grid">
+	  		<h2 id="tituloAnuncio">Producto X</h2>
+					<div class="grid imgCate_3_of_2">
+						<ul id="etalage">
+							<li>
+								<a href="#">
+									<img class="etalage_thumb_image" src="../imgCate/microondas.jpg" class="img-responsive" />
+									<img class="etalage_source_image" src="../imgCate/microondas.jpg" class="img-responsive" title="" />
+								</a>
+							</li>
+							<li>
+								<img class="etalage_thumb_image" src="../imgCate/micro2.jpg" class="img-responsive" />
+								<img class="etalage_source_image" src="../imgCate/micro2.jpg" class="img-responsive" title="" />
+							</li>
+							<li>
+								<img class="etalage_thumb_image" src="../imgCate/micro3.jpg" class="img-responsive"  />
+								<img class="etalage_source_image" src="../imgCate/micro3.jpg"class="img-responsive"  />
+							</li>
+						    <li>
+								<img class="etalage_thumb_image" src="../imgCate/micro4.jpg" class="img-responsive"  />
+								<img class="etalage_source_image" src="../imgCate/micro4.jpg"class="img-responsive"  />
+							</li>
+						</ul>
+						 <div class="clearfix"></div>		
+				  </div> 
+			</div>
+		</div>
+	</div>
+</div>
+<div class="col-md-8">
+	<input type="text" name="idUL" id="idUL" style="display: none">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10">
+				<br>
+				<h3>Detalles Anuncio</h3>
+			<hr style="background-color:#e91e63;">
+			<div class=""><!--INICIO FORMULARIO DETALLE PROD -->
+				<form>
+			  <div class="row">
+			    <div class="col-md-5">
+			      <label class="font-weight-bold">Producto / Servicio:</label>
+			    </div>
+			    <div class="col-md-7">
+			      <h4 id="titPub"></h4>
+			    </div>
+			  </div>
+			  <div class="row">
+			    <div class="col-md-5">
+			      <label class="font-weight-bold">Descripcion:</label>
+			    </div>
+			    <div class="col-md-7">
+			      <label id="descripcion" class="">Descripcion ...</label>
+			    </div>
+			  </div>
+			  <div class="row">
+			    <div class="col-md-5">
+			      <label class="font-weight-bold">Precio:</label>
+			    </div>
+			    <div class="col-md-7">
+			      <label id="precio" class="">Precio ...</label>
+			    </div>
+			  </div>
+			</form>
+			</div><!--FIN FORMULARIO DETALLE PROD -->
+			<br>
+			<h3>Datos Vendedor</h3>
+			<hr style="background-color:#e91e63;">
+			<div><!--inicio FORMULARIO datos vendedor -->
+				<form>
+				 <div class="row">
+			    <div class="col-md-5">
+			      <label class="font-weight-bold">Nombre:</label>
+			    </div>
+			    <div class="col-md-7">
+			      <label id="nombre" class="">Nombre ...</label>
+			    </div>
+			  </div>
+			  <div class="row">
+			    <div class="col-md-5">
+			      <label class="font-weight-bold">Correo:</label>
+			    </div>
+			    <div class="col-md-7">
+			      <label id="correo" class="">Correo ...</label>
+			    </div>
+			  </div>
+			  <div class="row">
+			    <div class="col-md-5">
+			      <label class="font-weight-bold">Telefono:</label>
+			    </div>
+			    <div class="col-md-7">
+			      <label id="telefono" class="">Telefono ...</label>
+			    </div>
+			  </div>
+			 </form>
+			</div><!--fin FORMULARIO datos vendedor -->
+			<br>
+			<h3>Ubicacion</h3>
+			<hr style="background-color:#e91e63;">
+			<div><!--inicio FORMULARIO datos ubicacion -->
+				<form>
+				 <div class="row">
+			    <div class="col-md-5">
+			      <label class="font-weight-bold">Departamento Recidencia:</label>
+			    </div>
+			    <div class="col-md-7">
+			      <label id="depto" class="">Depto ...</label>
+			    </div>
+			  </div>
+			  <div class="row">
+			    <div class="col-md-5">
+			      <label class="font-weight-bold">Municipio:</label>
+			    </div>
+			    <div class="col-md-7">
+			      <label id="municipio" class="">Municipio ...</label>
+			    </div>
+			  </div>
+			 </form>
+			</div><!--fin FORMULARIO ubicacion -->
+			<br><hr style="background-color:#e91e63;">
+			</div>
+			</div>
+		</div>
+		<div class="row">
+		<div class="col-md-6 px-5">
+		<p>
+  	<a class="btn btn-danger" data-toggle="collapse" href="#calificar" role="button" aria-expanded="false" aria-controls="calificar" id="btn-Cal">Calificar</a>
+		</p>
+		<div class="row">
+  	<div class="col">
+    		<div class="collapse multi-collapse" id="calificar">
+        <div class="card card-body">
+       			<ul>
+       				<input class="form-check-input" type="radio" name="calificacion" id="cal1" value="1" checked>
+  								 <label class="form-check-label colorEstrellas" for="calificacion">
+    								★
+  								 </label><br>
+  								 <input class="form-check-input" type="radio" name="calificacion" id="cal2" value="2" >
+  								 <label class="form-check-label colorEstrellas" for="calificacion">
+    								★★
+  								 </label><br>
+  								 <input class="form-check-input" type="radio" name="calificacion" id="cal3" value="3" >
+  								 <label class="form-check-label colorEstrellas" for="calificacion">
+    								★★★
+  								 </label><br>
+  								 <input class="form-check-input" type="radio" name="calificacion" id="cal4" value="4" >
+  								 <label class="form-check-label colorEstrellas" for="calificacion">
+    								★★★★
+  								 </label><br>
+  								 <input class="form-check-input" type="radio" name="calificacion" id="cal5" value="5" >
+  								 <label class="form-check-label colorEstrellas" for="calificacion">
+    								★★★★★
+  								 </label><br>
+  								 <label>Razones de su calificacion:</label>
+  								 (Opcional)
+  								 <textarea name="razones" id="razones" class="form-control " rows="4"></textarea><br>
+  								 <button type="button" id="guardarCalificacion" class="btn btn-success" >Guardar</button><br>
+  								 <span class="alert alert-warning" id="msjG" style="display: none"></span>
+       			</ul>
+      		</div>
+    			</div><br><br>
+  				</div>
+					</div>
+				</div><!--fin primer columna-->
+				<div class="col-md-6">
+		<p>
+  	<a class="btn btn-danger" data-toggle="collapse" href="#verCalificacion" role="button" aria-expanded="false" aria-controls="verCalificacion" id="verCalifi">Ver calificaciones</a>
+		</p>
+		<div class="row">
+  	<div class="col">
+    		<div class="collapse multi-collapse" id="verCalificacion">
+        <div class="card card-body">
+       			<form>
+       				<h3 id="calTotal" class="colorEstrellas"></h3><br>
+       				<span id="msjTotal" class="alert alert-danger" style="display: none;">Esta publicacion no tiene calificacion</span>
+       				<div id="listaUsuarios">
+       				</div>
+       			</form>
+      		</div>
+    			</div><br><br>
+  				</div>
+					</div>
+				</div><!--fin segunda columna-->
+		</div>
+	</div>
+</div>
+</div>
+       
+			 
+
+
+
+</body>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/all.js"></script>
+
+<script src="../js/bootstrap.bundle.min.js.descarga"></script>
+<script src="../js/jquery.etalage.min.js"></script>
+<script src="../js/controladorDetalles.js"></script>
+</html>		

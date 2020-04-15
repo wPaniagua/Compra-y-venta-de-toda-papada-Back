@@ -1,22 +1,22 @@
 
 //Cambio en la tabla Denuncias//
-ALTER TABLE `denuncias` CHANGE `pubDenunciada` `cantidad` INT(11) NULL DEFAULT NULL;
+ALTER TABLE denuncias CHANGE pubDenunciada cantidad INT(11) NULL DEFAULT NULL;
 
 
 //Agregar campo en la tabla denuncias
-ALTER TABLE `denuncias`add denunciante INTEGER;
-ALTER TABLE `denuncias` ADD FOREIGN KEY (denunciante) REFERENCES `persona` (`idPersona`) ;
+ALTER TABLE denunciasadd denunciante INTEGER;
+ALTER TABLE denuncias ADD FOREIGN KEY (denunciante) REFERENCES persona (idPersona) ;
 
 
 //Agregar campo en la tabla anuncios
-ALTER TABLE `anuncios`add fecha DATETIME;
+ALTER TABLE anunciosadd fecha DATETIME;
 
 //SP Reportes
 
 DELIMITER $$
-CREATE OR REPLACE PROCEDURE `SP_REPORTES`(
-                  IN `accion` VARCHAR(45), 
-                  OUT `mensaje` VARCHAR(100))
+CREATE OR REPLACE PROCEDURE SP_REPORTES(
+                  IN accion VARCHAR(45), 
+                  OUT mensaje VARCHAR(100))
 SP:BEGIN
   DECLARE conteo INT;
   DECLARE tempMensaje VARCHAR(100);
@@ -56,6 +56,9 @@ SP:BEGIN
    
 END$$
 DELIMITER ;
+
+
+
 
 
 
