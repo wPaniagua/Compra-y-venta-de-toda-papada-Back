@@ -16,7 +16,7 @@ $(document).ready(function () {
     console.log(hasta);
 
     if (busqueda == null && categoria == null) {
-        window.location.href = "busqueda?categoria=null&busqueda=";
+        window.location.href = "busqueda.html?categoria=null&busqueda=";
     }
 
     hacerBusqueda(busqueda, categoria, hasta);

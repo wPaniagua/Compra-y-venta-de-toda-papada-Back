@@ -99,7 +99,19 @@ async function login(correo, contrasena) {
 
 
                 await sleep(500);
-                location.reload();
+                //location.reload();
+                //console.log('Entro a :'+respuesta.usuario);
+                //console.log(respuesta);
+                if (respuesta.usuario==1) {
+                    var url = "http://localhost/Compra-y-venta-de-toda-papada-Back/administracion/index.php";
+                    window.location = url;  
+                }else{
+                  var url = "http://localhost/Compra-y-venta-de-toda-papada-Back/usuarioCV/perfil.php";
+                  window.location = url;
+                  console.log('Entro como comprador');  
+                }
+                
+    
             } else if (respuesta.existe == 1 && respuesta.contrasenaCorrecta == 0) {
 
                 console.log("contrasena incorrecta");
@@ -191,7 +203,7 @@ function traerElectronicos() {
         success: function (respuesta) {
 
             var response = JSON.parse(respuesta);
-
+            console.log('datos respuesta: '+response);
             var cantidadSlides = Math.ceil(response.length / 4);
             console.log("cantidadSlides: " + cantidadSlides);
 
@@ -229,7 +241,7 @@ function traerElectronicos() {
                                 <div class="card-body" style="max-height:10em; min-height:10em;">
                                     <h5 class="card-title">${response[indexResponse].titulo.slice(0, 22)}...</h5>
                                     <p class="card-text">${response[indexResponse].descripcion}.</p>
-                                    <a class="btn btn-outline-info">Ver anuncio</a>
+                                    <a href="usuarioCV/detalleAnuncio.php?idAnuncios=${response[indexResponse].idAnuncios}" class="btn btn-outline-info">Ver anuncio</a>
                                 </div>
                             </div>
                         </div>
@@ -246,7 +258,7 @@ function traerElectronicos() {
                             <div class="card-body" style="max-height:10em; min-height:10em;">
                                 <h5 class="card-title">${response[indexResponse].titulo.slice(0, 22)}...</h5>
                                 <p class="card-text">${response[indexResponse].descripcion}.</p>
-                                <a class="btn btn-outline-info">Ver anuncio</a>
+                                <a href="usuarioCV/detalleAnuncio.php?idAnuncios=${response[indexResponse].idAnuncios}"  class="btn btn-outline-info">Ver anuncio</a>
                             </div>
                         </div>
                     </div>
@@ -301,7 +313,7 @@ function llenarSlides(response, categoriaNombre, categoriaSlide, categoriaContro
     //cambiar titulo a categoria
     $(`#tituloCategoria${indexGeneral}`).html(categoriaNombre);
     $(`#linkCategoria${indexGeneral}`).html(`
-    <a href="busqueda?categoria=${response[0].idCategorias}&busqueda=">Ver todos</a>
+    <a href="busqueda.html?categoria=${response[0].idCategorias}&busqueda=">Ver todos</a>
     <i style="margin-left:1em;" class="fas fa-arrow-right"></i>
     `);
 
@@ -349,7 +361,7 @@ function llenarSlides(response, categoriaNombre, categoriaSlide, categoriaContro
                                 <div class="card-body" style="max-height:10em; min-height:10em;">
                                     <h5 class="card-title">${response[indexResponse].titulo.slice(0, 22)}...</h5>
                                     <p class="card-text">${response[indexResponse].descripcion}.</p>
-                                    <a class="btn btn-outline-info">Ver anuncio</a>
+                                    <a href="usuarioCV/detalleAnuncio.php?idAnuncios=${response[indexResponse].idAnuncios}" class="btn btn-outline-info">Ver anuncio</a>
                                 </div>
                             </div>
                         </div>
@@ -366,7 +378,7 @@ function llenarSlides(response, categoriaNombre, categoriaSlide, categoriaContro
                             <div class="card-body" style="max-height:10em; min-height:10em;">
                                 <h5 class="card-title">${response[indexResponse].titulo.slice(0, 22)}...</h5>
                                 <p class="card-text">${response[indexResponse].descripcion}.</p>
-                                <a class="btn btn-outline-info">Ver anuncio</a>
+                                <a href="usuarioCV/detalleAnuncio.php?idAnuncios=${response[indexResponse].idAnuncios}" class="btn btn-outline-info" >Ver anuncio</a>
                             </div>
                         </div>
                     </div>
@@ -463,14 +475,16 @@ function traerCategorias() {
         method: "POST",
         data: "accion=Traercategorias",
         success: function (respuesta) {
-            let response = JSON.parse(respuesta);
 
-            //console.log(response);
+            console.log(respuesta);
+           let response = JSON.parse(respuesta);
+
+            
 
             // $("#categoriasElementos").html("");
             // $("#categoriasElementos").append(`<option value="null" selected>Todas</option>`);
 
-            for (let i = 0; i < response.length; i++) {
+          for (let i = 0; i < response.length; i++) {
                 $("#categoriasElementos").append(`
                 <option value="${response[i].idCategorias}">${response[i].descripcion}</option>`);
 
@@ -493,11 +507,11 @@ $("#btn-busqueda").on("click", () => {
     console.log(busqueda)
 
     if (categoriaSeleccionada != "null" && busqueda != "") {
-        window.location.href = `busqueda?categoria=${categoriaSeleccionada}&busqueda=${busqueda}`;
+        window.location.href = `busqueda.html?categoria=${categoriaSeleccionada}&busqueda=${busqueda}`;
     } else if (categoriaSeleccionada == "null" && busqueda != "") {
-        window.location.href = `busqueda?categoria=null&busqueda=${busqueda}`;
+        window.location.href = `busqueda.html?categoria=null&busqueda=${busqueda}`;
     } else if (categoriaSeleccionada != "null" && busqueda == "") {
-        window.location.href = `busqueda?categoria=${categoriaSeleccionada}&busqueda=`;
+        window.location.href = `busqueda.html?categoria=${categoriaSeleccionada}&busqueda=`;
     } else if (categoriaSeleccionada == "null" && busqueda == "") {
         console.error("Introduzca una busqueda")
     }

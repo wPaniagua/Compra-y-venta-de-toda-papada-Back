@@ -27,7 +27,7 @@ include '../backend/seguridad.php';
     include 'navbarU.php';
     
     ?>
-    <br><br><br><br>
+    <br><br>
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 col-sm-4 ">
@@ -67,7 +67,7 @@ include '../backend/seguridad.php';
                         <label>Foto a subir:</label>
                       </div>
                       <div class="col-sm-12">
-                        <input class="alert alert-secondary" type="file" name="archivo" required>
+                        <input class="alert alert-secondary" style="background-color:#f1f3f785" type="file" name="archivo" required>
                       </div>
 
                       <div id="msj" class="alert alert-danger" role="alert" style="display: none">
@@ -97,59 +97,71 @@ include '../backend/seguridad.php';
                 <!--formulario administrador  -->
                 <form>
                   <br><br>
-                  <div class="form-group alert alert-warning">
+                  <div class="form-group">
                     <h4>Datos personales</h4>
+                    <hr style="background-color:#e91e63;">
                   </div>
                   <div class="form-row">
 
                     <label for="Nombre" >Nombre:</label>
-                    <input type="text" class="form-control alert alert-secondary" id="codigo" placeholder="cod" style="display:none ">
-                    <input type="text" class="form-control alert alert-secondary" id="txtNombre" placeholder="Nombre usuario Administrador">
+                    <input type="text" class="form-control alert alert-secondary" style="background-color:#f1f3f785; display: none" id="codigo" placeholder="cod">
+                    <input type="text" class="form-control alert alert-secondary" style="background-color:#f1f3f785" id="txtNombre" placeholder="Nombre usuario Administrador">
                     <span id="msjNombre" style="color:red;display: none">Nombres requeridos</span>
                   </div>
                   <div class="form-group">
                     <label for="Apellido" >Apellidos :</label>
-                    <input type="text" class="form-control alert alert-secondary" id="txtApellidos" placeholder="Apellidos usuario Administrador" >
+                    <input type="text" class="form-control alert alert-secondary" style="background-color:#f1f3f785" id="txtApellidos" placeholder="Apellidos usuario Administrador" >
                     <span id="msjApellidos" style="color:red;display: none">Apellidos requeridos</span>
                   </div>
                   <div class="form-group">
                     <label for="correo">Correo electrónico:</label>
-                    <input type="email" class="form-control alert alert-secondary" id="txtCorreo" placeholder="Correo administrador">
+                    <input type="email" class="form-control alert alert-secondary" style="background-color:#f1f3f785" id="txtCorreo" placeholder="Correo administrador">
                     <span id="msjCorreo" style="color:red;display: none">Correo invalido<br>
                     Ejemplo:nombre@gmail.com</span>
                   </div>
                   <div class="form-group">
                     <label for="Fecha nacimiento">Fecha de nacimiento:</label>
-                    <div class="alert alert-secondary" role="alert" id="fecha">
+                    <div class="alert alert-secondary" style="background-color:#f1f3f785" role="alert" id="fecha">
                   </div>
                   <div class="form-group">
                     <label for="telefono">Telefono:</label>
-                    <input type="text" class="form-control alert alert-secondary" id="txtTelefono" placeholder="telefono administrador">
+                    <input type="text" class="form-control alert alert-secondary" style="background-color:#f1f3f785" id="txtTelefono" placeholder="telefono administrador">
                     <span id="msjTelefono" style="color:red;display: none">Telefono invalido.<br> Ejemplo:96016817</span>
                   </div>
                   </div>
-                  <div class="form-group">
+                  
+                  <!--button class="btn btn-success" type="button" id="cerrarSesione">Cerrar Sesion </button--><br>
+                  
+                  
+                </form><!--end formulario 
+                administrador  -->
+                
+            </div><!--end campos administrador  -->
+            <div class="col-12 col-sm-4 py-5 p-xl-5 col-sm-offset-1">
+                  <form>
+                    <br><br>
+                    <div class="form-group">
+                    <h4>Ubicación</h4>
+                    <hr style="background-color:#e91e63;">
+                    <div class="form-group">
                     <label for="Departamento">Departamento Residencia:</label>
-                    <select id="departamentos" class="form-control  alert-secondary" >
+                    <select id="departamentos" class="form-control  alert-secondary" style="background-color:#f1f3f785" >
                         <option selected="selected" value="null">No hay nada que cargar</option>
                     </select>
                     <span id="msjDepto" style="color:red;display: none">Departamento requerido</span>
                   </div>
                   <div class="form-group">
                     <label for="Correo">Municipio:</label>
-                    <select id="municipios" class="form-control  alert-secondary" disabled="">
+                    <select id="municipios" class="form-control  alert-secondary" style="background-color:#f1f3f785" disabled="">
                         <option selected="selected" value="null">Seleccione un departamento</option>
                     </select>
                     <span id="msjMunicipio" style="color:red;display: none">Municipio requerido</span>
                   </div>
-                  <button type="button" class="btn btn-danger" onclick="editarPerfil();">Guardar</button>
-                  <!--button class="btn btn-success" type="button" id="cerrarSesione">Cerrar Sesion </button--><br>
+                  <button type="button" class="btn btn-danger btn-block" onclick="editarPerfil();" >Guardar</button>
+                  </div>
                   <div class="form-row"><span class="alert alert-danger" style="display: none" id="msjEditar"></span></div>
-                  
-                </form><!--end formulario 
-                administrador  -->
-            </div><!--end campos administrador  -->
-            
+                  </form>
+            </div>
         </div>
     </div>
 
@@ -162,10 +174,10 @@ include '../backend/seguridad.php';
 
 <script src="../js/bootstrap.min.js"></script>
 
-<!--script src="../js/perfilAdmin.js"></script-->
+<script src="../js/perfilAdmin.js"></script>
 
 </body>
 
-<script src="../js/perfil.js"></script>
+<!--script src="../js/perfil.js"></script-->
 
 </html>

@@ -80,7 +80,7 @@ switch ($_POST["accion"]){
         $stmt -> store_result();
         $stmt -> bind_result( 
             $idCategorias,    
-            $descripcion,
+            $descripcion
         );
     
     

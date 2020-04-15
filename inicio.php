@@ -18,7 +18,7 @@
 
     <link rel="stylesheet" href="css/inicio.styles.css">
 
-
+    
     <link rel="stylesheet" href="css/inicio.css">
 
 
@@ -28,8 +28,8 @@
 
     <!-- style="background-color: #2b3f81 !important; color: white !important;" -->
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Logo</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #E91E63!important;">
+        <a class="navbar-brand font-weight-bold" href="#">PUBLITODO</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -38,13 +38,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+                    <a class="nav-link font-weight-bold" href="#">Favoritos <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Favoritos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Ayuda</a>
+                    <!--a class="nav-link" href="#">Favoritos</a-->
+                    <a href="#" id="btn-publicar" class="nav-item btn font-weight-bold" data-toggle="modal" data-target="#modalPublicar" style="color:#fff;background-color: #9C27B0;border-color: #9C27B0;">Agregar Publicacion</a>
                 </li>
                 <li class="nav-item " id="categorias">
 
@@ -57,10 +55,10 @@
                 </li>
 
             </ul>
-            <form class="form-inline my-2 my-lg-0" id="formBusqueda">
+            <form class="form-inline my-2 my-lg-0" id="formBusqueda" style="width: 50%;">
                 <input class="form-control mr-sm-2" type="search" id="inputBusqueda"
                     placeholder="Buscar por palabra clave" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="button" id="btn-busqueda">Buscar</button>
+                <button class="btn btn-outline-success my-2 my-sm-0 " type="button" id="btn-busqueda" style="color: #fff;background-color: #9C27B0;border-color: #9C27B0;">Buscar</button>
             </form>
 
             <ul class="navbar-nav mr-auto">
@@ -68,9 +66,18 @@
                 <?php
                     session_start(); 
                     if (isset($_SESSION["id_usuario"])){
-                        echo ('<li class="nav-item">
-                        <a class="nav-link" href="administracion/index.php">Admin</a></li><li class="nav-item">
-                        <a class="nav-link" href="usuarioCV/perfil.php">Usuario Normal</a></li>');
+                        echo ('<div class="btn-group">
+        <a href="#" class=""><i class="fas fa-user-circle  fa-3x" style="color:#212529;display:none" id="iconU"></i>
+                    <div id="imgNP" ></div></a>
+          <a href="#" class="dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-right: 10px;padding-top: 10px;color:#212529;font-size:20px;">
+            <span class="sr-only">Toggle Dropdown</span>
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="perfil.php">Editar Perfil</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" id="cerrarSesion">Cerrar sesión</a>
+          </div>
+        </div>' );
                     }
                     else{
                         echo ('<li class="nav-item"><button type="button" class="btn" id="iniciarSesionBoton" data-toggle="modal" data-target="#modalFormularioLogin"> Ingresa</button></li>');
@@ -131,13 +138,10 @@
                         <br>
                         <div class="text-center">
                             <small>¿No tienes una cuenta? </small>
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalRegistro" id="crearCuenta">
+                            <a href="reg.php" class="btn btn-success"  id="crearCuenta" onclick="">
                                 Crea una cuenta
-                            </button>
+                            </a>
                         </div>
-                        <?php 
-                            include "reg.php";
-                         ?>
                     </form>
                 </div>
                 <!-- <div class="modal-footer">
@@ -235,7 +239,7 @@
 
                     <div class="row">
                         <div class="col-md-2 columna" style="text-align: center;">
-                            <a href="busqueda?categoria=null&busqueda=carros">
+                            <a href="busqueda.html?categoria=null&busqueda=carros">
                                 <div class="elemento-top">
                                     <div class="icono">
                                         <i class="fas fa-car"></i>
@@ -249,7 +253,7 @@
                         </div>
 
                         <div class="col-md-2 clearfix d-none d-md-block columna">
-                            <a href="busqueda?categoria=null&busqueda=electrodomesticos">
+                            <a href="busqueda.html?categoria=null&busqueda=electrodomesticos">
                                 <div class="elemento-top">
                                     <div class="icono">
                                         <i class="fas fa-home"></i>
@@ -263,7 +267,7 @@
                         </div>
 
                         <div class="col-md-2 clearfix d-none d-md-block columna">
-                            <a href="busqueda?categoria=null&busqueda=electronicos">
+                            <a href="busqueda.html?categoria=null&busqueda=electronicos">
                                 <div class="elemento-top">
                                     <div class="icono">
                                         <i class="fas fa-plug"></i> </div>
@@ -275,7 +279,7 @@
                             </a>
                         </div>
                         <div class="col-md-2 clearfix d-none d-md-block columna">
-                            <a href="busqueda?categoria=null&busqueda=&hasta=100">
+                            <a href="busqueda.html?categoria=null&busqueda=&hasta=100">
                                 <div class="elemento-top">
                                     <div class="icono">
                                         <i class="fas fa-search-dollar"></i>
@@ -288,7 +292,7 @@
                             </a>
                         </div>
                         <div class="col-md-2 clearfix d-none d-md-block columna">
-                            <a href="busqueda?categoria=null&busqueda=herramientas">
+                            <a href="busqueda.html?categoria=null&busqueda=herramientas">
                                 <div class="elemento-top">
                                     <div class="icono">
                                         <i class="fas fa-tools"></i>
@@ -301,7 +305,7 @@
                             </a>
                         </div>
                         <div class="col-md-2 clearfix d-none d-md-block columna">
-                            <a href="busqueda?categoria=null&busqueda=juequetes">
+                            <a href="busqueda.html?categoria=null&busqueda=juequetes">
                                 <div class="elemento-top">
                                     <div class="icono">
                                         <i class="fas fa-gamepad"></i>
@@ -387,11 +391,51 @@
 
         </div>
         <!--/.Carousel Wrapper-->
+        
+        </div>
+        
+<!--.....................................................................................................AGREGAR PUBLICACION.....................................................................................................-->
+<!-------------------------------------------------------BOTON AGREGAR PUBLICACION----------------------------------------->
 
+ <!--------------------------------------------------VENTANA MODAL DE AVISO----------------------------------------------------->
+<div id="btn-ventana" >
+<div class="modal fade" id="modalPublicar" tabindex="-1" role="dialog">
+            <div  class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content" style="border-color:black ; border-style:double; border-width: 2px;">
+                    <!--Cabecera del Modal-->
+                    <div class="modal-header">
+                        <h4 style="color:black " class="modal-title">Atención</h4>
+                        <button style="color: red;" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <!--Cuerpo del Modal-->
+                    <div class="modal-body">
+                        <p>Debes <strong>registrarte</strong> o  haber <strong>iniciado sesion</strong> para poder agregar publicaciones.<p>
+                    </div>
+                    <!--Pie del Modal-->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalFormularioLogin" >Iniciar Sesion</button>
+                        <a href="reg.php" class="btn btn-primary"  id="crearCuenta" onclick="">
+                                Crea una cuenta
+                        </a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+        
 
     </div>
 </body>
 
 <script src="js/inicio.js"></script>
-
+<script type="text/javascript" src="js/bootstrap.bundle.min.js.descarga"></script>
+<!--Mostrar foto de perfil-->
+<script src="js/fotoInicio.js"></script>
+<!--.....................................................................................................AGREGAR PUBLICACION.....................................................................................................-->
+    <script src="js/publicar.js"></script>
+<!--.........................................................................................FIN AGREGAR PUBLICACION........................................................................................................-->
 </html>

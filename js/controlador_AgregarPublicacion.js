@@ -1,6 +1,8 @@
 $('#btnPublicar').click(registrarDatos);
 $(window).on("load", function () {
     cargarCategorias();
+    
+    $("#publicaciones").addClass("active");
 
 });
 function registrarDatos(){
@@ -16,7 +18,7 @@ function registrarDatos(){
 
     
     $.ajax({
-            url: "backend/gestionAgregarPub.php",
+            url: "../backend/gestionAgregarPub.php",
             data: `accion=obtener`+"&nombre="+nombre+"&descripcion="+descripcion+"&idCategoria="+idCategorias+"&tipo="+tipo+"&precio="+ precio+
             "&idPersona="+idPersona+"&idMoneda="+idMoneda,
             method: "POST",
@@ -35,7 +37,7 @@ function registrarDatos(){
 
 function cargarCategorias() {
     $.ajax({
-        url: "backend/gestionAgregarPub.php",
+        url: "../backend/gestionAgregarPub.php",
         method: "POST",
         data: `accion=seleccionarCategorias`,
         success: function (respuesta) {
@@ -67,7 +69,7 @@ $(document).ready(() => {
     $.ajax({
 
 
-        url: "backend/Select_Deptos_Municipios.php",
+        url: "../backend/Select_Deptos_Municipios.php",
         data: 'data=' + 'departamentos', //+ "&contrasena=" + contrasena, //data, //"correo=" + $("#txt-correo").val().toLowerCase() + "&password=" + $("#txt-contrasena").val(),
         method: "POST",
         dataType: "json",
@@ -107,7 +109,7 @@ $('#departamentos').on('change', function (e) {
 
 
     $.ajax({
-        url: "backend/Select_Deptos_Municipios.php",
+        url: "../backend/Select_Deptos_Municipios.php",
         data: 'data=' + 'municipios&idDepartamento=' + valueSelected.trim(), //+ "&contrasena=" + contrasena, //data, //"correo=" + $("#txt-correo").val().toLowerCase() + "&password=" + $("#txt-contrasena").val(),
         method: "POST",
         dataType: "json",

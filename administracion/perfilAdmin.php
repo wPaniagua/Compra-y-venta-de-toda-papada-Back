@@ -143,7 +143,7 @@
                     <span id="msjMunicipio" style="color:red;display: none">Municipio requerido</span>
                   </div>
                   <button type="button" class="btn btn-danger" onclick="editarPerfil();">Guardar</button>
-                  <button class="btn btn-success" type="button" id="cerrarSesione">Cerrar Sesion </button><br>
+                  <br>
                   <div class="form-row"><span class="alert alert-danger" style="display: none" id="msjEditar"></span></div>
                   
                 </form><!--end formulario 

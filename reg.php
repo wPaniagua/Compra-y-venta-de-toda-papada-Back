@@ -10,28 +10,21 @@
  
  <title>Principal</title>
 </head>
-<body>
+<body style="background-color: rgba(198, 228, 232, 0.49);
+">
  <div class="container">
-     <!--Boton de registro-->
-  <!--button type="button" id="btnRegistro" class="btn btn-primary" data-toggle="modal" data-target="#modalRegistro">Registro </button-->
-     <!--El Modal-->
-  <div class="modal fade" id="modalRegistro" tabindex="-1" role="dialog">
-   <div class="modal-dialog" role="document">
-    <div class="modal-content">
-     <!--Cabecera del Modal-->
-     <div class="modal-header">
-      <h4 class="modal-title font-weight-bold" style="color: #0a4b53">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BIENVENIDO A PUBLITODO</h4>
-       
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-    	</div>
-     <!--Cuerpo del Modal-->
-     <div class="modal-body">
-     	<div class="container">
+
+      
      	<div class="row">
-     		<div class="col-1"></div>
-     <div class="col-10">
+     		<div class="col-3"></div>
+     <div class="col-5">
+      <br><br>
+      <center>
+        <h4 class="" style="color: #000000">BIENVENIDO </h4>
+        <h4>A </h4>
+        <h4 style="color:#f90075">PUBLITODO</h4>
+      </center>
+      
       <center class="py-1 text-primary"><h5>iYa puedes registrarte!</h5> 
         <small class="text-success font-weight-bolder">Puedes vender  y comprar lo que gustes.</small>
       </center>
@@ -97,7 +90,7 @@
         <span style="color: red;display: none" id="avisoDepto">Debe seleccionar un departamento</span>
       	</div>
       </div>
-      <div class="form-row ">
+      <div class="form-row">
       	<div class="col-2">
       		<i class="fa fa-map-marker fa-2x" style="color: #0a4b53"></i>
       	</div>
@@ -121,7 +114,7 @@
       	<div class="col-2">
       		<i class="fas fa-lock fa-2x" style="color: #0a4b53"></i>
       	</div>
-      	<div class="col-10">
+      	<div class="col-10" >
       		<input type="password" name="confContrasenia" id="confContrasenia" placeholder="Vuelva a escribir la contraseña" class="form-control">
       		<span style="color: red;display: none" id="avisoContrasena2" >La contrasena debe ser igual a la anterior.</span>
       	</div>
@@ -142,17 +135,12 @@
         <br>
       <span style="color: red;display: none" id="avisoContrato" >Debe aceptar los terminos y condiciones para registrarse.</span>
       </div>
-      
+      <button type="button" id="btnGuardar" class="btn btn-primary btn-block">Guardar</button>
+      <a href="inicio.php" id="" class="btn btn-danger btn-block">Pagina Principal</a>
+      <br><br>
       </form>
      </div>
    	 </div>
-   	</div>
-   </div>
-                 <!--Pie del Modal-->
-   <div class="modal-footer">
-     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-     <button type="button" id="btnGuardar" class="btn btn-primary submitBtn">Guardar</button>
-   		</div>
   		</div>
   	</div>
  	</div>    

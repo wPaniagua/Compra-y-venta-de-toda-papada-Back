@@ -23,7 +23,7 @@
 		      <li class="nav-item " id="usuarios">
 		        <a class="nav-link  font-weight-bold" href="verUsuariosDesdeAdminF.php" tabindex="-1" aria-disabled="true">Usuarios</a>
 		      </li>
-			  <li class="nav-item " id="usuarios">
+			  <li class="nav-item " id="solicitudes">
 		        <a class="nav-link  font-weight-bold" href="solicitudes_administracion.php" tabindex="-1" aria-disabled="true">Solicitudes</a>
 		      </li>
 		      <li class="nav-item " id="categorias">
@@ -40,14 +40,19 @@
 		      </li>
 		    </ul>
 		    <form class="form-inline my-2 my-lg-0">
-		    	<a href="perfilAdmin.php">
-		    		<i class="fas fa-user fa-lg" id="iconU" style="display:"></i>
-		    		<div id="imgNP" ></div>
-		    	</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		    	<button class="btn btn-success" id="cerrarSesion">Cerrar sesión
-		    		<i class="fas fa-times-circle fa-lg" id="Salir" style=""></i>
-
-		    	</button>
+		    <div class="btn-group" style="">
+  				<a href="#" class=""><i class="fas fa-user-circle  fa-3x" style="color:#212529;display:none" id="iconU"></i>
+  			<!--id="iconU"-->
+		    	<div id="imgNP" ></div></a>
+		  		<a href="#" class="dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-right: 80px;padding-top: 10px;color:#212529;font-size:20px;">
+		    <span class="sr-only">Toggle Dropdown</span>
+		  </a>
+		  <div class="dropdown-menu">
+		    <a class="dropdown-item" href="perfilAdmin.php">Editar Perfil</a>
+		    <div class="dropdown-divider"></div>
+		    <a class="dropdown-item" href="#" id="cerrarSesion">Cerrar sesión</a>
+		  </div>
+		</div>
 		    </form>
 		  </div>
 		</nav>
