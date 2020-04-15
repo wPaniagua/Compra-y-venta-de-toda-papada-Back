@@ -86,3 +86,42 @@ hr {
     max-width: 25%;
     padding: .250em;
 }
+
+#login-form {
+
+    /* margin-left: auto;
+    margin-right: auto; */
+    margin-top: 2em;
+    margin-bottom: auto;
+    padding: 2em;
+    width: 100%;
+}
+
+#inputBusqueda {
+    width: 80% !important;
+}
+
+#formBusqueda {
+    padding: 0em;
+    width: 65%;
+}
+
+#categorias {
+    margin-left: 3em;
+    margin-right: 1em;
+
+    text-align: center;
+}
+
+.dropdown-menu {
+    text-align: center;
+}
+
+
+#iniciarSesionBoton {
+    padding: 0;
+}
+
+.container {
+    max-width: 1440px !important;
+}

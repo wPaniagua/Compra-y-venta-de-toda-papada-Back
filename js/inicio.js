@@ -48,6 +48,7 @@ function validarCampoVacio(id) {
 
 function validarEmail(email, emailId) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
     if (re.test(String(email).toLowerCase())) {
         //console.log("Correo valido " + email);
         document.getElementById(emailId).classList.remove("is-invalid");
@@ -493,13 +494,13 @@ $("#btn-busqueda").on("click", () => {
     console.log(busqueda)
 
     if (categoriaSeleccionada != "null" && busqueda != "") {
-        window.location.href = `busqueda.html?categoria=${categoriaSeleccionada}&busqueda=${busqueda}`;
+        window.location.href = `busqueda.php?categoria=${categoriaSeleccionada}&busqueda=${busqueda}`;
     } else if (categoriaSeleccionada == "null" && busqueda != "") {
-        window.location.href = `busqueda.html?categoria=null&busqueda=${busqueda}`;
+        window.location.href = `busqueda.php?categoria=null&busqueda=${busqueda}`;
     } else if (categoriaSeleccionada != "null" && busqueda == "") {
-        window.location.href = `busqueda.html?categoria=${categoriaSeleccionada}&busqueda=`;
+        window.location.href = `busqueda.php?categoria=${categoriaSeleccionada}&busqueda=`;
     } else if (categoriaSeleccionada == "null" && busqueda == "") {
-        console.error("Introduzca una busqueda")
+        window.location.href = `busqueda.php`;
     }
 })
 // console.log("Locacion")
