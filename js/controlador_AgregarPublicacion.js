@@ -1,9 +1,11 @@
 $('#btnPublicar').click(registrarDatos);
 $(window).on("load", function () {
     cargarCategorias();
-    
+
     $("#publicaciones").addClass("active");
 
+
+    
 });
 function registrarDatos(){
     var nombre = $('#titulo').val();
@@ -11,7 +13,7 @@ function registrarDatos(){
     var idCategorias = $('#slc-categorias').val();
     var tipo = $('input:radio[name=tipo]:checked').val();
     var precio = $('#precio').val();
-    var idPersona = 1;//$('#idPersona').val();
+    var idPersona = $('#id_usuario').val();
     var idMoneda = $('input:radio[name=moneda]:checked').val();
     //var url = $('#url');
     console.log(nombre);
@@ -56,6 +58,7 @@ function cargarCategorias() {
     });
 
 }
+
 
 
 $(document).ready(() => {
