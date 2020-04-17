@@ -16,11 +16,11 @@ $(document).ready(function () {
     //console.log(hasta);
 
     if (busqueda == null && categoria == null) {
-<<<<<<< HEAD
+
         window.location.href = "busqueda.php?categoria=null&busqueda=";
-=======
-        window.location.href = "busqueda.html?categoria=null&busqueda=";
->>>>>>> 5455dac45e58af289672352a4993af17da2115c1
+
+        window.location.href = "busqueda.php?categoria=null&busqueda=";
+
     }
 
     if (busqueda != null) {
@@ -186,7 +186,7 @@ function generarAnuncios(response) {
                         <div class="row">
                             <div class="col col-lg-12 descripcionAnuncio">
                                 <p>${response[i].descripcion}.</p>
-                                <button type="button" class="btn btn-outline-info">Ver articulo</button>
+                                <a href="usuarioCV/detalleAnuncio.php?idAnuncios=${response[i].idAnuncios}" class="btn btn-outline-info">Ver articulo</a>
                             </div>
                         </div>
                     </div>
@@ -236,7 +236,7 @@ function generarAnuncios(response) {
                         <div class="row">
                             <div class="col col-lg-12 descripcionAnuncio">
                                 <p>${response[i].descripcion}.</p>
-                                <button type="button" class="btn btn-outline-info">Ver articulo</button>
+                                <a href="usuarioCV/detalleAnuncio.php?idAnuncios=${response[i].idAnuncios}" class="btn btn-outline-info">Ver articulo</a>
                             </div>
                         </div>
                     </div>
@@ -258,7 +258,8 @@ function traerDepartamentos() {
             let response = JSON.parse(respuesta);
             //console.log(response);
 
-            //$("#departamentos").html("");
+            $("#departamentos").html("");
+            $("#departamentos").append(`<option value="null" selected>Seleccione un departamento</option>`);
             for (let i = 0; i < response.length; i++) {
                 //console.log("entra for")
                 $("#departamentos").append(`

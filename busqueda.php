@@ -70,7 +70,8 @@
     <div class="container">
         <div class="row">
             <div class="col col-lg-6">
-                <div class="alert alert-danger" style="width:inherit; display: none;" role="alert"
+                <br><br>
+                <div class="alert alert-danger px-5" style="width:inherit; display: none;" role="alert"
                     style="display: none; width: 30%;margin-left: auto;margin-right: auto;" id="noHayDatos">
                     No hay resultados para la busqueda especificada
                 </div>

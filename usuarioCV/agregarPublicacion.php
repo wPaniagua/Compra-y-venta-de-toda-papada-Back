@@ -124,10 +124,6 @@ include '../backend/seguridad.php';
 <script type="text/javascript" src="../js/fotoAdmin.js"></script>
 
 </body>
-=======
-<?php 
-  include 'backend/seguridad.php';
-?>
 
 <!--?php
 $errores = '';
@@ -164,6 +160,7 @@ if (isset($_POST['#btnPublicar'])){
 
 } 
 ?-->
+<?php   /*
 <!DOCTYPE html>
 <html>
 <head>
@@ -294,5 +291,5 @@ if (isset($_POST['#btnPublicar'])){
 <script src="js/scripts.js"></script>
 
 </body>
->>>>>>> 8e7eb20830482bdd6b2126b09c87c4b1ceee4436:agregarPublicacion.php
 </html>
+*/?>

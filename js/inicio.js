@@ -314,7 +314,7 @@ function llenarSlides(response, categoriaNombre, categoriaSlide, categoriaContro
     //cambiar titulo a categoria
     $(`#tituloCategoria${indexGeneral}`).html(categoriaNombre);
     $(`#linkCategoria${indexGeneral}`).html(`
-    <a href="busqueda.html?categoria=${response[0].idCategorias}&busqueda=">Ver todos</a>
+    <a href="busqueda.php?categoria=${response[0].idCategorias}&busqueda=">Ver todos</a>
     <i style="margin-left:1em;" class="fas fa-arrow-right"></i>
     `);
 

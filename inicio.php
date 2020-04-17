@@ -42,7 +42,7 @@
                 </li>
                 <li class="nav-item">
                     <!--a class="nav-link" href="#">Favoritos</a-->
-                    <a href="#" id="btn-publicar" class="nav-item btn font-weight-bold" data-toggle="modal" data-target="#modalPublicar" style="color:#fff;background-color: #9C27B0;border-color: #9C27B0;">Agregar Publicacion</a>
+                    <a href="#" id="btn-publicar" class="nav-item btn font-weight-bold aNavbar" data-toggle="modal" data-target="#modalPublicar" style="">Agregar Publicacion</a>
                 </li>
                 <li class="nav-item " id="categorias">
 
@@ -58,8 +58,9 @@
             <form class="form-inline my-2 my-lg-0" id="formBusqueda" style="width: 50%;">
                 <input class="form-control mr-sm-2" type="search" id="inputBusqueda"
                     placeholder="Buscar por palabra clave" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0 " type="button" id="btn-busqueda" style="color: #fff;background-color: #9C27B0;border-color: #9C27B0;">Buscar</button>
+                <button class="btn btn-info my-2 my-sm-0 " type="button" id="btn-busqueda" style="">Buscar</button>
             </form>
+            <!---color: #fff;background-color: #9C27B0;border-color: #9C27B0;-->
 
             <ul class="navbar-nav mr-auto">
 
@@ -239,7 +240,7 @@
 
                     <div class="row">
                         <div class="col-md-2 columna" style="text-align: center;">
-                            <a href="busqueda.html?categoria=null&busqueda=carros">
+                            <a href="busqueda.php?categoria=null&busqueda=carros">
                                 <div class="elemento-top">
                                     <div class="icono">
                                         <i class="fas fa-car"></i>
@@ -253,7 +254,7 @@
                         </div>
 
                         <div class="col-md-2 clearfix d-none d-md-block columna">
-                            <a href="busqueda.html?categoria=null&busqueda=electrodomesticos">
+                            <a href="busqueda.php?categoria=null&busqueda=electrodomesticos">
                                 <div class="elemento-top">
                                     <div class="icono">
                                         <i class="fas fa-home"></i>
@@ -267,7 +268,7 @@
                         </div>
 
                         <div class="col-md-2 clearfix d-none d-md-block columna">
-                            <a href="busqueda.html?categoria=null&busqueda=electronicos">
+                            <a href="busqueda.php?categoria=null&busqueda=electronicos">
                                 <div class="elemento-top">
                                     <div class="icono">
                                         <i class="fas fa-plug"></i> </div>
@@ -279,7 +280,7 @@
                             </a>
                         </div>
                         <div class="col-md-2 clearfix d-none d-md-block columna">
-                            <a href="busqueda.html?categoria=null&busqueda=&hasta=100">
+                            <a href="busqueda.php?categoria=null&busqueda=&hasta=100">
                                 <div class="elemento-top">
                                     <div class="icono">
                                         <i class="fas fa-search-dollar"></i>
@@ -292,7 +293,7 @@
                             </a>
                         </div>
                         <div class="col-md-2 clearfix d-none d-md-block columna">
-                            <a href="busqueda.html?categoria=null&busqueda=herramientas">
+                            <a href="busqueda.php?categoria=null&busqueda=herramientas">
                                 <div class="elemento-top">
                                     <div class="icono">
                                         <i class="fas fa-tools"></i>
@@ -305,7 +306,7 @@
                             </a>
                         </div>
                         <div class="col-md-2 clearfix d-none d-md-block columna">
-                            <a href="busqueda.html?categoria=null&busqueda=juequetes">
+                            <a href="busqueda.php?categoria=null&busqueda=juequetes">
                                 <div class="elemento-top">
                                     <div class="icono">
                                         <i class="fas fa-gamepad"></i>
@@ -439,3 +440,5 @@
     <script src="js/publicar.js"></script>
 <!--.........................................................................................FIN AGREGAR PUBLICACION........................................................................................................-->
 </html>
+
+                
