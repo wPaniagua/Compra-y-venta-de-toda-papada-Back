@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/busqueda.css">
 </head>
 
-<body>
+<body style="background-color: white;">
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
@@ -168,7 +168,7 @@
                             <Strong>Filtra por departamento:</Strong>
                             <select class="form-control selects_locacion" style="width: 70%;" id="departamentos"
                                 onchange="traerMunicipios()">
-                                <option value="null" class="form-control">Selecciona un departamento</option>
+                                <!-- <option value="null" class="form-control">Selecciona un departamento</option> -->
                             </select>
                         </div>
                     </div>

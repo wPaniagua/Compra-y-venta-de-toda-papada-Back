@@ -239,7 +239,7 @@
 
                     <div class="row">
                         <div class="col-md-2 columna" style="text-align: center;">
-                            <a href="busqueda.html?categoria=null&busqueda=carros">
+                            <a href="busqueda.php?categoria=null&busqueda=carros">
                                 <div class="elemento-top">
                                     <div class="icono">
                                         <i class="fas fa-car"></i>
@@ -253,7 +253,7 @@
                         </div>
 
                         <div class="col-md-2 clearfix d-none d-md-block columna">
-                            <a href="busqueda.html?categoria=null&busqueda=electrodomesticos">
+                            <a href="busqueda.php?categoria=null&busqueda=electrodomesticos">
                                 <div class="elemento-top">
                                     <div class="icono">
                                         <i class="fas fa-home"></i>
@@ -267,7 +267,7 @@
                         </div>
 
                         <div class="col-md-2 clearfix d-none d-md-block columna">
-                            <a href="busqueda.html?categoria=null&busqueda=electronicos">
+                            <a href="busqueda.php?categoria=null&busqueda=electronicos">
                                 <div class="elemento-top">
                                     <div class="icono">
                                         <i class="fas fa-plug"></i> </div>
@@ -279,7 +279,7 @@
                             </a>
                         </div>
                         <div class="col-md-2 clearfix d-none d-md-block columna">
-                            <a href="busqueda.html?categoria=null&busqueda=&hasta=100">
+                            <a href="busqueda.php?categoria=null&busqueda=&hasta=100">
                                 <div class="elemento-top">
                                     <div class="icono">
                                         <i class="fas fa-search-dollar"></i>
@@ -292,7 +292,7 @@
                             </a>
                         </div>
                         <div class="col-md-2 clearfix d-none d-md-block columna">
-                            <a href="busqueda.html?categoria=null&busqueda=herramientas">
+                            <a href="busqueda.php?categoria=null&busqueda=herramientas">
                                 <div class="elemento-top">
                                     <div class="icono">
                                         <i class="fas fa-tools"></i>
@@ -305,7 +305,7 @@
                             </a>
                         </div>
                         <div class="col-md-2 clearfix d-none d-md-block columna">
-                            <a href="busqueda.html?categoria=null&busqueda=juequetes">
+                            <a href="busqueda.php?categoria=null&busqueda=juequetes">
                                 <div class="elemento-top">
                                     <div class="icono">
                                         <i class="fas fa-gamepad"></i>

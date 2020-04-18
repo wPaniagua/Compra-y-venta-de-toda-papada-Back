@@ -16,11 +16,7 @@ $(document).ready(function () {
     //console.log(hasta);
 
     if (busqueda == null && categoria == null) {
-<<<<<<< HEAD
         window.location.href = "busqueda.php?categoria=null&busqueda=";
-=======
-        window.location.href = "busqueda.html?categoria=null&busqueda=";
->>>>>>> 5455dac45e58af289672352a4993af17da2115c1
     }
 
     if (busqueda != null) {
@@ -186,7 +182,7 @@ function generarAnuncios(response) {
                         <div class="row">
                             <div class="col col-lg-12 descripcionAnuncio">
                                 <p>${response[i].descripcion}.</p>
-                                <button type="button" class="btn btn-outline-info">Ver articulo</button>
+                                <button type="button" class="btn btn-outline-info"><a href="usuarioCV/detalleAnuncio.php?idAnuncios=${response[i].idAnuncios}">Ver articulo</a></button>
                             </div>
                         </div>
                     </div>
@@ -236,7 +232,7 @@ function generarAnuncios(response) {
                         <div class="row">
                             <div class="col col-lg-12 descripcionAnuncio">
                                 <p>${response[i].descripcion}.</p>
-                                <button type="button" class="btn btn-outline-info">Ver articulo</button>
+                                <button type="button" class="btn btn-outline-info"><a href="usuarioCV/detalleAnuncio.php?idAnuncios=${response[i].idAnuncios}">Ver articulo</a></button>
                             </div>
                         </div>
                     </div>
@@ -256,9 +252,10 @@ function traerDepartamentos() {
         data: `data=departamentos`,
         success: function (respuesta) {
             let response = JSON.parse(respuesta);
-            //console.log(response);
+            console.log(response);
 
-            //$("#departamentos").html("");
+            $("#departamentos").html("");
+            $("#departamentos").append(`<option value="null" class="form-control">Selecciona un departamento</option>`);
             for (let i = 0; i < response.length; i++) {
                 //console.log("entra for")
                 $("#departamentos").append(`
