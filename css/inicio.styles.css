@@ -74,3 +74,14 @@
 #iniciarSesionBoton {
     padding: 0;
 }
+
+.aNavbar: hover{
+    color: #fff;
+}
+
+.nav-item nav:hover{
+    /*.btn:hover {*/
+    color: #fff;
+    /* text-decoration: none; */
+
+}

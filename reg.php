@@ -10,15 +10,17 @@
  
  <title>Principal</title>
 </head>
-<body style="background-color: rgba(198, 228, 232, 0.49);
-">
+<body>
+  <!--style="background-color: rgba(198, 228, 232, 0.49);
+"-->
  <div class="container">
 
       
      	<div class="row">
-     		<div class="col-3"></div>
-     <div class="col-5">
-      <br><br>
+
+     		<div class="col-md-4 col-1"></div>
+     <div class="col-md-5" style="background-color: #1012133b;">
+      <br>
       <center>
         <h4 class="" style="color: #000000">BIENVENIDO </h4>
         <h4>A </h4>
@@ -30,9 +32,10 @@
       </center>
       <form role="form">
         <div class="form-row">
-          <div class="col-2">
+          <div class="col-1" style="
+    padding-left: 0px;padding-right: 0px;">
             <!--label>Nombre:</label-->
-            <i class="fas fa-user fa-2x" style="color: #0a4b53"></i>
+            <i class="fas fa-user fa-2x" style="color: #000"></i>
           </div>
           <div class="col-10">
             <input type="text" name="nombres" id="nombres" placeholder="Escriba su nombre" class="form-control" >
@@ -40,9 +43,10 @@
           </div>    
         </div>
         <div class="form-row py-2">
-          <div class="col-2">
+          <div class="col-1" style="
+    padding-left: 0px;padding-right: 0px;">
             <!--label>Apellidos:</label-->
-            <i class="fas fa-user fa-2x" style="color: #0a4b53"></i>
+            <i class="fas fa-user fa-2x" style="color: #000"></i>
           </div>
           <div class="col-10">
             <input type="text" name="apellidos" id="apellidos" placeholder="Escriba sus apellidos" class="form-control"> 
@@ -51,8 +55,9 @@
                             
         </div>
        <div class="form-row ">
-         <div class="col-2">           
-           <i class="fas fa-envelope fa-2x" style="color: #0a4b53"></i> 
+         <div class="col-1" style="
+    padding-left: 0px;padding-right: 0px;">           
+           <i class="fas fa-envelope fa-2x" style="color: #000"></i> 
          </div>  
 	       <div class="col-10">
 	         <input type="text" name="correo" id="correo" placeholder="Ingrese el correo" class="form-control">
@@ -61,8 +66,9 @@
 	       </div>
       </div>
    			<div class="form-row py-2">
-        <div class="col-2">
-          <i class="fas fa-phone-alt fa-2x " style="color: #0a4b53"></i>
+        <div class="col-1" style="
+    padding-left: 0px;padding-right: 0px; bord">
+          <i class="fas fa-phone-alt fa-2x " style="color: #000"></i>
         </div>
         <div class="col-10">
         	<input type="number" name="telefono" id="telefono" placeholder="Ingrese su telefono" class="form-control">
@@ -70,8 +76,9 @@
         </div>
       </div>
       <div class="form-row ">
-      	<div class="col-2">
-      		<i class="fas fa-calendar-alt fa-2x" style="color: #0a4b53"></i>
+      	<div class="col-1" style="
+    padding-left: 0px;padding-right: 0px;">
+      		<i class="fas fa-calendar-alt fa-2x" style="color: #000"></i>
       	</div>
       	<div class="col-10">
       		<input type="date" name="fechaNacimiento" id="fechaNacimiento"step="1" min="1940-01-01" max="2020-04-03" class="form-control">
@@ -80,8 +87,9 @@
       	</div>
       </div>
       <div class="form-row py-2">
-      	<div class="col-2">
-      		<i class="fas fa-map-marker-alt fa-2x" style="color: #0a4b53"></i>
+      	<div class="col-1" style="
+    padding-left: 0px;padding-right: 0px;">
+      		<i class="fas fa-map-marker-alt fa-2x" style="color: #000"></i>
       	</div>
       	<div class="col-10">
       		<select id="departamentos" class="form-control">
@@ -91,8 +99,9 @@
       	</div>
       </div>
       <div class="form-row">
-      	<div class="col-2">
-      		<i class="fa fa-map-marker fa-2x" style="color: #0a4b53"></i>
+      	<div class="col-1" style="
+    padding-left: 0px;padding-right: 0px;">
+      		<i class="fa fa-map-marker fa-2x" style="color: #000"></i>
       	</div>
       	<div class="col-10">
       		<select id="municipios" class="form-control">
@@ -102,8 +111,9 @@
       	</div>
       </div>
       <div class="form-row py-2">
-      	<div class="col-2">
-      		<i class="fas fa-lock fa-2x" style="color: #0a4b53"></i>
+      	<div class="col-1" style="
+    padding-left: 0px;padding-right: 0px;">
+      		<i class="fas fa-lock fa-2x" style="color: #000"></i>
       	</div>
       	<div class="col-10">
       		<input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Contraseña">
@@ -111,8 +121,9 @@
       	</div>
       </div>
       <div class="form-row ">
-      	<div class="col-2">
-      		<i class="fas fa-lock fa-2x" style="color: #0a4b53"></i>
+      	<div class="col-1" style="
+    padding-left: 0px;padding-right: 0px;">
+      		<i class="fas fa-lock fa-2x" style="color: #000"></i>
       	</div>
       	<div class="col-10" >
       		<input type="password" name="confContrasenia" id="confContrasenia" placeholder="Vuelva a escribir la contraseña" class="form-control">

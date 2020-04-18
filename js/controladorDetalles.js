@@ -133,7 +133,7 @@ function obtenerPuntuacion() {
 
 	const idAnuncio = urlParams.get('idAnuncios');
 
-	console.log(idAnuncio);
+	//console.log(idAnuncio);
 
 	var parametros = "idAnun=" + idAnuncio;
 	$.ajax({

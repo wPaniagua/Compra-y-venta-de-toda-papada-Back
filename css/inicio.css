@@ -94,6 +94,7 @@ ul {
 
 .columna a:hover {
     text-decoration: none;
+    color: #0056b3;
 }
 
 /* maximo ancho de columnas */

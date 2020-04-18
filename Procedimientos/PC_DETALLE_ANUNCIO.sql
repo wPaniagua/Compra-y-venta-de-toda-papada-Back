@@ -18,6 +18,7 @@ SP:BEGIN
   DECLARE conteo INT;
   DECLARE conteo2 INT;
   DECLARE id INT;
+  DECLARE idCal INT;
   DECLARE tempMensaje VARCHAR(100);
   SET autocommit=0;  
   SET tempMensaje='';
@@ -31,7 +32,7 @@ SP:BEGIN
   END IF;
   
 
-  IF accion="guardarCalificacion" OR accion="editarCalificacion" THEN
+  IF accion="guardarCalificacion" THEN
      IF idUsuarioDaLike='' THEN
         SET tempMensaje='Usuario da Like, ';
      END IF; 
@@ -48,9 +49,12 @@ SP:BEGIN
   END IF;
 
   IF accion="eliminar" OR accion="editarCalificacion" THEN
-      IF pidCalificacion='' OR pidCalificacion=0  THEN
-        SET tempMensaje='Puntuacion ,';
+      IF idPublicacion='' OR idPublicacion=0  THEN
+        SET tempMensaje='Id Anuncio ,';
       END IF; 
+      IF idUsuarioDaLike='' OR idUsuarioDaLike=0  THEN
+        SET tempMensaje='Id Anuncio ,';
+      END IF;
       IF tempMensaje<>'' THEN
         SET mensaje=CONCAT('Campo requerido ',tempMensaje);
         LEAVE SP;
@@ -129,30 +133,35 @@ SP:BEGIN
       END IF;
 
       IF conteo=1 THEN
-        UPDATE calificacion SET puntuacion=cantidad,
-        razones=prazones 
-        WHERE idCalificacion=pidCalificacion 
+        SELECT idCalificacion INTO idCal 
+        FROM calificacion 
+        WHERE nombre=idUsuarioDaLike 
         and idAnuncios=idPublicacion;
+        
 
+        UPDATE calificacion 
+        SET puntuacion=cantidad,razones=prazones
+        WHERE idCalificacion=idCal;
         SET mensaje='Edicion exitosa';
         COMMIT;
       END IF;
   END IF;
 
   IF accion="editarCalificacion" THEN
-    SELECT COUNT(*) FROM calificacion 
-    WHERE idCalificacion=pidCalificacion;
+    SELECT COUNT(*) INTO conteo FROM calificacion 
+    WHERE idAnuncios=idPublicacion and
+    nombre=idUsuarioDaLike;
 
     IF conteo=0 THEN
       SET mensaje='No Hay Calificacion';
       LEAVE SP;
     END IF;
     IF conteo=1 THEN
-      UPDATE calificacion 
-      SET puntuacion=cantidad,razones=prazones
-      WHERE idCalificacion=pidCalificacion;
-
-      SET mensaje='Edicion exitosa';
+      SELECT idCalificacion, puntuacion, razones
+      FROM calificacion 
+      WHERE idAnuncios=idPublicacion and 
+      nombre=idUsuarioDaLike;
+      SET mensaje='Tiene Calificacion';
       COMMIT;
     END IF;
   END IF;

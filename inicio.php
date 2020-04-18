@@ -42,7 +42,7 @@
                 </li>
                 <li class="nav-item">
                     <!--a class="nav-link" href="#">Favoritos</a-->
-                    <a href="#" id="btn-publicar" class="nav-item btn font-weight-bold" data-toggle="modal" data-target="#modalPublicar" style="color:#fff;background-color: #9C27B0;border-color: #9C27B0;">Agregar Publicacion</a>
+                    <a href="#" id="btn-publicar" class="nav-item btn font-weight-bold aNavbar" data-toggle="modal" data-target="#modalPublicar" style="">Agregar Publicacion</a>
                 </li>
                 <li class="nav-item " id="categorias">
 
@@ -58,8 +58,9 @@
             <form class="form-inline my-2 my-lg-0" id="formBusqueda" style="width: 50%;">
                 <input class="form-control mr-sm-2" type="search" id="inputBusqueda"
                     placeholder="Buscar por palabra clave" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0 " type="button" id="btn-busqueda" style="color: #fff;background-color: #9C27B0;border-color: #9C27B0;">Buscar</button>
+                <button class="btn btn-info my-2 my-sm-0 " type="button" id="btn-busqueda" style="">Buscar</button>
             </form>
+            <!---color: #fff;background-color: #9C27B0;border-color: #9C27B0;-->
 
             <ul class="navbar-nav mr-auto">
 
@@ -439,3 +440,5 @@
     <script src="js/publicar.js"></script>
 <!--.........................................................................................FIN AGREGAR PUBLICACION........................................................................................................-->
 </html>
+
+                

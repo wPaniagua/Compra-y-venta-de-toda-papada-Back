@@ -1,8 +1,4 @@
-<?php 
 
-	include '../backend/seguridad.php';
-
-?>
 
 <!DOCTYPE HTML>
 <html>
@@ -65,7 +61,7 @@
 	<input type="text" name="idUL" id="idUL" style="display: none">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-10">
+			<div class="col-md-12">
 				<br>
 				<h3>Detalles Anuncio</h3>
 			<hr style="background-color:#e91e63;">
@@ -98,7 +94,10 @@
 			</form>
 			</div><!--FIN FORMULARIO DETALLE PROD -->
 			<br>
-			<h3>Datos Vendedor</h3>
+		<?php
+    session_start(); 
+    if (isset($_SESSION["id_usuario"])){
+        echo ('<h3>Datos Vendedor</h3>
 			<hr style="background-color:#e91e63;">
 			<div><!--inicio FORMULARIO datos vendedor -->
 				<form>
@@ -160,6 +159,7 @@
 		<p>
   	<a class="btn btn-danger" data-toggle="collapse" href="#calificar" role="button" aria-expanded="false" aria-controls="calificar" id="btn-Cal">Calificar</a>
 		</p>
+		<span class="alert alert-warning" id="msjG" style="display: none"></span>
 		<div class="row">
   	<div class="col">
     		<div class="collapse multi-collapse" id="calificar">
@@ -188,8 +188,7 @@
   								 <label>Razones de su calificacion:</label>
   								 (Opcional)
   								 <textarea name="razones" id="razones" class="form-control " rows="4"></textarea><br>
-  								 <button type="button" id="guardarCalificacion" class="btn btn-success" >Guardar</button><br>
-  								 <span class="alert alert-warning" id="msjG" style="display: none"></span>
+  								 <button type="button" id="guardarCalificacion" class="btn btn-success" data-toggle="collapse" href="#calificar" role="button" aria-expanded="false" aria-controls="calificar">Guardar</button>
        			</ul>
       		</div>
     			</div><br><br>
@@ -205,16 +204,139 @@
     		<div class="collapse multi-collapse" id="verCalificacion">
         <div class="card card-body">
        			<form>
-       				<h3 id="calTotal" class="colorEstrellas"></h3><br>
+       				<div class="row">
+       					<div class="col-md-5">
+       						<h3 id="estrellas" class="colorEstrellas" style="display: none">★★★★★</h3>
+       					</div>
+       					<div class="col-md-7">
+       						<h5 id="calTotal" class="colorEstrellas"></h5>
+       					</div>
+       				</div>
+       				
        				<span id="msjTotal" class="alert alert-danger" style="display: none;">Esta publicacion no tiene calificacion</span>
-       				<div id="listaUsuarios">
+											<div id="listaUsers" class="row">
+       				</div>
+       				<div id="listaUsuarios" class="row">
        				</div>
        			</form>
       		</div>
     			</div><br><br>
   				</div>
 					</div>
-				</div><!--fin segunda columna-->
+				</div><!--fin segunda columna-->');
+    }
+    else{
+        echo ('<div><!--Comienzo columna-->
+<a class="btn btn-danger" data-toggle="collapse" href="#verContacto" role="button" aria-expanded="false" aria-controls="verContacto" id="">Datos Contacto</a>
+		<div class="row">
+  	<div class="col-md-8">
+    		<div class="collapse multi-collapse" id="verContacto">
+        <div class="card card-body">
+       			<form>
+       				<div class="row">
+
+       					<div class="col-md-12">
+       						<p>Para acceder a los datos del vendedor necesita Iniciar secion.<br>
+       						</p>
+       					</div>
+       					<!--div class="col-md-6"></div-->
+       					<div class="col-md-6">
+       						<a href="../reg.php" class="btn btn-primary btn-block" id="registrar">Registrarse</a>
+       					</div>
+       					<div class="col-md-6">
+       						<button type="button" class="btn btn-success btn-block" id="iniciarSesionBoton" data-toggle="modal" data-target="#modalFormularioLogin"> Iniciar Secion</button>
+       					</div>
+       				</div>
+       			</form>
+      		</div>
+    			</div><br><br>
+  				</div>
+					</div>
+				</div><!--fin columna Datos contacto-->
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalFormularioLogin" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body px-5">
+                    <form id="login-form">
+                        <div style="text-align: center; margin-top: 1em; margin-bottom: 2em;">
+                            <h4>Ingresa para poder comprar y vender.</h4>
+                        </div>
+                        <div class="form-group">
+                      
+                            <input type="email" class="form-control" id="correo" name="correo"
+                                placeholder="Ingrese su correo electrónico">
+                            <small style="display: none;" id="aviso" class="form-text text-muted">Debes haberte
+                                registrado
+                                para
+                                poder
+                                ingresar.</small>
+                        </div>
+                        <div class="form-group">
+                           
+                            <input type="password" class="form-control" id="contrasena" name="contrasena"
+                                placeholder="Contraseña">
+                            <small style="display: none;" id="avisoContrasena" class="form-text text-muted">Contraseña
+                                Incorrecta</small>
+
+                            <small><a href="#">
+                                    ¿Olvidaste tu contraseña?
+                                </a></small>
+
+                        </div>
+
+                        <div style="margin-left: auto;margin-right: auto;" class="text-center">
+                            <button type="button" class="btn btn-primary" id="login-button"
+                                style=" width: 15em !important;">Ingresar</button>
+
+                        </div> <br>
+
+                        <div class="alert alert-danger" id="mensajeDadodeBaja" style="display:none;text-align:center;">
+                            Estás dado de baja actualmente </div>
+
+                        <br>
+                        <div class="text-center">
+                            <small>¿No tienes una cuenta? </small>
+                            <a href="reg.php" class="btn btn-success"  id="crearCuenta" onclick="">
+                                Crea una cuenta
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div><!--Fin modal---><hr style="background-color:#e91e63;"><div class="col-md-6"><p>
+  	<a class="btn btn-danger" data-toggle="collapse" href="#verCalificacion" role="button" aria-expanded="false" aria-controls="verCalificacion" id="verCalifi">Ver calificaciones</a>
+		</p>
+		<div class="row">
+  	<div class="col">
+    		<div class="collapse multi-collapse" id="verCalificacion">
+        <div class="card card-body">
+       			<form>
+       				<div class="row">
+       					<div class="col-md-5">
+       						<h3 id="estrellas" class="colorEstrellas" style="display: none">★★★★★</h3>
+       					</div>
+       					<div class="col-md-7">
+       						<h5 id="calTotal" class="colorEstrellas"></h5>
+       					</div>
+       				</div>
+       				
+       				<span id="msjTotal" class="alert alert-danger" style="display: none;">Esta publicacion no tiene calificacion</span>
+											<div id="listaUsers" class="row">
+       				</div>
+       				<div id="listaUsuarios" class="row">
+       				</div>
+       			</form>
+      		</div>
+    			</div><br><br>
+  				</div>
+					</div>
+				</div><!--fin segunda columna-->');
+    }
+  ?>
+			
 		</div>
 	</div>
 </div>
@@ -233,3 +355,6 @@
 <script src="../js/jquery.etalage.min.js"></script>
 <script src="../js/controladorDetalles.js"></script>
 </html>		
+
+
+

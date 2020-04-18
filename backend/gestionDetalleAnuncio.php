@@ -130,11 +130,12 @@
 					
 		break;
 
-		case 'buscarNombre':
-			$nombreCat=$_GET["nombreCat"];
-			//$nombreCat="Camas";
+		case 'editarCalificacion':
+			$idAnuncios=$_GET["idAnuncios"];
+			$idUsuariDaLike=$_GET["idUsuariDaLike"];
+
 			$resultadoConsulta = array();
-			$mysqli->multi_query("SET @p0='".$nombreCat."'; SET @p1=''; SET @p2='obtenerPorPalabra'; SET @p3=''; CALL `SP_CATEGORIAS`(@p0, @p1, @p2, @p3, @p4);");
+			$mysqli->multi_query("SET @p0='".$idUsuariDaLike."'; SET @p1=''; SET @p2='".$idAnuncios."'; SET @p3=''; SET @p4=''; SET @p5=''; SET @p6='editarCalificacion'; SET @p7=''; CALL `SP_DETALLE_PUBLICACION`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8); SELECT @p8 AS `mensaje`;");
 
 			$resultadoConsulta = array();
 			do {
