@@ -44,6 +44,8 @@ switch ($_POST["accion"]) {
             array_push($parametros, $_POST["hasta"] );
         }
 
+    
+        $queryBase.= ' order by a.fecha desc';
         
 
         $stmt = $pdo->prepare($queryBase);
