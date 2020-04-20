@@ -88,7 +88,7 @@ if((int)$codigo==1){
         $mail->setFrom('publitodo.2020@gmail.com', 'Publitodo');
 
         //direccion de a quien se envia el correo, en este caso seria el correo que el usuario registro
-        $mail->addAddress('yalidanthony@gmail.com', 'Yalid Anthony');//TODO:Poner correo de usuario
+        $mail->addAddress($correo, $primerNombre." ".$primerApellido);//TODO:Poner correo de usuario
 
         //La razon del correo
         $mail->Subject = 'Verifica tu correo en Publitodo';
