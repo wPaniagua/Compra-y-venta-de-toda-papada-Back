@@ -8,8 +8,8 @@ jQuery(document).ready(function($){
     const idAnuncio = urlParams.get('idAnuncios');
 
     detalleAnuncio(idAnuncio);
-
     obtenerIdUsuario();
+    obtenerFoto(idAnuncio);
 
 	$('#etalage').etalage({
 			thumb_image_width: 300,
@@ -86,6 +86,8 @@ function detalleAnuncio(idAnuncio){
 				
 				var contenido="";
 				//datos producto
+				$("#productoServicio").html( respuesta[0].tipoProducto);
+				$("#categoria").html( respuesta[0].categoria);
 				$("#tituloAnuncio").html( respuesta[0].titulo);
 				$("#titPub").html( respuesta[0].titulo);
 				$("#descripcion").html( respuesta[0].descripcion);
@@ -145,26 +147,27 @@ function obtenerPuntuacion(){
 			var contenido="";
 			//datos producto
 			if (respuesta.length>0) {
+				$("#listaUsers").remove();
 				$("#msjTotal").fadeOut();
 				$("#estrellas").fadeIn();
 				$("#calTotal").html('Puntuacion Total:'+respuesta[0].Total);
 			for (var i = 0; i<respuesta.length; i++){
 				contenido+='<div id="listaUsers" class="row"><div class="col-md-2">'+
 								     '<i class="fas fa-user-circle  fa-2x" style="color:#212529;"></i>'+
-								     '</div><div class="col-md-4">'+
+								     '</div><div class="col-md-10">'+
 								     '<label id="" class="">'+respuesta[i].primerNombre+" "+respuesta[i].primerApellido+'</label>'+
-								     '</div><div class="col-md-3">'+
+								     '</div><div class="col-md-6">'+
 								     '<label  class="colorEstrellas">';
 								    for (var j = 0; j<respuesta[i].puntuacion; j++){
 								     contenido+='★';
 								    }
 	 contenido+='</label>'+
-								    	'</div><div class="col-md-3 py-2 px-4">'+
+								    	'</div><div class="col-md-6 py-2 px-4">'+
 								    	'<a class="" data-toggle="collapse" data-target="#collapseExample'+respuesta[i].idCalificacion+'" aria-expanded="false" aria-controls="collapseExample">'+
-											  '<i class="fas fa-chevron-down  fa-1x" style="color:#212529;"></i>'+
+											  'Comentario <i class="fas fa-chevron-down  fa-1x" style="color:#212529;"></i>'+
 											  '</a></div><div class="col-md-12">'+
 											 	'<div class="collapse" id="collapseExample'+respuesta[i].idCalificacion+'">'+
-											  '<div class="card card-body">'+
+											  '<div class="card card-body"> '+
 											    respuesta[i].razones+
 											  '</div></div></div></div>';
 			}	
@@ -198,6 +201,7 @@ $("#btn-Cal").on("click", () => {
 				if (respuesta.length>0) {
 					$("input[name=calificacion][value=" + respuesta[0].puntuacion + "]").attr('checked', 'checked');
 					$('#razones').val(respuesta[0].razones);
+					$("#listaUsers").remove();
 				}
 			}
 	});
@@ -316,4 +320,51 @@ async function login(correo, contrasena) {
 
 function sleep(time) {
     return new Promise((resolve) => setTimeout(resolve, time));
+}
+
+
+function obtenerFoto(idAnuncio){
+	parametros="idAnuncios="+idAnuncio;
+	//console.log(idAnuncio);
+	//alert(parametros);
+	$.ajax({
+			url:"../backend/gestionDetalleAnuncio.php?accion=obtenerFotos",
+			method:"GET",
+			data:parametros,
+			dataType:"json",
+			success:function(respuesta){
+				console.log(respuesta);
+				var contenido='';
+				var contenidoU='';
+				if (respuesta.length>0) 
+				{
+					$("#imagenesAnuncio").fadeOut();
+					contenido+='<ul id="etalage">';
+					for (var i = 0; i<respuesta.length; i++){
+						if (i==0) {
+							// statement
+							contenido+='<li><a href="#">'+
+							'<img class="etalage_thumb_image" src="../imgCate/'+respuesta[i].urlFoto+'" class="img-responsive" />'+
+							'<img class="etalage_source_image" src="../imgCate/'+respuesta[i].urlFoto+'" class="img-responsive" title="" />'+
+							'</a></li>';
+						} else {
+							// statement
+							contenido+='<li>'+
+							'<img class="etalage_thumb_image" src="../imgCate/'+respuesta[i].urlFoto+'" class="img-responsive" />'+
+							'<img class="etalage_source_image" src="../imgCate/'+respuesta[i].urlFoto+'" class="img-responsive" title="" />'+
+							'</li>';	
+
+						}
+							
+					}
+					contenido+='</ul><div class="clearfix"></div>';												
+					//$("#imgAnuncios").remove();							  
+					$("#fotosAnuncio").append(contenido);
+				}else
+				{
+					console.log("Entre a 0");
+					$("#imagenesAnuncio").fadeIn();
+				}
+			}
+	});
 }

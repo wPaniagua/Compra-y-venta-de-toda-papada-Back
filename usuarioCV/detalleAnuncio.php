@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -30,7 +28,8 @@
 	 		<div class="container"> 
 	  	<div class="single_grid">
 	  		<h2 id="tituloAnuncio">Producto X</h2>
-					<div class="grid imgCate_3_of_2">
+	  				<div class="grid imgCate_3_of_2" id="fotosAnuncio"></div>
+					<div class="grid imgCate_3_of_2" id="imagenesAnuncio" style="display: none;"> <!--Inicio div Imagenes-->
 						<ul id="etalage">
 							<li>
 								<a href="#">
@@ -52,7 +51,7 @@
 							</li>
 						</ul>
 						 <div class="clearfix"></div>		
-				  </div> 
+				  </div> <!--Fin div Imagenes-->
 			</div>
 		</div>
 	</div>
@@ -69,10 +68,18 @@
 				<form>
 			  <div class="row">
 			    <div class="col-md-5">
-			      <label class="font-weight-bold">Producto / Servicio:</label>
+			      <label class="font-weight-bold" id="productoServicio">Producto / Servicio:</label>
 			    </div>
 			    <div class="col-md-7">
 			      <h4 id="titPub"></h4>
+			    </div>
+			  </div>
+			  <div class="row">
+			    <div class="col-md-5">
+			      <label class="font-weight-bold">Categoria:</label>
+			    </div>
+			    <div class="col-md-7">
+			      <label id="categoria" class="">Categoria ...</label>
 			    </div>
 			  </div>
 			  <div class="row">
@@ -205,16 +212,16 @@
         <div class="card card-body">
        			<form>
        				<div class="row">
-       					<div class="col-md-5">
+       					<div class="col-md-12">
        						<h3 id="estrellas" class="colorEstrellas" style="display: none">★★★★★</h3>
        					</div>
-       					<div class="col-md-7">
+       					<div class="col-md-12">
        						<h5 id="calTotal" class="colorEstrellas"></h5>
        					</div>
        				</div>
        				
        				<span id="msjTotal" class="alert alert-danger" style="display: none;">Esta publicacion no tiene calificacion</span>
-											<div id="listaUsers" class="row">
+					<div id="listaUsers" class="row">
        				</div>
        				<div id="listaUsuarios" class="row">
        				</div>
@@ -315,18 +322,19 @@
         <div class="card card-body">
        			<form>
        				<div class="row">
-       					<div class="col-md-5">
+       					<div class="col-md-12">
        						<h3 id="estrellas" class="colorEstrellas" style="display: none">★★★★★</h3>
        					</div>
-       					<div class="col-md-7">
+       					<div class="col-md-12">
        						<h5 id="calTotal" class="colorEstrellas"></h5>
        					</div>
        				</div>
        				
        				<span id="msjTotal" class="alert alert-danger" style="display: none;">Esta publicacion no tiene calificacion</span>
-											<div id="listaUsers" class="row">
+					<div id="listaUsers" class="row">
        				</div>
        				<div id="listaUsuarios" class="row">
+       				</div>
        				</div>
        			</form>
       		</div>

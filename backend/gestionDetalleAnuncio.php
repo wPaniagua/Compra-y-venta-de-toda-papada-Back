@@ -89,45 +89,31 @@
 
 		break;
 
-		case 'nuevo':
-			$nombreCat=$_GET["nombreCate"];
-			
+		case 'obtenerFotos':
+			$idAnuncios=$_GET["idAnuncios"];
 
-			// $mysqli->multi_query("SET @p0='".$nombreCat."'; SET @p1=''; SET @p2='guardar'; SET @p3=''; CALL `SP_CATEGORIAS`(@p0, @p1, @p2, @p3, @p4); SELECT @p4 AS `mensaje`;");
+			$resultadoConsulta = array();
+			$mysqli->multi_query("SET @p0=''; SET @p1=''; SET @p2='".$idAnuncios."'; SET @p3=''; SET @p4=''; SET @p5=''; SET @p6='obtenerFotos'; SET @p7=''; CALL `SP_DETALLE_PUBLICACION`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);");
 
-			// $resultadoConsulta = array();
-			// do {
-			//     if ($resultado = $mysqli->store_result()) {
-			// 		  while ($fila = $resultado->fetch_assoc()) {
+			$resultadoConsulta = array();
+			do {
+			    if ($resultado = $mysqli->store_result()) {
+					  while ($fila = $resultado->fetch_assoc()) {
 
-        	// 			$resultadoConsulta[] = $fila;
+        				$resultadoConsulta[] = $fila;
 
-			//             }
+			            }
 			        
-			//         $resultado->free();
-			//     } else {
-			//         if ($mysqli->errno) {
-			//             echo "Store failed: (" . $mysqli->errno . ") " . $mysqli->error;
-			//         }
-			//     }
-			// } while ($mysqli->more_results() && $mysqli->next_result());
+			        $resultado->free();
+			    } else {
+			        if ($mysqli->errno) {
+			            echo "Store failed: (" . $mysqli->errno . ") " . $mysqli->error;
+			        }
+			    }
+			} while ($mysqli->more_results() && $mysqli->next_result());
 
-			// echo json_encode($resultadoConsulta);
-			
-			$idcategoria = "";
-			$pestado="";
-			$accion = 'guardar';
-			$call = $mysqli->prepare('CALL SP_CATEGORIAS(?, ?, ?, ? , @mensaje)');
-            $call->bind_param('siss', $nombreCat, $idcategoria, $accion,$pestado);
-            $call->execute();
-            
-            $select = $mysqli->query('SELECT  @mensaje');
-            
-            $result = $select->fetch_assoc();
-			$mensaje = $result['@mensaje'];
-			
-			echo json_encode(array("Mensaje"=>$mensaje));
-					
+			echo json_encode($resultadoConsulta);
+	
 		break;
 
 		case 'editarCalificacion':

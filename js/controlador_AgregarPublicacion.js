@@ -138,3 +138,7 @@ $('#departamentos').on('change', function (e) {
 });
 });
 
+$("#GuardarImg").on("click", () => {
+    var formData=new FormData($("#form_subir_fa")[0]);
+    console.log('formData');
+});
