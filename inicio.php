@@ -121,7 +121,7 @@
                             <small style="display: none;" id="avisoContrasena" class="form-text text-muted">Contraseña
                                 Incorrecta</small>
 
-                            <small><a href="#">
+                            <small><a href="reestablecer_contrasena.html?valid=1">
                                     ¿Olvidaste tu contraseña?
                                 </a></small>
 
