@@ -1,3 +1,9 @@
+$("#formBusqueda").submit(function () {
+    search($("#inputBusqueda").get(0));
+    return false;
+});
+
+
 $(document).ready(function () {
 
     //  traerElectronicos();
@@ -103,16 +109,16 @@ async function login(correo, contrasena) {
                 //location.reload();
                 //console.log('Entro a :'+respuesta.usuario);
                 //console.log(respuesta);
-                if (respuesta.usuario==1) {
+                if (respuesta.usuario == 1) {
                     var url = "http://localhost/Compra-y-venta-de-toda-papada-Back/administracion/index.php";
-                    window.location = url;  
-                }else{
-                  var url = "http://localhost/Compra-y-venta-de-toda-papada-Back/usuarioCV/perfil.php";
-                  window.location = url;
-                  console.log('Entro como comprador');  
+                    window.location = url;
+                } else {
+                    var url = "http://localhost/Compra-y-venta-de-toda-papada-Back/usuarioCV/perfil.php";
+                    window.location = url;
+                    console.log('Entro como comprador');
                 }
-                
-    
+
+
             } else if (respuesta.existe == 1 && respuesta.contrasenaCorrecta == 0) {
 
                 console.log("contrasena incorrecta");
@@ -204,7 +210,7 @@ function traerElectronicos() {
         success: function (respuesta) {
 
             var response = JSON.parse(respuesta);
-            console.log('datos respuesta: '+response);
+            console.log('datos respuesta: ' + response);
             var cantidadSlides = Math.ceil(response.length / 4);
             console.log("cantidadSlides: " + cantidadSlides);
 
@@ -357,7 +363,7 @@ function llenarSlides(response, categoriaNombre, categoriaSlide, categoriaContro
                         <div class="col-md-3">
                             <div class="card mb-2">
                                 <img class="card-img-top"
-                                    src="https://eldiariony.files.wordpress.com/2018/04/sony-xperia-xz-premium-cnet.jpg?quality=80&strip=all&w=940"
+                                    src="https://i.pcmag.com/imagery/reviews/06o0PyhFnwV2LK3rN3vb1ea-28.fit_scale.size_1028x578.v_1582142613.jpg"
                                     alt="Card image cap">
                                 <div class="card-body" style="max-height:10em; min-height:10em;">
                                     <h5 class="card-title">${response[indexResponse].titulo.slice(0, 22)}...</h5>
@@ -374,7 +380,7 @@ function llenarSlides(response, categoriaNombre, categoriaSlide, categoriaContro
                     <div class="col-md-3 clearfix d-none d-md-block">
                         <div class="card mb-2">
                             <img class="card-img-top"
-                                src="https://eldiariony.files.wordpress.com/2018/04/sony-xperia-xz-premium-cnet.jpg?quality=80&strip=all&w=940"
+                                src="https://i.pcmag.com/imagery/reviews/06o0PyhFnwV2LK3rN3vb1ea-28.fit_scale.size_1028x578.v_1582142613.jpg"
                                 alt="Card image cap">
                             <div class="card-body" style="max-height:10em; min-height:10em;">
                                 <h5 class="card-title">${response[indexResponse].titulo.slice(0, 22)}...</h5>
@@ -478,14 +484,14 @@ function traerCategorias() {
         success: function (respuesta) {
 
             console.log(respuesta);
-           let response = JSON.parse(respuesta);
+            let response = JSON.parse(respuesta);
 
-            
+
 
             // $("#categoriasElementos").html("");
             // $("#categoriasElementos").append(`<option value="null" selected>Todas</option>`);
 
-          for (let i = 0; i < response.length; i++) {
+            for (let i = 0; i < response.length; i++) {
                 $("#categoriasElementos").append(`
                 <option value="${response[i].idCategorias}">${response[i].descripcion}</option>`);
 
@@ -538,3 +544,31 @@ function shuffleArray(array) {
         array[j] = temp;
     }
 }
+
+
+// jQuery(document).on('keydown', '#inputBusqueda', function (ev) {
+//     if (ev.key === 'Enter') {
+//         console.log("Enter")
+//     }
+// });
+
+$('#inputBusqueda').keypress(function (event) {
+    var keycode = (event.keyCode ? event.keyCode : event.which);
+    if (keycode == '13') {
+        let categoriaSeleccionada = $("#categoriasElementos :selected").val();
+        console.log(categoriaSeleccionada);
+
+        let busqueda = $("#inputBusqueda").val();
+        console.log(busqueda)
+
+        if (categoriaSeleccionada != "null" && busqueda != "") {
+            window.location.href = `busqueda.php?categoria=${categoriaSeleccionada}&busqueda=${busqueda}`;
+        } else if (categoriaSeleccionada == "null" && busqueda != "") {
+            window.location.href = `busqueda.php?categoria=null&busqueda=${busqueda}`;
+        } else if (categoriaSeleccionada != "null" && busqueda == "") {
+            window.location.href = `busqueda.php?categoria=${categoriaSeleccionada}&busqueda=`;
+        } else if (categoriaSeleccionada == "null" && busqueda == "") {
+            window.location.href = `busqueda.php`;
+        }
+    }
+});

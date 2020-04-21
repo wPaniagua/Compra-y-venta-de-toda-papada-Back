@@ -2,12 +2,11 @@ $('#btnPublicar').click(registrarDatos);
 $(window).on("load", function () {
     cargarCategorias();
 
-    $("#publicaciones").addClass("active");
 
 
-    
 });
-function registrarDatos(){
+
+function registrarDatos() {
     var nombre = $('#titulo').val();
     var descripcion = $('#descripcion').val();
     var idCategorias = $('#slc-categorias').val();
@@ -18,21 +17,21 @@ function registrarDatos(){
     //var url = $('#url');
     console.log(nombre);
 
-    
+
     $.ajax({
-            url: "../backend/gestionAgregarPub.php",
-            data: `accion=obtener`+"&nombre="+nombre+"&descripcion="+descripcion+"&idCategoria="+idCategorias+"&tipo="+tipo+"&precio="+ precio+
-            "&idPersona="+idPersona+"&idMoneda="+idMoneda,
-            method: "POST",
-            dataType: "json",
-            success: function (respuesta) {
+        url: "../backend/gestionAgregarPub.php",
+        data: `accion=obtener` + "&nombre=" + nombre + "&descripcion=" + descripcion + "&idCategoria=" + idCategorias + "&tipo=" + tipo + "&precio=" + precio +
+            "&idPersona=" + idPersona + "&idMoneda=" + idMoneda,
+        method: "POST",
+        dataType: "json",
+        success: function (respuesta) {
             console.log(respuesta);
 
         },
-            error: function (error) {
-                console.log(error)
-            }
-        });
+        error: function (error) {
+            console.log(error)
+        }
+    });
 
 }
 
@@ -49,7 +48,7 @@ function cargarCategorias() {
             for (let i = 0; i < response.length; i++) {
                 $("#slc-categorias").append(
                     `<option value=${response[i].idCategoria}>${response[i].categoria}</option>`
-                    )
+                )
             }
         },
         error: function (error) {
@@ -142,3 +141,4 @@ $("#GuardarImg").on("click", () => {
     var formData=new FormData($("#form_subir_fa")[0]);
     console.log('formData');
 });
+
