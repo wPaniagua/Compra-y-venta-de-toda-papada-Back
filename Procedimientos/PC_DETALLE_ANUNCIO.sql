@@ -4,6 +4,7 @@ CHANGE puntuacion puntuacion
 INT(45) NULL DEFAULT NULL;
 
 /*procedimiento de detalle de publicacion*/
+DELIMITER $$
 CREATE OR REPLACE PROCEDURE SP_DETALLE_PUBLICACION(
                   IN idUsuarioDaLike INT,
                   IN pidCalificacion INT,
@@ -68,14 +69,16 @@ SP:BEGIN
       p.segundoNombre, p.primerApellido, 
       p.segundoApellido, p.correo, p.fechaNac,
       p.idTipoUsuario,p.idMunicipio,p.estado, m.descripcion 'moneda',
-      mun.nombre 'municipio',d.nombre 'depto',t.telefono/*,f.urlFoto*/ 
+      mun.nombre 'municipio',d.nombre 'depto',t.telefono,cate.descripcion 
+      'categoria',pro.tipo 'tipoProducto' 
       FROM anuncios a
       INNER JOIN persona p on a.idPersona=p.idPersona 
       INNER JOIN moneda m on m.idMoneda=a.idMoneda
       INNER join municipio mun on mun.idMunicipio=p.idMunicipio
       INNER JOIN deptos d on d.idDeptos=mun.idDeptos
       INNER JOIN telefono t on t.idPersona=p.idPersona
-      /*INNER JOIN fotosusuario f on f.idPersona=p.idPersona*/
+      INNER JOIN producto pro on pro.idProducto=a.idProducto
+      INNER JOIN categorias cate on cate.idCategorias=pro.idCategorias
       WHERE a.idAnuncios=idPublicacion;
       SET mensaje='Exitoso';
   END IF;
@@ -90,11 +93,10 @@ SP:BEGIN
     END IF;
       SELECT c.idCalificacion, c.pubCalificada, 
       c.puntuacion, c.razones, c.idAnuncios, 
-      c.estado, p.idPersona,p.primerNombre,p.primerApellido,f.urlFoto,
+      c.estado, p.idPersona,p.primerNombre,p.primerApellido,
       (SELECT SUM(puntuacion) FROM calificacion cal WHERE cal.idAnuncios=idPublicacion) Total
       FROM calificacion c
       INNER JOIN persona p on p.idPersona=c.nombre
-      INNER JOIN fotosusuario f on f.idPersona=p.idPersona
       WHERE idAnuncios=idPublicacion;
       SET mensaje='Exitoso';
   END IF;
@@ -201,4 +203,15 @@ SP:BEGIN
     END IF;
   END IF;
   
+  IF accion="obtenerFotos" THEN
+    SELECT count(*) INTO conteo FROM fotosanuncio 
+    WHERE idAnuncios=idPublicacion;
+    IF conteo=0 THEN
+      SET mensaje='No Hay Fotos';
+      LEAVE SP;
+    END IF;
+    SELECT * FROM fotosanuncio 
+    WHERE idAnuncios=idPublicacion;
+    SET mensaje='Hay Fotos';
+  END IF;
 END$$

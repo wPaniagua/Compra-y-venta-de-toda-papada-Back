@@ -28,12 +28,13 @@ include '../backend/seguridad.php';
 	?>
 	
 	<div><br><br><br><br></div>
-	
-	<div class="testbox">
+<div class="container-fluid">	
+  <div class="row">	
+   <div class="col-md-6">	
+	<div class=""><!--Inicio de datos formulario-->
 		<h1>Editar Aviso</h1>
 
 		<form action="/">
-			<hr>
 			<div class="accounttype">
 				<input type="radio" value="Producto" id="radioProducto" name="tipo" checked/>
 				<label for="radioProducto" class="radio" chec>Producto</label>
@@ -42,10 +43,7 @@ include '../backend/seguridad.php';
 			</div>
 			<fieldset>
 				<legend><span class="number">1</span>Información del Aviso</legend>
-				<!--label for="categorias">Categoria:</label>
-				<select id="categorias" name="categorias">
-
-				</select-->
+				
 				<label for="slc-categorias">Categoria: </label><br>
 				<select name="slc-categorias" id="slc-categorias">
 					<option value="null">Seleccionar</option>
@@ -56,16 +54,43 @@ include '../backend/seguridad.php';
 				<label for="descripcion">Descripción:</label>
 				<textarea id="descripcion" name="descripcion"></textarea>
 
-				
 				<label for="precio">Precio:</label>
 				<input type="text" id="precio" name="precio">
-				<input type="radio" value="1" id="radioLps" name="moneda" checked/>
+				<input type="radio" value="1" id="radioLps" name="moneda" checked>
 				<label for="radioLps" class="radio" chec>Lempiras</label>
-				<input type="radio" value="2" id="radioDolar" name="moneda"/>
-				<label for="radioDolar" class="radio">Dólares</label> </label>
-				<div class="container">
+				<input type="radio" value="2" id="radioDolar" name="moneda">
+				<label for="radioDolar" class="radio">Dólares</label>
+
+   			
+				<!--legend><span class="number">2</span>Ubicación del Aviso</legend>
+				<div class="form-group">
+
+					<label for="departamentos">Departamento</label>
+
+					<select id="departamentos" class="form-control">
+						<option selected="selected" value="null">No hay nada que cargar</option>
+					</select>
+
+				</div>
+				<div class="form-group">
+
+					<label for="municipios">Municipios</label>
+
+					<select id="municipios" class="form-control">
+						<option selected="selected" value="null">Seleccione un departamento arriba</option>
+					</select>
+
+				</div-->
+
+			</fieldset>
+			<button type="submit" id="#btnPublicar" class="btn btn-primary submitBtn" onclick="registrarDatos();">Publicar Anuncio</button>
+		</form>
+	</div><!--fin de datos formulario-->
+   </div><!--fin 1ra columna-->
+   <div class="col-md-6" >
+   	<div class="container"><!---Div fotos-->
 					<section id="Images" class="images-cards">
-						<form action="upload.php" method="post" enctype="multipart/form-data">
+						<form action="upload.php" method="post" enctype="multipart/form-data" id="form_subir_fa">
 							<div class="row">
 								<div class="col-xl-2 col-lg-4 col-md-2 col-sm-2 col-xl-6" id="add-photo-container">
 									<div class="add-new-photo first"  id="add-photo">
@@ -74,40 +99,18 @@ include '../backend/seguridad.php';
 									<input type="file" multiple id="add-new-photo" name="images[]">
 								</div>
 							</div>
+							<button type="button" class="btn btn-success btn-block" id="GuardarImg">Subir Imagenes</button>
 						</form> 
-					</section>
-				</div>
-				
-					<legend><span class="number">2</span>Ubicación del Aviso</legend>
-					<div class="form-group">
-
-						<label for="departamentos">Departamento</label>
-
-						<select id="departamentos" class="form-control">
-							<option selected="selected" value="null">No hay nada que cargar</option>
-
-						</select>
-
-					</div>
-				<div class="form-group">
-
-					<label for="municipios">Municipios</label>
-
-					<select id="municipios" class="form-control">
-						<option selected="selected" value="null">Seleccione un departamento arriba</option>
-
-					</select>
-
-				</div>
+					</section>	
+				</div><!---Div fotos-->
+   </div>
+  </div> <!--fin row-->	
+</div><!--fin container-->  
 
 
 
-			</fieldset>
-			<button type="submit" id="#btnPublicar" class="btn btn-primary submitBtn" onclick="registrarDatos();">Publicar Anuncio</button>
-		</form>
 
-	</form>
-</div>	
+
 
 
 <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>

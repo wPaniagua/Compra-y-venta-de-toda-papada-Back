@@ -31,7 +31,7 @@ $(document).ready(function(){
 
         for (var i = 0; i < files.length; i++) {
             element = files[i];
-            
+            console.log(element);
             if (supportedImages.indexOf(element.type) != -1) {
                 createPreview(element);
             }

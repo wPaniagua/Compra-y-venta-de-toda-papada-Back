@@ -28,11 +28,11 @@ h2 {
     font-size: 25px;
     font-weight: bold;
 }
-
+/*
 [class*="col-"],
 [class^="col-"] {
     padding: 5px;
-}
+}*/
 
 .image-container {
     display: flex;
@@ -86,9 +86,9 @@ main {
 }
 
 .container {
-    display: inline-block;
-    width: 80%;
-    padding: 20px;
+    display: block;
+    width: 100%;
+    /*padding: 20px;*/
 }
 
 /* ->Body */
