@@ -22,8 +22,8 @@ include '../backend/seguridad.php';
 	<div class="container-fluid py-5 px-4"><!---Inicio contenedor--->
 		<div class="row"><!---Inicio columna--->
 			<div class="col-md-4 py-3" ><!---INicio primera columna--->
-		<center><h3 class="py-2" id="agregar">Agregar Aviso</h3>
-		<h3 class="py-2" id="editar" style="display: none">Editar Aviso</h3></center>
+		<center>
+		<h3 class="py-2" id="editar">Editar Aviso</h3></center>
 					
 		<div class="rounded-lg" style="background-color:#F4F7F8">
 				<form action="/">
@@ -80,7 +80,7 @@ include '../backend/seguridad.php';
 						<span id="msjMoneda" style="color:red;display: none">Debe seleccionar una moneda</span>
 						</div>		
 					</fieldset>
-					<button type="button" id="btnGuardar" class="btn btn-primary btn-block" onclick="registrarDatos();">Publicar Anuncio</button>
+					<button type="button" id="btnGuardar" class="btn btn-primary btn-block" onclick="editarDatos();">Guardar Cambios</button>
 					<br>
 					<span class="alert alert-danger" style="display: none" id="msjAviso"></span>
 				</form>
@@ -88,21 +88,14 @@ include '../backend/seguridad.php';
 			</div><!---Fin primer columna--->
 			<div class="col-md-8 py-5"><br>
 				<div class="rounded-lg" style="background-color:#F4F7F8">
-				<section id="Images" class="images-cards px-3 py-3">
-						<form action="" method="post" enctype="multipart/form-data" id="form_subir_fa">
-							<div class="row">
-								<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xl-3" id="add-photo-container">
-									<div class="add-new-photo first"  id="add-photo">
-										<span>
-											<i class="fas fa-plus-square"></i></span>
-									</div>
-									<input type="file" multiple id="add-new-photo" name="images[]">
-								</div>
-							</div><br><br>
-							<button type="button" class="btn btn-success" id="GuardarImg">Subir Imagenes</button>
-							</form> 
-						</section>
-					</div>
+				<section id="Images">
+						<form action="" method="post" enctype="multipart/form-data">
+						
+						</form> 
+						<div class="row" id="imgAnuncio">
+						</div>
+					</section>
+				</div>
 			</div><!---Fin segunda columna--->
 		</div><!---Fin row--->
 	</div><!---Fin container--->
@@ -113,11 +106,11 @@ include '../backend/seguridad.php';
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/bootstrap.bundle.min.js.descarga"></script>
 
-<script src="../js/controlador_AgregarPublicacion.js"></script>
+<script src="../js/controladorEditarPublicacio.js"></script>
 
 <!--Controladores para subir fotos--->
-<script src="../js/functions.js"></script>
-<script src="../js/scripts.js"></script>
+<!--script src="../js/functions.js"></script-->
+<!--script src="../js/scripts.js"></script-->
 <!--- Foto usuario-->
 <script type="text/javascript" src="../js/fotoAdmin.js"></script>
 </html>

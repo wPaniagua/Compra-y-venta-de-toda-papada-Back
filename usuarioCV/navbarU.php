@@ -19,7 +19,7 @@
 		  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
 		    <ul class="navbar-nav mr-auto">
 		      <li class="nav-item " id="publicaciones">
-		        <a class="nav-link  font-weight-bold navBarN" href="agregarPublicacion.php" >Mis Publicaciones</span></a>
+		        <a class="nav-link  font-weight-bold navBarN" href="publicaciones.php">Mis Publicaciones</span></a>
 		      </li>
 		      <li class="nav-item " id="denuncias">
 		        <a class="nav-link  font-weight-bold navBarN" href="#" tabindex="-1" aria-disabled="true">Denuncias</a>

@@ -41,10 +41,12 @@ $(document).ready(function(){
         }
 
         if (seEncontraronElementoNoValidos) {
-            showMessage("Se encontraron archivos no validos.");
+            //showMessage("Se encontraron archivos no validos.");
+            console.log('Se encontraron archivos no validos.');
         }
         else {
-            showMessage("Todos los archivos se subieron correctamente.");
+            //showMessage("Todos los archivos se subieron correctamente.");
+            console.log('Todos los archivos se subieron correctamente.');
         }
     
     });
