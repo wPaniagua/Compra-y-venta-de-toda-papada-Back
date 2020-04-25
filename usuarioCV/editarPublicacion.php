@@ -87,7 +87,28 @@ include '../backend/seguridad.php';
 			</div>
 			</div><!---Fin primer columna--->
 			<div class="col-md-8 py-5"><br>
+				<div class="alert alert-danger"> Recuerda: Tu anuncio solo puede tener 8 imagenes como maximo.</div>
 				<div class="rounded-lg" style="background-color:#F4F7F8">
+				<section id="Images" class="images-cards px-3 py-3">
+						<form action="" method="post" enctype="multipart/form-data" id="formulario">
+							<div class="row">
+								<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xl-3" id="add-photo-container">
+									<div class="add-new-photo first"  id="add-photo">
+										<span>
+											<i class="fas fa-plus-square"></i></span>
+									</div>
+									<input type="file" multiple id="file" name="file[]">
+								</div>
+							</div>
+							<div id="respuesta" class="alert alert-info" style="display:none;"></div><br><br>
+							<button type="button" class="btn btn-success" id="btnSubirImg">Subir Imagenes</button>
+							<input type="text" name="idAnuncio" id="idAnuncio" style="display:none;">
+							</form> 
+						</section>
+					</div>
+					<!--Inicio mostrar img-->
+					<div class="rounded-lg" style="background-color:#F4F7F8">
+					<center><h3>Imagenes Anuncio</h3> </center>
 				<section id="Images">
 						<form action="" method="post" enctype="multipart/form-data">
 						
@@ -95,7 +116,12 @@ include '../backend/seguridad.php';
 						<div class="row" id="imgAnuncio">
 						</div>
 					</section>
-				</div>
+				</div><!--Fin mostrar img-->
+
+			</div><!---Fin segunda columna--->
+			<div class="col-md-4"></div>
+			<div class="col-md-8 py-5"><br>
+				
 			</div><!---Fin segunda columna--->
 		</div><!---Fin row--->
 	</div><!---Fin container--->
@@ -107,6 +133,7 @@ include '../backend/seguridad.php';
 <script type="text/javascript" src="../js/bootstrap.bundle.min.js.descarga"></script>
 
 <script src="../js/controladorEditarPublicacio.js"></script>
+<script src="../js/controladorEditarImg.js"></script>
 
 <!--Controladores para subir fotos--->
 <!--script src="../js/functions.js"></script-->

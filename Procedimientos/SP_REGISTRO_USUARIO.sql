@@ -1,4 +1,4 @@
-CREATE PROCEDURE SP_REGISTRO_USUARIO(
+CREATE OR REPLACE PROCEDURE SP_REGISTRO_USUARIO(
                     IN ppNombre VARCHAR(50),
                     IN psNombre VARCHAR(50),
                     IN ppApellido VARCHAR(50),

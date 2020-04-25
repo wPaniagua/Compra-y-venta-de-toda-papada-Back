@@ -87,19 +87,21 @@ include '../backend/seguridad.php';
 			</div>
 			</div><!---Fin primer columna--->
 			<div class="col-md-8 py-5"><br>
+				<div class="alert alert-danger"> Nota: Debe subir como minimo tres imagenes y maximo 8 imagenes.</div>
 				<div class="rounded-lg" style="background-color:#F4F7F8">
 				<section id="Images" class="images-cards px-3 py-3">
-						<form action="" method="post" enctype="multipart/form-data" id="form_subir_fa">
+						<form action="" method="post" enctype="multipart/form-data" id="formulario">
 							<div class="row">
 								<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xl-3" id="add-photo-container">
 									<div class="add-new-photo first"  id="add-photo">
 										<span>
 											<i class="fas fa-plus-square"></i></span>
 									</div>
-									<input type="file" multiple id="add-new-photo" name="images[]">
+									<input type="file" multiple id="file" name="file[]">
 								</div>
-							</div><br><br>
-							<button type="button" class="btn btn-success" id="GuardarImg">Subir Imagenes</button>
+							</div>
+							<div id="respuesta" class="alert alert-info" style="display:none;"></div><br><br>
+							<button type="button" class="btn btn-success" id="btnSubirImg" disabled="true">Subir Imagenes</button>
 							</form> 
 						</section>
 					</div>
@@ -116,8 +118,9 @@ include '../backend/seguridad.php';
 <script src="../js/controlador_AgregarPublicacion.js"></script>
 
 <!--Controladores para subir fotos--->
-<script src="../js/functions.js"></script>
-<script src="../js/scripts.js"></script>
+<script src="../js/subirImagenAnuncio.js"></script>
+<!--script src="../js/functions.js"></script-->
+<!--script src="../js/scripts.js"></script-->
 <!--- Foto usuario-->
 <script type="text/javascript" src="../js/fotoAdmin.js"></script>
 </html>

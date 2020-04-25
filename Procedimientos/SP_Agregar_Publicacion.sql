@@ -1,18 +1,16 @@
-/*Procedimiento para guardar un anuncio*/
 DELIMITER $$
-CREATE OR REPLACE PROCEDURE SP_AGREGAR_PUB( 
-                    IN nombreProducto VARCHAR(200),
-                    IN caracteristicas VARCHAR(500),
-                    IN idCategoria INT,
-                    IN ptipo VARCHAR(50),
-                    IN pprecio INT,
-                    IN pidPersona INT,
-                    IN pidMoneda INT,
-                    IN idAnuncio INT,
-                    IN url VARCHAR(500),
-                    IN accion VARCHAR(100),
-                    OUT mensaje VARCHAR(100)
-                    ) 
+CREATE OR REPLACE PROCEDURE SP_AGREGAR_PUB(
+              IN nombreProducto VARCHAR(200), 
+              IN caracteristicas VARCHAR(500), 
+              IN idCategoria INT, 
+              IN ptipo VARCHAR(50), 
+              IN pprecio INT,
+              IN pidPersona INT, 
+              IN pidMoneda INT, 
+              IN idAnuncio INT, 
+              IN url VARCHAR(500), 
+              IN accion VARCHAR(100), 
+              OUT mensaje VARCHAR(100))
 SP:BEGIN
 
   DECLARE idPro INT;
@@ -21,6 +19,7 @@ SP:BEGIN
   DECLARE conteoU INT;
   DECLARE conteoP INT;
   DECLARE conteoA INT;
+  DECLARE totalFotos INT;
   DECLARE tempMensaje VARCHAR(100);
   SET autocommit=0;  
   SET tempMensaje='';
@@ -63,8 +62,9 @@ SP:BEGIN
    END IF;
   END IF;
 
-  IF accion="eliminar" OR accion="editar" OR accion="guardarFoto" OR
-  accion="obtenerFotos" OR accion="editarFoto" THEN
+  IF accion="eliminar" OR accion="editar" 
+  OR accion="editarFoto" OR
+  accion="obtenerFotos" OR accion="eliminarFoto"  THEN
         IF idAnuncio='' OR idAnuncio=0  THEN
           SET tempMensaje='Id Anuncio ';
         END IF; 
@@ -72,6 +72,26 @@ SP:BEGIN
           SET mensaje=CONCAT('Campo requerido ',tempMensaje);
           LEAVE SP;
         END IF;
+  END IF;
+  
+IF accion="guardarFoto" OR accion="editarFoto"  THEN
+        IF url='' THEN
+          SET tempMensaje='URL Foto ';
+        END IF; 
+        IF tempMensaje<>'' THEN
+          SET mensaje=CONCAT('Campo requerido ',tempMensaje);
+          LEAVE SP;
+        END IF;
+  END IF;
+
+  IF accion="obtenerAnuncio" THEN
+    IF pidPersona='' OR pidPersona=0  THEN
+      SET tempMensaje='Id Persona ';
+    END IF; 
+    IF tempMensaje<>'' THEN
+      SET mensaje=CONCAT('Campo requerido ',tempMensaje);
+      LEAVE SP;
+    END IF;
   END IF;
 
   IF accion="guardar"  THEN
@@ -150,11 +170,14 @@ SP:BEGIN
   IF accion="obtenerAnuncio" THEN
    SELECT a.idAnuncios, a.titulo, a.descripcion, 
    a.precio, a.idPersona, a.idMoneda, a.idProducto, 
-   a.estado, a.fecha , p.idCategorias, p.tipo, c.descripcion 'categoria',m.descripcion 'moneda'
+   a.estado, a.fecha , p.idCategorias, p.tipo, 
+   c.descripcion 'categoria',m.descripcion 'moneda'
    FROM anuncios a
    INNER JOIN producto p on p.idProducto=a.idProducto
    INNER JOIN categorias c on c.idCategorias=p.idCategorias
-   INNER JOIN moneda m on m.idMoneda=a.idMoneda;
+   INNER JOIN moneda m on m.idMoneda=a.idMoneda
+   WHERE a.idPersona=pidPersona AND LOWER(a.estado)=LOWER('A');
+   SET mensaje='Consulta exitosamente';
   END IF;
 
   IF accion="guardarFoto" THEN
@@ -169,27 +192,66 @@ SP:BEGIN
     FROM fotosanuncio;
     SET idUrl=conteoP+1;
    END IF;
+    SELECT MAX(idAnuncios) INTO conteoA 
+    FROM anuncios;
 
-   INSERT INTO fotosanuncio(idFotos, cantidad, 
+   SELECT count(*) INTO totalFotos  
+   FROM fotosanuncio WHERE idAnuncios=conteoA;
+   IF totalFotos<9 THEN 
+    INSERT INTO fotosanuncio(idFotos, cantidad, 
     urlFoto, idAnuncios) 
-   VALUES (idUrl,1,url,idAnuncio);
-   SET mensaje='Foto guardada exitosamente';
-   COMMIT;
+    VALUES (idUrl,1,url,conteoA);
+    SET mensaje='Foto guardada exitosamente';
+    COMMIT;
+   END IF; 
+   IF totalFotos>8 THEN
+     SET mensaje='Solo puede guardar 8 fotos maximo';
+     LEAVE SP;
+   END IF;
   END IF;
 
   IF accion="editarFoto" THEN
 
+   SELECT count(*) INTO conteoA  
+   FROM fotosanuncio;
+   IF conteoA=0 THEN
+    SET idUrl=conteoA+1; 
+   END IF;
+   IF conteoA>0 THEN
+    SELECT MAX(idFotos) INTO conteoP  
+    FROM fotosanuncio;
+    SET idUrl=conteoP+1;
+   END IF;
+
+   SELECT count(*) INTO totalFotos  
+   FROM fotosanuncio WHERE idAnuncios=idAnuncio;
+   IF totalFotos<9 THEN 
+    INSERT INTO fotosanuncio(idFotos, cantidad, 
+    urlFoto, idAnuncios) 
+    VALUES (idUrl,1,url,idAnuncio);
+    SET mensaje='Foto guardada exitosamente';
+    COMMIT;
+   END IF; 
+   IF totalFotos>8 THEN
+     SET mensaje='Solo puede guardar 8 fotos maximo';
+     LEAVE SP;
+   END IF;
+  END IF;
+
+  IF accion="eliminarFoto" THEN
+
    SELECT COUNT(*) INTO conteoU FROM fotosanuncio 
-   WHERE idAnuncios=idAnuncio;
+   WHERE idFotos=idAnuncio;
 
    IF conteoU=0 THEN 
-     SET mensaje='No existe el anuncio';
+     SET mensaje='No existe la foto';
      LEAVE SP;
    END IF;
    IF conteoU=1 THEN
-    UPDATE fotosanuncio SET urlFoto=url
-    WHERE idAnuncios=idAnuncio;
-    SET mensaje='Foto editada exitosamente';
+
+    DELETE FROM fotosanuncio 
+    WHERE idFotos = idAnuncio;
+    SET mensaje='Eliminada exitosamente';
     COMMIT;
    END IF; 
   END IF;
@@ -211,6 +273,4 @@ SP:BEGIN
 
   
 END$$
-
-
-  
+DELIMITER ;

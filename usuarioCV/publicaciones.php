@@ -22,7 +22,8 @@ include '../backend/seguridad.php';
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-2 py-5">
-   			<br><br>
+   <br><br>
+				<input type="text" name="idUsuario" id="idUsuario" style="display: none">
     <div class="btn-group-vertical">
     	<button class="btn btn-danger">Administra tus publicaciones</button>
 				<a href="agregarPublicacion.php" class="btn btn-outline-danger btn-lg btn-block" id="btnAdd"><i class="fas fa-plus-circle" ></i>Agregar Publicaciones</a>
@@ -32,23 +33,19 @@ include '../backend/seguridad.php';
 	<div class="col-md-10 py-5">
 		<br><br>
 		<center><h3>Mis Publicaciones</h3></center>
+		
 		<div class="row" id="anuncios">
+			<div class="row" id="anunciosM">
 		</div>
+		</div>
+		
 	</div>
 </div>
-
-
-
-
-
-
-
-
 <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/bootstrap.bundle.min.js.descarga"></script>
 
-<script src="../js/controlador_AgregarPublicacion.js"></script>
+<script src="../js/controladorPublicaciones.js"></script>
 
 <script type="text/javascript" src="../js/fotoAdmin.js"></script>
 

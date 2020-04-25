@@ -6,22 +6,10 @@ jQuery(document).ready(function ($) {
 	const urlParams = new URLSearchParams(queryString);
 
 	const idAnuncio = urlParams.get('idAnuncios');
-
+				obtenerFoto(idAnuncio);
     detalleAnuncio(idAnuncio);
     obtenerIdUsuario();
-    obtenerFoto(idAnuncio);
 
-
-	$('#etalage').etalage({
-		thumb_image_width: 300,
-		thumb_image_height: 400,
-		source_image_width: 900,
-		source_image_height: 1200,
-		show_hint: true,
-		click_callback: function (image_anchor, instance_id) {
-			alert('Callback example:\nYou clicked on an image with the anchor: "' + image_anchor + '"\n(in Etalage instance: "' + instance_id + '")');
-		}
-	});
 });
 
 $(function () {
@@ -40,6 +28,19 @@ $(function () {
 		}
 	});
 });
+
+function cargarIMG(){
+	$('#etalage').etalage({
+		thumb_image_width: 300,
+		thumb_image_height: 400,
+		source_image_width: 900,
+		source_image_height: 1200,
+		show_hint: true,
+		click_callback: function (image_anchor, instance_id) {
+			alert('Callback example:\nYou clicked on an image with the anchor: "' + image_anchor + '"\n(in Etalage instance: "' + instance_id + '")');
+		}
+	});
+}
 
 
 $("#guardarCalificacion").on("click", () => {
@@ -178,7 +179,9 @@ function obtenerPuntuacion() {
 			}	
 				$("#listaUsers").remove();							  
 				$("#listaUsuarios").append(contenido);
-			}else {}
+			}else {
+				$("#msjTotal").fadeIn();
+			}
 		}
 	});
 }
@@ -340,34 +343,86 @@ function obtenerFoto(idAnuncio){
 				var contenidoU='';
 				if (respuesta.length>0) 
 				{
-					$("#imagenesAnuncio").fadeOut();
-					contenido+='<ul id="etalage">';
-					for (var i = 0; i<respuesta.length; i++){
-						if (i==0) {
-							// statement
-							contenido+='<li><a href="#">'+
-							'<img class="etalage_thumb_image" src="../imgCate/'+respuesta[i].urlFoto+'" class="img-responsive" />'+
-							'<img class="etalage_source_image" src="../imgCate/'+respuesta[i].urlFoto+'" class="img-responsive" title="" />'+
-							'</a></li>';
-						} else {
-							// statement
-							contenido+='<li>'+
-							'<img class="etalage_thumb_image" src="../imgCate/'+respuesta[i].urlFoto+'" class="img-responsive" />'+
-							'<img class="etalage_source_image" src="../imgCate/'+respuesta[i].urlFoto+'" class="img-responsive" title="" />'+
-							'</li>';	
-
-						}
-							
-					}
-					contenido+='</ul><div class="clearfix"></div>';												
+						contenido+='<div class="single_top">'+
+				 		'<div class="container">'+ 
+				  	'<div class="single_grid">'+
+				  		'<h2 id="tituloAnuncio">Producto X</h2>'+
+								'<div class="grid imgCate_3_of_2" > <!--Inicio div Imagenes-->'+
+									'<ul id="etalage">';
+						for (var i = 0; i<respuesta.length; i++){
+							if (i==0) {
+								// statement
+								contenido+=	'<li><a href="#">'+
+									'<img class="etalage_thumb_image" src="../'+respuesta[i].urlFoto+'" class="img-responsive" />'+
+									'<img class="etalage_source_image" src="../'+respuesta[i].urlFoto+'" class="img-responsive" title="" />'+
+								'</a></li>';
+								} 
+								else {
+								// statement
+									contenido+='<li>'+
+									'<img class="etalage_thumb_image" src="../'+respuesta[i].urlFoto+'" class="img-responsive"  />'+
+									'<img class="etalage_source_image" src="../'+respuesta[i].urlFoto+'"class="img-responsive"  />'+
+								'</li>';
+								}	
+							}
+									contenido+='</ul>'+
+									 '<div class="clearfix"></div>'+		
+							  '</div> <!--Fin div Imagenes-->'+
+						'</div></div></div>';					
 					//$("#imgAnuncios").remove();							  
-					$("#fotosAnuncio").append(contenido);
+					$("#imagenesAnuncio").append(contenido);
+					cargarIMG();
 				}else
 				{
+						contenidoU+='<div class="single_top">'+
+	 		'<div class="container">'+ 
+	  	'<div class="single_grid">'+
+	  		'<h2 id="tituloAnuncio">Producto X</h2>'+
+	  		'<div class="grid imgCate_3_of_2" id="fotosAnuncio"></div>'+
+					'<div class="grid imgCate_3_of_2" > <!--Inicio div Imagenes-->'+
+						'<ul id="etalage"><li><a href="#">'+
+									'<img class="etalage_thumb_image" src="../imgCate/microondas.jpg" class="img-responsive" />'+
+									'<img class="etalage_source_image" src="../imgCate/microondas.jpg" class="img-responsive" title="" />'+
+								'</a></li><li>'+
+								'<img class="etalage_thumb_image" src="../imgCate/micro2.jpg" class="img-responsive" />'+
+								'<img class="etalage_source_image" src="../imgCate/micro2.jpg" class="img-responsive" title="" />'+
+							'</li><li>'+
+								'<img class="etalage_thumb_image" src="../imgCate/micro3.jpg" class="img-responsive"  />'+
+								'<img class="etalage_source_image" src="../imgCate/micro3.jpg"class="img-responsive"  />'+
+							'</li><li>'+
+								'<img class="etalage_thumb_image" src="../imgCate/micro4.jpg" class="img-responsive"  />'+
+								'<img class="etalage_source_image" src="../imgCate/micro4.jpg"class="img-responsive"  />'+
+							'</li></ul>'+
+						 '<div class="clearfix"></div>'+		
+				  '</div> <!--Fin div Imagenes-->'+
+			'</div></div></div>';
+
 					console.log("Entre a 0");
-					$("#imagenesAnuncio").fadeIn();
+					$("#imagenesAnuncio").append(contenidoU);
+					 cargarIMG();
+				//	$("#imagenesAnuncio").fadeIn();
 				}
 			}
 	});
+}
+/*<div class="col-md-4">
+			<div class="single_top">
+	 		<div class="container"> 
+	  	<div class="single_grid">
+	  		<h2 id="tituloAnuncio">Producto X</h2>
+	  				<div class="grid imgCate_3_of_2" id="fotosAnuncio"></div>
+					<div class="grid imgCate_3_of_2" id="imagenesAnuncio"> <!--Inicio div Imagenes-->
+						<ul id="etalage">
+							<li>
+								<a href="#">
+									<img class="etalage_thumb_image" src="../imgCate/microondas.jpg" class="img-responsive" />
+									<img class="etalage_source_image" src="../imgCate/microondas.jpg" class="img-responsive" title="" />
+								</a>
+							</li>
+						</ul>
+						 <div class="clearfix"></div>		
+				  </div> <!--Fin div Imagenes-->
+			</div></div></div></div>*/
 
-	}
+			
+			

@@ -23,39 +23,9 @@
 	<br>
 <div class="container">
 	<div class="row">
-		<div class="col-md-4">
-			<div class="single_top">
-	 		<div class="container"> 
-	  	<div class="single_grid">
-	  		<h2 id="tituloAnuncio">Producto X</h2>
-	  				<div class="grid imgCate_3_of_2" id="fotosAnuncio"></div>
-					<div class="grid imgCate_3_of_2" id="imagenesAnuncio" style="display: none;"> <!--Inicio div Imagenes-->
-						<ul id="etalage">
-							<li>
-								<a href="#">
-									<img class="etalage_thumb_image" src="../imgCate/microondas.jpg" class="img-responsive" />
-									<img class="etalage_source_image" src="../imgCate/microondas.jpg" class="img-responsive" title="" />
-								</a>
-							</li>
-							<li>
-								<img class="etalage_thumb_image" src="../imgCate/micro2.jpg" class="img-responsive" />
-								<img class="etalage_source_image" src="../imgCate/micro2.jpg" class="img-responsive" title="" />
-							</li>
-							<li>
-								<img class="etalage_thumb_image" src="../imgCate/micro3.jpg" class="img-responsive"  />
-								<img class="etalage_source_image" src="../imgCate/micro3.jpg"class="img-responsive"  />
-							</li>
-						    <li>
-								<img class="etalage_thumb_image" src="../imgCate/micro4.jpg" class="img-responsive"  />
-								<img class="etalage_source_image" src="../imgCate/micro4.jpg"class="img-responsive"  />
-							</li>
-						</ul>
-						 <div class="clearfix"></div>		
-				  </div> <!--Fin div Imagenes-->
-			</div>
+		<div class="col-md-4" id="imagenesAnuncio">
 		</div>
-	</div>
-</div>
+
 <div class="col-md-8">
 	<input type="text" name="idUL" id="idUL" style="display: none">
 	<div class="container">

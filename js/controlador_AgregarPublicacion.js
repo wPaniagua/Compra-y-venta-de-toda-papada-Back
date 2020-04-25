@@ -1,6 +1,5 @@
 //$('#btnPublicar').click(registrarDatos);
-$(window).on("load", function () {
-    obtenerDatos();
+$(window).on("load", function () {  
     cargarCategorias();
     obtenerIdUsuario();
     $("#publicaciones").addClass("active");
@@ -18,7 +17,7 @@ function registrarDatos() {
     var idPersona = $('#idUsuario').val();
     var idMoneda = $('input:radio[name=moneda]:checked').val();
     //var url = $('#url');
-    //console.log('Persona: '+idPersona);
+    console.log('Persona: '+idPersona);
 
     $.ajax({
         url: "../backend/gestionAgregarPub.php",
@@ -30,7 +29,16 @@ function registrarDatos() {
             console.log(respuesta);
             $("#msjAviso").html(respuesta[0].mensaje);
             $("#msjAviso").fadeIn();
-            $("#msjAviso").fadeOut(3000);
+            $("#msjAviso").fadeOut(3500);
+
+            if (respuesta[0].mensaje=='Registro exitoso') {
+              // statement
+              //var url = "http://localhost/Compra-y-venta-de-toda-papada-Back/usuarioCV/publicaciones.php";
+                    //window.location = url;
+              $("#btnSubirImg").attr('disabled',false);
+            } else {
+              // statement
+            }
         },
         error: function (error) {
             console.log(error)
@@ -155,37 +163,6 @@ function obtenerIdUsuario() {
  });
 }
 
-function obtenerDatos() {
 
-    $.ajax({
-        url: "../backend/gestionAgregarPub.php",
-        data: `accion=obtenerAnuncio`,
-        method: "POST",
-        dataType: "json",
-        success: function (respuesta) {
-            console.log(respuesta);
 
-            var contenido='';
-            contenido+='';
-            for (var i = 0; i<respuesta.length; i++){
-              contenido+='<div class="col-md-4 py-4">'+
-             '<div class="card" style="width: 18rem;">'+
-             '<img src="../imgCate/micro3.jpg" class="card-img-top" alt="...">'+
-             '<div class="card-body">'+
-               '<h5 class="card-title">'+respuesta[i].titulo+'</h5>'+
-               '<p class="card-text">'+respuesta[i].descripcion+'</p>'+
-               '<a href="editarPublicacion.php?idAnuncio='+respuesta[i].idAnuncios+'" class="btn btn-primary"><i class="fas fa-pencil-alt fa-1x" ></i></a>'+
-               '&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-primary"><i class="fas fa-trash-alt fa-1x" ></i></button>'+
-             '</div></div></div>';
-
-            }
-            $("#anuncios").append(contenido);
-            
-        },
-        error: function (error) {
-            console.log(error)
-        }
-    });
-
-}
 

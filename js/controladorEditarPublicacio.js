@@ -7,7 +7,7 @@ $(window).on("load", function () {
 
     cargarCategorias();
     obtenerIdUsuario();
-    obtenerDatos(idAnuncio);
+    
     obtenerFotosANuncio(idAnuncio);
     $("#publicaciones").addClass("active");
 });
@@ -115,7 +115,7 @@ function obtenerIdUsuario() {
   success: function (respuesta) {
    //console.log(respuesta);
    $("#idUsuario").val(respuesta.idUsuario);
-
+   obtenerDatos(respuesta.idUsuario);
   },
   error: function (error) {
    console.log(error)
@@ -123,21 +123,28 @@ function obtenerIdUsuario() {
  });
 }
 
-function obtenerDatos(idAnuncio) {
+function obtenerDatos(idUsuario) {
+    //var codigo=$("#idUsuario").val();
+    //
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const idAnuncio = urlParams.get('idAnuncio');
+  var codigo=idUsuario;
 
     $.ajax({
         url: "../backend/gestionAgregarPub.php",
-        data: `accion=obtenerAnuncio`,
+        data: `accion=obtenerAnuncio`+"&idPersona=" + codigo,
         method: "POST",
         dataType: "json",
         success: function (respuesta) {
-            //console.log(respuesta);
+            console.log(respuesta);
           for (var i = 0; i<respuesta.length; i++){
            if (respuesta[i].idAnuncios==idAnuncio) {
               // statement
               console.log(respuesta[i]);
             $('#titulo').val(respuesta[i].titulo);
             $('#descripcion').val(respuesta[i].descripcion);
+            $('#idAnuncio').val(respuesta[i].idAnuncio);
             //$('#slc-categorias').val();
             $("#slc-categorias option[value="+respuesta[i].idCategorias+"]").attr("selected",true);
            // $('input:radio[name=tipo]:checked').val();
@@ -145,12 +152,9 @@ function obtenerDatos(idAnuncio) {
             $('#precio').val(respuesta[i].precio);
     
             $("input[name=moneda][value=" + respuesta[i].idMoneda + "]").attr('checked', 'checked');
-              
-
-              }
+    }
             }
-            
-            
+         
         },
         error: function (error) {
             console.log(error)
@@ -221,13 +225,20 @@ function obtenerFotosANuncio(idAnuncio){
             var contenido='';
             if (respuesta.length>0) {
               // statement
+              console.log(respuesta);
               for (var i = 0; i<respuesta.length; i++){
-                contenido+='<div class="col-md-4">'+
-              '<img src="../'+respuesta[i].urlFoto+'" style="width: 250px;height: 250px;"></div>';
+                contenido+='<div class="card col-md-4 py-1">'+
+                '<figure class="figure">'+
+                '<img src="../'+respuesta[i].urlFoto+'" class="figure-img img-fluid rounded" alt="..." style="width: 200px;height: 200px;>'+
+                '<figcaption class="figure-caption text-right">'+
+                '<br><button type="button" class="btn btn-outline-danger" onclick="eliminarImagen('+respuesta[i].idFotos+')"><i class="fas fa-trash-alt fa-1x" ></i></button>'+
+                '&nbsp;&nbsp;<span class="alert alert-danger" id="msjDelete'+respuesta[i].idFotos+'" style="display:none">Foto eliminada</alert></figcaption></figure></div>';
               }
               $("#imgAnuncio").append(contenido);
             } else {
               // statement
+              // 
+  
               
               
                   contenidoD='<div class="col-md-4">'+
@@ -239,6 +250,7 @@ function obtenerFotosANuncio(idAnuncio){
               '</div>';
               
               console.log('No hay fotos');
+              $("#imgAnuncio").html();
               $("#imgAnuncio").append(contenidoD);
             }
         },
@@ -247,3 +259,47 @@ function obtenerFotosANuncio(idAnuncio){
         }
     });
 }
+
+function eliminarImagen(idImagen){
+
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const idAnuncio = urlParams.get('idAnuncio');
+
+  var codigo = idImagen;
+  
+  //alert(parametros);
+  $.ajax({
+    url:"../backend/gestionAgregarPub.php",
+    method:"POST",
+    data:`accion=eliminarAnuncio`+"&idAnuncio="+codigo,
+    dataType:"json",
+    success:function(respuesta){
+      console.log(respuesta);
+
+      if (respuesta[0].mensaje=='Eliminada exitosamente') {
+
+      $("#msjDelete"+codigo+"").html(respuesta[0].mensaje);
+      $("#msjDelete"+codigo+"").fadeIn();
+      //$("#msjDelete"+codigo+"").fadeOut(4000);
+      $("#msjDelete"+codigo+"").fadeOut(4000,function(){
+       // window.location.replace("editarPublicacion.php");
+        location.reload();
+      });
+
+      //obtenerFotosANuncio(idAnuncio);
+        
+        //obtenerIdUsuario();
+        
+      //
+      }
+      
+    }
+  });
+}
+
+/*INSERT INTO `fotosanuncio` 
+(`idFotos`, `cantidad`, `urlFoto`, `idAnuncios`) VALUES ('1', '1', 'imgCate/b1.jpg', '1'), ('2', '1', 'imgCate/bati1.jpg', '1'), 
+('3', '1', 'imgCate/bati2.jpg', '1'), 
+('4', '1', 'imgCate/batidora.jpg', '1'), 
+('5', '1', 'imgCate/micro2.jpg', '1');*/
