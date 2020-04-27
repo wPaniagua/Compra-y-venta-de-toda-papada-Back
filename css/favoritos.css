@@ -1,0 +1,13 @@
+.container {
+
+    padding: 0px;
+    max-width: 1440px !important;
+}
+
+.card-body {
+    text-align: center;
+}
+
+.card {
+    margin-right: 1em;
+}
