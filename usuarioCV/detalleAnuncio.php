@@ -74,7 +74,14 @@
 		<?php
     session_start(); 
     if (isset($_SESSION["id_usuario"])){
-        echo ('<h3>Datos Vendedor</h3>
+		echo ('<h3 style="display:inline; margin-right:1em;">Datos Vendedor</h3>
+			<button class="btn btn-outline-danger" id="btn-favorito" style="display:inline;margin-right:.5em;">Añadir a favoritos <i class="far fa-star"></i></button>
+			<div class="alert alert-danger" role="alert" style="display:inline; padding-left:0px;padding-right:0px; display:none;" id="mensaje-existe-favorito">
+  				Ya  lo tienes registrado como favorito.
+			</div>
+			<div class="alert alert-success" role="alert" style="display:inline; padding-left:0px;padding-right:0px;display:none;" id="mensaje-agregado-favorito" >
+  				Agregado exitosamente.
+			</div>
 			<hr style="background-color:#e91e63;">
 			<div><!--inicio FORMULARIO datos vendedor -->
 				<form>
