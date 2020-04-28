@@ -4,7 +4,7 @@ $host = "localhost";
 $usuario = "root";
 $password = "";
 $baseDatos = "mydb";
-$puerto = 3306;  //Cambiar puerto aca
+$puerto = 3308;  //Cambiar puerto aca
 $link;
 
 $mysqli = new mysqli(	
@@ -15,7 +15,7 @@ $mysqli = new mysqli(
         $puerto
 );
 //||||||||||||||||||||||||||Cambiar puerto aca
-$dsn = "mysql:host=localhost:3306;dbname=mydb;charset=utf8";
+$dsn = "mysql:host=localhost:3308;dbname=mydb;charset=utf8";
 
         $options = [
           PDO::ATTR_EMULATE_PREPARES   => false, // turn off emulation mode for "real" prepared statements
@@ -40,7 +40,7 @@ switch($_POST["accion"]){
         $idPersona = $_SESSION["id_usuario"];
         $accion = "nuevo";
 
-        $call = $mysqli->prepare('CALL SP_FAVORITOS(? , ? , ?  , @codigo,@mensaje)');
+        $call = $mysqli->prepare('CALL SP_FAVORITOS(? , ? , ?  , @codigo , @mensaje)');
 
         $call->bind_param('iis', 
             $idPersona,
@@ -64,6 +64,13 @@ switch($_POST["accion"]){
                 "codigo"=>$codigo
             )
         );
+        // echo json_encode(
+        //     array(
+        //         "idAnuncio"=>$idAnuncio,
+        //         "idPersona"=>$idPersona,
+        //         "accion"=>$accion
+        //     )
+        // );
     
 
     break;
