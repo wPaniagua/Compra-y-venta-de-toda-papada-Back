@@ -232,7 +232,7 @@ function obtenerFotosANuncio(idAnuncio){
                 '<img src="../'+respuesta[i].urlFoto+'" class="figure-img img-fluid rounded" alt="..." style="width: 200px;height: 200px;>'+
                 '<figcaption class="figure-caption text-right">'+
                 '<br><button type="button" class="btn btn-outline-danger" onclick="eliminarImagen('+respuesta[i].idFotos+')"><i class="fas fa-trash-alt fa-1x" ></i></button>'+
-                '&nbsp;&nbsp;<span class="alert alert-danger" id="msjDelete'+respuesta[i].idFotos+'" style="display:none">Foto eliminada</alert></figcaption></figure></div>';
+                '&nbsp;&nbsp;<p class="alert alert-danger" id="msjDelete'+respuesta[i].idFotos+'" style="display:none">Foto eliminada</p></figcaption></figure></div>';
               }
               $("#imgAnuncio").append(contenido);
             } else {

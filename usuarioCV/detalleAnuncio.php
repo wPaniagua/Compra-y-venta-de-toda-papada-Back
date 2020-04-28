@@ -190,7 +190,9 @@
        					</div>
        				</div>
        				
-       				<span id="msjTotal" class="alert alert-danger" style="display: none;">Esta publicacion no tiene calificacion</span>
+       				<div class="col-md-12">
+					   <p id="msjTotal" class="alert alert-danger" style="display: none;">Esta publicacion no tiene calificacion.</p>
+					</div>
 					<div id="listaUsers" class="row">
        				</div>
        				<div id="listaUsuarios" class="row">
@@ -299,8 +301,10 @@
        						<h5 id="calTotal" class="colorEstrellas"></h5>
        					</div>
        				</div>
+					   <div class="col-md-12">
+					   <p id="msjTotal" class="alert alert-danger" style="display: none;">Esta publicacion no tiene calificacion.</p>
+					   </div>
        				
-       				<span id="msjTotal" class="alert alert-danger" style="display: none;">Esta publicacion no tiene calificacion</span>
 					<div id="listaUsers" class="row">
        				</div>
        				<div id="listaUsuarios" class="row">

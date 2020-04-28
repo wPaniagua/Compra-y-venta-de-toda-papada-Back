@@ -88,10 +88,10 @@ $mysqli = new mysqli(
             $src=$carpeta.$nombre;
             move_uploaded_file($ruta_provisional, $src);
             //$resExito="La imagen: ".$nombre." ha sido subida con exito";
-            echo "<p style='color:blue'>La imagen: ".$nombre." ".$mensaje."  ha sido subida con exito</p>";
+            echo "<p style='color:blue'>La imagen: ".$nombre." ".$mensaje."</p>";
         } else {
             # code...
-            echo "<p style='color:blue'>Ocurrio un ERROR la imagen  ".$nombre."  ".$mensaje." no se ha guardado</p>";
+            echo "<p style='color:blue'>Ocurrio un ERROR la imagen  ".$nombre."  ".$mensaje." </p>";
             //$resExito="Ocurrio un ERROR la imagen  ".$nombre."no se ha guardado";
         }
         
