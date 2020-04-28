@@ -34,7 +34,7 @@ SP:BEGIN
 
     
     IF accion = 'nuevo' THEN 
-       
+    
         select idPersona into p_idPersona from anuncios 
         where idAnuncios = IN_idAnuncio;
 
@@ -47,7 +47,7 @@ SP:BEGIN
             SET codigo = 2;
         
         ELSE 
-            select COUNT(idFavoritos) into conteo from favoritos;
+            select MAX(idFavoritos) into conteo from favoritos;
             
             SET id = conteo + 1;
             INSERT INTO favoritos
