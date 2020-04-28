@@ -82,7 +82,7 @@ include '../backend/seguridad.php';
 					</fieldset>
 					<button type="button" id="btnGuardar" class="btn btn-primary btn-block" onclick="registrarDatos();">Publicar Anuncio</button>
 					<br>
-					<span class="alert alert-danger" style="display: none" id="msjAviso"></span>
+					<p class="alert alert-danger" style="display: none" id="msjAviso"></p>
 				</form>
 			</div>
 			</div><!---Fin primer columna--->
@@ -120,7 +120,7 @@ include '../backend/seguridad.php';
 <!--Controladores para subir fotos--->
 <script src="../js/subirImagenAnuncio.js"></script>
 <!--script src="../js/functions.js"></script-->
-<!--script src="../js/scripts.js"></script-->
+<script src="../js/bootstrap.bundle.min.js.descarga"></script>
 <!--- Foto usuario-->
 <script type="text/javascript" src="../js/fotoAdmin.js"></script>
 </html>
