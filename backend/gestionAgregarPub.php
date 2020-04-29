@@ -1,10 +1,10 @@
 <?php 
 //session_start(); 
-
+/*
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 require 'C:\wamp64\composer\vendor\autoload.php';
-
+*/
 $mysqli = new mysqli( 'localhost:3306', 'root', '', 'mydb' );
 
 //$prueba = "registrarAnuncio";
@@ -86,7 +86,7 @@ echo json_encode($resultadoConsulta);
 //enviar el correo a todos los favoritos del usuario
 
     //creo la instancia de la extension
-    $mail = new PHPMailer(TRUE);
+   /* $mail = new PHPMailer(TRUE);
 
 
     $call = $mysqli->prepare(
@@ -129,32 +129,32 @@ echo json_encode($resultadoConsulta);
         
            /* Parametros SMTP. */
            /* Le dice a  PHPMailer que use SMTP. */
-            $mail->isSMTP();
+          /*  $mail->isSMTP();
         
            /* Direccion del servidor de SMTP, en este caso uso el de google. */
-            $mail->Host = 'smtp.gmail.com';
+            /*$mail->Host = 'smtp.gmail.com';
     
            /* Usar SMTP autenticacion. */
-            $mail->SMTPAuth = TRUE;
+          /*  $mail->SMTPAuth = TRUE;
         
            /* Configura el sistema de encriptacion. */
-            $mail->SMTPSecure = 'ssl';//tls
+            /*$mail->SMTPSecure = 'ssl';//tls
         
     
            /* Aqui va el usuario de la cuenta de google del proyecto. */
-            $mail->Username = 'publitodo.2020@gmail.com';
+            /*$mail->Username = 'publitodo.2020@gmail.com';
         
            /* La contrasena de la cuenta. */
-            $mail->Password = 'Publitodo_2020.';
+           /* $mail->Password = 'Publitodo_2020.';
         
            /* El puerto en el que esta el servidor SMTP de Google. */
-            $mail->Port = 465;
+           /* $mail->Port = 465;
     
             //le dice la extension  que el cuerpo del mail es html
             $mail-> IsHTML(true);
         
            /* Envia el correo */
-            $mail->send();
+            /*$mail->send();
         }
         catch (Exception $e)
         {
@@ -166,8 +166,8 @@ echo json_encode($resultadoConsulta);
         }
 
 
-    //echo $row['name'];
-    }
+    //echo $row['name'];*/
+    //}
 
 break;
 
