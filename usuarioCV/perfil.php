@@ -30,8 +30,8 @@ include '../backend/seguridad.php';
 <div class="container-fluid">
   <div class="row">
     <div class="col-12 col-md-12">
-      <!--Editar cuenta--->
-      <div class="form-row">
+      <!--Editar cuenta---><br>
+      <div class="form-row py-5">
         <div class="col-md-8"></div>
         <div class="col-12 col-md-4">
           <p class="text-right">
