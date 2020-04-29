@@ -42,7 +42,7 @@
 						<a href="#" class="dropdown-toggle dropdown-toggle-split " data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="false"
 							style="padding-right: 80px;padding-top: 15px;color:#212529;font-size:20px;">
-							<span class="sr-only">Toggle Dropdown</span>
+							<span class="sr-only">Perfil</span>
 						</a>
 						<div class="dropdown-menu">
 							<a class="dropdown-item"

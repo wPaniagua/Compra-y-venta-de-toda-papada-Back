@@ -113,6 +113,7 @@ include '../backend/seguridad_admin.php';
 
 
     <script src="../js/verUsuariosDesdeAdmin.js"></script>
+    <script src="../js/bootstrap.bundle.min.js.descarga"></script>
     <script type="text/javascript" src="../js/fotoAdmin.js"></script>
 </body>
 

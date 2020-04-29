@@ -493,3 +493,37 @@ function validarTelefono(cel) {
      return true;
     }
 }
+
+
+$("#btnEditarCuenta").on("click", function(){
+  $("#pEditarCuenta").fadeIn();
+});
+
+$("#cancelarBaja").on("click", function(){
+  $("#pEditarCuenta").fadeOut(1);
+});
+
+$("#bajaCuenta").on("click", function(){
+  var parametros = "idUsuario="+$("#codigo").val();
+  //alert(parametros);
+  $.ajax({
+    url:"../backend/editarPerfilAdmin.php?accion=eliminar",
+    method:"GET",
+    data:parametros,
+    dataType:"json",
+    success:function(respuesta){
+      console.log(respuesta);
+       $("#pEditarCuenta").fadeOut(1);
+      if (respuesta[0].mensaje=='Eliminado exitosamente') {
+        $("#msjBaja").html(respuesta[0].mensaje);
+        $("#msjBaja").fadeIn();
+        $("#msjBaja").fadeOut(2000);
+      }else {
+       $("#msjBaja").html("NO SE PUDO ELIMINAR INTENTE LUEGO");
+        $("#msjBaja").fadeIn();
+        $("#msjBaja").fadeOut(2000);
+      }
+      
+    }
+  });
+});

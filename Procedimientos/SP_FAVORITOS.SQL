@@ -1,4 +1,4 @@
-CREATE  PROCEDURE SP_FAVORITOS(
+CREATE OR REPLACE  PROCEDURE SP_FAVORITOS(
                     IN IN_idPersona INT,
                     IN IN_idAnuncio INT,
                     IN accion VARCHAR(20),

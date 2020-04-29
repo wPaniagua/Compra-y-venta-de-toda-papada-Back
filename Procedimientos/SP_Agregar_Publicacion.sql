@@ -1,3 +1,7 @@
+/*agregue este campo*/
+ALTER TABLE `anuncios` ADD `razones` 
+VARCHAR(500) NULL AFTER `fecha`;
+
 DELIMITER $$
 CREATE OR REPLACE PROCEDURE SP_AGREGAR_PUB(
               IN nombreProducto VARCHAR(200), 
@@ -147,6 +151,15 @@ IF accion="guardarFoto" OR accion="editarFoto"  THEN
   END IF;
 
   IF accion="eliminar" THEN
+
+  IF caracteristicas='' THEN
+    SET tempMensaje='Razon de eliminar Anuncio.';
+  END IF; 
+  IF tempMensaje<>'' THEN
+   SET mensaje=CONCAT('Campo requerido ',tempMensaje);
+   LEAVE SP;
+  END IF;
+
    SELECT count(*) INTO conteoA FROM anuncios
    WHERE idAnuncios=idAnuncio;
 
@@ -158,7 +171,7 @@ IF accion="guardarFoto" OR accion="editarFoto"  THEN
    SELECT idProducto INTO conteoP FROM anuncios
    WHERE idAnuncios=idAnuncio;
    IF conteoA=1 THEN
-    UPDATE anuncios SET estado='I' 
+    UPDATE anuncios SET estado='I',razones=caracteristicas
     WHERE idAnuncios=idAnuncio;
     UPDATE producto SET estado='I' 
     WHERE idProducto=conteoP;
@@ -176,7 +189,8 @@ IF accion="guardarFoto" OR accion="editarFoto"  THEN
    INNER JOIN producto p on p.idProducto=a.idProducto
    INNER JOIN categorias c on c.idCategorias=p.idCategorias
    INNER JOIN moneda m on m.idMoneda=a.idMoneda
-   WHERE a.idPersona=pidPersona AND LOWER(a.estado)=LOWER('A');
+   WHERE a.idPersona=pidPersona AND LOWER(a.estado)=LOWER('A')
+   ORDER by fecha DESC;
    SET mensaje='Consulta exitosamente';
   END IF;
 
@@ -274,3 +288,4 @@ IF accion="guardarFoto" OR accion="editarFoto"  THEN
   
 END$$
 DELIMITER ;
+

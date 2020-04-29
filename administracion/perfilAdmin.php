@@ -26,12 +26,29 @@
     //llamado a nabvar
     include 'navbarAdmin.php';
 
-    ?>
-    <br><br><br><br>
+    ?><br>
     <div class="container-fluid">
         <div class="row">
+           <div class="col-12 col-md-12 py-5">
+      <!--Editar cuenta--->
+      <div class="form-row">
+        <div class="col-md-8"></div>
+        <div class="col-12 col-md-4">
+          <p class="text-right">
+            <button type="button" id="btnEditarCuenta" class="btn"><i class="fas fa-cog fa-lg  fa-2x" style="color:#212529"></i></button>
+          </p>
+          <p class="text-right alert alert-danger" id="msjBaja" style="display:none"></p>
+          <p class="text-right" id="pEditarCuenta" style="display:none">
+            <br>
+            Dar de baja su cuenta <button type="button" class="btn btn-outline-danger" id="bajaCuenta"><i class="fas fa-trash-alt fa-1x" ></i></button>
+            <button type="button" class="btn btn-outline-secondary" id="cancelarBaja"><i class="fas fa-times fa-1x" ></i></button>
+          </p>
+          
+        </div>
+      </div> 
+    </div><!--fin columna-->
+
             <div class="col-12 col-sm-4 ">
-              <br><br>
               <span class="text-uppercase text-center"><h4 id="hNombre">Usuario Logueado</h4></span><br>
               <hr style="border:1px; color: red">
               <div class="text-center px-5"  id="imgUsuario"></div>
@@ -93,10 +110,9 @@
 
            
             </div>
-            <div class="col-12 col-sm-4 py-5 p-xl-5 col-sm-offset-3"><!--campos administrador  -->
+            <div class="col-12 col-sm-4 p-xl-5 col-sm-offset-3"><!--campos administrador  -->
                 <!--formulario administrador  -->
                 <form>
-                  <br><br>
                   <div class="form-group alert alert-warning">
                     <h4>Datos personales</h4>
                   </div>
@@ -158,6 +174,7 @@
 
 </body>
 <!--script type="text/javascript" src="js/jquery-3.4.1.min.js"></script-->
+<script src="../js/bootstrap.bundle.min.js.descarga"></script>
 <script src="../js/perfilAdmin.js"></script>
 <!--script type="text/javascript" src="js/controladorAdministrador.js"></script-->
 

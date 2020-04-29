@@ -117,7 +117,7 @@ case 'editar':
     $idMoneda = $_POST["idMoneda"];
     $idAnuncio = $_POST["idAnuncio"];
 
-    $mysqli->multi_query("SET @p0='".$nombreProducto."'; SET @p1='".$caracteristicas."'; SET @p2='".$idCategoria."'; SET @p3='".$tipo."'; SET @p4='".$precio."'; SET @p5='".$idPersona."'; SET @p6='".$idMoneda."'; SET @p7='".$idAnuncio."'; SET @p8=''; SET @p9='editar'; CALL ` SP_AGREGAR_PUB`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10); SELECT @p10 AS `mensaje`;");
+    $mysqli->multi_query("SET @p0='".$nombreProducto."'; SET @p1='".$caracteristicas."'; SET @p2='".$idCategoria."'; SET @p3='".$tipo."'; SET @p4='".$precio."'; SET @p5='".$idPersona."'; SET @p6='".$idMoneda."'; SET @p7='".$idAnuncio."'; SET @p8=''; SET @p9='editar'; CALL `SP_AGREGAR_PUB`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10); SELECT @p10 AS `mensaje`;");
     $resultadoConsulta = array();
     do {
         if ($resultado = $mysqli->store_result()) {
@@ -168,8 +168,9 @@ break;
 case 'eliminarAnuncio':
 
     $idAnuncio = $_POST["idAnuncio"];
+    $razones =$_POST["razones"];
     //$idAnuncio =1;
-    $mysqli->multi_query("SET @p0=''; SET @p1=''; SET @p2=''; SET @p3=''; SET @p4=''; SET @p5=''; SET @p6=''; SET @p7='".$idAnuncio."'; SET @p8=''; SET @p9='eliminarFoto'; CALL `SP_AGREGAR_PUB`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10); SELECT @p10 AS `mensaje`;");
+    $mysqli->multi_query("SET @p0=''; SET @p1='".$razones."'; SET @p2=''; SET @p3=''; SET @p4=''; SET @p5=''; SET @p6=''; SET @p7='".$idAnuncio."'; SET @p8=''; SET @p9='eliminar'; CALL `SP_AGREGAR_PUB`(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10); SELECT @p10 AS `mensaje`;");
     $resultadoConsulta = array();
     do {
         if ($resultado = $mysqli->store_result()) {
