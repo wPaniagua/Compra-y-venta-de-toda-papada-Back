@@ -110,6 +110,7 @@ include '../backend/seguridad_admin.php';
     </section>
 	<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js.descarga"></script>
 
     <script src="../js/jquery.dataTables.js" type="text/javascript"></script>
 	<script src="../js/dataTables.bootstrap4.min.js" type="text/javascript"></script>

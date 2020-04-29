@@ -97,6 +97,8 @@ include '../backend/seguridad.php';
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 <script src="../Graficas/Librerias/jquery-3.4.1.min.js"></script>
 <script src="../Graficas/Librerias/plotly-latest.min.js"></script>
+
+<script src="../js/bootstrap.bundle.min.js.descarga"></script>
 <!--script src="js/controlador_estadisticas.js"></script-->
 <script type="text/javascript" src="../js/fotoAdmin.js"></script>
 

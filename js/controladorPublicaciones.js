@@ -41,8 +41,8 @@ function obtenerDatos(idUsuario) {
             
             contenido+='<div id="anunciosM" class="row">';
             for (var i = 0; i<respuesta.length; i++){
-              contenido+='<div  class="col-md-3 py-1">'+
-             '<div class="card" style="width: 14rem; height=300px"><div id="imgAnuncio'+respuesta[i].idAnuncios+'">';
+              contenido+='<div  class="col-md-4 py-1">'+
+             '<div class="card" style="width: 18rem;"><div id="imgAnuncio'+respuesta[i].idAnuncios+'">';
              //'<!--img src="../imgCate/micro3.jpg" class="card-img-top" alt="..."-->';
              obtenerFotosANuncio(respuesta[i].idAnuncios);
              contenido+='</div><div class="card-body">'+
@@ -50,7 +50,7 @@ function obtenerDatos(idUsuario) {
                '<p class="card-text">'+respuesta[i].descripcion+'</p>'+
                '<a href="editarPublicacion.php?idAnuncio='+respuesta[i].idAnuncios+'" class="btn btn-outline-success"><i class="fas fa-pencil-alt fa-1x" ></i></a>'+
                '&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-outline-danger" onclick="eliminarPublicacion('+respuesta[i].idAnuncios+');"><i class="fas fa-trash-alt fa-1x" ></i></button>'+
-             '</div></div></div>';
+             '<p id="pRazones'+respuesta[i].idAnuncios+'" style="display:none"><br><spam style="color:red">*</spam>Razon eliminar anuncio:<textarea name="razon" id="razon'+respuesta[i].idAnuncios+'" class="form-control" rows="3"></textarea><br><button type="button" class="btn btn-outline-danger" onclick="eliminar('+respuesta[i].idAnuncios+');">Dar de Baja</button></p><br><p id="msj'+respuesta[i].idAnuncios+'" class="alert alert-danger" style="display:none">Mensaje</p></div></div></div>';
 
             }
             contenido+='</div>';
@@ -72,32 +72,43 @@ function obtenerDatos(idUsuario) {
     });
 }
 
+function eliminar(idAnuncio){
+  var codigo = idAnuncio;
+  var razon=$('#razon'+codigo+'').val();
+  alert(codigo+'  '+razon);
+
+   $.ajax({
+        url: "../backend/gestionAgregarPub.php",
+        data: `accion=eliminarAnuncio`+"&idAnuncio=" + codigo+"&razones="+razon,
+        method: "POST",
+        dataType: "json",
+        success: function (respuesta) {
+            console.log(respuesta);
+            $("#pRazones"+codigo+"").fadeOut();
+            if (respuesta[0].mensaje=="Eliminado exitosamente") {
+              // statement
+              $("#msj"+codigo+"").html(respuesta[0].mensaje);
+              $("#msj"+codigo+"").fadeIn();
+              $("#msj"+codigo+"").fadeOut(4000, function(){
+                obtenerIdUsuario();
+              });
+              
+            } else {
+              // statement
+              $("#msj"+codigo+"").html('No se puede eliminar este anuncio');
+              $("#msj"+codigo+"").fadeIn();
+              $("#msj"+codigo+"").fadeOut(2000);
+            }
+        },
+        error: function (error) {
+            console.log(error)
+        }
+    });
+  
+}
 
 function eliminarPublicacion(idAnuncio){
-	var codigo = idAnuncio;
-	
-	//alert(parametros);
-	$.ajax({
-		url:"../backend/gestionAgregarPub.php",
-		method:"POST",
-		data:`accion=eliminarAnuncio`+"&idAnuncio="+codigo,
-		dataType:"json",
-		success:function(respuesta){
-			console.log(respuesta);
-
-			if (respuesta[0].mensaje=='Eliminado exitosamente') {
-
-			//	$("#msjDelete"+codigo+"").html(respuesta[0].mensaje);
-				//$("#msjDelete"+codigo+"").fadeIn();
-			//	$("#msjDelete"+codigo+"").fadeOut(4000);
-				
-				obtenerIdUsuario();
-				//window.location.replace("denuncias.php");
-			//
-			}
-			
-		}
-	});
+	 $("#pRazones"+idAnuncio+"").fadeIn();
 }
 
 function obtenerFotosANuncio(idAnuncio){
@@ -130,3 +141,4 @@ function obtenerFotosANuncio(idAnuncio){
         }
     });
 }
+

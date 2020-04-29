@@ -11,7 +11,7 @@ include '../backend/seguridad.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>PUBLITODO</title>
 
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
     <script src="../js/jquery-3.4.1.min.js"></script>
@@ -27,25 +27,39 @@ include '../backend/seguridad.php';
     include 'navbarU.php';
     
     ?>
-    <br><br>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 col-sm-4 ">
-              <br><br>
-              <span class="text-uppercase text-center"><h4 id="hNombre">Usuario Logueado</h4></span><br>
-              <hr style="border:1px; color: red">
-              <div class="text-center px-5"  id="imgUsuario"></div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-md-12">
+      <!--Editar cuenta--->
+      <div class="form-row">
+        <div class="col-md-8"></div>
+        <div class="col-12 col-md-4">
+          <p class="text-right">
+            <button type="button" id="btnEditarCuenta" class="btn"><i class="fas fa-cog fa-lg  fa-2x" style="color:#212529"></i></button>
+          </p>
+          <p class="text-right alert alert-danger" id="msjBaja" style="display:none"></p>
+          <p class="text-right" id="pEditarCuenta" style="display:none">
+            Dar de baja su cuenta <button type="button" class="btn btn-outline-danger" id="bajaCuenta"><i class="fas fa-trash-alt fa-1x" ></i></button>
+            <button type="button" class="btn btn-outline-secondary" id="cancelarBaja"><i class="fas fa-times fa-1x" ></i></button>
+          </p>
+          
+        </div>
+      </div> 
+    </div><!--fin columna-->
+    <div class="col-12 col-sm-4 ">
+      <span class="text-uppercase text-center"><h4 id="hNombre">Usuario Logueado</h4></span><br>
+      <hr style="border:1px; color: red">
+      <div class="text-center px-5"  id="imgUsuario"></div>
               <br>
-            
-          <!-- Modal imagen perfil--->
+    <!-- Modal imagen perfil--->
           <!-- Button trigger modal -->
-          <center>
-             <button type="button" class="btn btn btn-light" data-toggle="modal" data-target="#exampleModal">
-              Cambiar imagen perfil
-            </button>
+    <center>
+       <button type="button" class="btn btn btn-light" data-toggle="modal" data-target="#exampleModal">
+        Cambiar imagen perfil
+      </button>
 
-          </center>
-     
+    </center>
+
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -93,10 +107,10 @@ include '../backend/seguridad.php';
 
            
             </div>
-            <div class="col-12 col-sm-4 py-5 p-xl-5 col-sm-offset-1"><!--campos administrador  -->
+            <div class="col-12 col-sm-4  p-xl-5 col-sm-offset-1"><!--campos administrador  -->
                 <!--formulario administrador  -->
                 <form>
-                  <br><br>
+                
                   <div class="form-group">
                     <h4>Datos personales</h4>
                     <hr style="background-color:#e91e63;">
@@ -125,7 +139,7 @@ include '../backend/seguridad.php';
                   </div>
                   <div class="form-group">
                     <label for="telefono">Telefono:</label>
-                    <input type="text" class="form-control alert alert-secondary" style="background-color:#f1f3f785" id="txtTelefono" placeholder="telefono administrador">
+                    <input type="number" class="form-control alert alert-secondary" style="background-color:#f1f3f785" id="txtTelefono" placeholder="telefono administrador">
                     <span id="msjTelefono" style="color:red;display: none">Telefono invalido.<br> Ejemplo:96016817</span>
                   </div>
                   </div>
@@ -137,9 +151,9 @@ include '../backend/seguridad.php';
                 administrador  -->
                 
             </div><!--end campos administrador  -->
-            <div class="col-12 col-sm-4 py-5 p-xl-5 col-sm-offset-1">
+  <div class="col-12 col-sm-4 p-xl-5 col-sm-offset-1">
                   <form>
-                    <br><br>
+                   
                     <div class="form-group">
                     <h4>Ubicación</h4>
                     <hr style="background-color:#e91e63;">
@@ -161,6 +175,7 @@ include '../backend/seguridad.php';
                   </div>
                   <div class="form-row"><span class="alert alert-danger" style="display: none" id="msjEditar"></span></div>
                   </form>
+
             </div>
         </div>
     </div>
@@ -174,6 +189,7 @@ include '../backend/seguridad.php';
 
 <script src="../js/bootstrap.min.js"></script>
 
+<script src="../js/bootstrap.bundle.min.js.descarga"></script>
 <script src="../js/perfilAdmin.js"></script>
 
 </body>

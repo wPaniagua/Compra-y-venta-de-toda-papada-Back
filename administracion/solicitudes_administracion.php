@@ -78,7 +78,8 @@ include 'navBarAdmin.php';
         </div>
     </div>
 </body>
-
+<script src="../js/bootstrap.bundle.min.js.descarga"></script>
 <script src="../js/solicitudes_administracion.js"></script>
+<script type="text/javascript" src="../js/fotoAdmin.js"></script>
 
 </html>

@@ -119,7 +119,7 @@ include '../backend/seguridad_admin.php';
             </div>
         </div>
     </div>
-
+    <script src="../js/bootstrap.bundle.min.js.descarga"></script>
     <script src="../js/registro_administrador.js"></script>
 </body>
 

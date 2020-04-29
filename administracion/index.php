@@ -100,6 +100,7 @@ include_once('../backend/seguridad_admin.php');
 <script src="../js/bootstrap.min.js"></script>
 
 <script type="text/javascript" src="../js/fotoAdmin.js"></script>
+<script src="../js/bootstrap.bundle.min.js.descarga"></script>
 
 <script src="../js/cantidadAdmin.js"></script>
 </html>

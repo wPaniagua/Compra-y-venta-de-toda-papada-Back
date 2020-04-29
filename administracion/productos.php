@@ -184,6 +184,8 @@ include '../backend/seguridad_admin.php';
     <script src="../js/jquery.dataTables.js" type="text/javascript"></script>
 	<script src="../js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
 
+	<script src="../js/bootstrap.bundle.min.js.descarga"></script>
+
     <script type="text/javascript" src="../js/controladorProductos.js"></script>
 
     <script type="text/javascript" src="../js/fotoAdmin.js"></script>
