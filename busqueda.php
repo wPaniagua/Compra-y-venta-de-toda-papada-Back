@@ -100,7 +100,7 @@
     </div>
 
 
-    <div class="container" style="margin-top: 2em;" id=main>
+    <div class="container" style="margin-top: 2em; padding: 0px;" id=main>
         <div class="row">
             <div class="col col-md-8">
                 <div class="container">
