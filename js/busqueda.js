@@ -143,7 +143,7 @@ function generarAnuncios(response) {
 
     for (let i = 0; i < 2; i++) {
         $("#anuncios").append(`
-        <div class="col col-lg-5">
+        <div class="col col-lg-4" style="margin:1em; flex: 0 0 32% !important; max-width: 32% !important;">
             <div class="card" style="width: inherit;">
                 <img class="card-img-top"
                     src="https://i.pcmag.com/imagery/reviews/05PEXoDoiSN5HXomKOYFTJ7-18.fit_lim.size_1320x742.v_1574731239.jpg"
@@ -156,21 +156,21 @@ function generarAnuncios(response) {
                                 <hr>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" >
                             <div class="col col-lg-12">
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col col-lg-3 iconoPequeno ">
+                                        <div class="col col-lg-4 iconoPequeno ">
                                             <i style="display: block;"
                                                 class="fas fa-american-sign-language-interpreting iconoTarjeta"> </i>
                                             Vendo
                                         </div>
-                                        <div class="col col-lg-3 iconoPequeno ">
+                                        <div class="col col-lg-4 iconoPequeno ">
                                             <i style="display: block;"
                                                 class="fas fa-dollar-sign iconoTarjeta"></i>
                                             L. ${response[i].precio}
                                         </div>
-                                        <div class="col col-lg-3 iconoPequeno">
+                                        <div class="col col-lg-4 iconoPequeno">
                                             <i style="display: block;"
                                                 class="fas fa-location-arrow iconoTarjeta"></i>
                                             ${response[i].municipio}
@@ -206,21 +206,21 @@ function generarAnuncios(response) {
                                 <hr>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" class="iconos-row">
                             <div class="col col-lg-12">
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col col-lg-3 iconoPequeno ">
+                                        <div class="col col-lg-4 iconoPequeno ">
                                             <i style="display: block;"
                                                 class="fas fa-american-sign-language-interpreting iconoTarjeta"> </i>
                                             Vendo
                                         </div>
-                                        <div class="col col-lg-3 iconoPequeno ">
+                                        <div class="col col-lg-4 iconoPequeno ">
                                             <i style="display: block;"
                                                 class="fas fa-dollar-sign iconoTarjeta"></i>
                                             L. ${response[i].precio}
                                         </div>
-                                        <div class="col col-lg-3 iconoPequeno">
+                                        <div class="col col-lg-4 iconoPequeno">
                                             <i style="display: block;"
                                                 class="fas fa-location-arrow iconoTarjeta"></i>
                                             ${response[i].municipio}
