@@ -101,7 +101,20 @@ include '../backend/seguridad_admin.php';
                                 id="btn-tiempoAdministrador">Actualizar</button>
 
                         </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-lg-12">
+                            <label for="caducidadUsuarioEmpresa">Tiempo de caducidad Usuario
+                                    Empresa:</label>
+                            <Span id="tiempoEmpresa"> dias</Span>
 
+                            <input type="text" class="form-control" id="caducidadUsuarioEmpresa"
+                                placeholder="Ingresa una cantidad en días" style="width:50%;">
+
+                            <button type="button" class="btn btn-primary" style="margin-top: .5em;"
+                                id="btn-tiempoEmpresa">Actualizar</button>
+
+                        </div>
                     </div>
                 </form>
             </div>

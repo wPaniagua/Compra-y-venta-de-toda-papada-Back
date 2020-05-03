@@ -319,6 +319,14 @@ function busquedaDetallada() {
     let desde = $("#desde").val();
     let hasta = $("#hasta").val();
 
+    var tipo = $("input[name=servicios]");
+    console.log("Radios")
+
+    //console.log(tipo.filter(":checked").val())
+
+    var tipoCheckeado = tipo.filter(":checked").val();
+    console.log(tipoCheckeado)
+
 
     let servicio = $("input[name='servicios']:checked").val();
 
@@ -328,8 +336,8 @@ function busquedaDetallada() {
     //console.log(hasta);
     //console.log(servicio);
 
-    let data = `accion=filtros${departamento!="null"?`&idDepartamento=${departamento}`:``}${municipio!="null"?`&idMunicipio=${municipio}`:``}${validarValorNumerico(desde, "#mensajeDesde")?`&desde=${desde}`:``}${validarValorNumerico(hasta, "#mensajeHasta")?`&hasta=${hasta}`:``}${servicio!=""?`&servicio=${servicio}`:``}${validarCategoriaNumerica(categoria)?`&categoria=${categoria}`:``}${busqueda!=""?`&busqueda=%${busqueda}%`:``}`;
-    //console.log(data.trim());
+    let data = `accion=filtros${departamento!="null"?`&idDepartamento=${departamento}`:``}${municipio!="null"?`&idMunicipio=${municipio}`:``}${validarValorNumerico(desde, "#mensajeDesde")?`&desde=${desde}`:``}${validarValorNumerico(hasta, "#mensajeHasta")?`&hasta=${hasta}`:``}${validarCategoriaNumerica(categoria)?`&categoria=${categoria}`:``}${busqueda!=""?`&busqueda=%${busqueda}%`:``}${tipoCheckeado!=null?`&tipo=${tipoCheckeado}`:``}`;
+    console.log(data.trim());
 
     $.ajax({
         url: "backend/busqueda.php",
@@ -337,7 +345,7 @@ function busquedaDetallada() {
         datatype: "json",
         data: data.trim(),
         success: (respuesta) => {
-            //console.log(respuesta)
+            //         //console.log(respuesta)
 
             var response = Array();
 
@@ -352,13 +360,13 @@ function busquedaDetallada() {
                 $("#noHayDatos").fadeOut();
                 generarAnuncios(response);
             } else {
-                //alert("No hay datos")
+                //             //alert("No hay datos")
                 $("#anuncios").html("");
                 $("#noHayDatos").fadeIn();
             }
 
-            // let response = JSON.parse(respuesta);
-            // console.log(response);
+            //         // let response = JSON.parse(respuesta);
+            //         // console.log(response);
 
             generarAnuncios(response);
         },
@@ -428,11 +436,12 @@ $("#ordenamiento").on("change", function () {
     let hasta = $("#hasta").val();
 
 
+
     let servicio = $("input[name='servicios']:checked").val();
 
 
     let opcionSeleccionadaOrden = $("#ordenamiento :selected").val();
-    let dataParametros = `${departamento!="null"?`idDepartamento=${departamento}`:``}${municipio!="null"?`&idMunicipio=${municipio}`:``}${validarValorNumerico(desde, "#mensajeDesde")?`&desde=${desde}`:``}${validarValorNumerico(hasta, "#mensajeHasta")?`&hasta=${hasta}`:``}${servicio!=""?`&servicio=${servicio}`:``}${validarCategoriaNumerica(categoria)?`&categoria=${categoria}`:``}${busqueda!=""?`&busqueda=%${busqueda}%`:``}`;
+    let dataParametros = `${departamento!="null"?`idDepartamento=${departamento}`:``}${municipio!="null"?`&idMunicipio=${municipio}`:``}${validarValorNumerico(desde, "#mensajeDesde")?`&desde=${desde}`:``}${validarValorNumerico(hasta, "#mensajeHasta")?`&hasta=${hasta}`:``}${servicio!=null?`&servicio=${servicio}`:``}${validarCategoriaNumerica(categoria)?`&categoria=${categoria}`:``}${busqueda!=""?`&busqueda=%${busqueda}%`:``}`;
 
 
 

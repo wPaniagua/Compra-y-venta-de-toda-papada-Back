@@ -204,21 +204,21 @@
                     <div class="row rowFiltros" style="padding-left: 2em;padding-right: auto;">
                         <div class="col col-lg-12" style="text-align: center; padding-left: auto;padding-right: auto;">
                             <p>
-                                <strong>Servicios:</strong>
+                                <strong>Tipo:</strong>
                             </p>
 
                             <div class="form-check" style="display: inline;">
-                                <input class="form-check-input" type="radio" name="servicios" id="exampleRadios1"
-                                    value="1" checked>
-                                <label class="form-check-label" for="exampleRadios1">
-                                    Comprar
+                                <input class="form-check-input" type="radio" name="servicios" id="producto"
+                                    value="producto" >
+                                <label class="form-check-label" for="producto">
+                                    Producto
                                 </label>
                             </div>
                             <div class="form-check" style="display: inline;">
-                                <input class="form-check-input" type="radio" name="servicios" id="exampleRadios2"
-                                    value="2">
-                                <label class="form-check-label" for="exampleRadios2">
-                                    Rentar
+                                <input class="form-check-input" type="radio" name="servicios" id="servicio"
+                                    value="servicio">
+                                <label class="form-check-label" for="servicio">
+                                    Servicio
                                 </label>
                             </div>
                             <br>
