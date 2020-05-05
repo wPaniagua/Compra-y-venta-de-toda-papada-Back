@@ -223,6 +223,27 @@
 
 
     <br>
+
+   <!--*********************************************COMPARTIR EN REDES SOCIALES*************************************************-->
+    <?php
+                    if (isset($_SESSION["id_usuario"])){
+                        echo ('<div id="fb-root"></div>
+                                    <div class="jumbotron col-md-3" style="margin-left: 30px;">
+                                      <center><h5>Comparte nuestra página a través de :</h5></center>
+                                      <div class="row " >
+                                        <div style="margin-left: 100px; margin-right: 0px;" class="fb-share-button" data-href="http://www.Publitodo.hn/inicio.php" data-layout="button_count" data-size="small">
+                                          <a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=http://www.Publitodo.hn/inicio.php&t=Compartir_desde_Publitodo" class="fb-xfbml-parse-ignore" aria-describedby="u_0_l" aria-label="Publicacion desde Publitodo" tabindex="-1" >
+                                            <img style="width: 38px; border-radius: 12px;" src="../img/compartirFB.png"></a>
+                                        </div>
+                                        <div style="margin-left: 15px; margin-right: auto;">
+                                          <a ><img style="width: 40px; border-radius: 15px;" src="../img/compartirInstagram.png"></a>
+                                        </div>
+                                      </div>
+                                    </div>' );
+                    }
+                ?>
+    <!--*************************************************************************************************************************-->
+
     <!-- mas visitados -->
     <div class="container my-4">
 
