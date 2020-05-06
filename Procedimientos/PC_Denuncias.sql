@@ -52,7 +52,9 @@ SP:BEGIN
   END IF; 
 
   IF accion="obtenerTodos" THEN
-    SELECT d.idDenuncias, d.fecha,d.razones, a.titulo, d.estado,p.primerNombre,p.segundoApellido FROM denuncias d
+    SELECT d.idDenuncias, d.fecha,d.razones, a.titulo, d.estado,p.primerNombre,p.segundoApellido 
+    ,a.idAnuncios,a.idPersona 'denunciado', d.denunciante
+    FROM denuncias d
 	  INNER JOIN anuncios a on a.idAnuncios=d.idAnuncios
 	  INNER JOIN persona p on p.idPersona=a.idPersona /*WHERE d.estado="A"*/;
       SET mensaje='Exitoso';

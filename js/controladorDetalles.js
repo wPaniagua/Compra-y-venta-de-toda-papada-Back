@@ -465,7 +465,7 @@ $("#guardarDenuncia").on("click", () => {
 		"idAnuncio=" + idAnuncio + "&" +
 		"idDenunciante=" + $("#idUL").val();
 	
-	alert(parametros);
+	//alert(parametros);
 
 	$.ajax({
 		url: "../backend/gestionDenuncias.php?accion=solicitudDenuncia",
@@ -473,7 +473,7 @@ $("#guardarDenuncia").on("click", () => {
 		data: parametros,
 		dataType: "json",
 		success: function (respuesta) {
-			console.log(respuesta);
+			//console.log(respuesta);
 			//alert(respuesta[0].mensaje);
 
 			$("#msjG").addClass("alert-danger");

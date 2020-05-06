@@ -8,20 +8,21 @@ $(window).on("load", function () {
 	const urlParams = new URLSearchParams(queryString);
 
 	const idAnuncio = urlParams.get('idAnuncio');
-	obtenerDenuncias(idAnuncio);
+	obtener(idAnuncio);
+	
 });
 
 function obtenerDenuncias(idAnuncio){
-
+	var codigo=$("#idUL").val();
 	//alert(idAnuncio);
 	$.ajax({
 		url:"../backend/gestionDenuncias.php?accion=obtenerTodos",
 		method:"GET",
 		dataType:"json",
 		success:function(respuesta){
-			console.log(respuesta);
+			//console.log(respuesta);
 			var contenido = "";
-			console.log(respuesta);
+			//console.log(respuesta);
 			contenido='<div class="table-responsive  id="div_ini"><table id="tablaDenuncias" class="table table-striped table-hover table-bordered"><thead class="thead-dark"><tr>'+
                        '<th>No</th>'+
 		               '<th>Fecha</th>'+
@@ -37,7 +38,9 @@ function obtenerDenuncias(idAnuncio){
 				
 			for (var i = 0; i<respuesta.length; i++){
 
-				contenido += '<tr><td>'+respuesta[i].idDenuncias+'</td>'+
+				if (respuesta[i].denunciado==codigo) {
+					// statement
+					contenido += '<tr><td>'+respuesta[i].idDenuncias+'</td>'+
 			                    '<td>'+respuesta[i].fecha+'</td>'+
 			                    '<td>'+respuesta[i].titulo+'</td>'+
 			                    '<td>'+respuesta[i].primerNombre+' '+respuesta[i].segundoApellido+'</td>'+
@@ -47,15 +50,16 @@ function obtenerDenuncias(idAnuncio){
 			                    '<button class="btn" type="button" id="btnEliminar" onclick="eliminarDenuncias('+respuesta[i].idDenuncias+       ')"><i class="fas fa-trash-alt fa-lg" style="color:green"></i></button>'+ 
 			                    '</td-->'+
 			                  '</tr>';
+				} 
+				
 			}
 			contenido+='</table></div>';
 			} else {
 					// statement
 			for (var i = 0; i<respuesta.length; i++){
-				if (idAnuncio==respuesta[i].idDenuncia) {
+				if (idAnuncio==respuesta[i].idAnuncios) {
 					// statement
-				} 
-				contenido += '<tr><td>'+respuesta[i].idDenuncias+'</td>'+
+					contenido +='<tr><td>'+respuesta[i].idDenuncias+'</td>'+
 			                    '<td>'+respuesta[i].fecha+'</td>'+
 			                    '<td>'+respuesta[i].titulo+'</td>'+
 			                    '<td>'+respuesta[i].primerNombre+' '+respuesta[i].segundoApellido+'</td>'+
@@ -65,9 +69,11 @@ function obtenerDenuncias(idAnuncio){
 			                    '<button class="btn" type="button" id="btnEliminar" onclick="eliminarDenuncias('+respuesta[i].idDenuncias+       ')"><i class="fas fa-trash-alt fa-lg" style="color:green"></i></button>'+ 
 			                    '</td-->'+
 			                  '</tr>';
+				} 
+				
 			}
 			contenido+='</table></div>';
-				}
+		}
 			$("#div_ini").remove();
 			//$("#con2").remove();
 			//$("#c1").prop("disabled",false);
@@ -119,5 +125,24 @@ function cargarTabla(){
                     });
                 }*/
 		
+	});
+
+
+}
+
+function obtener(idAnuncio){
+	$.ajax({
+		url: "../backend/perfilAdmin.php",
+		// data: "correo=" + correo.toLowerCase() + "&contrasena=" + contrasena, //data, //"correo=" + $("#txt-correo").val().toLowerCase() + "&password=" + $("#txt-contrasena").val(),
+		method: "GET",
+		dataType: "json",
+		success: function (respuesta) {
+			//console.log(respuesta);
+			$("#idUL").val(respuesta.idUsuario);
+			obtenerDenuncias(idAnuncio);
+		},
+		error: function (error) {
+			console.log(error)
+		}
 	});
 }

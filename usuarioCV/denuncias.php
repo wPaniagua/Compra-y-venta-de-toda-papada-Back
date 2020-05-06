@@ -24,7 +24,9 @@ include '../backend/seguridad.php';
 		<div class="row">
 			<div class="col-12 py-5">
 				<!--Mostrar mensaje-->
+
 				<br><br><br>
+				<input type="text" name="idUL" id="idUL" style="display: none">
 				<h3 class="text-center">Lista de denuncias</h3>
 				<br>
 				<div class="text-center">
