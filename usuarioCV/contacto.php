@@ -1,3 +1,4 @@
+
  <?php 
 
 include '../backend/seguridad.php';
@@ -53,8 +54,9 @@ include '../backend/seguridad.php';
 
 	<div class="container-contact100">
 		<div class="wrap-contact100">
-			<button href="detalleAnuncio.php" class="btn-hide-contact100">
-				<i class="zmdi zmdi-close"></i>
+			<button class="btn-hide-contact100">
+				<a href="../inicio.php" class="zmdi zmdi-close"> </a>
+				
 			</button>
 
 			<div class="contact100-form-title" style="background-image: url(images/bg-02.jpg);">

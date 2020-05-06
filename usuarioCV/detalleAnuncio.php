@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -372,6 +373,5 @@
 <script src="../js/jquery.etalage.min.js"></script>
 <script src="../js/controladorDetalles.js"></script>
 </html>		
-
 
 
