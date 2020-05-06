@@ -9,7 +9,8 @@ jQuery(document).ready(function ($) {
 	obtenerFoto(idAnuncio);
 	detalleAnuncio(idAnuncio);
 	obtenerIdUsuario();
-
+	$("#enviarMsj").attr('href','contacto.php?idAnuncio='+idAnuncio+'');
+	$("#btnVerDenuncias").attr('href','denuncias.php?idAnuncio='+idAnuncio+'');
 });
 
 $(function () {
@@ -452,22 +453,33 @@ $("#btn-favorito").on("click", () => {
 });
 
 
+$("#guardarDenuncia").on("click", () => {
 
-/*<div class="col-md-4">
-			<div class="single_top">
-	 		<div class="container"> 
-	  	<div class="single_grid">
-	  		<h2 id="tituloAnuncio">Producto X</h2>
-	  				<div class="grid imgCate_3_of_2" id="fotosAnuncio"></div>
-					<div class="grid imgCate_3_of_2" id="imagenesAnuncio"> <!--Inicio div Imagenes-->
-						<ul id="etalage">
-							<li>
-								<a href="#">
-									<img class="etalage_thumb_image" src="../imgCate/microondas.jpg" class="img-responsive" />
-									<img class="etalage_source_image" src="../imgCate/microondas.jpg" class="img-responsive" title="" />
-								</a>
-							</li>
-						</ul>
-						 <div class="clearfix"></div>		
-				  </div> <!--Fin div Imagenes-->
-			</div></div></div></div>*/
+	const queryString = window.location.search;
+
+	const urlParams = new URLSearchParams(queryString);
+
+	const idAnuncio = urlParams.get('idAnuncios');
+	var parametros = "razon=" + $('#razonesDenuncia').val() + "&" +
+		"idAnuncio=" + idAnuncio + "&" +
+		"idDenunciante=" + $("#idUL").val();
+	
+	alert(parametros);
+
+	$.ajax({
+		url: "../backend/gestionDenuncias.php?accion=solicitudDenuncia",
+		method: "GET",
+		data: parametros,
+		dataType: "json",
+		success: function (respuesta) {
+			console.log(respuesta);
+			//alert(respuesta[0].mensaje);
+
+			$("#msjG").addClass("alert-danger");
+			$("#msjG").html(respuesta[0].mensaje);
+			$("#msjG").fadeIn();
+			$("#msjG").fadeOut(2000);
+		}
+	});
+});
+

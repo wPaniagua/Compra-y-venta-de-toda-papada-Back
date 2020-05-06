@@ -2,7 +2,7 @@ jQuery(document).ready(function ($) {
 
     console.log("Cargado DOM");
     traerFavoritos();
-
+    $("#favoritos").addClass("active");
 });
 
 

@@ -38,7 +38,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link font-weight-bold" href="#">Favoritos <span class="sr-only">(current)</span></a>
+                    <a class="nav-link font-weight-bold" href="usuarioCV/favoritos.php">Favoritos <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <!--a class="nav-link" href="#">Favoritos</a-->
@@ -70,11 +70,11 @@
                         echo ('<div class="btn-group">
         <a href="#" class=""><i class="fas fa-user-circle  fa-3x" style="color:#212529;display:none" id="iconU"></i>
                     <div id="imgNP" ></div></a>
-          <a href="#" class="dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-right: 10px;padding-top: 10px;color:#212529;font-size:20px;">
+          <a href="#" class="dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-right: 80px;padding-top: 10px;color:#212529;font-size:20px;">
             <span class="sr-only">Toggle Dropdown</span>
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="perfil.php">Editar Perfil</a>
+            <a class="dropdown-item" href="usuarioCV/perfil.php">Editar Perfil</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" id="cerrarSesion">Cerrar sesión</a>
           </div>

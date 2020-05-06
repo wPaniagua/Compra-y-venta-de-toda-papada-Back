@@ -8,7 +8,7 @@ include '../backend/seguridad.php';
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>PUBLITODO</title>
+	<title>Editar Publicacion</title>
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/icons.css">
 	<link rel="stylesheet" type="text/css" href="../css/customAddANuncio.css">

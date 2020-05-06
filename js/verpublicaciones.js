@@ -14,7 +14,7 @@ jQuery(document).ready(function ($) {
 
     traerPublicaciones(idpersona);
 
-
+$("#favoritos").addClass("active");
 
 });
 

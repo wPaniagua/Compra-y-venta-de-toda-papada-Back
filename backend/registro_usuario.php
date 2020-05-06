@@ -4,7 +4,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 //aqui tienen que buscar el archivo  autoload.php, en la carpeta que instalaron composer, en mi caso es esa. AL instalar phpMailer, ese archivo se crea automaticamente
-require 'C:\wamp64\composer\vendor\autoload.php';
+//require 'C:\wamp64\composer\vendor\autoload.php';
+require 'C:\xampp\composer\vendor\autoload.php';
+
 
 
 $host = "localhost";

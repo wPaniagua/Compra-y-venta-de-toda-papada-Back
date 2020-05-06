@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>PUBLITODO</title>
+<title>Anuncio</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
@@ -26,7 +26,7 @@
 		<div class="col-md-4" id="imagenesAnuncio">
 		</div>
 
-<div class="col-md-8">
+<div class="col-md-8 col-12">
 	<input type="text" name="idUL" id="idUL" style="display: none">
 	<div class="container">
 		<div class="row">
@@ -109,6 +109,16 @@
 			      <label id="telefono" class="">Telefono ...</label>
 			    </div>
 			  </div>
+        <div class="row">
+            <div class="col-md-5">
+              <label class="font-weight-bold">Contactar</label>
+            </div>
+            <div class="col-md-7">
+              <a class="btn btn-outline-danger"  id="enviarMsj">
+                        Enviar Mensaje
+              </a>
+             </div>
+          </div>
 			 </form>
 			</div><!--fin FORMULARIO datos vendedor -->
 			<br>
@@ -139,12 +149,17 @@
 			</div>
 		</div>
 		<div class="row">
-		<div class="col-md-6 px-5">
+		<div class="col-md-12 px-5">
 		<p>
-  	<a class="btn btn-danger" data-toggle="collapse" href="#calificar" role="button" aria-expanded="false" aria-controls="calificar" id="btn-Cal">Calificar</a>
+  	<a class="btn btn-outline-danger" data-toggle="collapse" href="#calificar" role="button" aria-expanded="false" aria-controls="calificar" id="btn-Cal">Calificar</a>
+
+      <a class="btn btn-outline-danger" data-toggle="collapse" href="#verCalificacion" role="button" aria-expanded="false" aria-controls="verCalificacion" id="verCalifi">Ver calificaciones</a>
+
+      <a class="btn btn-outline-danger" data-toggle="collapse" href="#denunciar" role="button" aria-expanded="false" aria-controls="denunciar" id="denuncia">Denunciar</a>
+      <a class="btn btn-outline-danger" id="btnVerDenuncias">Ver Denuncias</a>
 		</p>
 		<span class="alert alert-warning" id="msjG" style="display: none"></span>
-		<div class="row">
+		<div class="row">       
   	<div class="col">
     		<div class="collapse multi-collapse" id="calificar">
         <div class="card card-body">
@@ -177,13 +192,26 @@
       		</div>
     			</div><br><br>
   				</div>
-					</div>
+					<!--/div-->
 				</div><!--fin primer columna-->
-				<div class="col-md-6">
-		<p>
-  	<a class="btn btn-danger" data-toggle="collapse" href="#verCalificacion" role="button" aria-expanded="false" aria-controls="verCalificacion" id="verCalifi">Ver calificaciones</a>
-		</p>
-		<div class="row">
+        <div class="col-md-12"><!--Denuncias-->
+          <div class="col">
+            <div class="collapse multi-collapse" id="denunciar">
+              <div class="card card-body">
+                <ul>
+                  </label><br>
+                   <label>Razones de su Denuncia:</label>
+                   
+                   <textarea name="razonesDenuncia" id="razonesDenuncia" class="form-control " rows="4"></textarea><br>
+                   <button type="button" id="guardarDenuncia" class="btn btn-success" data-toggle="collapse" href="#denunciar" role="button" aria-expanded="false" aria-controls="denunciar">Guardar</button>
+
+                </ul>
+              </div>
+            </div>
+          </div> 
+        </div><!--Fin Denuncias-->
+				<div class="col-md-12">
+		<!--div class="row"-->
   	<div class="col">
     		<div class="collapse multi-collapse" id="verCalificacion">
         <div class="card card-body">

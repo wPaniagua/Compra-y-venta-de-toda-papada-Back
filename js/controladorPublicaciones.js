@@ -41,7 +41,7 @@ function obtenerDatos(idUsuario) {
             
             contenido+='<div id="anunciosM" class="row">';
             for (var i = 0; i<respuesta.length; i++){
-              contenido+='<div  class="col-md-4 py-1">'+
+              contenido+='<div  class="col-md-3 col-12 py-1">'+
              '<div class="card" style="width: 18rem;"><div id="imgAnuncio'+respuesta[i].idAnuncios+'">';
              //'<!--img src="../imgCate/micro3.jpg" class="card-img-top" alt="..."-->';
              obtenerFotosANuncio(respuesta[i].idAnuncios);

@@ -9,7 +9,7 @@
 </head>
 
 <body>
-	<!--barra de navegacion para el administrador-->
+	<!--barra de navegacion para el usuario-->
 	<div class="fixed-top">
 		<nav class="navbar navbar-expand-md navbar-dark fixed-top navbarP" style="background-color: #EA1D5D">
 			<a class="navbar-brand font-weight-bold" href="../inicio.php" id="index">PUBLITODO</a>
@@ -25,7 +25,7 @@
 							Publicaciones</span></a>
 					</li>
 					<li class="nav-item " id="denuncias">
-						<a class="nav-link  font-weight-bold navBarN" href="#" tabindex="-1"
+						<a class="nav-link  font-weight-bold navBarN" href="denuncias.php" tabindex="-1"
 							aria-disabled="true">Denuncias</a>
 					</li>
 					<li class="nav-item " id="favoritos">

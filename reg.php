@@ -10,17 +10,16 @@
  
  <title>Principal</title>
 </head>
-<body>
-  <!--style="background-color: rgba(198, 228, 232, 0.49);
-"-->
+<body style="background-color: rgb(233, 233, 233);">
+  <!----background-color:rgba(198, 228, 232, 0.49); rgb(233, 233, 233);-->
  <div class="container">
 
       
      	<div class="row">
 
-     		<div class="col-md-4 col-1"></div>
-     <div class="col-md-5" style="background-color: #1012133b;">
-      <br>
+     <div class="col-md-4 col-1 py-5"></div>
+     <div class="col-md-5" style="background-color:#fff;box-shadow: 12px 12px 20px -7px rgba(0, 0, 0, 0.75);margin-top: 30px;margin-bottom: 30px;">
+      <br><!---#1012133b;--->
       <center>
         <h4 class="" style="color: #000000">BIENVENIDO </h4>
         <h4>A </h4>

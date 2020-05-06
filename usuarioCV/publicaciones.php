@@ -6,7 +6,7 @@ include '../backend/seguridad.php';
 <!DOCTYPE html>
 <html>
 <head>
-	<title>PubliTodo</title>
+	<title>Publicaciones</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -21,19 +21,17 @@ include '../backend/seguridad.php';
 <br><br>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-2 py-5">
+		<div class="col-12 py-1">
    <br><br>
 				<input type="text" name="idUsuario" id="idUsuario" style="display: none">
     <div class="btn-group-vertical">
-    	<button class="btn btn-danger">Administra tus publicaciones</button>
 				<a href="agregarPublicacion.php" class="btn btn-outline-danger btn-lg btn-block" id="btnAdd"><i class="fas fa-plus-circle" ></i>Agregar Publicaciones</a>
 		</div>
 	</div><!--fin menu--->
 
-	<div class="col-md-10 py-5">
-		<br><br>
+	<div class="col-md-12 py-5 px-5">
 		<center><h3>Mis Publicaciones</h3></center>
-		
+		<br>
 		<div class="row" id="anuncios">
 			<div class="row" id="anunciosM">
 		</div>

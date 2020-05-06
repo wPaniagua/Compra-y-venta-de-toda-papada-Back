@@ -13,7 +13,9 @@
 
 <body>
 
-
+    <?php 
+       // include 'navbarU.php';
+     ?>
 
 
     <div class="alert alert-danger" role="alert" id="mensaje" style="margin-top:5em; width:80%; margin-left:auto;margin-right:auto; display:none">
@@ -43,6 +45,7 @@
     <script src="../js/jquery-3.4.1.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/all.js"></script>
+    <script src="../js/bootstrap.bundle.min.js.descarga"></script>
     <script src="../js/favoritos.js"></script>
 </body>
 

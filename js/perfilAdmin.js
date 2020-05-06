@@ -51,9 +51,8 @@ function obtenerDatos(){
  });
 }
 
-$("#cerrarSesion").on("click", () => {
-
-    $.ajax({
+function cerrarSesion(){
+  $.ajax({
 
         url: "../backend/cerrarSesion.php",
         // data: "correo=" + correo.toLowerCase() + "&contrasena=" + contrasena, //data, //"correo=" + $("#txt-correo").val().toLowerCase() + "&password=" + $("#txt-contrasena").val(),
@@ -71,6 +70,9 @@ $("#cerrarSesion").on("click", () => {
         }
 
     });
+}
+$("#cerrarSesion").on("click", () => {
+  cerrarSesion();
 })
 
 //funcion que obtiene el munipio 
@@ -515,9 +517,13 @@ $("#bajaCuenta").on("click", function(){
       console.log(respuesta);
        $("#pEditarCuenta").fadeOut(1);
       if (respuesta[0].mensaje=='Eliminado exitosamente') {
-        $("#msjBaja").html(respuesta[0].mensaje);
+        $("#msjBaja").html(respuesta[0].mensaje+"<br>  "+
+                          "Su cuenta sera dada de baja.<br> Ya no podra iniciar sesion con este perfil.");
         $("#msjBaja").fadeIn();
-        $("#msjBaja").fadeOut(2000);
+        $("#msjBaja").fadeOut(2500,function(){
+          cerrarSesion();
+        });
+        
       }else {
        $("#msjBaja").html("NO SE PUDO ELIMINAR INTENTE LUEGO");
         $("#msjBaja").fadeIn();
