@@ -1,6 +1,6 @@
 <?php 
 
-$mysqli = new mysqli( 'localhost:3306', 'root', '', 'mydb' );
+$mysqli = new mysqli( 'localhost:3308', 'root', '', 'mydb' );
 
 switch ($_POST["accion"]) {
 
@@ -365,8 +365,8 @@ switch ($_POST["accion"]) {
             $tiempoNormal;
 
             $stmt = $mysqli->prepare(
-                'select tiempoPublicacion from tipoUsuario 
-                where idTipoUsuario = 1'
+                'select tiempoPublicacion from tipoUsuario  tu 
+                where tu.descripcion  like "%normal%"'
             );
 
             $stmt -> execute();
@@ -419,8 +419,8 @@ switch ($_POST["accion"]) {
             $tiempoAdministrador;
 
             $stmt = $mysqli->prepare(
-                'select tiempoPublicacion from tipoUsuario 
-                where idTipoUsuario = 3'
+                'select tiempoPublicacion from tipoUsuario tu
+                where tu.descripcion  like "%administrador%"'
             );
 
             $stmt -> execute();
@@ -433,6 +433,62 @@ switch ($_POST["accion"]) {
             $stmt -> fetch();
             
             echo json_encode(array("tiempoAdministrador"=> $tiempoAdministrador));
+
+        break;
+        case "cambiarTiempoUsuarioEmpresa":
+
+            $tiempoUsuarioEmpresa = $_POST["tiempoUsuarioEmpresa"];
+            $mensaje;
+            $codigo;
+
+            
+            $call = $mysqli->prepare('CALL SP_CAMBIAR_TIEMPO_USUARIO_EMPRESA(?, @mensaje, @codigo, @cantidadDiasOut)');
+            
+            $call->bind_param('i', 
+                $tiempoUsuarioEmpresa
+            );
+            
+            
+            $call->execute();
+            
+            $select = $mysqli->query('SELECT  @mensaje, @codigo, @cantidadDiasOut');
+            
+            $result = $select->fetch_assoc();
+
+            $mensaje = $result['@mensaje'];
+            $codigo = $result['@codigo'];
+            $tiempoUsuarioEmpresa = $result['@cantidadDiasOut'];
+
+
+            
+            echo json_encode(array(
+                "mensaje"=>$mensaje,
+                "codigo"=>$codigo,
+                "tiempoUsuarioEmpresa"=>$tiempoUsuarioEmpresa
+            ));
+        break;
+
+        case "selectTiempoUsuarioEmpresa":
+
+            
+            $tiempoEmpresa;
+
+            $stmt = $mysqli->prepare(
+                'select tiempoPublicacion from tipoUsuario  tu
+                where tu.descripcion  like "%empresa%"
+                '
+            );
+
+            $stmt -> execute();
+            $stmt -> store_result();
+
+            $stmt -> bind_result( 
+                $tiempoEmpresa
+                );
+
+            $stmt -> fetch();
+            
+            echo json_encode(array("tiempoEmpresa"=> $tiempoEmpresa));
 
         break;
 
