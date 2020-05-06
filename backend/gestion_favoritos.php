@@ -4,7 +4,7 @@ $host = "localhost";
 $usuario = "root";
 $password = "";
 $baseDatos = "mydb";
-$puerto = 3308;  //Cambiar puerto aca
+$puerto = 3306;  //Cambiar puerto aca
 $link;
 
 $mysqli = new mysqli(	
@@ -15,7 +15,7 @@ $mysqli = new mysqli(
         $puerto
 );
 //||||||||||||||||||||||||||Cambiar puerto aca
-$dsn = "mysql:host=localhost:3308;dbname=mydb;charset=utf8";
+$dsn = "mysql:host=localhost:3306;dbname=mydb;charset=utf8";
 
         $options = [
           PDO::ATTR_EMULATE_PREPARES   => false, // turn off emulation mode for "real" prepared statements
@@ -134,10 +134,11 @@ switch($_POST["accion"]){
 
         $favorito = $_POST["favorito"];
 
-        $idPersona =  $_SESSION["id_usuario"];
+        $idPersona =$_SESSION["id_usuario"];
 
         $queryBase='DELETE FROM favoritos fa
-        WHERE fa.idPersona = ? AND fa.favorito = ?';
+        WHERE fa.idPersona = ? 
+        AND fa.favorito = ?';
 
         $parametros = array();
 
