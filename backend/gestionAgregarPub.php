@@ -3,6 +3,7 @@
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+
 //require 'C:\wamp64\composer\vendor\autoload.php';
 require 'C:\xampp\composer\vendor\autoload.php';
 
@@ -87,6 +88,7 @@ echo json_encode($resultadoConsulta);
 //enviar el correo a todos los favoritos del usuario
 
     //creo la instancia de la extension
+
    $mail = new PHPMailer(TRUE);
 
 
@@ -129,15 +131,16 @@ echo json_encode($resultadoConsulta);
             $mail->Body = $cuerpo_mail;
         
            /* Parametros SMTP. */
-           /* Le dice a  PHPMailer que use SMTP. */
-          $mail->isSMTP();
-        
-           /* Direccion del servidor de SMTP, en este caso uso el de google. */
+
+            //Le dice a  PHPMailer que use SMTP. 
+           $mail->isSMTP();
+/* Direccion del servidor de SMTP, en este caso uso el de google. */
             $mail->Host = 'smtp.gmail.com';
     
            /* Usar SMTP autenticacion. */
+
           $mail->SMTPAuth = TRUE;
-        
+
            /* Configura el sistema de encriptacion. */
             $mail->SMTPSecure = 'ssl';//tls
         
@@ -146,11 +149,12 @@ echo json_encode($resultadoConsulta);
             $mail->Username = 'publitodo.2020@gmail.com';
         
            /* La contrasena de la cuenta. */
+
            $mail->Password = 'Publitodo_2020.';
         
            /* El puerto en el que esta el servidor SMTP de Google. */
            $mail->Port = 465;
-    
+
             //le dice la extension  que el cuerpo del mail es html
             $mail-> IsHTML(true);
         

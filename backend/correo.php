@@ -1,3 +1,4 @@
+
 <?php
 session_start(); 
 
@@ -8,7 +9,9 @@ use PHPMailer\PHPMailer\Exception;
 require 'C:\xampp\composer\vendor\autoload.php';
 
 
-$connect = new PDO('mysql:host=localhost:3306;dbname=mydb', 'root', '');
+
+include_once 'class-conexion.php';
+$conexion = new Conexion();
 
 
 $idAnuncio = $_GET["idAnuncio"];
@@ -17,54 +20,85 @@ $nombre = $_POST["name"];
 $correo =  $_POST["email"];
 $telefono = $_POST["phone"];
 $mensaje = $_POST["message"];
-//$idAnuncio = $_POST["idAnuncio"];
+$correoBase;
+$nombreBase;
 
-/*$nombreVendedor = "
-select CONCAT(p.primerNombre, ' ',p.primerApellido ) as nombre from persona p  
-where 
-p.idPersona = $idAnuncio";
+$correoVendedor = "
+select p.correo from persona p 
+INNER JOIN anuncios anu on anu.idPersona = p.idPersona 
+where anu.idAnuncios = $idAnuncio";
 
-$statement = $connect->prepare($nombreEmisor);
+$resultado = $conexion->ejecutarConsulta($correoVendedor);
 
-$statement->execute(
-    array(
-        $idUser=>$nombreEmisor
-    )
-); */
- $correoVendedor = "waleska.alvarado7@gmail.com";
- $nombreVendedor = "Vendedoor";
+$resultadoCorreo = $conexion->obtenerFila($resultado);
+
+$cadena = implode(";", $resultadoCorreo);
+            
+echo json_encode($cadena);
+
+
+
+
+	$nombreVendedor = "select CONCAT(p.primerNombre, '', p.primerApellido) as nombre from persona p 
+	INNER JOIN anuncios anu on anu.idPersona = p.idPersona 
+	where anu.idAnuncios = $idAnuncio";
+
+   $resultado = $conexion->ejecutarConsulta($nombreVendedor);
+
+            $resultadoNombre = $conexion->obtenerFila($resultado);
+
+
+            $cadena2 = implode(";", $resultadoNombre);
+
+            echo json_encode($cadena2);
+	
+
+	$tituloAnuncio = "
+	select titulo from anuncios  
+	where idAnuncios = $idAnuncio";
+
+	$resultado = $conexion->ejecutarConsulta($tituloAnuncio);
+
+    $resultadoTitulo = $conexion->obtenerFila($resultado);
+                 
+    $cadena3 = implode(";", $resultadoTitulo);
+     
+
+     //echo json_encode($cadena3);
+
+
 
 //Instancia
-$mail = new PHPMailer(TRUE);
+	$mail = new PHPMailer(TRUE);
 
-try {
+	try {
 
-    $mail -> charSet = "UTF-8"; 
+		$mail -> charSet = "UTF-8"; 
 
     //direccion de quien envia el correo
-    $mail->setFrom($correo, $nombre);
+		$mail->setFrom($correo, $correo);
 
     //direccion de a quien se envia el correo
-    $mail->addAddress($correoVendedor, $nombreVendedor);
+		$mail->addAddress($cadena, $cadena2);
 
     //La razon del correo
-    $mail->Subject = 'Correo de contacto';
+		$mail->Subject = 'Correo de contacto';
 
     //aqui se pone el cuerpo del email
-    $mail->Body = $mensaje;
+		$mail->Body = $mensaje;
 
-    /* Parametros SMTP. */
-    /* Le dice a  PHPMailer que use SMTP. */
-    $mail->isSMTP();
+		/* Parametros SMTP. */
+		/* Le dice a  PHPMailer que use SMTP. */
+		$mail->isSMTP();
 
-    /* Direccion del servidor de SMTP, en este caso uso el de google. */
-    $mail->Host = 'smtp.gmail.com';
+		/* Direccion del servidor de SMTP, en este caso uso el de google. */
+		$mail->Host = 'smtp.gmail.com';
 
-    /* Usar SMTP autenticacion. */
-    $mail->SMTPAuth = TRUE;
+		/* Usar SMTP autenticacion. */
+		$mail->SMTPAuth = TRUE;
 
 
-    /* Configura el sistema de encriptacion. */
+		/* Configura el sistema de encriptacion. */
     $mail->SMTPSecure = 'ssl';//tls
 
 
@@ -84,23 +118,23 @@ try {
     $mail->send();
 
     if($mail->send() == false){
-        echo "Su mensaje no fue enviado";
-                }else{
-                    echo "Mensaje Enviado";
-                }
+    	echo "Su mensaje no fue enviado";
+    }else{
+    	echo "Mensaje Enviado";
+    }
 
-                echo json_encode(array(
-                    "ok"=>true
-                ));
-            }
-    catch (Exception $e)
-            {
-                echo $e->errorMessage();
-            }
-    catch (\Exception $e)
-            {
-                echo $e->getMessage();
-            }
+    echo json_encode(array(
+    	"ok"=>true
+    ));
+}
+catch (Exception $e)
+{
+	echo $e->errorMessage();
+}
+catch (\Exception $e)
+{
+	echo $e->getMessage();
+}
 
 
 ?>

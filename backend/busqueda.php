@@ -106,6 +106,13 @@ switch ($_POST["accion"]) {
             array_push($parametros, (int)$_POST["categoria"] );
         }
 
+        if( isset($_POST["tipo"])){
+            $queryBase.=' and pro.tipo like ?';
+            array_push($parametros, $_POST["tipo"] );
+        }
+
+        $queryBase.= ' order by a.fecha desc';
+
         //echo json_encode($parametros);
 
         $stmt = $pdo->prepare($queryBase);
@@ -159,6 +166,12 @@ switch ($_POST["accion"]) {
             $queryBase.=' and ca.idCategorias = ?';
             array_push($parametros, (int)$_POST["categoria"] );
         }
+        
+        if( isset($_POST["servicio"])){
+            $queryBase.=' and pro.tipo like ?';
+            array_push($parametros, $_POST["servicio"] );
+        }
+        
 
         switch($_POST["tipo"]){
             case "fecha":
