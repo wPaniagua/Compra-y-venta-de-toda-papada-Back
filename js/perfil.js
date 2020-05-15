@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    console.log("DOM cargado");
+  //  console.log("DOM cargado");
     $("#perfil").addClass("active");
  $.ajax({
   url: "../backend/perfilAdmin.php",
@@ -7,7 +7,7 @@ $(document).ready(function () {
   method: "GET",
   dataType: "json",
   success: function (respuesta) {
-      console.log(respuesta);
+     // console.log(respuesta);
 
     $("#txtNombre").val(respuesta.nombre);
     $("#txtApellidos").val(respuesta.apellidos);
@@ -33,7 +33,7 @@ function obtenerDatos(){
   method: "GET",
   dataType: "json",
   success: function (respuesta) {
-      console.log(respuesta);
+     // console.log(respuesta);
 
     $("#txtNombre").val(respuesta.nombre);
     $("#txtApellidos").val(respuesta.apellidos);
@@ -63,7 +63,7 @@ $("#cerrarSesion").on("click", () => {
         success: function (respuesta) {
             if (respuesta.ok) {
                 //location.reload();
-                window.location.replace("../inicio.php");
+                window.location.replace("../index.php");
             }
 
         },

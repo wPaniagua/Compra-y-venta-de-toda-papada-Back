@@ -7,7 +7,7 @@ include '../backend/seguridad_admin.php';
 <!DOCTYPE html>
 <html>
 <head>
-	<title>PUBLITODO</title>
+	<title>Anuncios</title>
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 	<!--link href="css/font-awesome.css" rel="stylesheet"-->
 	<link rel="stylesheet" type="text/css" href="../css/all.css">
@@ -83,7 +83,7 @@ include '../backend/seguridad_admin.php';
 										<span id="avisoD"  style=" display: none; color:red">Debe llenar la descripcion</span>
 									</div>
 								</div>
-								<button type="button" id="btnGuardarP" name="btnGuardarC" class="btn  btn-block p-3 mb-2 bg-success text-white font-weight-bold" onclick="guardarProductos()">Guardar&nbsp;&nbsp;&nbsp;&nbsp; <i class="fas fa-save fa-lg"></i></button>
+								<button type="button" id="btnGuardarP" name="btnGuardarC" class="btn  btn-block p-3 mb-2 bg-primary text-white font-weight-bold" onclick="guardarProductos()">Guardar&nbsp;&nbsp;&nbsp;&nbsp; <i class="fas fa-save fa-lg"></i></button>
 							</form>
 						</div>
 		             </div>
@@ -153,7 +153,7 @@ include '../backend/seguridad_admin.php';
 										<span id="avisoDProE"  style=" display: none; color:red">Debe llenar la descripcion</span><br>
 									</div>
 								</div>
-								<button type="button" id="btnGuardarPE" name="btnGuardarC" class="btn  btn-block p-3 mb-2 bg-success text-white font-weight-bold" onclick="editProductos()">Guardar&nbsp;&nbsp;&nbsp;&nbsp; <i class="fas fa-save fa-lg"></i></button>
+								<button type="button" id="btnGuardarPE" name="btnGuardarC" class="btn  btn-block p-3 mb-2 bg-primary text-white font-weight-bold" onclick="editProductos()">Guardar&nbsp;&nbsp;&nbsp;&nbsp; <i class="fas fa-save fa-lg"></i></button>
 							</form>
 						</div>
 		             </div>

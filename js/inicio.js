@@ -115,7 +115,7 @@ async function login(correo, contrasena) {
                 } else {
                     var url = "http://localhost/Compra-y-venta-de-toda-papada-Back/usuarioCV/perfil.php";
                     window.location = url;
-                    console.log('Entro como comprador');
+                   // console.log('Entro como comprador');
                 }
 
 

@@ -12,7 +12,7 @@ include '../backend/seguridad.php';
   <link rel="stylesheet" type="text/css" href="../css/all.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reportes</title>
-  <link href="../css/clasescss.css" rel="stylesheet" type="text/css">
+  <!--link href="../css/clasescss.css" rel="stylesheet" type="text/css"--->
 
   
   <link rel="stylesheet" href="../css/inicio.styles.css">
@@ -26,26 +26,21 @@ include '../backend/seguridad.php';
   <?php
   include 'navbarAdmin.php';
   ?>
+  <br><br><br>
+  <div class="container-fluid py-5">
+    <div class="row">
+      <!--Lista navbar--->
+      <div id="sidebar-wrapper" class="col-sm-5 col-md-2 col-lg-2  py-5">
+          <div class="nav nav-sidebar colorNavI py-5 px-3">
+            <br>
+            <a class="lista btnNavI btn btn-dark btn-block py-1" href="reportesDenuncias.php">Reportes Denuncias</a><br>
+            <a class="lista btn btn-dark  btn-block btnNavI py-1" href="reportesUsuarios.php" onclick="">Reportes Usuarios</a><br>
+            <a class="lista btnNavI btn btn-primary btn-block py-1 active" href="#" >Estadisticas</a>
+          </div>
+        </div><!--Fin lista Navbar-->
 
-  <!-- Envoltura Barra Izquierda & Contenido de la Pagina -->
-  <div  id="wrapper">
-    
-    <!-- Barra Izquierda & Contenido de la Pagina -->
-    <div class="container-fluid container-fluid-fix">
-      
-      <div class="row row-margin-fix">
-        
-        <!-- Barra de Menu Izquierdo-->
-        <div id="sidebar-wrapper" class="col-sm-5 col-md-2 col-lg-2 sidebar hidden-xs envoltura-barra-principal">
-          <ul class="nav nav-sidebar borde-dos">
-            <li class="active"><a class="lista" href="reportesDenuncias.php" onclick="obtenerDenuncias()">Reportes Denuncias</a></li>
-            <li class="active"><a class="lista" href="reportesUsuarios.php" onclick="obtenerUsuarios()">Reportes Usuarios</a></li>  
-            <li class="active"><a class="lista" href="" onclick="">Estadisticas</a></li>
-          </ul>
-
-        </div>
-        
-        <div class="col-lg">
+         <!-- Barra Izquierda & Contenido de la Pagina -->
+        <div class="col-lg ">
           <br><br><br><br>
           <div id="divEstadisticas"></div>
           <h4>Estadisticas</h4> 
@@ -74,23 +69,11 @@ include '../backend/seguridad.php';
             
             
             <br></br>
-            <input type="button" class="btn active color-principal bg-success" name="imprimir" value="Imprimir" onclick="window.print();">
-            <div id="divDenuncias"></div>
-            <div id="divUsuarios"></div>
-          </div> 
-        </div>
-
-      </div>
-      
-      
+            <input type="button" class="btn btn-success" name="imprimir" value="Imprimir" onclick="window.print();">
+      </div> 
     </div>
-
   </div>
-  
-</div> 
 
-
-</div>     
 
 </body>
 <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>

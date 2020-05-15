@@ -2,118 +2,94 @@ $(document).ready(function () {
     console.log("DOM cargado");
     $("#reportes").addClass("active");
 	obtenerDenuncias();
-
+    cargarTabla();
 });
 function obtenerDenuncias(){
-	$.ajax({
-		url:"../backend/gestionReportes.php?accion=obtenerDenuncias",
-		method:"GET",
-		dataType:"json",
-		success:function(respuesta){
-			//console.log(respuesta);
-			var contenido = "";
-
-			contenido='<table id="divDenuncias" class="table table-striped table-hover table-bordered"><tr>'+
-                       	    '<th>Codigo</th>'+
-	                        '<th>Denunciado</th>'+
-	                        '<th>Denunciante</th>'+
-	                        '<th>Anuncio</th>'+
-	                        '<th>Tipo</th>'+
-	                        '<th>Cantidad</th>'+
-	                        '<th>Razones</th></tr>';
-            
-
-			for (var i = 0; i<respuesta.length; i++){
-
-				contenido += '<tr><td>'+respuesta[i].idDenuncias+ '</td>'+
-			                    '<td>'+respuesta[i].idPersona+'</td>'+
-			                    '<td>'+respuesta[i].denunciante+'</td>'+
-			                    '<td>'+respuesta[i].idAnuncios+'</td>'+
-			                    '<td>'+respuesta[i].tipo+'</td>'+
-			                    '<td>'+respuesta[i].cantidad+'</td>'+
-			                    '<td>'+respuesta[i].razones+'</td>'+
-			                  '</tr>';
-			                  //console.log(respuesta[i]);
-			}	
-			contenido+='</table></div>';
-			
-			$("#divDenuncias").append(contenido);
-            
-		}
-	});
-}
-
-
-/*
-$(document).ready(() => {
-
-    console.log("DOM cargado");
-
-    document.getElementById("departamentos").innerHTML = " ";
-
-    console.log('data="' + 'departamentos"');
-
     $.ajax({
-
-
-        url: "../backend/Select_Deptos_Municipios.php",
-        data: 'data=' + 'departamentos', //+ "&contrasena=" + contrasena, //data, //"correo=" + $("#txt-correo").val().toLowerCase() + "&password=" + $("#txt-contrasena").val(),
-        method: "POST",
-        dataType: "json",
-        success: function (respuesta) {
+        url:"../backend/gestionDenuncias.php?accion=obtenerTodos",
+        method:"GET",
+        dataType:"json",
+        success:function(respuesta){
             console.log(respuesta);
-
-            document.getElementById("departamentos").innerHTML += `<option selected="selected" value="null">
-            Selecciona un departamento</option>`;
-
-
-            for (let i = 0; i < respuesta.length; i++) {
-
-                document.getElementById("departamentos").innerHTML +=
-                    ` <option value="${respuesta[i].idDepartamento}">${respuesta[i].nombre}</option>`
-            }
-        },
-
-        error: function (error) {
-            console.log(error);
-    		}
-	});
-
-});*/
-
-
-$('#departamentos').on('change', function (e) {
-    var optionSelected = $("option:selected", this);
-    var valueSelected = this.value;
-
-    console.log(valueSelected);
-
-    console.log('data=' + 'municipios&idMunicipio=' + valueSelected.trim());
-
-
-    $.ajax({
-        url: "../backend/Select_Deptos_Municipios.php",
-        data: 'data=' + 'municipios&idDepartamento=' + valueSelected.trim(), //+ "&contrasena=" + contrasena, //data, //"correo=" + $("#txt-correo").val().toLowerCase() + "&password=" + $("#txt-contrasena").val(),
-        method: "POST",
-        dataType: "json",
-        success: function (respuesta) {
+            var contenido = "";
             console.log(respuesta);
+            contenido='<div class="table-responsive  id="div_ini"><table id="tablaDenuncias" class="table table-striped table-hover table-bordered"><thead class="thead-dark"><tr>'+
+                       '<th>Id denuncia</th>'+
+                       '<th>Fecha</th>'+
+                       '<th>Publicacion denunciada</th>'+
+                       '<th>Denunciantes</th>'+
+                       '<th>Razones</th>'+
+                       '<th>Estado</th>'+
+                       '<!---th>Dar de baja</th----></tr><!---tr><th>Id denuncia</th><th>Fecha</th><th>Publicacion denunciada</th><th>Denunciantes</th><th>Razones</th><th>Estado</th></tr---></thead>';
 
-            document.getElementById("municipios").innerHTML = "";
+                /*  */
 
-            document.getElementById("municipios").innerHTML += `<option selected="selected" value="null">
-            Selecciona un municipio</option>`;
+            for (var i = 0; i<respuesta.length; i++){
 
-
-            for (let i = 0; i < respuesta.length; i++) {
-
-                document.getElementById("municipios").innerHTML +=
-                    ` <option value="${respuesta[i].idMunicipio}">${respuesta[i].nombre}</option>`
+                contenido += '<tr><td>'+respuesta[i].idDenuncias+'</td>'+
+                                '<td>'+respuesta[i].fecha+'</td>'+
+                                '<td>'+respuesta[i].titulo+'</td>'+
+                                '<td>'+respuesta[i].primerNombre+' '+respuesta[i].segundoApellido+'</td>'+
+                                '<td>'+respuesta[i].razones+'</td>'+
+                                '<td>'+respuesta[i].estado+'</td>'+
+                                '<!----td>'+
+                                '<button class="btn" type="button" id="btnEliminar" onclick="eliminarDenuncias('+respuesta[i].idDenuncias+       ')"><i class="fas fa-trash-alt fa-lg" style="color:green"></i></button>'+ 
+                                '</td---->'+
+                              '</tr>';
             }
-        },
+            contenido+='</table></div>';
 
-        error: function (error) {
-            console.log(error);
+            $("#div_ini").remove();
+            //$("#con2").remove();
+            //$("#c1").prop("disabled",false);
+            $("#div_table").append(contenido);
+            cargarTabla();
         }
     });
- });
+
+}
+
+function cargarTabla(){
+
+    $('#tablaDenuncias').DataTable({
+        language: {
+            "lengthMenu":"Mostrar _MENU_ registros",
+            "zeroRecords":"No se encontraron Resultados",
+            "info":"Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "infoEmpty":"Mostrando registros del 0 al 0 de un total de 0 registros",
+            "infoFiltered":"(Filtrado de un total de _MAX_ registros)",
+            "sSearch":"Buscar",
+            "oPaginate":{
+                "sFirst":"Primero",
+                "sLast":"Ultimo",
+                "sNext":"Siguiente",
+                "sPrevious":"Anterior"
+            },
+            "sProcessing":"Procesando...",
+        }
+        /*,
+        initComplete: function(){
+                    this.api().columns().every(function(){
+                        var column=this;
+                        var select=
+                        $('<select class="form-control btn-dark" style=""><option value=""></option></select>')
+                            .appendTo($(column.header()).empty())
+                            .on('change',function(){
+                                var val=$.fn.dataTable.util.escapeRegex(
+                                $(this).val()
+                            );
+
+                            column.search(val ? '^'+val+'$': '',true,false)
+                                  .draw();
+
+                        });
+
+                        column.data().unique().sort().each(function (d,j){
+                            select.append('<option value"'+d+'">'+d+'</option>')
+                        });
+                    });
+                }*/
+        
+    });
+}
+

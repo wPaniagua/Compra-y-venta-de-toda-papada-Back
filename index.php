@@ -40,9 +40,8 @@
                 <li class="nav-item active">
                     <a class="nav-link font-weight-bold" href="usuarioCV/favoritos.php">Favoritos <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <!--a class="nav-link" href="#">Favoritos</a-->
-                    <a href="#" id="btn-publicar" class="nav-item btn font-weight-bold aNavbar" data-toggle="modal" data-target="#modalPublicar" style="">Agregar Publicacion</a>
+                <li class="nav-item active font-weight-bold">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#modalPublicar" id="btn-publicar"style="width: 160px;padding-left: 8px;padding-right: 0px;">Agregar publicacion</a>
                 </li>
                 <li class="nav-item " id="categorias">
 

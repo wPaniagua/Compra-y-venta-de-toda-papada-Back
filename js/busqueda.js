@@ -508,7 +508,7 @@ $("#ordenamiento").on("change", function () {
 function traerCategorias() {
 
     $.ajax({
-        url: "backend/inicio.php",
+        url: "backend/index.php",
         method: "POST",
         data: "accion=Traercategorias",
         success: function (respuesta) {

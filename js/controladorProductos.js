@@ -36,11 +36,11 @@ function obtenerProductos(idTipo){
 			                    '<td>'+respuesta[i].categoria+'</td>'+
 			                    '<td>'+respuesta[i].tipo+'</td>'+
 			                    '<td>'+
-			                    '<button class="btn" type="button" id="btnEliminar'+respuesta[i].idProducto+'" onclick="eliminarProducto('+respuesta[i].idProducto +')"><i class="fas fa-trash-alt fa-lg" style="color:green"></i></button>'+ 
+			                    '<button class="btn btn-outline-danger" type="button" id="btnEliminar'+respuesta[i].idProducto+'" onclick="eliminarProducto('+respuesta[i].idProducto +')"><i class="fas fa-trash-alt fa-lg"></i></button>'+ 
 			                    '</td>'+
 			                    '<td>'+
-			                    '<button class="btn" type="button" id="btnEdit'+respuesta[i].idProducto+'"   onclick="editarProductos('+respuesta[i].idProducto+','+"'"+respuesta[i].nombre+"'"+','+"'"+
-			                    respuesta[i].caracteristicas+"'"+','+"'"+respuesta[i].tipo+"'"+","+"'"+respuesta[i].idCategorias+"'"+')"><i class="fas fa-edit fa-lg" style="color:green"></i></button>'+ 
+			                    '<button class="btn btn-outline-primary" type="button" id="btnEdit'+respuesta[i].idProducto+'"   onclick="editarProductos('+respuesta[i].idProducto+','+"'"+respuesta[i].nombre+"'"+','+"'"+
+			                    respuesta[i].caracteristicas+"'"+','+"'"+respuesta[i].tipo+"'"+","+"'"+respuesta[i].idCategorias+"'"+')"><i class="fas fa-edit fa-lg" ></i></button>'+ 
 			                    '</td>'+
 			                  '</tr>';
 			}

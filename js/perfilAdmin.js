@@ -6,7 +6,7 @@ $(document).ready(function () {
   method: "GET",
   dataType: "json",
   success: function (respuesta) {
-      console.log(respuesta);
+      //console.log(respuesta);
 
     $("#txtNombre").val(respuesta.nombre);
     $("#txtApellidos").val(respuesta.apellidos);
@@ -32,7 +32,7 @@ function obtenerDatos(){
   method: "GET",
   dataType: "json",
   success: function (respuesta) {
-      console.log(respuesta);
+      //console.log(respuesta);
 
     $("#txtNombre").val(respuesta.nombre);
     $("#txtApellidos").val(respuesta.apellidos);
@@ -61,7 +61,7 @@ function cerrarSesion(){
         success: function (respuesta) {
             if (respuesta.ok) {
                 //location.reload();
-                window.location.replace("../inicio.php");
+                window.location.replace("../index.php");
             }
 
         },

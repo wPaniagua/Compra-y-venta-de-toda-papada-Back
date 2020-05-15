@@ -13,8 +13,8 @@ function editPerfil(codigoUA){
 			data:parametros,
 			dataType:"json",
 			success:function(respuesta){
-				console.log(respuesta);
-				alert(respuesta[0].mensaje);
+				//console.log(respuesta);
+				//alert(respuesta[0].mensaje);
 			}
 		});
 		

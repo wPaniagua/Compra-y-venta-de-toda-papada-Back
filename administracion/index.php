@@ -27,19 +27,19 @@ include_once('../backend/seguridad_admin.php');
 
    <div class="container-fluid">
    	<div class="row">
-   		<div class="col-2 bg-dark">
+   		<div class="col-12 col-md-2 bg-dark colorNavI">
    			<br><br>
    			<div class="btn-group-vertical">
-				<a href="publicaciones-admin.php" class="btn btn-dark btn-lg btn-block">Publicaciones</a>
-				<a href="verUsuariosDesdeAdminF.php" class="btn btn-dark btn-lg btn-block">Usuarios</a>
-				<a href="solicitudes_administracion.php" class="btn btn-dark btn-lg btn-block">Solicitudes</a>
+				<a href="publicaciones-admin.php" class="btn btn-dark btn-lg btn-block btnNavI">Publicaciones</a>
+				<a href="verUsuariosDesdeAdminF.php" class="btn btn-dark btn-lg btn-block btnNavI">Usuarios</a>
+				<a href="solicitudes_administracion.php" class="btn btn-dark btn-lg btn-block btnNavI">Solicitudes</a>
 
-				<a href="categorias.php" class="btn btn-dark btn-lg btn-block">Categorias</a>
-				<a href="productos.php" class="btn btn-dark btn-lg btn-block">Productos</a>
-				<a href="denuncias.php" class="btn btn-dark btn-lg btn-block">Denuncias</a>
-				<a href="reportesDenuncias.php" class="btn btn-dark btn-lg btn-block">Reportes</a>
+				<a href="categorias.php" class="btn btn-dark btn-lg btn-block btnNavI">Categorias</a>
+				<a href="productos.php" class="btn btn-dark btn-lg btn-block btnNavI">Productos</a>
+				<a href="denuncias.php" class="btn btn-dark btn-lg btn-block btnNavI">Denuncias</a>
+				<a href="reportesDenuncias.php" class="btn btn-dark btn-lg btn-block btnNavI">Reportes</a>
 				<!--a href="#" class="btn btn-dark btn-lg btn-block" type="button" data-toggle="modal" data-target="#exampleModal">Agregar usuario administrador</a-->
-				<button type="button" class="btn btn-dark btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
+				<button type="button" class="btn btn-dark btn-lg btn-block btnNavI" data-toggle="modal" data-target="#exampleModal">
 				  Registrar usuario administrador
 				</button>
 				<?php 

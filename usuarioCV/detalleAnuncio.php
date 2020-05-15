@@ -20,7 +20,7 @@
 </script>
 </head>
 <body>
-	<a href="../inicio.php" class="btn btn-danger px-5"><i class="fas fa-long-arrow-alt-left fa-2x" id="iconU"></i> </a>
+	<a href="../index.php" class="btn btn-danger px-5"><i class="fas fa-long-arrow-alt-left fa-2x" id="iconU"></i> </a>
 	<br>
 <div class="container">
 	<div class="row">
