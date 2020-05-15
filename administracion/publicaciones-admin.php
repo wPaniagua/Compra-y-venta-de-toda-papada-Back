@@ -99,7 +99,6 @@ include '../backend/seguridad_admin.php';
 
                             <button type="button" class="btn btn-primary" style="margin-top: .5em;"
                                 id="btn-tiempoAdministrador">Actualizar</button>
-
                         </div>
                     </div>
                     <div class="form-row">
@@ -108,12 +107,19 @@ include '../backend/seguridad_admin.php';
                                     Empresa:</label>
                             <Span id="tiempoEmpresa"> dias</Span>
 
+
                             <input type="text" class="form-control" id="caducidadUsuarioEmpresa"
                                 placeholder="Ingresa una cantidad en días" style="width:50%;">
 
                             <button type="button" class="btn btn-primary" style="margin-top: .5em;"
                                 id="btn-tiempoEmpresa">Actualizar</button>
 
+
+                            <input type="text" class="form-control" id="caducidadUsuarioEmpresa"
+                                placeholder="Ingresa una cantidad en días" style="width:50%;">
+
+                            <button type="button" class="btn btn-primary" style="margin-top: .5em;"
+                                id="btn-tiempoEmpresa">Actualizar</button>
                         </div>
                     </div>
                 </form>

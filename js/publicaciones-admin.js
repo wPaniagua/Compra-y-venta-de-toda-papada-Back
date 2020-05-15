@@ -545,3 +545,58 @@ function selectTiempoUsuarioAministrador() {
 
     });
 }
+
+
+function selectTiempoUsuarioEmpresa() {
+    $.ajax({
+        url: "../backend/publicaciones_admin.php",
+        method: "POST",
+        data: `accion=selectTiempoUsuarioEmpresa`,
+        success: function (respuesta) {
+
+            let response = JSON.parse(respuesta);
+
+            console.log(response)
+
+            $("#tiempoEmpresa").html(response.tiempoEmpresa + " dias");
+
+
+        },
+
+        error: function (error) {
+            console.log(error);
+        }
+
+    });
+}
+
+$("#btn-tiempoEmpresa").on("click", () => {
+
+    let tiempoEmpresa = parseInt($("#caducidadUsuarioEmpresa").val());
+
+    console.log(tiempoEmpresa);
+
+    $.ajax({
+        url: "../backend/publicaciones_admin.php",
+        method: "POST",
+        data: `accion=cambiarTiempoUsuarioEmpresa&tiempoUsuarioEmpresa=${tiempoEmpresa}`,
+        success: function (respuesta) {
+
+            console.log(respuesta)
+
+            let response = JSON.parse(respuesta);
+
+
+            if (response.codigo == 1) {
+                $("#tiempoEmpresa").html(response.tiempoUsuarioEmpresa + " dias");
+            }
+
+            //selectTiempoUsuarioNormal();
+        },
+
+        error: function (error) {
+            console.log(error);
+        }
+
+    });
+});

@@ -327,7 +327,6 @@ function busquedaDetallada() {
     var tipoCheckeado = tipo.filter(":checked").val();
     console.log(tipoCheckeado)
 
-
     let servicio = $("input[name='servicios']:checked").val();
 
     //console.log(departamento);
