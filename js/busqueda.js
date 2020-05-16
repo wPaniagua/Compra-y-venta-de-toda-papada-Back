@@ -216,7 +216,7 @@ function generarAnuncios(response) {
                 <div class="card-body">
                     <div class="container">
                         <div class="row">
-                            <div class="col col-lg-12">
+                            <div class="col col-lg-12 tituloAnuncio" style="color:#EAC67A;">
                                 <strong>${response[i].titulo}</strong>
                                 <hr>
                             </div>
@@ -224,7 +224,7 @@ function generarAnuncios(response) {
                         <div class="row" >
                             <div class="col col-lg-12">
                                 <div class="container">
-                                    <div class="row">
+                                    <div class="row" >
                                         <div class="col col-lg-4 iconoPequeno ">
                                             <i style="display: block;"
                                                 class="fas fa-american-sign-language-interpreting iconoTarjeta"> </i>
@@ -247,7 +247,7 @@ function generarAnuncios(response) {
                         <div class="row">
                             <div class="col col-lg-12 descripcionAnuncio">
                                 <p>${response[i].descripcion}.</p>    
-                                <button type="button" class="btn btn-outline-info" onclick="verArticulo(${response[i].idAnuncios})">Ver Articulo</button>
+                                <button type="button" class="btn btn-outline-info" onclick="verArticulo(${response[i].idAnuncios})">Ver Artículo</button>
                             </div>
                         </div>
                     </div>
@@ -266,7 +266,7 @@ function generarAnuncios(response) {
                 <div class="card-body">
                     <div class="container">
                         <div class="row">
-                            <div class="col col-lg-12">
+                            <div class="col col-lg-12 tituloAnuncio" style="color:#984B43;">
                                 <strong>${response[i].titulo}</strong>
                                 <hr>
                             </div>
@@ -297,7 +297,7 @@ function generarAnuncios(response) {
                         <div class="row">
                             <div class="col col-lg-12 descripcionAnuncio">
                                 <p>${response[i].descripcion}.</p>
-                                <button type="button" class="btn btn-outline-info" onclick="verArticulo(${response[i].idAnuncios})">Ver Articulo</button>
+                                <button type="button" class="btn btn-outline-info" onclick="verArticulo(${response[i].idAnuncios})">Ver Artículo</button>
                             </div>
                         </div>
                     </div>
@@ -576,7 +576,7 @@ $("#ordenamiento").on("change", function () {
 function traerCategorias() {
 
     $.ajax({
-        url: "backend/index.php",
+        url: "backend/inicio.php",
         method: "POST",
         data: "accion=Traercategorias",
         success: function (respuesta) {
