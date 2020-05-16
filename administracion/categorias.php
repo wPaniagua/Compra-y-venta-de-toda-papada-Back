@@ -47,7 +47,7 @@ include '../backend/seguridad_admin.php';
 										<span class="alert " id="msjG"  style=" display: none; color:red"></span>
 									</div>
 								</div><br>
-								<button type="button" id="btnGuardarC" name="btnGuardarC" class="btn  btn-block p-3 mb-2 bg-success text-white font-weight-bold" onclick="guardarCategorias()">Guardar&nbsp;&nbsp;&nbsp;&nbsp; <i class="fas fa-save fa-lg"></i></button>
+								<button type="button" id="btnGuardarC" name="btnGuardarC" class="btn  btn-block p-3 mb-2 bg-primary text-white font-weight-bold" onclick="guardarCategorias()">Guardar&nbsp;&nbsp;&nbsp;&nbsp; <i class="fas fa-save fa-lg"></i></button>
 							</form>
 						</div>
 		             </div>
@@ -84,7 +84,7 @@ include '../backend/seguridad_admin.php';
 										<span class="alert " id="msjE"  style=" display: none; color:red"></span>
 									</div>
 								</div><br>
-								<button type="button" id="btnEditarC" name="btnEditarC" class="btn  btn-block p-3 mb-2 bg-success text-white font-weight-bold" onclick="editCategorias()">Editar</button>
+								<button type="button" id="btnEditarC" name="btnEditarC" class="btn  btn-block p-3 mb-2 bg-primary text-white font-weight-bold" onclick="editCategorias()">Editar</button>
 							</form>
 						</div>
 		             </div>

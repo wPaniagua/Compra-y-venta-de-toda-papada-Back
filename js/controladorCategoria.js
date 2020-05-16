@@ -27,10 +27,10 @@ function obtenerCategorias(){
 			                    '<td>'+respuesta[i].descripcion+'</td>'+
 			                    //'<td>'+respuesta[i].estado+'</td>'+
 			                    '<td>'+
-			                    '<button class="btn" type="button" id="btnEliminar'+respuesta[i].idCategorias+'" onclick="eliminarCategorias('+respuesta[i].idCategorias +')"><i class="fas fa-trash-alt fa-lg" style="color:green"></i></button>'+ 
+			                    '<button class="btn btn-outline-danger" type="button" id="btnEliminar'+respuesta[i].idCategorias+'" onclick="eliminarCategorias('+respuesta[i].idCategorias +')"><i class="fas fa-trash-alt fa-lg" style=""></i></button>'+ 
 			                    '</td>'+
 			                    '<td>'+
-			                    '<button class="btn" type="button" id="btnEdit'+respuesta[i].idCategorias+'"   onclick="editarCategorias('+respuesta[i].idCategorias+','+"'"+respuesta[i].descripcion+"'"+')"><i class="fas fa-edit fa-lg" style="color:green"></i></button>'+ 
+			                    '<button class="btn btn-outline-primary" type="button" id="btnEdit'+respuesta[i].idCategorias+'"   onclick="editarCategorias('+respuesta[i].idCategorias+','+"'"+respuesta[i].descripcion+"'"+')"><i class="fas fa-edit fa-lg" style=""></i></button>'+ 
 			                    '</td>'+
 			                  '</tr>';
 			}

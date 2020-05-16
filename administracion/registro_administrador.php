@@ -42,23 +42,23 @@ include '../backend/seguridad_admin.php';
                         <!-- <label>Email</label> -->
                         <input type="text" class="form-control" id="nombres" name="nombres"
                             placeholder="Ingrese sus nombres">
-                        <small style="display: none;" id="avisoNombres" class="form-text text-muted">
+                        <small style="display: none;color:red;" id="avisoNombres" class="form-text ">
                             Ingresa ambos nombres.</small>
                     </div>
                     <div class="form-group">
                         <!-- <label>Email</label> -->
                         <input type="text" class="form-control" id="apellidos" name="apellidos"
                             placeholder="Ingrese sus apellidos">
-                        <small style="display: none;" id="avisoapellidos" class="form-text text-muted">
+                        <small style="display: none;color:red;" id="avisoapellidos" class="form-text text-muted">
                             Ingresa ambos apellidos.</small>
                     </div>
                     <div class="form-group">
                         <!-- <label>Email</label> -->
                         <label for="fechaNacimiento">Ingrese su fecha de nacimiento</label>
                         <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento">
-                        <small style="display: none;" id="avisoFechaNacimiento" class="form-text text-muted">
+                        <small style="display: none;color:red;" id="avisoFechaNacimiento" class="form-text text-muted">
                             Debes ser mayor de 21 años para registrate.</small>
-                        <small style="display: none;" id="avisoFechaNacimiento2" class="form-text text-muted">
+                        <small style="display: none;color:red;" id="avisoFechaNacimiento2" class="form-text text-muted">
                             Ingresa una fecha de nacimiento.</small>
                     </div>
 
@@ -67,16 +67,16 @@ include '../backend/seguridad_admin.php';
                         <!-- <label>Email</label> -->
                         <input type="email" class="form-control" id="correo" name="correo"
                             placeholder="Ingrese su correo electrónico">
-                        <small style="display: none;" id="avisoCorreo" class="form-text text-muted">Ingresa un correo
+                        <small style="display: none;color:red;" id="avisoCorreo" class="form-text text-muted">Ingresa un correo
                             válido</small>
-                        <small style="display: none;" id="avisoCorreoExistente" class="form-text text-muted">
+                        <small style="display: none;color:red;" id="avisoCorreoExistente" class="form-text text-muted">
                             El correo ya existe.</small>
                     </div>
                     <div class="form-group">
                         <!-- <label for="exampleInputPassword1">Contraseña</label> -->
                         <input type="password" class="form-control" id="contrasena" name="contrasena"
                             placeholder="Contraseña">
-                        <small style="display: none;" id="avisoContrasena" class="form-text text-muted">La contrasena
+                        <small style="display: none;color:red;" id="avisoContrasena" class="form-text text-muted">La contrasena
                             debe contener más de 8 caracteres.</small>
                     </div>
 
@@ -104,7 +104,7 @@ include '../backend/seguridad_admin.php';
 
                     <div style="margin-left: auto;margin-right: auto;" class="text-center">
                         <button type="button" class="btn btn-primary" id="registro-button"
-                            style=" width: 15em !important;">Registrase</button>
+                            style=" width: 15em !important;">Registrarse</button>
 
                     </div> <br>
                     <hr>

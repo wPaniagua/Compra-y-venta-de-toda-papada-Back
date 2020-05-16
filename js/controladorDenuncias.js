@@ -21,7 +21,7 @@ function obtenerDenuncias(){
 		               '<th>Denunciantes</th>'+
 		               '<th>Razones</th>'+
 		               '<th>Estado</th>'+
-		               '<th>Dar de baja</th></thead>';
+		               '<th>Aceptar Denuncia</th></thead>';
 
 				/*  */
 
@@ -34,7 +34,7 @@ function obtenerDenuncias(){
 			                    '<td>'+respuesta[i].razones+'</td>'+
 			                    '<td>'+respuesta[i].estado+'</td>'+
 			                    '<td>'+
-			                    '<button class="btn" type="button" id="btnEliminar" onclick="eliminarDenuncias('+respuesta[i].idDenuncias+       ')"><i class="fas fa-trash-alt fa-lg" style="color:green"></i></button>'+ 
+			                    '<button class="btn btn-outline-danger" type="button" id="btnEliminar" onclick="eliminarDenuncias('+respuesta[i].idDenuncias+       ')"><i class="fas fa-trash-alt fa-lg" style="color:"></i></button>'+ 
 			                    '</td>'+
 			                  '</tr>';
 			}
@@ -127,3 +127,4 @@ function cargarTabla(){
 		
 	});
 }
+

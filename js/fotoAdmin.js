@@ -7,7 +7,7 @@ $(document).ready(function () {
         method: "GET",
         dataType: "json",
         success: function (respuesta) {
-            console.log(respuesta);
+           // console.log(respuesta);
             obtenerFotos(respuesta.idUsuario);
 
         },
@@ -38,13 +38,13 @@ function obtenerFotos(idUsuario){
              console.log(respuesta);
             if (respuesta[0].mensaje=='No tiene Foto') {
                 $("#iconU").fadeIn();
-                console.log('no hay img de perfil');
+                //console.log('no hay img de perfil');
                 contenidoU='<img src="../archivos/user.png" class="rounded-left rounded-circle" alt="..." style="width: 180px;height: 200px;">';
                 // statement
                // $("#imgUsuario").append(contenidoU);
             } else {
                 // statement
-                console.log(respuesta);
+                //console.log(respuesta);
                 //contenido='<img src="../'+respuesta[0].urlFoto+'" class="rounded-left rounded-circle" alt="..." style="width: 230px;height: 300px;">';
                     /*  */
 
@@ -74,7 +74,7 @@ $("#cerrarSesion").on("click", () => {
         success: function (respuesta) {
             if (respuesta.ok) {
                 //location.reload();
-                window.location.replace("../inicio.php");
+                window.location.replace("../index.php");
             }
 
         },

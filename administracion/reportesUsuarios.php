@@ -12,8 +12,12 @@ include '../backend/seguridad_admin.php';
   <!--link href="css/font-awesome.css" rel="stylesheet"-->
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="../css/all.css">
+
+
+  <!-- tablas-->
+  <link rel="stylesheet" type="text/css" href="../css/dataTables.bootstrap4.min.css">
   <title>Reportes</title>
-  <link rel="stylesheet" type="text/css" href="../css/clasescss.css">
+  <!--link rel="stylesheet" type="text/css" href="../css/clasescss.css"-->
 
 </head>
 
@@ -21,51 +25,43 @@ include '../backend/seguridad_admin.php';
   <?php
   include 'navbarAdmin.php';
   ?>
+  <br><br><br>
 
-  <!-- Envoltura Barra Izquierda & Contenido de la Pagina -->
-  <div  id="wrapper">
+  <div class="container-fluid py-5">
+    <div class="row">
+      <!--Lista navbar--->
+      <div id="sidebar-wrapper" class="col-sm-5 col-md-2 col-lg-2  py-5">
+          <div class="nav nav-sidebar colorNavI py-5 px-3">
+            <br>
+            <a class="lista btnNavI btn btn-block py-1 active" href="reportesDenuncias.php">Reportes Denuncias</a><br>
+            <a class="lista btnNavI btn btn-primary btn-block py-1 active" href="#">Reportes Usuarios</a><br>
+            <a class="btn btn-dark  btn-block lista btnNavI py-1" href="Estadisticas.php" onclick="">Estadisticas</a>
+          </div>
+        </div><!--Fin lista Navbar-->
 
-    <!-- Barra Izquierda & Contenido de la Pagina -->
-    <div class="container-fluid container-fluid-fix">
-
-      <div class="row row-margin-fix">
-
-        <!-- Barra de Menu Izquierdo-->
-        <div id="sidebar-wrapper" class="col-sm-5 col-md-2 col-lg-2 sidebar hidden-xs envoltura-barra-principal">
-          <ul class="nav nav-sidebar borde-dos">
-            <li class="active"><a class="lista" href="reportesDenuncias.php" onclick="obtenerDenuncias()">Reportes Denuncias</a></li>
-            <li class="active"><a class="lista" href="" onclick="obtenerUsuarios()">Reportes Usuarios</a></li>  
-            <li class="active"><a class="lista" href="estadisticas.php" onclick="obtenerEstadisticas()">Estadisticas</a></li>
-          </ul>
-
-        </div>
-        
         <div class="col-lg">
           <br><br>
           <br><br>
           <div id="divUsuarios">
-           <h4>Lista de Usuarios</h4>
-           <br> </br> 
+          <center>
+            <h4>Lista de Usuarios</h4>
+          </center> 
+           <br> 
           </div>
-          <br> </br><br> </br>
-          <input type="button" class="btn active color-principal bg-success" name="imprimir" value="Imprimir" onclick="window.print();">
+          <br>
+          <input type="button" class="btn btn-success" name="imprimir" value="Imprimir" onclick="window.print();">
        </div>
-       <div id="divDenuncias"></div>
-       <div id="divEstadisticas"></div>
-     </div> 
-
-
-   </div>
-
- </div> 
-
-
-
+    </div>
+  </div>
 
 </body>
 <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 <script src="../js/bootstrap.bundle.min.js.descarga"></script>
+
+<script src="../js/jquery.dataTables.js" type="text/javascript"></script>
+  <script src="../js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
+
 <script src="../js/controlador_reportesUsers.js"></script>
 
 <script type="text/javascript" src="../js/fotoAdmin.js"></script>

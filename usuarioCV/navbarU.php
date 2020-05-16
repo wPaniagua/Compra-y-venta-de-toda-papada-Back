@@ -12,7 +12,7 @@
 	<!--barra de navegacion para el usuario-->
 	<div class="fixed-top">
 		<nav class="navbar navbar-expand-md navbar-dark fixed-top navbarP" style="background-color: #EA1D5D">
-			<a class="navbar-brand font-weight-bold" href="../inicio.php" id="index">PUBLITODO</a>
+			<a class="navbar-brand font-weight-bold" href="../index.php" id="index">PUBLITODO</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
 				aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>

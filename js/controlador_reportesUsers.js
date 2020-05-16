@@ -13,14 +13,14 @@ function obtenerUsuarios(){
 			//console.log(respuesta);
 			var contenido = "";
 
-			contenido='<table id="divUsuarios" class="table table-striped table-hover table-bordered"><tr>'+
+			contenido='<div class="table-responsive" id="divUsuarios"><table  class="table table-striped table-hover table-bordered" id="tablaRU"><thead class="thead-dark"><tr>'+
                        	    '<th>Id</th>'+
 	                        '<th>Nombre</th>'+
 	                        '<th>Departamento</th>'+
 	                        '<th>Municipio</th>'+
 	                        '<th>N# Publicaciones</th>'+
 	                        '<th>N# Denuncias</th>'+
-	                        '<th>Estado</th></tr>';
+	                        '<th>Estado</th></tr></thead>';
 
 
 			for (var i = 0; i<respuesta.length; i++){
@@ -41,6 +41,7 @@ function obtenerUsuarios(){
 			//$("#c1").prop("disabled",false);
 			//$("#divDenuncias").remove();
 			$("#divUsuarios").append(contenido);
+			cargarTabla();
 		}
 	});
 
@@ -49,124 +50,47 @@ function obtenerUsuarios(){
 
 
 
-$('#departamentos').on('change', function (e) {
-    var optionSelected = $("option:selected", this);
-    var valueSelected = this.value;
 
-    console.log(valueSelected);
+function cargarTabla(){
 
-    console.log('data=' + 'municipios&idMunicipio=' + valueSelected.trim());
+	$('#tablaRU').DataTable({
+		language: {
+			"lengthMenu":"Mostrar _MENU_ registros",
+			"zeroRecords":"No se encontraron Resultados",
+			"info":"Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+			"infoEmpty":"Mostrando registros del 0 al 0 de un total de 0 registros",
+			"infoFiltered":"(Filtrado de un total de _MAX_ registros)",
+			"sSearch":"Buscar",
+			"oPaginate":{
+				"sFirst":"Primero",
+				"sLast":"Ultimo",
+				"sNext":"Siguiente",
+				"sPrevious":"Anterior"
+			},
+			"sProcessing":"Procesando...",
+		}
+		/*,
+		initComplete: function(){
+                    this.api().columns().every(function(){
+                        var column=this;
+                        var select=
+                        $('<select class="form-control btn-dark" style=""><option value=""></option></select>')
+                            .appendTo($(column.header()).empty())
+                            .on('change',function(){
+                                var val=$.fn.dataTable.util.escapeRegex(
+                                $(this).val()
+                            );
 
+                            column.search(val ? '^'+val+'$': '',true,false)
+                                  .draw();
 
-    $.ajax({
-        url: "../backend/Select_Deptos_Municipios.php",
-        data: 'data=' + 'municipios&idDepartamento=' + valueSelected.trim(), //+ "&contrasena=" + contrasena, //data, //"correo=" + $("#txt-correo").val().toLowerCase() + "&password=" + $("#txt-contrasena").val(),
-        method: "POST",
-        dataType: "json",
-        success: function (respuesta) {
-            console.log(respuesta);
+                        });
 
-            document.getElementById("municipios").innerHTML = "";
-
-            document.getElementById("municipios").innerHTML += `<option selected="selected" value="null">
-            Selecciona un municipio</option>`;
-
-
-            for (let i = 0; i < respuesta.length; i++) {
-
-                document.getElementById("municipios").innerHTML +=
-                    ` <option value="${respuesta[i].idMunicipio}">${respuesta[i].nombre}</option>`
-            }
-        },
-
-        error: function (error) {
-            console.log(error);
-        }
-    });
- });
-
-
-var validarCampoVacio = function(id){
-	
-	if ($("#"+id).val() == ""){
-		$("#"+id).removeClass('is-valid');
-		$("#"+id).addClass('is-invalid');
-		return false;
-	}
-	else{
-		$("#"+id).removeClass('is-invalid');
-		$("#"+id).addClass('is-valid');
-		return true;
-	}
+                        column.data().unique().sort().each(function (d,j){
+                            select.append('<option value"'+d+'">'+d+'</option>')
+                        });
+                    });
+                }*/
+		
+	});
 }
-
-function validarRegistro(){
-	
-	var nombre=validarCampoVacio("nombreRepo");
-	if (nombre) {
-		$("#avisoRepoE").fadeOut();
-		console.log("Reporte correcto");
-		return true;
-	}else{
-		console.log("IncorrectO");
-		$("#avisoRepoE").fadeIn();
-		return false;
-	}
-}
-
-
-function validarBuscar(){
-	
-	var nombre=validarCampoVacio("buscarRepo");
-	if (nombre) {
-		$("#avisoRepoB").fadeOut();
-		console.log("Correcto");
-		return true;
-	}else{
-		console.log("Correcto");
-		$("#avisoRepoB").fadeIn();
-		return false;
-	}
-}
-
-/*function buscar(){
-	validarBuscar();
-	if (validarBuscar()) {
-		var parametros= "nombreRepo="+$("#buscarRepo").val();
-		//alert(parametros);
-		$.ajax({
-			url:"backend/gestionReportes.php?accion=buscarNombre",
-			data:parametros,
-			method:"GET",
-			dataType:"json",
-			success:function(respuesta){
-				//console.log(respuesta);
-				var contenido = "";
-
-				contenido='<div id="div_ini"><table class="table table-striped table-hover"><tr>'+
-	                        '<th>Codigo</th>'+
-	                        '<th>Denunciado</th>'+
-	                        '<th>Denunciante/s</th>'+
-	                        '<th>Publicacion</th></tr>'+
-	                        '<th>Producto/Servicio</th></tr>'+
-	                        '<th>Cantidad Denuncias</th>'+
-	                        '<th>Razones Denuncia</th></tr>';
-
-					
-				}
-				contenido+='</table></div>';
-
-				$("#div_ini").remove();
-				//$("#con2").remove();
-				//$("#c1").prop("disabled",false);
-				$("#div_table").append(contenido);
-				$("#buscarT").fadeIn();
-			}
-		});
-	}
-}*/
-
-$("#buscarT").click(function(){
-	$("#buscarT").fadeOut();
-	$("#buscarCat").val("");
-});

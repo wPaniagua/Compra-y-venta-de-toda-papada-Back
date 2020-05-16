@@ -109,12 +109,13 @@
         </div><!-- Fin modal--->
 
            
-            </div>
+  </div>
             <div class="col-12 col-sm-4 p-xl-5 col-sm-offset-3"><!--campos administrador  -->
                 <!--formulario administrador  -->
                 <form>
-                  <div class="form-group alert alert-warning">
+                  <div class="form-group ">
                     <h4>Datos personales</h4>
+                    <hr style="background-color:#e91e63;">
                   </div>
                   <div class="form-row">
 
@@ -144,6 +145,20 @@
                     <span id="msjTelefono" style="color:red;display: none">Telefono invalido.<br> Ejemplo:96016817</span>
                   </div>
                   </div>
+                  
+                </form><!--end formulario 
+                administrador  -->
+            </div><!--end campos administrador  -->
+
+
+            <div class="col-12 col-sm-4 p-xl-5 col-sm-offset-3"><!--campos administrador  -->
+                <!--formulario administrador  -->
+                <form>
+                  <div class="form-group ">
+                    <h4>Ubicacion</h4>
+                    <hr style="background-color:#e91e63;">
+                  </div>
+               
                   <div class="form-group">
                     <label for="Departamento">Departamento Residencia:</label>
                     <select id="departamentos" class="form-control  alert-secondary" >
@@ -158,7 +173,7 @@
                     </select>
                     <span id="msjMunicipio" style="color:red;display: none">Municipio requerido</span>
                   </div>
-                  <button type="button" class="btn btn-danger" onclick="editarPerfil();">Guardar</button>
+                  <button type="button" class="btn btn-primary btn-block" onclick="editarPerfil();">Guardar</button>
                   <br>
                   <div class="form-row"><span class="alert alert-danger" style="display: none" id="msjEditar"></span></div>
                   

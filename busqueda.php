@@ -225,7 +225,7 @@
                         style="padding-left: 0em;padding-right: auto;margin-right: auto;margin-left: auto;">
                         <div class="col col-lg-12" style="text-align: center; padding-left: auto;padding-right: auto;">
                             <p>
-                                <strong>Servicios:</strong>
+                                <strong>Tipo:</strong>
                             </p>
 
                             <div class="form-check" style="display: inline;">
