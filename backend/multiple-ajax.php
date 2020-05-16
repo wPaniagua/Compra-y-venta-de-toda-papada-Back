@@ -48,11 +48,11 @@ $mysqli = new mysqli(
 	  		# code...
 	  		//$resTipo='Error '.$nombre.' el archivo no es una imagen';
 	  			$reporte .="<p style='color:red'>Error ".$nombre." el archivo no es una imagen</p>";
-	  	}else if ($size > 1024*1024) {
+	  	}else if ($size > 2048*2048) {
 	  		# code...
 	  		//$resSize='Error '.$nombre.' el tamaño maximo permitido es una 1MG';
 	  		$reporte ="<p style='color:red'>Error ".$nombre." el tamaño maximo permitido es una 1MG</p>";
-	  	}else if ($width>500 || $heigth>500) {
+	  	}else if ($width>2000 || $heigth>2000) {
 	  		# code...
 	  		//$resWidthMayor="Error: ".$nombre." la anchura y altura maxima permitida es de 500 pixels";
 	  		$reporte .="<p style='color:red'>Error: ".$nombre." la anchura y altura maxima permitida es de 500 pixels</p>";

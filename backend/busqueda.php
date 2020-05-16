@@ -269,6 +269,18 @@ switch ($_POST["accion"]) {
         echo json_encode($arr);
 
     break;
+
+    case "traerfotos":
+        $queryBase =  'select idAnuncios, urlFoto from fotosanuncio f';
+
+        $stmt = $pdo->prepare($queryBase);
+        $stmt->execute();
+        $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        if(!$arr) echo json_encode(array("null"));
+        
+        echo json_encode($arr);
+    break;
 }
 
 function generarRespuesta($stmt){

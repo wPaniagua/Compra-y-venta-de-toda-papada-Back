@@ -101,3 +101,9 @@ ul {
 .container {
     max-width: 1400px;
 }
+
+
+.card-img-top {
+    height: 10em !important;
+    object-fit: cover !important;
+}

@@ -16,7 +16,7 @@ $("#login-button").on("click", () => {
     let correo = $("#correo").val();
     let contrasena = $("#contrasena").val();
 
-    console.log(correo + ", " + contrasena);
+    //console.log(correo + ", " + contrasena);
 
     /*|||||||||||||||||VALIDACIONES|||||||||||||||||||||| */
 
@@ -89,7 +89,7 @@ async function login(correo, contrasena) {
 
             // alert(respuesta.mensaje);
 
-            console.log(respuesta);
+            //console.log(respuesta);
 
 
             if (respuesta.existe == 1 && respuesta.contrasenaCorrecta == 1 && respuesta.estadoRegistro == 1) {
@@ -115,13 +115,13 @@ async function login(correo, contrasena) {
                 } else {
                     var url = "http://localhost/Compra-y-venta-de-toda-papada-Back/usuarioCV/perfil.php";
                     window.location = url;
-                    console.log('Entro como comprador');
+                    // console.log('Entro como comprador');
                 }
 
 
             } else if (respuesta.existe == 1 && respuesta.contrasenaCorrecta == 0) {
 
-                console.log("contrasena incorrecta");
+                // console.log("contrasena incorrecta");
 
                 document.getElementById("contrasena").classList.remove("is-valid");
                 document.getElementById("contrasena").classList.add("is-invalid");
@@ -130,7 +130,7 @@ async function login(correo, contrasena) {
 
             } else if (respuesta.existe == 0 && respuesta.contrasenaCorrecta ==
                 0) {
-                console.log(" No existe el usuario");
+                //console.log(" No existe el usuario");
 
 
                 document.getElementById("correo").classList.remove("is-valid");
@@ -142,7 +142,7 @@ async function login(correo, contrasena) {
 
                 $("#aviso").fadeIn();
             } else if (respuesta.existe == 1 && respuesta.contrasenaCorrecta == 1 && respuesta.estadoRegistro == 0) {
-                console.log(respuesta.mensaje)
+                //console.log(respuesta.mensaje)
 
                 $("#mensajeDadodeBaja").fadeIn();
             }
@@ -210,12 +210,12 @@ function traerElectronicos() {
         success: function (respuesta) {
 
             var response = JSON.parse(respuesta);
-            console.log('datos respuesta: ' + response);
+            //console.log('datos respuesta: ' + response);
             var cantidadSlides = Math.ceil(response.length / 4);
-            console.log("cantidadSlides: " + cantidadSlides);
+            //console.log("cantidadSlides: " + cantidadSlides);
 
             var cantidadFor = cantidadSlides == 1 ? 2 : cantidadSlides;
-            console.log("cantidad for: " + cantidadFor)
+            //console.log("cantidad for: " + cantidadFor)
 
 
             var indexResponse = 0;
@@ -287,7 +287,7 @@ function traerElectronicos() {
             $("#electronicos").html("");
 
             for (var i = 0; i < cantidadFor; i++) {
-                console.log("entra a for de indicators");
+                // console.log("entra a for de indicators");
 
                 if (i == 0) {
                     $("#electronicos").append(`
@@ -301,7 +301,7 @@ function traerElectronicos() {
 
             }
 
-            console.log(response);
+            //console.log(response);
         },
         error: function (error) {
             console.error(error);
@@ -312,10 +312,14 @@ function traerElectronicos() {
 function llenarSlides(response, categoriaNombre, categoriaSlide, categoriaControl, indexGeneral) {
 
     console.log("Valores recibidos:")
+    // console.log(response);
+    //console.log(categoriaNombre);
+    //console.log(categoriaSlide);
+    //console.log(categoriaControl);
+
+
+    response = agregarURL(response);
     console.log(response);
-    console.log(categoriaNombre);
-    console.log(categoriaSlide);
-    console.log(categoriaControl);
 
     //cambiar titulo a categoria
     $(`#tituloCategoria${indexGeneral}`).html(categoriaNombre);
@@ -327,10 +331,10 @@ function llenarSlides(response, categoriaNombre, categoriaSlide, categoriaContro
 
 
     var cantidadSlides = Math.ceil(response.length / 4);
-    console.log("cantidadSlides: " + cantidadSlides);
+    //console.log("cantidadSlides: " + cantidadSlides);
 
     var cantidadFor = cantidadSlides == 1 ? 2 : cantidadSlides;
-    console.log("cantidad for: " + cantidadFor)
+    //console.log("cantidad for: " + cantidadFor)
 
 
     var indexResponse = 0;
@@ -355,15 +359,15 @@ function llenarSlides(response, categoriaNombre, categoriaSlide, categoriaContro
 
         for (let j = 0; j < sobranSuficientes; j++) {
 
-            console.log("Sobran sufiicientes");
-            console.log(`#${categoriaNombre}Parte${i}`);
+            //console.log("Sobran sufiicientes");
+            //console.log(`#${categoriaNombre}Parte${i}`);
             if (j == 0) {
 
                 $(`#${categoriaNombre}Parte${i}`).append(`
                         <div class="col-md-3">
                             <div class="card mb-2">
                                 <img class="card-img-top"
-                                    src="https://i.pcmag.com/imagery/reviews/06o0PyhFnwV2LK3rN3vb1ea-28.fit_scale.size_1028x578.v_1582142613.jpg"
+                                    src="${response[indexResponse].fotourl}"
                                     alt="Card image cap">
                                 <div class="card-body" style="max-height:10em; min-height:10em;">
                                     <h5 class="card-title">${response[indexResponse].titulo.slice(0, 22)}...</h5>
@@ -380,7 +384,7 @@ function llenarSlides(response, categoriaNombre, categoriaSlide, categoriaContro
                     <div class="col-md-3 clearfix d-none d-md-block">
                         <div class="card mb-2">
                             <img class="card-img-top"
-                                src="https://i.pcmag.com/imagery/reviews/06o0PyhFnwV2LK3rN3vb1ea-28.fit_scale.size_1028x578.v_1582142613.jpg"
+                                src="${response[indexResponse].fotourl}"
                                 alt="Card image cap">
                             <div class="card-body" style="max-height:10em; min-height:10em;">
                                 <h5 class="card-title">${response[indexResponse].titulo.slice(0, 22)}...</h5>
@@ -407,7 +411,7 @@ function llenarSlides(response, categoriaNombre, categoriaSlide, categoriaContro
     $(categoriaControl).html("");
 
     for (var i = 0; i < cantidadFor; i++) {
-        console.log("entra a for de indicators");
+        //console.log("entra a for de indicators");
 
         if (i == 0) {
             $(categoriaControl).append(`
@@ -421,7 +425,7 @@ function llenarSlides(response, categoriaNombre, categoriaSlide, categoriaContro
 
     }
 
-    console.log(response);
+    //console.log(response);
 
 }
 
@@ -444,8 +448,8 @@ function traerSlides() {
                 }
             }
 
-            console.log("Categorias");
-            console.log(categorias);
+            //console.log("Categorias");
+            //console.log(categorias);
 
             var arregloGeneral = Array();
 
@@ -458,8 +462,8 @@ function traerSlides() {
                 arregloGeneral.push(temp);
             }
 
-            console.log("arregloGeneral");
-            console.log(arregloGeneral);
+            //console.log("arregloGeneral");
+            //console.log(arregloGeneral);
             shuffleArray(arregloGeneral)
 
             for (let i = 0; i < arregloGeneral.length; i++) {
@@ -483,7 +487,7 @@ function traerCategorias() {
         data: "accion=Traercategorias",
         success: function (respuesta) {
 
-            console.log(respuesta);
+            //console.log(respuesta);
             let response = JSON.parse(respuesta);
 
 
@@ -505,13 +509,13 @@ function traerCategorias() {
 }
 
 $("#btn-busqueda").on("click", () => {
-    console.log("click");
+    //console.log("click");
 
     let categoriaSeleccionada = $("#categoriasElementos :selected").val();
-    console.log(categoriaSeleccionada);
+    //console.log(categoriaSeleccionada);
 
     let busqueda = $("#inputBusqueda").val();
-    console.log(busqueda)
+    //console.log(busqueda)
 
     if (categoriaSeleccionada != "null" && busqueda != "") {
         window.location.href = `busqueda.php?categoria=${categoriaSeleccionada}&busqueda=${busqueda}`;
@@ -556,10 +560,10 @@ $('#inputBusqueda').keypress(function (event) {
     var keycode = (event.keyCode ? event.keyCode : event.which);
     if (keycode == '13') {
         let categoriaSeleccionada = $("#categoriasElementos :selected").val();
-        console.log(categoriaSeleccionada);
+        //console.log(categoriaSeleccionada);
 
         let busqueda = $("#inputBusqueda").val();
-        console.log(busqueda)
+        //console.log(busqueda)
 
         if (categoriaSeleccionada != "null" && busqueda != "") {
             window.location.href = `busqueda.php?categoria=${categoriaSeleccionada}&busqueda=${busqueda}`;
@@ -572,3 +576,57 @@ $('#inputBusqueda').keypress(function (event) {
         }
     }
 });
+
+
+function agregarURL(listaAnuncios) {
+
+    var listaFotos;
+    $.ajax({
+        url: "backend/busqueda.php",
+        method: "POST",
+        async: false,
+        cache: false,
+        data: `accion=traerfotos`,
+        dataType: "json",
+        success: function (respuesta) {
+            listaFotos = respuesta;
+
+            //    if (respuesta != `["null"][]`) {
+            //        let responsePeticion = JSON.parse(respuesta);
+            //
+            //        listaFotos = respuesta;
+            //    } else {
+            //        listaFotos = [];
+            //    }
+
+
+        },
+        error: function (error) {
+            console.error(error)
+        }
+    });
+
+    var jsonListaFotos = listaFotos;
+    //console.log("Json lista")
+    //console.log(jsonListaFotos)
+
+
+    listaAnuncios.forEach((anuncio => {
+        var filtrar = jsonListaFotos.filter(elemento => {
+            return anuncio.idAnuncios == elemento.idAnuncios;
+        })
+
+        if (filtrar.length > 0) {
+
+            anuncio.fotourl = filtrar[0].urlFoto;
+        } else {
+            anuncio.fotourl = `img/no_imagen.png`;
+        }
+    }))
+
+
+
+
+    return listaAnuncios;
+
+}

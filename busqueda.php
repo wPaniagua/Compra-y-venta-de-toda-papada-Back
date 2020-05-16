@@ -9,14 +9,23 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/FontAwesome.min.css">
     <link rel="stylesheet" href="css/busqueda.css">
+    <!-- Compiled and minified CSS -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+
+    <!-- Compiled and minified JavaScript -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+    <!-- <link rel="stylesheet" href="css/busqueda_material.css"> -->
+
+
 </head>
 
 <body style="background-color: white;">
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style=" background-color: #091f36 !important;">
 
 
-        <a class="navbar-brand" href="#">Logo</a>
+        <a class="navbar-brand" href="http://www.publitodo.hn/inicio.php"
+            style="color: #EAC67A;"><strong>PUBLITODO</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -24,15 +33,16 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+
+                <li class="nav-item" id="favoritos-item">
+                    <a class="nav-link" id="favoritos-link"
+                        href="http://www.publitodo.hn/usuarioCV/favoritos.php">Favoritos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Favoritos</a>
+                    <a style="padding-left:0px; padding-right:0px;" class="nav-link"
+                        href="http://www.publitodo.hn/usuarioCV/agregarPublicacion.php">Agregar Publicación</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Ayuda</a>
-                </li>
+
                 <li class="nav-item " id="categorias">
 
                     <select class="custom-select" id="categoriasElementos">
@@ -47,21 +57,31 @@
             <form class="form-inline my-2 my-lg-0" id="formBusqueda">
                 <input class="form-control mr-sm-2" type="search" id="inputBusqueda"
                     placeholder="Buscar por palabra clave" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="button" id="btn-busqueda">Buscar</button>
+                <button class="btn  btn-light my-2 my-sm-0 btn-busqueda" type="button" id="btn-busqueda">Buscar</button>
             </form>
 
             <ul class="navbar-nav mr-auto">
 
                 <?php
                     session_start(); 
-                    if (isset($_SESSION["id_usuario"])){
+                    
+
+                    if(isset($_SESSION["es_administrador"])){
+                        {
+                            echo ('<li class="nav-item"  style="padding-left:0px; padding-rigth:0px;width:6em">
+                            <a class="nav-link" style="width:inherit;" href="administracion/index.php">Admin</a></li><li class="nav-item" style="padding-left:0px; padding-rigth:0px; width:10em">
+                            <a class="nav-link" style="width:inherit;" href="usuarioCV/perfil.php">Usuario Normal</a></li>');
+                        }
+                    }
+
+                    else if (isset($_SESSION["id_usuario"])){
                         echo ('<li class="nav-item">
-                        <a class="nav-link" href="administracion/index.php">Admin</a></li><li class="nav-item">
-                        <a class="nav-link" href="usuarioCV/perfil.php">Usuario Normal</a></li>');
+                        <a class="nav-link" style="" href="usuarioCV/perfil.php">Usuario Normal</a></li>');
                     }
                     else{
-                        echo ('<li class="nav-item"><button type="button" class="btn" id="iniciarSesionBoton" data-toggle="modal" data-target="#modalFormularioLogin"> Ingresa</button></li>');
+                        echo ('<li class="nav-item"><button type="button" style="padding:.40em;" class="btn btn btn-outline-success" id="iniciarSesionBoton" data-toggle="modal" data-target="#modalFormularioLogin">Ingresa</button></li>');
                     }
+
                 ?>
             </ul>
         </div>
@@ -77,7 +97,7 @@
                 </div>
             </div>
             <div class="col col-lg-5">
-                <div style="margin-left: 28em; margin-right: auto;">
+                <div style="margin-left: 31.5em; margin-right: auto;">
                     <label for="ordenamiento" style="margin-lef:2em;">Ordenar por:</label>
                     <select id="ordenamiento" class="form-control" style="width: 10em; display: inline;">
                         <option selected value="null">Seleccione </option>
@@ -91,7 +111,7 @@
                         </optgroup>
                         <optgroup label="Tipo Usuario">
                             <option value="admin">Administrador</option>
-                            <option value="normal">Normal</option>
+                            <!-- <option value="normal">Normal</option> -->
                         </optgroup>
                     </select>
                 </div>
@@ -158,7 +178,7 @@
                 </div>
             </div>
             <div class="col col-md-3">
-                <div class="container filtros">
+                <div class="container filtros" style="margin-left: 4em;">
                     <div class="row rowFiltros">
                         <div class="col col-lg-12">
                             <h3>Detalla tu búsqueda</h3>
@@ -201,7 +221,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row rowFiltros" style="padding-left: 2em;padding-right: auto;">
+                    <div class="row rowFiltros"
+                        style="padding-left: 0em;padding-right: auto;margin-right: auto;margin-left: auto;">
                         <div class="col col-lg-12" style="text-align: center; padding-left: auto;padding-right: auto;">
                             <p>
                                 <strong>Servicios:</strong>
@@ -209,7 +230,7 @@
 
                             <div class="form-check" style="display: inline;">
                                 <input class="form-check-input" type="radio" name="servicios" id="producto"
-                                    value="producto" >
+                                    value="producto">
                                 <label class="form-check-label" for="producto">
                                     Producto
                                 </label>
@@ -221,6 +242,7 @@
                                     Servicio
                                 </label>
                             </div>
+
                             <br>
                             <button id="btn-filtros" type="button" class="btn btn-outline-success"
                                 style="margin-left: auto;margin-right: auto;padding-inline: 4em; margin-top: 1em;">Filtrar</button>
@@ -285,14 +307,14 @@
                         <br>
                         <div class="text-center">
                             <small>¿No tienes una cuenta? </small>
-                            <button type="button" class="btn btn-success" data-toggle="modal"
-                                data-target="#modalRegistro" id="crearCuenta">
-                                Crea una cuenta
-                            </button>
+                            <a href="/reg.php">
+                                <button type="button" class="btn btn-success" data-toggle="modal"
+                                    data-target="#modalRegistro" id="crearCuenta">
+                                    Crea una cuenta
+                                </button>
+                            </a>
                         </div>
-                        <?php 
-                            include "reg.php";
-                         ?>
+
                     </form>
                 </div>
                 <!-- <div class="modal-footer">
@@ -300,15 +322,15 @@
                     <button type="button" class="btn btn-primary">Save changes</button>
                 </div> -->
             </div>
+            <!-- </div> -->
         </div>
-    </div>
 
 
 
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/fontsawesome.min.js"></script>
-    <script src="js/busqueda.js"></script>
+        <script src="js/jquery-3.4.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/fontsawesome.min.js"></script>
+        <script src="js/busqueda.js"></script>
 </body>
 
 </html>

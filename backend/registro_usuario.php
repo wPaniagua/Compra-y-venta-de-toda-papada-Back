@@ -39,11 +39,11 @@ $tipoUsuario=(int)$_POST["tipoUs"];
 
 // ALTER TABLE mydb.persona ADD codigo VARCHAR(250) NOT NULL;
 
-$call = $mysqli->prepare('CALL SP_REGISTRO_USUARIO(?, ? , ? , ? , ?, ? , ?, ? , ?,?, @mensaje, @codigo, @idUsuario)');
+$call = $mysqli->prepare('CALL SP_REGISTRO_USUARIO(?, ? , ? , ? , ?, ? , ?, ? ,?,?,?, @mensaje, @codigo, @idUsuario)');
 
 $codigo_usuario = md5(rand());
 
-$call->bind_param('sssssssiis', 
+$call->bind_param('sssssssiiis', 
     $primerNombre,
     $segundoNombre,
     $primerApellido,
@@ -54,6 +54,7 @@ $call->bind_param('sssssssiis',
     $fechaNac,
     $tipoUsuario,
     $idMunicipio,
+    $telefono,
     $codigo_usuario
 );
 

@@ -6,6 +6,7 @@ $("#registro-button").on("click", () => {
     let apellidos = $("#apellidos").val().trim();
     let fechaNacimiento = $("#fechaNacimiento").val();
     let contrasena = $("#contrasena").val().trim();
+    let telefono = parseInt($("#telefono").val().trim());
     let municipioSeleccionado = $("#municipios option:selected").val().trim();
 
 
@@ -17,6 +18,9 @@ $("#registro-button").on("click", () => {
     let esFechaNacimientoValida = validarFechaNacimiento(fechaNacimiento);
     let esContrasenaValida = validarContrasena(contrasena);
     let esMunicipioValido = validarMunicipioSeleccionado(municipioSeleccionado)
+    let esTelefonoValido = validarTelefono(telefono);
+
+
 
 
     if (sonNombresValidos &&
@@ -24,11 +28,12 @@ $("#registro-button").on("click", () => {
         sonApellidosValidos &&
         esFechaNacimientoValida &&
         esContrasenaValida &&
-        esMunicipioValido) {
+        esMunicipioValido &&
+        esTelefonoValido) {
 
         console.log("Cumplio todas las validaciones");
 
-        data = `primerNombre=${nombres.split(" ")[0]}&segundoNombre=${nombres.split(" ")[1]}&primerApellido=${apellidos.split(" ")[0]}&segundoApellido=${apellidos.split(" ")[1]}&correo=${correo}&fechaNac=${fechaNacimiento}&contrasenia=${contrasena}&idMunicipio=${municipioSeleccionado}`;
+        data = `primerNombre=${nombres.split(" ")[0]}&segundoNombre=${nombres.split(" ")[1]}&primerApellido=${apellidos.split(" ")[0]}&segundoApellido=${apellidos.split(" ")[1]}&correo=${correo}&fechaNac=${fechaNacimiento}&contrasenia=${contrasena}&idMunicipio=${municipioSeleccionado}&telefono=${telefono}`;
 
         console.log(data)
 
@@ -42,7 +47,7 @@ $("#registro-button").on("click", () => {
 
                 if (respuesta.codigo == 1) {
                     //$("#regAdmin").fadeIn();
-                   // $("#regAdmin").fadeOut(3000);
+                    // $("#regAdmin").fadeOut(3000);
                     var url = "http://localhost/Compra-y-venta-de-toda-papada-Back/administracion/index.php";
                     window.location = url;
                 }
@@ -133,6 +138,17 @@ function validarContrasena(contrasena) {
         return false;
     } else {
         $("#avisoContrasena").fadeOut();
+        return true;
+    }
+}
+
+function validarTelefono(telefono) {
+
+    if (isNaN(telefono)) {
+        $("#avisoTelefono").fadeIn();
+        return false;
+    } else {
+        $("#avisoTelefono").fadeOut();
         return true;
     }
 }

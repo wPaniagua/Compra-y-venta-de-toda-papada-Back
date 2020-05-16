@@ -68,12 +68,16 @@ hr {
 .filtros {
     padding: 1.5em;
     border: solid rgb(179, 172, 172) thin;
+    border-color: #984B43;
     box-shadow: .5em;
     border-radius: 15px;
     -webkit-box-shadow: 9px 10px 12px -8px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 9px 10px 12px -8px rgba(0, 0, 0, 0.75);
     box-shadow: 9px 10px 12px -8px rgba(0, 0, 0, 0.75);
     padding-left: 0em;
+    background-color: #091f36;
+    color: #EAC67A !important;
+
 }
 
 .rowFiltros {
@@ -133,4 +137,119 @@ hr {
 
 .container {
     max-width: 1440px !important;
+}
+
+
+.navbar-light .navbar-nav .nav-link {
+    color: #EAC67A !important;
+    font-size: 18px;
+    font-weight: 1000;
+    width: inherit;
+    text-align: center;
+    padding: 0px;
+    padding-top: .20em;
+    margin-top: auto !important;
+    margin-bottom: auto !important;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: rgb(189, 164, 111) !important;
+}
+
+.nav-item {
+    width: 12em;
+    padding: 0px;
+}
+
+.navbar-brand {
+    font-weight: 600;
+}
+
+#categorias {
+    margin-left: 1em !important;
+    margin-right: 1em !important;
+}
+
+/* .btn-light,
+.btn-light:hover,
+.btn-light:active,
+.btn-light:visited {
+    background-color: #c1432e !important;
+} */
+
+
+.btn-light {
+    background-color: white !important;
+    border-color: #984B43 !important;
+    color: #984B43 !important;
+
+}
+
+
+.btn-light:hover {
+    background-color: #984B43 !important;
+    color: white !important;
+    border-color: white !important;
+}
+
+.form-control:focus {
+    border-color: #c1432e !important;
+    /* box-shadow: inset 0 1px 1px #da543d, 0 0 8px #c1432e !important; */
+    box-shadow: inset 0 1px 1px white, 0 0 8px white !important;
+
+}
+
+option {
+    /* background-color: #c1432e !important; */
+    color: #c1432e !important;
+}
+
+option:hover {
+    background-color: #ffffff !important;
+    color: #c1432e !important;
+}
+
+select {
+    border-color: #c1432e !important;
+}
+
+select option:hover {
+    background-color: green;
+}
+
+#favoritos-link {
+    width: 6em !important;
+}
+
+#favoritos-item {
+    width: 8em !important;
+}
+
+.custom-select {
+    width: 11em !important;
+    text-align: center;
+}
+
+.custom-select option {
+    text-align: center;
+}
+
+
+.btn-outline-success {
+    background-color: white !important;
+    border-color: #EAC67A !important;
+    color: #EAC67A !important;
+
+}
+
+
+.btn-outline-success:hover {
+    background-color: #EAC67A !important;
+    color: white !important;
+    border-color: white !important;
+}
+
+.card-img-top {
+    height: 14em !important;
+    object-fit: cover !important;
 }

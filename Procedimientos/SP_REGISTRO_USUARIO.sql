@@ -8,6 +8,7 @@ CREATE OR REPLACE PROCEDURE SP_REGISTRO_USUARIO(
                     IN pfechaNac VARCHAR(10),
                     IN ptipoUsuario INT,
                     IN pmunicipio INT,
+                    IN INtelefono INT,
                     IN codigoIN VARCHAR(250),
                     OUT mensaje VARCHAR(100),
                     OUT codigo VARCHAR(2),
@@ -35,6 +36,9 @@ SP:BEGIN
     IF pcontrasenia='' THEN
         SET tempMensaje='Contrasenia ,';
     END IF;
+    IF INtelefono='' THEN
+        SET tempMensaje='telefono ,';
+    END IF;
     IF pfechaNac='' THEN
         SET tempMensaje='Fecha nacimiento ,';
     END IF;
@@ -54,11 +58,19 @@ SP:BEGIN
     WHERE correo=pcorreo;
     
     IF conteo=0 THEN
-        SELECT COUNT(idPersona) into id FROM `persona`;
+        SELECT MAX(idPersona) into id FROM `persona`;
     
         SET pid=id+1; 
         insert into `persona` (`idPersona`, `primerNombre`, `segundoNombre`, `primerApellido`, `segundoApellido`, `correo`, `fechaNac`, `contrasenia`, `idTipoUsuario`, `idMunicipio`, `estado`, `codigo`) 
         values(pid, ppNombre, psNombre, ppApellido, psApellido, pcorreo, pfechaNac, pcontrasenia, ptipoUsuario, pMunicipio, "I", codigoIN);
+
+        SELECT MAX(idTelefono) into id FROM `telefono`;
+        
+
+        INSERT INTO `telefono`
+        (idTelefono, telefono, idPersona)
+        VALUES(id+1, INtelefono, pid);
+
 
         SET mensaje='Registro exitoso';
         SET codigo=1;
