@@ -46,10 +46,10 @@
 						</a>
 						<div class="dropdown-menu">
 							<a class="dropdown-item"
-								href="http://localhost/Compra-y-venta-de-toda-papada-Back/usuarioCV/perfil.php">Editar
+								href="/usuarioCV/perfil.php">Editar
 								Perfil</a>
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#" id="cerrarSesion">Cerrar sesión</a>
+							<a class="dropdown-item" href="" id="cerrarSesion">Cerrar sesión</a>
 						</div>
 					</div>
 				</form>

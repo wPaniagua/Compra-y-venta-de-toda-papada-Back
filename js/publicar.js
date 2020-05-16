@@ -7,10 +7,10 @@ $("#btn-publicar").on("click", () => {
         success: function (respuesta) {
             if (respuesta.acceder) {
                 console.log("ESTA LOGUEADO")
-                document.getElementById('btn-ventana').style.display ='none';
-                window.location.replace("usuarioCV/agregarPublicacion.php");//------------------------------URL DE AGREGAR PUBLICACIONES
-            }else{
-               console.log("NO ESTA LOGUEADO O NO ESTA REGISTRADO")
+                document.getElementById('btn-ventana').style.display = 'none';
+                window.location.replace("usuarioCV/agregarPublicacion.php"); //------------------------------URL DE AGREGAR PUBLICACIONES
+            } else {
+                console.log("NO ESTA LOGUEADO O NO ESTA REGISTRADO")
             }
         },
         error: function (error) {
@@ -99,15 +99,16 @@ async function login(correo, contrasena) {
 
                 await sleep(500);
                 //location.reload();
-               // console.log('Entro a :'+respuesta.usuario);
+                // console.log('Entro a :'+respuesta.usuario);
                 //console.log(respuesta);
-                if (respuesta.usuario==1) {
-                    var url = "http://localhost/Compra-y-venta-de-toda-papada-Back/administracion/index.php";
-                    window.location = url;  
-                }else{
-                  var url = "http://localhost/Compra-y-venta-de-toda-papada-Back/usuarioCV/perfil.php";
-                  window.location = url;
-                  console.log('Entro como comprador');  
+                if (respuesta.usuario == 1) {
+                    var url = "/administracion/index.php";
+                    window.location = url;
+                } else {
+                    //   var url = "http://localhost/Compra-y-venta-de-toda-papada-Back/usuarioCV/perfil.php";
+                    //   window.location = url;
+                    location.reload();
+                    console.log('Entro como comprador');
                 }
             } else if (respuesta.existe == 1 && respuesta.contrasenaCorrecta == 0) {
 
@@ -147,4 +148,3 @@ async function login(correo, contrasena) {
 function sleep(time) {
     return new Promise((resolve) => setTimeout(resolve, time));
 }
-

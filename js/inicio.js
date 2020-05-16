@@ -110,11 +110,12 @@ async function login(correo, contrasena) {
                 //console.log('Entro a :'+respuesta.usuario);
                 //console.log(respuesta);
                 if (respuesta.usuario == 1) {
-                    var url = "http://localhost/Compra-y-venta-de-toda-papada-Back/administracion/index.php";
+                    var url = "/administracion/index.php";
                     window.location = url;
                 } else {
-                    var url = "http://localhost/Compra-y-venta-de-toda-papada-Back/usuarioCV/perfil.php";
-                    window.location = url;
+                    // var url = "/usuarioCV/perfil.php";
+                    // window.location = url;
+                    location.reload();
                     // console.log('Entro como comprador');
                 }
 
