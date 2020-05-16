@@ -24,8 +24,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light" style=" background-color: #091f36 !important;">
 
 
-        <a class="navbar-brand" href="http://www.publitodo.hn/inicio.php"
-            style="color: #EAC67A;"><strong>PUBLITODO</strong></a>
+        <a class="navbar-brand" href="/index.php" style="color: #EAC67A;"><strong>PUBLITODO</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -110,8 +109,8 @@
                             <option value="peor">Peor Calificados</option>
                         </optgroup>
                         <optgroup label="Tipo Usuario">
-                            <option value="admin">Administrador</option>
-                            <!-- <option value="normal">Normal</option> -->
+                            <!-- <option value="admin">Administrador</option> -->
+                            <option value="normal">Normal</option>
                         </optgroup>
                     </select>
                 </div>
