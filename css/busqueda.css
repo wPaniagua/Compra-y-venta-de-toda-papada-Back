@@ -185,6 +185,8 @@ hr {
 .nav-item {
     width: 12em;
     padding: 0px;
+    margin-top: auto !important;
+    margin-bottom: auto !important;
 }
 
 .navbar-brand {

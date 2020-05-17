@@ -370,7 +370,7 @@ function llenarSlides(response, categoriaNombre, categoriaSlide, categoriaContro
                                 <img class="card-img-top"
                                     src="${response[indexResponse].fotourl}"
                                     alt="Card image cap">
-                                <div class="card-body" style="max-height:10em; min-height:10em;">
+                                <div class="card-body" style="">
                                     <h5 class="card-title">${response[indexResponse].titulo.slice(0, 22)}...</h5>
                                     <p class="card-text">${response[indexResponse].descripcion}.</p>
                                     <a href="usuarioCV/detalleAnuncio.php?idAnuncios=${response[indexResponse].idAnuncios}" class="btn btn-outline-info">Ver anuncio</a>
@@ -387,7 +387,7 @@ function llenarSlides(response, categoriaNombre, categoriaSlide, categoriaContro
                             <img class="card-img-top"
                                 src="${response[indexResponse].fotourl}"
                                 alt="Card image cap">
-                            <div class="card-body" style="max-height:10em; min-height:10em;">
+                            <div class="card-body" style="">
                                 <h5 class="card-title">${response[indexResponse].titulo.slice(0, 22)}...</h5>
                                 <p class="card-text">${response[indexResponse].descripcion}.</p>
                                 <a href="usuarioCV/detalleAnuncio.php?idAnuncios=${response[indexResponse].idAnuncios}" class="btn btn-outline-info" >Ver anuncio</a>
