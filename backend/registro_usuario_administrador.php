@@ -23,10 +23,12 @@ $correo = $_POST["correo"];
 $fechaNac = $_POST["fechaNac"];
 $contrasenia = $_POST["contrasenia"];
 $idMunicipio  = (int)$_POST["idMunicipio"];
+$telefono = (int) $_POST["telefono"];
 
 
-// echo(json_encode(
-//     array(
+
+//array(
+//     echo(json_encode(
 //         "primerNombre"=> $primerNombre,
 //         "segundoNombre"=> $segundoNombre,
 //         "primerApellido"=> $primerApellido,
@@ -35,17 +37,16 @@ $idMunicipio  = (int)$_POST["idMunicipio"];
 //         "fechaNac"=> $fechaNac,
 //         "contrasenia"=> $contrasenia,
 //         "idMunicipio"=> $idMunicipio,
-
-
+//         "telefono"=>$telefono
 //     )
 //     ));
 
 
 
 
-$call = $mysqli->prepare('CALL SP_REGISTRO_USUARIO_ADMINISTRADOR(?, ? , ? , ? ,? , ?, ? , ? , @mensaje, @codigo, @idUsuario)');
+$call = $mysqli->prepare('CALL SP_REGISTRO_USUARIO_ADMINISTRADOR(?, ? , ? , ? , ? , ? , ? , ? , ? , @mensaje, @codigo, @idUsuario)');
 
-$call->bind_param('sssssssi', 
+$call->bind_param('sssssssii', 
     $primerNombre,
     $segundoNombre,
     $primerApellido,
@@ -53,7 +54,8 @@ $call->bind_param('sssssssi',
     $correo,
     $contrasenia,
     $fechaNac,
-    $idMunicipio
+    $idMunicipio,
+    $telefono
 );
 
 

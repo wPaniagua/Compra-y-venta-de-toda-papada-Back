@@ -12,6 +12,7 @@ include '../backend/seguridad.php';
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<!--  /Booststrap -->
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/publicaciones_perfil.css">
 
 </head>
 <body>
@@ -25,7 +26,7 @@ include '../backend/seguridad.php';
    <br><br>
 				<input type="text" name="idUsuario" id="idUsuario" style="display: none">
     <div class="btn-group-vertical">
-				<a href="agregarPublicacion.php" class="btn btn-outline-danger btn-lg btn-block" id="btnAdd"><i class="fas fa-plus-circle" ></i>Agregar Publicaciones</a>
+				<a href="agregarPublicacion.php"  style="margin-left:2em;" class="btn btn-outline-success btn-lg btn-block" id="btnAdd"><i class="fas fa-plus-circle" ></i>Agregar Publicaciones</a>
 		</div>
 	</div><!--fin menu--->
 

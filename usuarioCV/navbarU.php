@@ -11,7 +11,9 @@
 <body>
 	<!--barra de navegacion para el usuario-->
 	<div class="fixed-top">
-		<nav class="navbar navbar-expand-md navbar-dark fixed-top navbarP" style="background-color: #EA1D5D">
+	<!-- 091f36  -->
+	<!-- EA1D5D -->
+		<nav class="navbar navbar-expand-md navbar-dark fixed-top navbarP" style="background-color: #091f36;">
 			<a class="navbar-brand font-weight-bold" href="../index.php" id="index">PUBLITODO</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
 				aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,10 +48,10 @@
 						</a>
 						<div class="dropdown-menu">
 							<a class="dropdown-item"
-								href="http://localhost/Compra-y-venta-de-toda-papada-Back/usuarioCV/perfil.php">Editar
+								href="/usuarioCV/perfil.php">Editar
 								Perfil</a>
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#" id="cerrarSesion">Cerrar sesión</a>
+							<a class="dropdown-item" href="" id="cerrarSesion">Cerrar sesión</a>
 						</div>
 					</div>
 				</form>

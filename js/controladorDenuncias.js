@@ -18,10 +18,10 @@ function obtenerDenuncias(){
                        '<th>Id denuncia</th>'+
 		               '<th>Fecha</th>'+
 		               '<th>Publicacion denunciada</th>'+
-		               '<th>Denunciantes</th>'+
+		               '<th>Denunciante</th>'+
 		               '<th>Razones</th>'+
 		               '<th>Estado</th>'+
-		               '<th>Aceptar Denuncia</th></thead>';
+		               '<th>Dar de baja Anuncio</th></thead>';
 
 				/*  */
 

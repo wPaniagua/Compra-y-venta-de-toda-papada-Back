@@ -1,6 +1,4 @@
 
-/*procedimiento denuncias
-*/
 
 CREATE OR REPLACE PROCEDURE SP_DENUNCIAS(
                   IN accion VARCHAR(45),
@@ -53,10 +51,10 @@ SP:BEGIN
 
   IF accion="obtenerTodos" THEN
     SELECT d.idDenuncias, d.fecha,d.razones, a.titulo, d.estado,p.primerNombre,p.segundoApellido 
-    ,a.idAnuncios,a.idPersona 'denunciado', d.denunciante
+    ,a.idAnuncios, a.idPersona 'denunciado', d.denunciante
     FROM denuncias d
-	  INNER JOIN anuncios a on a.idAnuncios=d.idAnuncios
-	  INNER JOIN persona p on p.idPersona=a.idPersona /*WHERE d.estado="A"*/;
+    INNER JOIN anuncios a on a.idAnuncios=d.idAnuncios
+    INNER JOIN persona p on p.idPersona=d.denunciante WHERE a.estado="A";
       SET mensaje='Exitoso';
       COMMIT;
   END IF;
@@ -88,8 +86,11 @@ SP:BEGIN
       LEAVE SP;
     END IF;
     IF conteo=1 THEN
-      UPDATE   denuncias SET estado="I" WHERE idDenuncias=idDenuncia;
-      SET mensaje='Eliminado exitosamente';
+      UPDATE anuncios a
+      INNER JOIN denuncias d ON d.idAnuncios = a.idAnuncios
+      SET a.estado = "I", d.estado = "I", a.razones ="Por denuncia"
+      WHERE d.idDenuncias = idDenuncia;
+      SET mensaje='Dado de baja';
       COMMIT;
     END IF;
   END IF;

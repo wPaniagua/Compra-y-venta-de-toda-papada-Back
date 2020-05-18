@@ -39,16 +39,17 @@ function hacerBusqueda(busqueda, categoria, hasta) {
 
     dataQuerys = `accion=BusquedaPrincipal${busqueda!=""?`&busqueda=%${busqueda}%`:``}${validarCategoriaNumerica(categoria)?`&categoria=${categoria}`:``}${hasta!=null?`&hasta=${hasta}`:``}`;
 
-
-    //console.log("Busqueda general");
-    //console.log(dataQuerys.trim())
+    //var listaAnuncios;
 
     $.ajax({
         url: "backend/busqueda.php",
         method: "POST",
+        // async: false,
+        // cache: false,
         data: dataQuerys,
         success: function (respuesta) {
             //console.log(respuesta)
+
 
             var response = Array();
             if (respuesta == `["null"][]`) {
@@ -72,6 +73,11 @@ function hacerBusqueda(busqueda, categoria, hasta) {
             console.error(error)
         }
     });
+
+    //console.log("Respuesta sincrona")
+    //console.log(listaAnuncios)
+
+
 
     // if (categoria != "null" && busqueda != "") {
     //     $.ajax({
@@ -136,7 +142,66 @@ function hacerBusqueda(busqueda, categoria, hasta) {
     // }
 }
 
+function agregarURL(listaAnuncios) {
+
+    var listaFotos;
+    $.ajax({
+        url: "backend/busqueda.php",
+        method: "POST",
+        async: false,
+        cache: false,
+        data: `accion=traerfotos`,
+        dataType: "json",
+        success: function (respuesta) {
+            listaFotos = respuesta;
+
+            //    if (respuesta != `["null"][]`) {
+            //        let responsePeticion = JSON.parse(respuesta);
+            //
+            //        listaFotos = respuesta;
+            //    } else {
+            //        listaFotos = [];
+            //    }
+
+
+        },
+        error: function (error) {
+            console.error(error)
+        }
+    });
+
+    var jsonListaFotos = listaFotos;
+    console.log("Json lista")
+    console.log(jsonListaFotos)
+
+
+    listaAnuncios.forEach((anuncio => {
+        var filtrar = jsonListaFotos.filter(elemento => {
+            return anuncio.idAnuncios == elemento.idAnuncios;
+        })
+
+        if (filtrar.length > 0) {
+
+            anuncio.fotourl = filtrar[0].urlFoto;
+        } else {
+            anuncio.fotourl = `img/no_imagen.png`;
+        }
+    }))
+
+
+
+
+    return listaAnuncios;
+
+}
+
 function generarAnuncios(response) {
+
+
+    response = agregarURL(response);
+
+
+
 
     $("#anuncios").html("");
     $("#segundaFila").html("")
@@ -145,13 +210,13 @@ function generarAnuncios(response) {
         $("#anuncios").append(`
         <div class="col col-lg-4" style="margin:1em; flex: 0 0 32% !important; max-width: 32% !important;">
             <div class="card" style="width: inherit;">
-                <img class="card-img-top"
-                    src="https://i.pcmag.com/imagery/reviews/05PEXoDoiSN5HXomKOYFTJ7-18.fit_lim.size_1320x742.v_1574731239.jpg"
+                <img class="card-img-top" style="height: 14em !important; object-fit: cover !important;"
+                    src="${response[i].fotourl}"
                     alt="Card image cap">
                 <div class="card-body">
                     <div class="container">
                         <div class="row">
-                            <div class="col col-lg-12">
+                            <div class="col col-lg-12 tituloAnuncio" style="color:#EAC67A;">
                                 <strong>${response[i].titulo}</strong>
                                 <hr>
                             </div>
@@ -159,7 +224,7 @@ function generarAnuncios(response) {
                         <div class="row" >
                             <div class="col col-lg-12">
                                 <div class="container">
-                                    <div class="row">
+                                    <div class="row" >
                                         <div class="col col-lg-4 iconoPequeno ">
                                             <i style="display: block;"
                                                 class="fas fa-american-sign-language-interpreting iconoTarjeta"> </i>
@@ -181,8 +246,8 @@ function generarAnuncios(response) {
                         </div>
                         <div class="row">
                             <div class="col col-lg-12 descripcionAnuncio">
-                                <p>${response[i].descripcion}.</p>
-                                <button type="button" class="btn btn-outline-info"><a href="usuarioCV/detalleAnuncio.php?idAnuncios=${response[i].idAnuncios}">Ver articulo</a></button>
+                                <p>${response[i].descripcion}.</p>    
+                                <button type="button" class="btn btn-outline-info" onclick="verArticulo(${response[i].idAnuncios})">Ver Artículo</button>
                             </div>
                         </div>
                     </div>
@@ -195,13 +260,13 @@ function generarAnuncios(response) {
         $("#segundaFila").append(`
         <div class="col col-lg-3">
             <div class="card" style="width: inherit;">
-                <img class="card-img-top"
-                    src="https://i.pcmag.com/imagery/reviews/05PEXoDoiSN5HXomKOYFTJ7-18.fit_lim.size_1320x742.v_1574731239.jpg"
+                <img class="card-img-top" style="height: 14em !important; object-fit: cover !important;"
+                    src="${response[i].fotourl}"
                     alt="Card image cap">
                 <div class="card-body">
                     <div class="container">
                         <div class="row">
-                            <div class="col col-lg-12">
+                            <div class="col col-lg-12 tituloAnuncio" style="color:#984B43;">
                                 <strong>${response[i].titulo}</strong>
                                 <hr>
                             </div>
@@ -232,7 +297,7 @@ function generarAnuncios(response) {
                         <div class="row">
                             <div class="col col-lg-12 descripcionAnuncio">
                                 <p>${response[i].descripcion}.</p>
-                                <button type="button" class="btn btn-outline-info"><a href="usuarioCV/detalleAnuncio.php?idAnuncios=${response[i].idAnuncios}">Ver articulo</a></button>
+                                <button type="button" class="btn btn-outline-info" onclick="verArticulo(${response[i].idAnuncios})">Ver Artículo</button>
                             </div>
                         </div>
                     </div>
@@ -241,6 +306,10 @@ function generarAnuncios(response) {
         </div>
         `);
     }
+}
+
+function verArticulo(idAnuncios) {
+    window.location.href = `usuarioCV/detalleAnuncio.php?idAnuncios=${idAnuncios}`;
 }
 
 function traerDepartamentos() {
@@ -507,7 +576,7 @@ $("#ordenamiento").on("change", function () {
 function traerCategorias() {
 
     $.ajax({
-        url: "backend/index.php",
+        url: "backend/inicio.php",
         method: "POST",
         data: "accion=Traercategorias",
         success: function (respuesta) {

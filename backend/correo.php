@@ -34,7 +34,7 @@ $resultadoCorreo = $conexion->obtenerFila($resultado);
 
 $cadena = implode(";", $resultadoCorreo);
             
-echo json_encode($cadena);
+//echo json_encode($cadena);
 
 
 
@@ -50,7 +50,7 @@ echo json_encode($cadena);
 
             $cadena2 = implode(";", $resultadoNombre);
 
-            echo json_encode($cadena2);
+            //echo json_encode($cadena2);
 	
 
 	$tituloAnuncio = "
@@ -118,9 +118,16 @@ echo json_encode($cadena);
     $mail->send();
 
     if($mail->send() == false){
-    	echo "Su mensaje no fue enviado";
+    	echo '<script type="text/javascript">
+    alert("Su mensaje no fue enviado");
+    window.location.href="../usuarioCV/contacto.php";
+    </script>';
     }else{
-    	echo "Mensaje Enviado";
+    	echo '<script type="text/javascript">
+    alert("Correo enviado con exito");
+    window.history.go(-2);
+    </script>';
+
     }
 
     echo json_encode(array(

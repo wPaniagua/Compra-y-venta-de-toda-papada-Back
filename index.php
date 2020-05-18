@@ -18,7 +18,7 @@
 
     <link rel="stylesheet" href="css/inicio.styles.css">
 
-    
+
     <link rel="stylesheet" href="css/inicio.css">
 
 
@@ -28,7 +28,7 @@
 
     <!-- style="background-color: #2b3f81 !important; color: white !important;" -->
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #E91E63!important;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #091f36!important;">
         <a class="navbar-brand font-weight-bold" href="#">PUBLITODO</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,11 +37,13 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link font-weight-bold" href="usuarioCV/favoritos.php">Favoritos <span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                    <a class="nav-link font-weight-bold" href="usuarioCV/favoritos.php"  >Favoritos <span
+                            class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active font-weight-bold">
-                    <a class="nav-link" href="#" data-toggle="modal" data-target="#modalPublicar" id="btn-publicar"style="width: 160px;padding-left: 8px;padding-right: 0px;">Agregar publicacion</a>
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#modalPublicar" id="btn-publicar"
+                        style="margin-left:1em;padding-left: 0px;padding-right: 0px; width:10em;">Agregar publicacion</a>
                 </li>
                 <li class="nav-item " id="categorias">
 
@@ -61,18 +63,18 @@
             </form>
             <!---color: #fff;background-color: #9C27B0;border-color: #9C27B0;-->
 
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav mr-auto" ">
 
                 <?php
                     session_start(); 
                     if (isset($_SESSION["id_usuario"])){
-                        echo ('<div class="btn-group">
-        <a href="#" class=""><i class="fas fa-user-circle  fa-3x" style="color:#212529;display:none" id="iconU"></i>
+                        echo ('<div class="btn-group" style="margin-right: 5em;">
+        <a href="#" class=""><i class="fas fa-user-circle  fa-3x" style="color:#EAC67A;display:none" id="iconU"></i>
                     <div id="imgNP" ></div></a>
-          <a href="#" class="dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-right: 80px;padding-top: 10px;color:#212529;font-size:20px;">
-            <span class="sr-only">Toggle Dropdown</span>
+          <a href="#" class="dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-right: 0px;padding-left: 5px; padding-top: 10px;color:#EAC67A;font-size:20px;">
+            <span class="sr-only" style="color:#EAC67A;">Toggle Dropdown</span>
           </a>
-          <div class="dropdown-menu">
+          <div class="dropdown-menu" style="color: #EAC67A;margin-right:2em;">
             <a class="dropdown-item" href="usuarioCV/perfil.php">Editar Perfil</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" id="cerrarSesion">Cerrar sesión</a>
@@ -138,7 +140,7 @@
                         <br>
                         <div class="text-center">
                             <small>¿No tienes una cuenta? </small>
-                            <a href="reg.php" class="btn btn-success"  id="crearCuenta" onclick="">
+                            <a href="reg.php" class="btn btn-success" id="crearCuenta" onclick="">
                                 Crea una cuenta
                             </a>
                         </div>
@@ -165,7 +167,7 @@
         <div style="display:inline" id="linkCategoria0">
             <!-- <a href="Google.com">Ver todos</a>
             <i style="margin-left:1em;" class="fas fa-arrow-right"></i> -->
-            </div>
+        </div>
 
         <!--Carousel Wrapper-->
         <div id="slide0" class="carousel slide carousel-multi-item" data-ride="carousel">
@@ -223,22 +225,22 @@
 
     <br>
 
-   <!--*********************************************COMPARTIR EN REDES SOCIALES*************************************************-->
+    <!--*********************************************COMPARTIR EN REDES SOCIALES*************************************************-->
     <?php
                     if (isset($_SESSION["id_usuario"])){
                         echo ('<div id="fb-root"></div>
-                                    <div class="jumbotron col-md-3" style="margin-left: 30px;">
-                                      <center><h5>Comparte nuestra página a través de :</h5></center>
-                                      <div class="row " >
-                                        <div style="margin-left: 100px; margin-right: 0px;" class="fb-share-button" data-href="http://www.Publitodo.hn/inicio.php" data-layout="button_count" data-size="small">
-                                          <a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=http://www.Publitodo.hn/inicio.php&t=Compartir_desde_Publitodo" class="fb-xfbml-parse-ignore" aria-describedby="u_0_l" aria-label="Publicacion desde Publitodo" tabindex="-1" >
-                                            <img style="width: 38px; border-radius: 12px;" src="../img/compartirFB.png"></a>
-                                        </div>
-                                        <div style="margin-left: 15px; margin-right: auto;">
-                                          <a ><img style="width: 40px; border-radius: 15px;" src="../img/compartirInstagram.png"></a>
-                                        </div>
-                                      </div>
-                                    </div>' );
+                        <div class="jumbotron col-md-3" style="margin-left: 70px;">
+                          <center><h5>Comparte nuestra página a través de :</h5></center>
+                          <div class="row " >
+                            <div style="margin-left: 100px; margin-right: 0px;" class="fb-share-button" data-href="http://www.Publitodo.hn/inicio.php" data-layout="button_count" data-size="small">
+                              <a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=http://www.Publitodo.hn/inicio.php&t=Compartir_desde_Publitodo" class="fb-xfbml-parse-ignore" aria-describedby="u_0_l" aria-label="Publicacion desde Publitodo" tabindex="-1" >
+                                <img style="width: 38px; border-radius: 12px;" src="../img/compartirFB.png"></a>
+                            </div>
+                            <div style="margin-left: 15px; margin-right: auto;">
+                              <a class="ViewProfileButton" href="https://www.instagram.com/publitodohn/?utm_source=ig_embed" data-ios-link="user?username=publitodohn&amp;utm_source=ig_embed" data-log-event="followClick" target="_blank"><img style="width: 40px; border-radius: 15px;" src="../img/compartirInstagram.png"></a>
+                            </div>
+                          </div>
+                        </div>' );
                     }
                 ?>
     <!--*************************************************************************************************************************-->
@@ -356,11 +358,11 @@
     <div class="container my-4">
 
         <h3 id="tituloCategoria1"></h3>
-        
+
         <div style="display:inline" id="linkCategoria1">
             <!-- <a href="Google.com">Ver todos</a>
             <i style="margin-left:1em;" class="fas fa-arrow-right"></i> -->
-            </div>
+        </div>
 
 
         <!--Carousel Wrapper-->
@@ -412,16 +414,16 @@
 
         </div>
         <!--/.Carousel Wrapper-->
-        
-        </div>
-        
-<!--.....................................................................................................AGREGAR PUBLICACION.....................................................................................................-->
-<!-------------------------------------------------------BOTON AGREGAR PUBLICACION----------------------------------------->
 
- <!--------------------------------------------------VENTANA MODAL DE AVISO----------------------------------------------------->
-<div id="btn-ventana" >
-<div class="modal fade" id="modalPublicar" tabindex="-1" role="dialog">
-            <div  class="modal-dialog modal-dialog-centered" role="document">
+    </div>
+
+    <!--.....................................................................................................AGREGAR PUBLICACION.....................................................................................................-->
+    <!-------------------------------------------------------BOTON AGREGAR PUBLICACION----------------------------------------->
+
+    <!--------------------------------------------------VENTANA MODAL DE AVISO----------------------------------------------------->
+    <div id="btn-ventana">
+        <div class="modal fade" id="modalPublicar" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content" style="border-color:black ; border-style:double; border-width: 2px;">
                     <!--Cabecera del Modal-->
                     <div class="modal-header">
@@ -432,22 +434,24 @@
                     </div>
                     <!--Cuerpo del Modal-->
                     <div class="modal-body">
-                        <p>Debes <strong>registrarte</strong> o  haber <strong>iniciado sesion</strong> para poder agregar publicaciones.<p>
+                        <p>Debes <strong>registrarte</strong> o haber <strong>iniciado sesion</strong> para poder
+                            agregar publicaciones.<p>
                     </div>
                     <!--Pie del Modal-->
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalFormularioLogin" >Iniciar Sesion</button>
-                        <a href="reg.php" class="btn btn-primary"  id="crearCuenta" onclick="">
-                                Crea una cuenta
+                        <button type="button" class="btn btn-success" data-toggle="modal"
+                            data-target="#modalFormularioLogin">Iniciar Sesion</button>
+                        <a href="reg.php" class="btn btn-primary" id="crearCuenta" onclick="">
+                            Crea una cuenta
                         </a>
-                        
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
-        
+
+
 
     </div>
 </body>
@@ -457,8 +461,7 @@
 <!--Mostrar foto de perfil-->
 <script src="js/fotoInicio.js"></script>
 <!--.....................................................................................................AGREGAR PUBLICACION.....................................................................................................-->
-    <script src="js/publicar.js"></script>
+<script src="js/publicar.js"></script>
 <!--.........................................................................................FIN AGREGAR PUBLICACION........................................................................................................-->
-</html>
 
-                
+</html>

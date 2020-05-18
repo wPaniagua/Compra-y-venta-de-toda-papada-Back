@@ -1,5 +1,5 @@
 
- <?php 
+<?php 
 
 include '../backend/seguridad.php';
 
@@ -55,11 +55,11 @@ include '../backend/seguridad.php';
 	<div class="container-contact100">
 		<div class="wrap-contact100">
 			<button class="btn-hide-contact100">
-				<a href="../inicio.php" class="zmdi zmdi-close"> </a>
+				<a href= 'javascript:history.back(1)' class="zmdi zmdi-close"> </a>
 				
 			</button>
 
-			<div class="contact100-form-title" style="background-image: url(images/bg-02.jpg);">
+			<div class="contact100-form-title" style="background-image: url(../images/bg-02.jpg);">
 				<span>Contáctese</span>
 			</div>
 
@@ -83,7 +83,7 @@ include '../backend/seguridad.php';
 
 
 				<div class="wrap-input100 validate-input">
-					<input id="phone" class="input100" type="text" name="phone" placeholder="Eg. +504 0000 0000">
+					<input id="phone" class="input100" type="text" name="phone" placeholder="Ej. +504 0000 0000">
 					<span class="focus-input100"></span>
 					<label class="label-input100" for="phone">
 						<span class="lnr lnr-smartphone m-b-2"></span>
@@ -103,39 +103,40 @@ include '../backend/seguridad.php';
 					<button  type="submit" class="contact100-form-btn">
 						Enviar Ahora
 					</button>
-				</div>
-			</form>
-		</div>
+
+			</div>
+		</form>
 	</div>
+</div>
 
 
 
-	<!--===============================================================================================-->
-	<script src="../vendor/jquery/jquery-3.2.1.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="../vendor/animsition/js/animsition.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="../vendor/bootstrap/js/popper.js"></script>
-	<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="../vendor/select2/select2.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="../vendor/daterangepicker/moment.min.js"></script>
-	<script src="../vendor/daterangepicker/daterangepicker.js"></script>
-	<!--===============================================================================================-->
-	<script src="../vendor/countdowntime/countdowntime.js"></script>
-	<!--===============================================================================================-->
-	<script src="../js/main.js"></script>
-	
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
+<!--===============================================================================================-->
+<script src="../vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="../vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+<script src="../vendor/bootstrap/js/popper.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="../vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="../vendor/daterangepicker/moment.min.js"></script>
+<script src="../vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+<script src="../vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+<script src="../js/main.js"></script>
 
-		gtag('config', 'UA-23581568-13');
-	</script>
-	
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'UA-23581568-13');
+</script>
+
 </body>
 </html>
