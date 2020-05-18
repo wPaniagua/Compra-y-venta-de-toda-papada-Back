@@ -20,7 +20,7 @@
 </script>
 </head>
 <body>
-	<a href="../index.php" class="btn btn-danger px-5"><i class="fas fa-long-arrow-alt-left fa-2x" id="iconU"></i> </a>
+	<a href="../index.php" class="btn btn-danger px-5 btnAtras"><i class="fas fa-long-arrow-alt-left fa-2x " id="iconU"></i> </a>
 	<br>
 <div class="container">
 	<div class="row">
@@ -34,7 +34,7 @@
 			<div class="col-md-12">
 				<br>
 				<h3>Detalles Anuncio</h3>
-			<hr style="background-color:#e91e63;">
+			<hr style="background-color:#984B43;">
 			<div class=""><!--INICIO FORMULARIO DETALLE PROD -->
 				<form>
 			  <div class="row">
@@ -83,7 +83,7 @@
 			<div class="alert alert-success" role="alert" style="display:inline; padding-left:0px;padding-right:0px;display:none;" id="mensaje-agregado-favorito" >
   				Agregado exitosamente.
 			</div>
-			<hr style="background-color:#e91e63;">
+			<hr style="background-color:#984B43;">
 			<div><!--inicio FORMULARIO datos vendedor -->
 				<form>
 				 <div class="row">
@@ -124,7 +124,7 @@
 			</div><!--fin FORMULARIO datos vendedor -->
 			<br>
 			<h3>Ubicacion</h3>
-			<hr style="background-color:#e91e63;">
+			<hr style="background-color:#984B43;">
 			<div><!--inicio FORMULARIO datos ubicacion -->
 				<form>
 				 <div class="row">
@@ -145,7 +145,7 @@
 			  </div>
 			 </form>
 			</div><!--fin FORMULARIO ubicacion -->
-			<br><hr style="background-color:#e91e63;">
+			<br><hr style="background-color:#984B43;">
 			</div>
 			</div>
 		</div>
@@ -321,7 +321,7 @@
                 </div>
             </div>
         </div>
-    </div><!--Fin modal---><hr style="background-color:#e91e63;"><div class="col-md-6"><p>
+    </div><!--Fin modal---><hr style="background-color:#984B43;"><div class="col-md-6"><p>
   	<a class="btn btn-danger" data-toggle="collapse" href="#verCalificacion" role="button" aria-expanded="false" aria-controls="verCalificacion" id="verCalifi">Ver calificaciones</a>
 		</p>
 		<div class="row">
