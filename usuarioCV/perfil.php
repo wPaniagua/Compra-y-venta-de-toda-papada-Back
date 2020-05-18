@@ -17,6 +17,8 @@ include '../backend/seguridad.php';
     <script src="../js/jquery-3.4.1.min.js"></script>
 
     <script src="../js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="../css/perfil.css">
 </head>
 
 <body>
@@ -156,7 +158,7 @@ include '../backend/seguridad.php';
                    
                     <div class="form-group">
                     <h4>Ubicación</h4>
-                    <hr style="background-color:#e91e63;">
+                    <hr >
                     <div class="form-group">
                     <label for="Departamento">Departamento Residencia:</label>
                     <select id="departamentos" class="form-control  alert-secondary" style="background-color:#f1f3f785" >

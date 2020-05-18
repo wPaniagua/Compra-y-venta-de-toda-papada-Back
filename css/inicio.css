@@ -310,3 +310,8 @@ a:hover {
 .font-weight-bold {
     font-weight: 1000 !important;
 }
+
+.icono {
+    background: #091f36;
+    color: #EAC67A;
+}
