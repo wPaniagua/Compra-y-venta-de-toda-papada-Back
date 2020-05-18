@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 include '../backend/seguridad_admin.php';
 
@@ -19,7 +19,7 @@ include '../backend/seguridad_admin.php';
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/FontAwesome.min.js"></script>
     <script type="text/javascript" src="../js/all.js"></script>
-    
+
 
 </head>
 
@@ -35,7 +35,7 @@ include '../backend/seguridad_admin.php';
             <input class="form-control mr-sm-2" type="search" id="inputBusqueda" name="inputBusqueda" placeholder="Buscar por nombre de Usuario"
                 aria-label="Search" ><!--onkeypress="myFunction(event)"-->
             <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>-->
-            <button type="button" id="inputBusquedaBtn" name="inputBusquedaBtn" style="border-color:white; background-color:white;"><img src="../ico/search.svg"
+            <button type="button" id="inputBusquedaBtn" name="inputBusquedaBtn" style="border-color:white; background-color:white;" class="btn btn-link"><img src="../ico/search.svg"
                     style="width:25px "></button>
         </form>
     </div>
@@ -71,7 +71,7 @@ include '../backend/seguridad_admin.php';
         <div style="margin-left:5%;">
             <label>Estado: </label><br>
             <select name="slc-estados" id="slc-estados" >
-                <option value="-">Seleccionar</option>
+                <option value="null">Seleccionar</option>
                 <option value="A">Activo</option>
                 <option value="I">Inactivo</option>
             </select>
@@ -79,17 +79,19 @@ include '../backend/seguridad_admin.php';
 
     </div>
 
-
-
-
     <br>
     <br>
     <center>
-        <h2>Lista de Usuarios</h2>
+        <h2 style="color: darkblue;">Lista de Usuarios</h2>
     </center>
-    <br>
 
-    <table border="1" cellspacing="0" cellpadding="10" class="table-striped table-hover" id="tablaUsuarios" 
+<div class="row " style="margin-left:80%; margin-top: 0px;">
+    <div  style="margin-left:5%; padding-top: 0px;">
+        <button type="button" class="btn btn-link"><a href="verUsuariosDesdeAdminF.php">Mostrar todos los Usuarios</a></button>
+    </div>
+</div>
+
+    <table border="0" cellspacing="0" cellpadding="10" class=" table table-striped table-hover" id="tablaUsuarios"
         style="width: 85%; margin-left:auto; margin-right:auto">
         <thead class="thead-dark">
             <tr>
@@ -101,8 +103,8 @@ include '../backend/seguridad_admin.php';
                 <td><strong>Correo Electronico </strong></td>
                 <td><strong>Departamento </strong></td>
                 <td><strong>Ciudad o Municipio </strong></td>
-                <td><strong>Estado </strong></td>
-                <td><strong>Dar de Baja </strong></td>
+                <td><center><strong>Estado </strong></center></td>
+                <td><center><strong>Dar de Baja </strong></center></td>
                 <!--<td><strong>Modificar </strong></td>  -->
             </tr>
         </thead>

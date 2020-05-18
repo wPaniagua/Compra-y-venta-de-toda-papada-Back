@@ -41,7 +41,7 @@ function cargarTabla() {
             for (let i = 0; i < respuesta.length; i++) {
 
                 $("#tablaUsuarios>tbody").append(
-                    `<tr>  
+                    `<tr>
                 <td>${respuesta[i].primerNombre}</td>
                 <td>${respuesta[i].primerApellido}</td>
                 <td>${respuesta[i].tipoUsuario}</td>
@@ -50,8 +50,8 @@ function cargarTabla() {
                 <td>${respuesta[i].correo}</td>
                 <td>${respuesta[i].departamento}</td>
                 <td>${respuesta[i].municipio}</td>
-                <td>${respuesta[i].estado}</td>
-                <td><button class="btn btn-outline-danger" onclick="darDeBaja(${respuesta[i].idPersona})"><i class="far fa-trash-alt"></i></button></td>
+                <td><center>${respuesta[i].estado}</center></td>
+                <td><center><button class="btn btn-outline-danger" onclick="darDeBaja(${respuesta[i].idPersona})"><i class="far fa-trash-alt"></i></button></center></td>
                 </tr>`
                 );
 
@@ -59,7 +59,7 @@ function cargarTabla() {
 
         },
         error: function (error) {
-            
+
         }
     });
 }
@@ -86,13 +86,13 @@ function darDeBajaTbl(idPersona) {
 }
 
 function cargarTablaTbl() {
-    
+
     $("#tablaUsuarios>tbody").html(" ");
 
     for (let i = 0; i < respuestaTbl.length; i++) {
 
         $("#tablaUsuarios>tbody").append(
-            `<tr>  
+            `<tr>
         <td>${respuestaTbl[i].primerNombre}</td>
         <td>${respuestaTbl[i].primerApellido}</td>
         <td>${respuestaTbl[i].tipoUsuario}</td>
@@ -101,8 +101,8 @@ function cargarTablaTbl() {
         <td>${respuestaTbl[i].correo}</td>
         <td>${respuestaTbl[i].departamento}</td>
         <td>${respuestaTbl[i].municipio}</td>
-        <td>${respuestaTbl[i].estado}</td>
-        <td><button class="btn btn-outline-danger" onclick="darDeBajaTbl(${respuestaTbl[i].idPersona})"><i class="far fa-trash-alt"></i></button></td>
+        <td><center>${respuestaTbl[i].estado}</center></td>
+        <td><center><button class="btn btn-outline-danger" onclick="darDeBajaTbl(${respuestaTbl[i].idPersona})"><i class="far fa-trash-alt"></i></button></center></td>
         </tr>`
         );
 
@@ -149,35 +149,15 @@ function hacerBusqueda(){
         }
     });
 }
-
-/*$('#inputBusqueda').keypress(function(e) {
-    var keycode = (e.keyCode ? e.keyCode : e.which);
-    if (keycode == '13') {
-        hacerBusqueda();
-        //Buscar();
-        //e.preventDefault();
-        //return false;
-    }
-});*//////////////////////////////////////////////////////////////////////
-/*function myFunction(e) {
-    //See notes about 'which' and 'key'
-    var keycode = (e.keyCode ? e.keyCode : e.which);
-    if (keycode == 13) {
-        hacerBusqueda();
-    }
-}*/
 /**==============================================================FIN BUSQUEDA======================================================= */
 
 
 /**==============================================================SELECCIONAR TIPO DE USUARIO======================================================= */
 $("#slc-tipoUsuario").on("change", function () {
-    var optionSelected = $("option:selected", this);
-    var valueSelected = this.value;
-
-    console.log(valueSelected);
-
+    var url = verificarFiltro();
+    url = url+'action=filtrar';
     $.ajax({
-        url: `../backend/verUsuariosDesdeAdmin.php?idUsuario=${valueSelected}&action=filtrarUsuario`,
+        url: url,
         method: "GET",
         dataType: "json",
         success: function (respuesta) {
@@ -191,13 +171,42 @@ $("#slc-tipoUsuario").on("change", function () {
     });
 });
 
+function verificarFiltro(){
+    var optionUser;
+    var valueUser;
+    var optionDepto;
+    var valueDepto;
+    var optionMunicipio;
+    var valueMunicipio;
+    var optionEstado;
+    var valueEstado;
+
+    var URL = `../backend/verUsuariosDesdeAdmin.php?`;
+
+    valueUser = document.getElementById("slc-tipoUsuario").value;
+    valueDepto = document.getElementById("slc-departamento").value;
+    valueMunicipio  = document.getElementById("slc-municipio").value;
+    valueEstado =  document.getElementById("slc-estados").value;
+
+    if (valueUser != 'null') {
+        URL = URL+`idUsuario=${valueUser}&`;
+    } if (valueDepto != 'null') {
+        URL = URL+`idDepto=${valueDepto}&`;
+    } if (valueMunicipio != 'null') {
+        URL = URL+`idMunicipio=${valueMunicipio}&`;
+    } if (valueEstado != 'null') {
+        URL = URL+`idEstado=${valueEstado}&`;
+    }
+    return URL;
+}
+
 function cargarTipoUsuarios() {
     $.ajax({
         url: "../backend/verUsuariosDesdeAdmin.php?action=seleccionarTipoUsuarios",
         method: "GET",
         dataType: "json",
         success: function (response) {
-
+            console.log("CARGA DE USUARIOS EXITOSA");
             for (let i = 0; i < response.length; i++) {
                 $("#slc-tipoUsuario").append(
                     `<option value=${response[i].idTipoUsuario}>${response[i].descripcion}</option>`
@@ -205,6 +214,7 @@ function cargarTipoUsuarios() {
             }
         },
         error: function (error) {
+            console.log("CARGA DE USUARIOS NO EXITOSA");
             console.log(error);
         }
     });
@@ -214,13 +224,10 @@ function cargarTipoUsuarios() {
 
 /**==============================================================SELECCIONAR DEPARTAMENTO======================================================= */
 $("#slc-departamento").on("change", function () {
-    var optionSelected = $("option:selected", this);
-    var valueSelected = this.value;
-
-    console.log(valueSelected);
-
+    var url = verificarFiltro();
+    url = url+'action=filtrar';
     $.ajax({
-        url: `../backend/verUsuariosDesdeAdmin.php?idDepto=${valueSelected}&action=filtrarDepto`,
+        url: url,
         method: "GET",
         dataType: "json",
         success: function (respuesta) {
@@ -259,13 +266,10 @@ function cargarDepartamento() {
 /**==============================================================SELECCIONAR MUNICIPIO======================================================= */
 
 $("#slc-municipio").on("change", function () {
-    var optionSelected = $("option:selected", this);
-    var valueSelected = this.value;
-
-    console.log(valueSelected);
-
+    var url = verificarFiltro();
+    url = url+'action=filtrar';
     $.ajax({
-        url: `../backend/verUsuariosDesdeAdmin.php?idMunicipio=${valueSelected}&action=filtrarMunicipio`,
+        url: url,
         method: "GET",
         dataType: "json",
         success: function (respuesta) {
@@ -302,13 +306,10 @@ function cargarMunicipio() {
 /**==============================================================SELECCIONAR ESTADO DEL USUARIO======================================================= */
 
 $("#slc-estados").on("change", function () {
-    var optionSelected = $("option:selected", this);
-    var valueSelected = this.value;
-
-    console.log(valueSelected);
-
+    var url = verificarFiltro();
+    url = url+'action=filtrar';
     $.ajax({
-        url: `../backend/verUsuariosDesdeAdmin.php?estado=${valueSelected}&action=filtrarEstado`,
+        url: url,
         method: "GET",
         dataType: "json",
         success: function (respuesta) {
