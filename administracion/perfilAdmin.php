@@ -173,7 +173,7 @@
                     </select>
                     <span id="msjMunicipio" style="color:red;display: none">Municipio requerido</span>
                   </div>
-                  <button type="button" class="btn btn-primary btn-block" onclick="editarPerfil();">Guardar</button>
+                  <button type="button" class="btn btn-primary btn-block btnNavI py-1" onclick="editarPerfil();">Guardar</button>
                   <br>
                   <div class="form-row"><span class="alert alert-danger" style="display: none" id="msjEditar"></span></div>
                   

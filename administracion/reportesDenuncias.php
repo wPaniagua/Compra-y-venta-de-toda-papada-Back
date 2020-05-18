@@ -39,6 +39,9 @@ include '../backend/seguridad_admin.php';
             <a class="lista btnNavI btn btn-primary btn-block py-1 active" href="#">Reportes Denuncias</a><br>
             <a class="lista btn btn-dark  btn-block btnNavI py-1" href="reportesUsuarios.php" onclick="">Reportes Usuarios</a><br>
             <a class="btn btn-dark  btn-block lista btnNavI py-1" href="Estadisticas.php" onclick="">Estadisticas</a>
+            <a target="_blank" class="btn-primary btn btn-block lista btnNavI" href="reportes/empresas.php">Reporte Empresas</a>
+        <a target="_blank" class="btn-primary btn btn-block lista btnNavI" href="reportes/usuarios.php">Reporte Compradores/ Vendedores</a>
+        <a target="_blank" class="btn-primary btn btn-block lista btnNavI" href="reportes/anuncios.php">Reporte Anuncios</a>
           </div>
         </div><!--Fin lista Navbar-->
         <div class="col-lg">
@@ -46,11 +49,15 @@ include '../backend/seguridad_admin.php';
           <center>
             <h3>Lista Denuncias</h3>
           </center>
+          <a target="_blank" class="btn-primary btn  lista btnNavI" href="reportes/denuncias.php">PDF</a>
+          <input type="button"  class="btn btn-success" name="imprimir" value="Imprimir" onclick="window.print();">
+          <br><br>
           <div id="div_ini"></div>
           <div id="div_table"></div>
           <br>
           <br>
-          <input type="button"  class="btn btn-success" name="imprimir" value="Imprimir" onclick="window.print();">
+          
+
         </div>
     </div>
   </div>

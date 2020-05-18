@@ -30,9 +30,9 @@
 		      <li class="nav-item " id="categorias">
 		        <a class="nav-link  font-weight-bold" href="categorias.php" tabindex="-1" aria-disabled="true">Categorias</a>
 		      </li>
-		   	  <li class="nav-item" id="productos">
+		   	  <!--li class="nav-item" id="productos">
 		        <a class="nav-link  font-weight-bold" href="productos.php" tabindex="-1" aria-disabled="true">Productos</a>
-		      </li>
+		      </li--->
 		      <li class="nav-item" id="denuncias">
 		        <a class="nav-link  font-weight-bold" href="denuncias.php" tabindex="-1" aria-disabled="true">Denuncias</a>
 		      </li>

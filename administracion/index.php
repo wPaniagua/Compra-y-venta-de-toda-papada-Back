@@ -35,7 +35,7 @@ include_once('../backend/seguridad_admin.php');
 				<a href="solicitudes_administracion.php" class="btn btn-dark btn-lg btn-block btnNavI">Solicitudes</a>
 
 				<a href="categorias.php" class="btn btn-dark btn-lg btn-block btnNavI">Categorias</a>
-				<a href="productos.php" class="btn btn-dark btn-lg btn-block btnNavI">Productos</a>
+				<!--a href="productos.php" class="btn btn-dark btn-lg btn-block btnNavI">Productos</a-->
 				<a href="denuncias.php" class="btn btn-dark btn-lg btn-block btnNavI">Denuncias</a>
 				<a href="reportesDenuncias.php" class="btn btn-dark btn-lg btn-block btnNavI">Reportes</a>
 				<!--a href="#" class="btn btn-dark btn-lg btn-block" type="button" data-toggle="modal" data-target="#exampleModal">Agregar usuario administrador</a-->

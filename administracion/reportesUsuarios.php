@@ -36,6 +36,9 @@ include '../backend/seguridad_admin.php';
             <a class="lista btnNavI btn btn-block py-1 active" href="reportesDenuncias.php">Reportes Denuncias</a><br>
             <a class="lista btnNavI btn btn-primary btn-block py-1 active" href="#">Reportes Usuarios</a><br>
             <a class="btn btn-dark  btn-block lista btnNavI py-1" href="Estadisticas.php" onclick="">Estadisticas</a>
+            <a target="_blank" class="btn-primary btn btn-block lista btnNavI" href="reportes/empresas.php">Reporte Empresas</a>
+            <a target="_blank" class="btn-primary btn btn-block lista btnNavI" href="reportes/usuarios.php">Reporte Compradores/ Vendedores</a>
+            <a target="_blank" class="btn-primary btn btn-block lista btnNavI" href="reportes/anuncios.php">Reporte Anuncios</a>
           </div>
         </div><!--Fin lista Navbar-->
 
