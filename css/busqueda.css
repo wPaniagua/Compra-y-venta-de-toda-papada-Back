@@ -323,3 +323,21 @@ select option:hover {
 body {
     /* font-family: Inter; */
 }
+
+#img-perfil {
+    height: 3em !important;
+    max-height: 3em !important;
+    width: 3em;
+    object-fit: cover;
+    border-radius: 20px !important;
+}
+
+.iconoPerfil {
+    text-align: center;
+    font-size: 2em !important;
+    width: 2.5em !important;
+    color: #EAC67A;
+    /* background-color: #EAC67A; */
+    border-radius: 100px !important;
+
+}
