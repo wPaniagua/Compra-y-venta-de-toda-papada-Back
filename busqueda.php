@@ -67,15 +67,39 @@
 
                     if(isset($_SESSION["es_administrador"])){
                         {
-                            echo ('<li class="nav-item"  style="padding-left:0px; padding-rigth:0px;width:6em">
-                            <a class="nav-link" style="width:inherit;" href="administracion/index.php">Admin</a></li><li class="nav-item" style="padding-left:0px; padding-rigth:0px; width:10em">
-                            <a class="nav-link" style="width:inherit;" href="usuarioCV/perfil.php">Usuario Normal</a></li>');
+                            echo ('
+                            <div class="btn-group" style="margin-right: 7em;">
+                            <a href="usuarioCV/perfil.php" class=""><i class="fas fa-user-circle  fa-3x" style="color:#EAC67A;display:none" id="iconU"></i>
+                                        <div id="imgNP" ></div></a>
+                              <a href="usuarioCV/perfil.php" class="dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true"                  aria-expanded="false" style="padding-right: 0px;padding-left: 5px; padding-top: 10px;color:#EAC67A;font-size:20px;">
+                                <span class="sr-only" style="color:#EAC67A;">Toggle Dropdown</span>
+                              </a>
+                              <div class="dropdown-menu" style="color: #EAC67A;margin-right:2em;">
+                                <a class="dropdown-item" href="usuarioCV/perfil.php">Editar Perfil</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="administracion/index.php">Ir a Administración</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" id="cerrarSesion">Cerrar sesión</a>
+                              </div>
+                            </div>');
                         }
                     }
 
                     else if (isset($_SESSION["id_usuario"])){
-                        echo ('<li class="nav-item">
-                        <a class="nav-link" style="" href="usuarioCV/perfil.php">Usuario Normal</a></li>');
+                        echo ('
+                        <div class="btn-group" style="margin-right: 7em;">
+                            <a href="#" class=""><i class="fas fa-user-circle  fa-3x" style="color:#EAC67A;display:none" id="iconU"></i>
+                                        <div id="imgNP" ></div></a>
+                              <a href="#" class="dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true"                  aria-expanded="false" style="padding-right: 0px;padding-left: 5px; padding-top: 10px;color:#EAC67A;font-size:20px;">
+                                <span class="sr-only" style="color:#EAC67A;">Toggle Dropdown</span>
+                              </a>
+                              <div class="dropdown-menu" style="color: #EAC67A;margin-right:2em;">
+                                <a class="dropdown-item" href="usuarioCV/perfil.php">Editar Perfil</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" id="cerrarSesion">Cerrar sesión</a>
+                              </div>
+                            </div>
+                        ');
                     }
                     else{
                         echo ('<li class="nav-item"><button type="button" style="padding:.40em;" class="btn btn btn-outline-success" id="iniciarSesionBoton" data-toggle="modal" data-target="#modalFormularioLogin">Ingresa</button></li>');

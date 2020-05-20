@@ -33,6 +33,9 @@ $(document).ready(function () {
     $("#desde").val("");
     $("#hasta").val("");
 
+    //fotoPerfil
+    traerFotoPerfil();
+
 });
 
 function hacerBusqueda(busqueda, categoria, hasta) {
@@ -216,7 +219,7 @@ function generarAnuncios(response) {
                 <div class="card-body">
                     <div class="container">
                         <div class="row">
-                            <div class="col col-lg-12 tituloAnuncio" style="color:#EAC67A;">
+                            <div class="col col-lg-12 tituloAnuncio" style="color:#984B43;">
                                 <strong>${response[i].titulo}</strong>
                                 <hr>
                             </div>
@@ -776,4 +779,57 @@ $("#btn-busqueda").on("click", () => {
     } else if (categoriaSeleccionada == "null" && busqueda == "") {
         window.location.href = `busqueda.php`;
     }
+})
+
+function traerFotoPerfil() {
+    console.log("Llamado a funcion traer perfil")
+    $.ajax({
+        url: "backend/busqueda.php",
+        data: `accion=getFotoPerfil`,
+        method: "POST",
+        success: function (respuesta) {
+            console.log(respuesta);
+
+            if (respuesta != `["null"][]`) {
+                let response = JSON.parse(respuesta);
+                console.log(response)
+
+
+                $("#imgNP").html(`
+                <img id="img-perfil" src="${response[0].urlFoto}">`)
+            } else {
+                $("#imgNP").html(`
+               <div class="iconoPerfil"> <i class="fas fa-user"></i></div>`)
+            }
+        },
+        error: function (errror) {
+            console.log("Caer en error")
+            console.error(error);
+        }
+    });
+}
+
+function cerrarSesion() {
+    $.ajax({
+
+        url: "backend/cerrarSesion.php",
+        // data: "correo=" + correo.toLowerCase() + "&contrasena=" + contrasena, //data, //"correo=" + $("#txt-correo").val().toLowerCase() + "&password=" + $("#txt-contrasena").val(),
+        method: "GET",
+        dataType: "json",
+        success: function (respuesta) {
+            if (respuesta.ok) {
+                //location.reload();
+                window.location.replace("index.php");
+            }
+
+        },
+        error: function (error) {
+            console.log(error)
+        }
+
+    });
+}
+
+$("#cerrarSesion").on("click", function () {
+    cerrarSesion();
 })
