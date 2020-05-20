@@ -1,6 +1,22 @@
 <?php
+
+$mysqli = new mysqli( 'localhost:3306', 'root', '', 'mydb' );
+$dsn = "mysql:host=localhost:3306;dbname=mydb;charset=utf8mb4";
+
+$options = [
+  PDO::ATTR_EMULATE_PREPARES   => false, // turn off emulation mode for "real" prepared statements
+  PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION, //turn on errors in the form of exceptions
+  PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, //make the default fetch be an associative array
+];
+try {
+    $pdo = new PDO($dsn, "root", "", $options);
+} catch (Exception $e) {
+    error_log($e->getMessage());
+    exit('Something weird happened'); //something a user can understand
+}
+
 require('../pdf/fpdf.php');
-require '../../backend/class-conexion.php';
+
 
 $id = 42;
 class pdf extends FPDF
@@ -36,23 +52,58 @@ class pdf extends FPDF
 	}
 }
 
+	$idPersona;
+	$primerNombre;
+	$segundoNombre;
+	$primerApellido;
+	$segundoApellido;
+	$correo;
+	$fechaNac;
+	$idTipoUsuario;
+	$idMunicipio;
+	$municipio;
+	$depto;
+	$tipo;
 
-$conexion = new Conexion();
 
-$sql = "SELECT p.idPersona, p.primerNombre, p.segundoNombre, p.primerApellido, p.segundoApellido, p.correo, p.fechaNac, p.idTipoUsuario,p.idMunicipio, m.nombre 'municipio', d.nombre 'depto',t.descripcion 'tipo' FROM persona p
+//$conexion = new Conexion();
+$stmt = $mysqli -> prepare("SELECT p.idPersona, p.primerNombre, p.segundoNombre, p.primerApellido, p.segundoApellido, p.correo, p.fechaNac, p.idTipoUsuario,p.idMunicipio, m.nombre 'municipio', d.nombre 'depto',t.descripcion 'tipo' FROM persona p
 INNER JOIN municipio m on m.idMunicipio=p.idMunicipio
 INNER join deptos d on d.idDeptos=m.idDeptos
 INNER JOIN tipousuario t on t.idTipoUsuario=p.idTipoUsuario 
-WHERE t.descripcion LIKE 'empresa'
-ORDER BY  p.idMunicipio ASC";
+WHERE t.descripcion LIKE '%empresa%'
+ORDER BY  p.idMunicipio ASC");
 
-$resultado = $conexion->ejecutarConsulta($sql);
+// $stmt -> bind_param('i', $userId);
+    $stmt -> execute();
+    $stmt -> store_result();
+    $stmt -> bind_result( 
+    	$idPersona,
+		$primerNombre,
+		$segundoNombre,
+		$primerApellido,
+		$segundoApellido,
+		$correo,
+		$fechaNac,
+		$idTipoUsuario,
+		$idMunicipio,
+		$municipio,
+		$depto,
+		$tipo
+	);
 
+$total;
 //consulta total 
-$sqlt1 ="SELECT count(*) 'total' FROM persona p
+$stmt1 = $mysqli -> prepare("SELECT count(*) 'total' FROM persona p
 INNER JOIN tipousuario t on t.idTipoUsuario=p.idTipoUsuario 
-WHERE t.descripcion LIKE 'empresa'";
-$resultadot1 = $conexion->ejecutarConsulta($sqlt1);
+WHERE t.descripcion LIKE 'empresa'");
+
+// $stmt -> bind_param('i', $userId);
+    $stmt1 -> execute();
+    $stmt1 -> store_result();
+    $stmt1 -> bind_result( 
+    	$total
+	);
 
 $fpdf = new pdf('P','mm','letter',true);
 $fpdf->AddPage('portrait', 'letter');
@@ -75,8 +126,8 @@ $fpdf->Write(5, 'Informacion Empresas');
 $fpdf->SetY(70);
 $fpdf->Write(5, 'Total registradas:');
 $fpdf->SetX(50);
-while ( $tot = $conexion->obtenerFila($resultadot1)  ) {
-	$fpdf->Write(5, $tot["total"]);
+while($stmt1 -> fetch()) {
+	$fpdf->Write(5, $total);
 }
 
 $fpdf->SetY(80);
@@ -102,14 +153,14 @@ $cantidad=1;
 
 $fpdf->SetTextColor(0,0,0);
 $fpdf->SetFillColor(255,255,255);
-while ( $persona = $conexion->obtenerFila($resultado)  ) {
+while($stmt -> fetch()){
 	$fpdf->Cell(10, 10, $cantidad  , 0, 0, 'C', 1);
-	$fpdf->Cell(60, 10, $persona["primerNombre"]." ".$persona["segundoNombre"]." ".$persona["primerApellido"]." ".$persona["segundoApellido"]  , 0, 0, 'L', 1);
-	$fpdf->Cell(40, 10, $persona["correo"], 0, 0, 'L', 1);
-	$fpdf->Cell(25, 10, $persona["fechaNac"] , 0, 0, 'L', 1);
-	//$fpdf->Cell(25, 10, $persona["tipo"], 0, 0, 'C', 1);
-	$fpdf->Cell(30, 10, $persona["municipio"] , 0, 0, 'L', 1);
-	$fpdf->Cell(30, 10, $persona["depto"] , 0, 0, 'L', 1);
+	$fpdf->Cell(60, 10, $primerNombre." ".$segundoNombre." ".$primerApellido." ".$segundoApellido , 0, 0, 'L', 1);
+	$fpdf->Cell(40, 10, $correo, 0, 0, 'L', 1);
+	$fpdf->Cell(25, 10, $fechaNac , 0, 0, 'L', 1);
+	//$fpdf->Cell(25, 10, $tipo, 0, 0, 'C', 1);
+	$fpdf->Cell(30, 10, $municipio , 0, 0, 'L', 1);
+	$fpdf->Cell(30, 10, $depto , 0, 0, 'L', 1);
 	$fpdf->Ln();
 	$cantidad++;
 }

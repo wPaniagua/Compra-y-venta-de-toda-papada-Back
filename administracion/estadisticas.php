@@ -33,8 +33,8 @@ include '../backend/seguridad.php';
       <div id="sidebar-wrapper" class="col-sm-5 col-md-2 col-lg-2  py-5">
           <div class="nav nav-sidebar colorNavI py-5 px-3">
             <br>
-            <a class="lista btnNavI btn btn-dark btn-block py-1" href="reportesDenuncias.php">Reportes Denuncias</a><br>
-            <a class="lista btn btn-dark  btn-block btnNavI py-1" href="reportesUsuarios.php" onclick="">Reportes Usuarios</a><br>
+            <a class="lista btnNavI btn btn-dark btn-block py-1" href="reportes/denuncias.php">Reportes Denuncias</a><br>
+            <!--a class="lista btn btn-dark  btn-block btnNavI py-1" href="reportesUsuarios.php" onclick="">Reportes Usuarios</a--><br>
             <a class="lista btnNavI btn btn-primary btn-block py-1 active" href="#" >Estadisticas</a>
             <a target="_blank" class="btn-primary btn btn-block lista btnNavI" href="reportes/empresas.php">Reporte Empresas</a>
             <a target="_blank" class="btn-primary btn btn-block lista btnNavI" href="reportes/usuarios.php">Reporte Compradores/ Vendedores</a>

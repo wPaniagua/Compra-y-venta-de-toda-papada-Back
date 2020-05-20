@@ -1,7 +1,22 @@
-
 <?php
+
+$mysqli = new mysqli( 'localhost:3306', 'root', '', 'mydb' );
+$dsn = "mysql:host=localhost:3306;dbname=mydb;charset=utf8mb4";
+
+$options = [
+  PDO::ATTR_EMULATE_PREPARES   => false, // turn off emulation mode for "real" prepared statements
+  PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION, //turn on errors in the form of exceptions
+  PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, //make the default fetch be an associative array
+];
+try {
+    $pdo = new PDO($dsn, "root", "", $options);
+} catch (Exception $e) {
+    error_log($e->getMessage());
+    exit('Something weird happened'); //something a user can understand
+}
+
 require('../pdf/fpdf.php');
-require '../../backend/class-conexion.php';
+//require '../../backend/class-conexion.php';
 
 $id = 42;
 class pdf extends FPDF
@@ -37,18 +52,56 @@ class pdf extends FPDF
 	}
 }
 
+$idAnuncio;    
+$titulo;
+$descripcion;
+$precio;
+$idPersona;
+$idMoneda;
+$idProducto;
+$estado;
+$fecha;
+$razones;
+$descripcion;
+$descripcion;
+$primerNombre;
+$segundoNombre;
+$primerApellido;
+$segundoApellido;
 
-$conexion = new Conexion();
 
-$sql = "SELECT a.idAnuncios, a.titulo, a.descripcion, a.precio,a.idPersona, a.idMoneda, a.idProducto, a.estado, a.fecha, a.razones 
-,c.descripcion 'categoria',m.descripcion 'moneda', pe.primerNombre,pe.segundoNombre,pe.primerApellido,pe.segundoApellido 
+$stmt = $mysqli -> prepare("SELECT a.idAnuncios, a.titulo, a.descripcion, a.precio,a.idPersona, a.idMoneda, a.idProducto, a.estado, a.fecha, a.razones,c.descripcion 'categoria',m.descripcion 'moneda', pe.primerNombre,pe.segundoNombre,pe.primerApellido,pe.segundoApellido 
 FROM anuncios a INNER join producto p on p.idProducto=a.idProducto
 inner join categorias c on c.idCategorias=p.idCategorias
 INNER join persona pe on pe.idPersona=a.idPersona
 INNER JOIN moneda m on m.idMoneda=a.idMoneda
-ORDER by fecha DESC";
+ORDER by fecha DESC");
 
-$resultado = $conexion->ejecutarConsulta($sql); 
+// $stmt -> bind_param('i', $userId);
+        $stmt -> execute();
+        $stmt -> store_result();
+        $stmt -> bind_result( 
+            $idAnuncio,    
+            $titulo,
+            $descripcion,
+            $precio,
+            $idPersona,
+			$idMoneda,
+			$idProducto,
+			$estado,
+			$fecha,
+			$razones,
+			$categoria,
+			$moneda,
+			$primerNombre,
+			$segundoNombre,
+			$primerApellido,
+			$segundoApellido
+        );
+    
+    
+       
+    
 
 $fpdf = new pdf('P','mm','letter',true);
 $fpdf->AddPage('portrait', 'letter');
@@ -59,19 +112,7 @@ $fpdf->SetTextColor(255,255,255);
 $fpdf->SetY(25);
 $fpdf->SetX(90);
 $fpdf->Write(5, 'Lista Anuncios ');
-/*$fpdf->Ln();
-$fpdf->SetX(90);
-$fpdf->Write(5, 'Empresa ');
-$fpdf->Ln();
-$fpdf->SetX(120);
-$fpdf->Write(5, 'Fecha de envío: ');
-$fpdf->Ln();
-$fpdf->SetX(120);
-$fpdf->Write(5, 'Dirección: ');
-$fpdf->Ln();
-$fpdf->SetX(120);
-$fpdf->Write(5, 'Ciudad: ');
-*/
+
 $fpdf->SetTextColor(0,0,0);
 //$fpdf->Image('images/2.jpg', 20, 55);
 $fpdf->SetFont('Arial', '', 9);
@@ -91,14 +132,18 @@ $cantidad=1;
 
 $fpdf->SetTextColor(0,0,0);
 $fpdf->SetFillColor(255,255,255);
-while ( $anuncios = $conexion->obtenerFila($resultado)  ) {
+//while ( $anuncios = $conexion->obtenerFila($resultado)  ) 
+//$array_num = count($anuncios);
+while($stmt -> fetch()){ 
+	# code...
+
 	$fpdf->Cell(10, 10, $cantidad  , 0, 0, 'L', 1);
-	$fpdf->Cell(40, 10, $anuncios["titulo"], 0, 0, 'L', 1);
-	$fpdf->Cell(20, 10, $anuncios["precio"], 0, 0, 'L', 1);
-	$fpdf->Cell(25, 10, $anuncios["fecha"] , 0, 0, 'L', 1);
-	$fpdf->Cell(40, 10, $anuncios["razones"] , 0, 0, 'L', 1);
-	$fpdf->Cell(20, 10, $anuncios["moneda"] , 0, 0, 'L', 1);
-	$fpdf->Cell(50, 10,  $anuncios["primerNombre"]." ".$anuncios["segundoNombre"]." ".$anuncios["primerApellido"]." ".$anuncios["segundoApellido"] , 0, 'C', 1);
+	$fpdf->Cell(40, 10, $titulo, 0, 0, 'L', 1);
+	$fpdf->Cell(20, 10, $precio, 0, 0, 'L', 1);
+	$fpdf->Cell(25, 10, $fecha , 0, 0, 'L', 1);
+	$fpdf->Cell(40, 10, $razones , 0, 0, 'L', 1);
+	$fpdf->Cell(20, 10, $moneda , 0, 0, 'L', 1);
+	$fpdf->Cell(50, 10,  $primerNombre." ".$segundoNombre." ".$primerApellido." ".$segundoApellido , 0, 'C', 1);
 	$fpdf->Ln();
 	$cantidad++;
 	if ($cantidad==19) {

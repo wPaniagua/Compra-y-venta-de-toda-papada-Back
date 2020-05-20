@@ -1,6 +1,23 @@
 <?php
+
+
+$mysqli = new mysqli( 'localhost:3306', 'root', '', 'mydb' );
+$dsn = "mysql:host=localhost:3306;dbname=mydb;charset=utf8mb4";
+
+$options = [
+  PDO::ATTR_EMULATE_PREPARES   => false, // turn off emulation mode for "real" prepared statements
+  PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION, //turn on errors in the form of exceptions
+  PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, //make the default fetch be an associative array
+];
+try {
+    $pdo = new PDO($dsn, "root", "", $options);
+} catch (Exception $e) {
+    error_log($e->getMessage());
+    exit('Something weird happened'); //something a user can understand
+}
+
 require('../pdf/fpdf.php');
-require '../../backend/class-conexion.php';
+
 
 $id = 42;
 class pdf extends FPDF
@@ -36,12 +53,40 @@ class pdf extends FPDF
 	}
 }
 
+$idDenuncias;
+$fecha;
+$cantidad;
+$razones;
+$idAnuncio;
+$titulo;    
+$precio;
+$estado;
+$denunciante;
+$primerNombre;
+$segundoNombre;
+$primerApellido;
+$segundoApellido;
 
-$conexion = new Conexion();
 
-$sql = "SELECT d.idDenuncias, d.fecha, d.cantidad, d.razones, d.idAnuncios,a.titulo, d.estado, d.denunciante,p.primerNombre,p.segundoNombre,p.primerApellido,p.segundoApellido FROM denuncias d inner join anuncios a on a.idAnuncios=d.idAnuncios inner join persona p on p.idPersona=d.denunciante ORDER by d.fecha DESC";
+$stmt = $mysqli -> prepare("SELECT d.idDenuncias, d.fecha, d.cantidad, d.razones, d.idAnuncios,a.titulo, d.estado, d.denunciante,p.primerNombre,p.segundoNombre,p.primerApellido,p.segundoApellido FROM denuncias d inner join anuncios a on a.idAnuncios=d.idAnuncios inner join persona p on p.idPersona=d.denunciante ORDER by d.fecha DESC");
 
-$resultado = $conexion->ejecutarConsulta($sql); 
+// $stmt -> bind_param('i', $userId);
+        $stmt -> execute();
+        $stmt -> store_result();
+        $stmt -> bind_result( 
+        $idDenuncias,
+		$fecha,
+		$cantidad,
+		$razones,
+		$idAnuncios,
+		$titulo,
+		$estado,
+		$denunciante,
+		$primerNombre,
+		$segundoNombre,
+		$primerApellido,
+		$segundoApellido
+        );
 
 $fpdf = new pdf('P','mm','letter',true);
 $fpdf->AddPage('portrait', 'letter');
@@ -83,13 +128,13 @@ $cantidad=1;
 
 $fpdf->SetTextColor(0,0,0);
 $fpdf->SetFillColor(255,255,255);
-while ( $denuncias = $conexion->obtenerFila($resultado)  ) {
+  while($stmt -> fetch()){
 	$fpdf->Cell(10, 10, $cantidad  , 0, 0, 'C', 1);
-	$fpdf->Cell(40, 10, $denuncias["fecha"], 0, 0, 'C', 1);
-	$fpdf->Cell(40, 10, $denuncias["razones"], 0, 0, 'C', 1);
-	$fpdf->Cell(40, 10, $denuncias["titulo"] , 0, 0, 'C', 1);
-	$fpdf->Cell(40, 10, $denuncias["primerNombre"]." ".$denuncias["segundoNombre"]." ".$denuncias["primerApellido"]." ".$denuncias["segundoApellido"]  , 0, 0, 'C', 1);
-	$fpdf->Cell(20, 10, $denuncias["estado"] , 0, 0, 'C', 1);
+	$fpdf->Cell(40, 10, $fecha, 0, 0, 'C', 1);
+	$fpdf->Cell(40, 10, $razones, 0, 0, 'C', 1);
+	$fpdf->Cell(40, 10, $titulo , 0, 0, 'C', 1);
+	$fpdf->Cell(40, 10, $primerNombre." ".$segundoNombre." ".$primerApellido." ".$segundoApellido  , 0, 0, 'C', 1);
+	$fpdf->Cell(20, 10, $estado , 0, 0, 'C', 1);
 	$fpdf->Ln();
 	$cantidad++;
 	if ($cantidad==19) {

@@ -39,7 +39,7 @@
 		        <a class="nav-link  font-weight-bold" href="denuncias.php" tabindex="-1" aria-disabled="true">Denuncias</a>
 		      </li>
 		      <li class="nav-item" id="reportes">
-		        <a class="nav-link  font-weight-bold" href="reportesDenuncias.php" tabindex="-1" aria-disabled="true">Reportes</a>
+		        <a class="nav-link  font-weight-bold" href="estadisticas.php" tabindex="-1" aria-disabled="true">Reportes</a>
 		      </li>
 		    </ul>
 		    <form class="form-inline my-2 my-lg-0">
